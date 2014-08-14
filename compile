@@ -1,0 +1,7 @@
+#!/bin/bash
+
+xelatex thesis
+makeindex thesis.nlo -s nomencl.ist -o thesis.nls
+bibtex thesis
+xelatex thesis
+xelatex thesis

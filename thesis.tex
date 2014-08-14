@@ -2,6 +2,11 @@
 \usepackage{amsmath}
 \usepackage{mathspec}
 \usepackage{sectsty, titlesec}
+\usepackage{wrapfig, booktabs}
+\usepackage{nomencl}
+\makenomenclature
+\renewcommand{\nomname}{List of symbols and\\abbreviations}
+\usepackage[numbers]{natbib}
 \usepackage{graphicx,caption,subcaption}
 \setmainfont[Mapping=tex-text]{Crimson}
 \setsansfont[Scale=0.88]{Alte DIN 1451 Mittelschrift}
@@ -48,6 +53,9 @@
 \author{Sebastian Kosch}
 \date{July 2014}
 \maketitle
+
+\printnomenclature[5em]
+
 \chapter{Introduction}
 \section{Why spray sizing is important}
 \section{What our contributions in this paper are}
@@ -63,15 +71,20 @@
 \section{PDPA system}
     - TSI system
 \section{Droplet generator}
+\label{sec:droplet-generator}
     - Droplet generator
 \section{Verification of droplet sizes}
     - This is where I show pictures and tables, showing that the formula
     actually works.
 
-\chapter{Interferometric Particle Imaging}
+    \chapter{Interferometric Particle\\ Imaging (IPI)}
 \section{Operating principle}
 The number of fringes $N_\text{fr}$ appearing in the image has a simple linear relationship to
 the droplet diametre $D_d$:
+\nomenclature{$N_\text{fr}$}{Number of fringes}
+\nomenclature{$\kappa$}{Scalar value relating the fringe count $N_\text{fr}$ to
+the physical diameter of the particle $D_d$}
+\nomenclature{$D_d$}{Physical diameter of the particle (here: droplet)}
 \begin{equation}
     N_\text{fr} = \kappa D_d,
 \end{equation}
@@ -88,12 +101,37 @@ the lens to the laser sheet, $\phi$ is the off-axis angle (90 degrees in most
 setups, including ours), and $m$ is the relative refractive index of the
 droplets (1.333 for water in air).
 
+As a consequence of geometrical optics, the distance $s_x$ (in pixels) between two
+adjacent fringes has a linear relationship with the defocussing distance $\Delta
+z$, where $M$ is the magnification, $d_{p,x}$ is the physical size of a
+camera sensor pixel, and $\Delta \theta$ is the angle subtended by two adjacent
+fringes entering the lens \cite{Pan06}:
+\nomenclature{$\Delta \theta$}{Angular spacing between two adjacent fringes}
+\nomenclature{$\Delta z$}{Distance along the $z$-axis between the focal plane of
+the lens and the light sheet}
+\nomenclature{$M$}{Magnification}
+\nomenclature{$s_x$}{Distance, in pixels, between two adjacent fringes}
+\nomenclature{$d_{p,x}; d_{p,y}$}{Physical dimensions of a pixel on the camera's
+CCD sensor}
+\begin{equation}
+  s_x = \frac{\Delta \theta \Delta z}{M d_{p,x}} 
+  \label{fringedistance-pixels}
+\end{equation}
+Of course, equation \eqref{fringedistance-pixels} is only meaningful where $\Delta z \gg
+0$. If the image is (approximately) focussed, fringes will give way to a sharp
+image of either both glare points or a single bright spot -- depending on
+diffraction effects and the camera's resolution.
+
+(Fill in more details here.)
+
 \section{Setup}
+\label{sec:ipi-setup}
 (How it's set up, what cameras, what lenses, what laser, timer box, software,
 etc.)
 
 \section{Common problems and sources of error}
 \subsection{Too much overlap}
+\label{sec:ipi-overlap}
 This is a section where I refer to the paper that calculates overlap
 probabilities. I explain that many droplets are mis-identified (either high-freq
 is seen as low-freq, or noise is seen as high-freq) and where I point out that
@@ -408,17 +446,33 @@ difficult to determine the accurate distance from light sheet to lens aperture
 far greater).
 
 \subsection{Error in the Mie approximation at small sizes}
+\label{sec:mie-error}
 As outlined in paper ... geometric optics deviate from the true Mie scattering
 field when sizes are very small.
 
-\chapter{Global particle sizing with a slit aperture}
-To ensure that no systemic problems are introduced by our
-setup, we performed the experiment after installing a slit aperture over the
-camera lens. This well-known and reliable technique was first introduced by X
-\cite{X} and is part of several commercial systems today. The aperture pares off the top
-and bottom halves of the defocused circles, leaving only a narrow center strip
-in the middle, which nonetheless covers all the fringes. This improvement, shown
-in Figure \ref{fig:globalsizing}, overcomes the problem of overlapping circles.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            SLIT APERTURES                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Particle sizing with \\a slit aperture}
+As we discussed in section \ref{sec:ipi-overlap}, many otherwise well-executed IPI
+measurements are thwarted by overlapping defocussed droplet images.
+This problem is never more apparent than in efforts to calibrate
+the system using a vibrating orifice droplet generator, as the droplets produced
+thereby are spaced very closely and produce heavily overlapping defocussed
+images. Fortunately, there exists a simple and reliable technique to deal with
+this problem: a slit aperture, installed directly in front of the lens, masks
+the defocussed droplet images such that only a thin strip across their center
+passes through the lens. The effect is shown in Figure \ref{fig:globalsizing}. 
+
+The idea of optically compressing an image in one direction is
+well-known from the field of spectroscopy. It was first introduced to the area
+of fluid measurement by \citet{Durst94}, and has since been employed in various
+forms, e.g. by \citet{Pan06}. Other authors use cylindrical lenses instead
+of slit apertures to achieve the vertical integration of the image
+\cite{Kawaguchi02}.
 
 \begin{figure}[h]
     \centering
@@ -432,52 +486,167 @@ in Figure \ref{fig:globalsizing}, overcomes the problem of overlapping circles.
         \includegraphics[height=0.6\textheight]{img/slitted.jpg}
         \caption{}
     \end{subfigure}
-    \caption{Before (a) and after (b) installing the slit aperture}
+    \caption{Before (a) and after (b) installing the slit aperture. The aperture
+    stop pares off the top and bottom halves of the defocussed circles, leaving
+only a narrow center string in the middle.}
     \label{fig:globalsizing}
 \end{figure}
 
 \section{Optical theory}
-This is where I explain the relationship between slit size and position, and
-size and position of the measured strips.
+Naturally, equations \eqref{kappa} and \eqref{fringedistance-pixels} still hold.
 
 \section{Image processing}
 Extracting the fringe counts from such an image is straightforward. First, we
-correlate the image with that of a single bright strip, resulting in intensity
-peaks centered over our regions of interest (Figure
-\ref{fig:globalsizingcorrel}). We then apply a horizontal Hanning window to each
-of those regions and feed them through a Fourier transform, with typical
-results as shown in Figure \ref{fig:globalsizingfourier}. If the frequency peak
-exceeds the average value by some threshold amount (here: 37\%), it is turned
-into a fringe count by re-scaling it to the size of the defocused circle. The
-fringe counts are then changed into droplet diameters by equation \eqref{kappa}.
+correlate the image with that of a single, solid bright rectangle which shares
+the approximate dimensions of a typical strip in the image. This operation
+yields intensity
+peaks centered over our regions of interest. We remove closely adjacent peaks,
+as they may represent questionable or overlapping strips. Compared to the sheer
+number of correctly identified strips, the number of legitimate data points lost
+this way is negligible. Figure \ref{fig:globalsizing-identifystrips} shows the
+result of such an attempt at identifying the strips.
 
-This needs to be explained a little more.
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=0.38\textheight]{img/globalsizing-identifystrips.png}
+    \caption{The image is correlated with that of a solid bright rectangle, which
+        results in peaks that approximately coincide with the centres of the
+        strips. Here, the original photo is shown with rectangles drawn centered
+    at said peaks.}
+    \label{fig:globalsizing-identifystrips}
+\end{figure}
+
+To find the number of fringes within the strip, we cannot rely on counting the
+number of dark/bright variations directly, as some of them may be lost in the
+noise. The spatial frequency of the peaks, however, taken together with the
+known and constant horizontal width of the strips, will produce a reliable
+fringe count. In the next step, our algorithm therefore applies the Fourier
+transform to each region of interest. To improve the accuracy of the method,
+three steps are performed before the Fourier transform is taken:
+\begin{enumerate}
+    \item a weak ($3 \times 3$) Gaussian blur is applied to the region
+        (optional);
+    \item a Hanning window is applied to the region -- both horizontally and
+        vertically. This reduces the ``sinc ringing'' effect encountered when
+        taking the Fourier transform of finite signals;
+    \item the region is padded with zeros in all directions to yield a larger
+        input to the Fourier transform. In our application, the windowed and padded strip
+        images had dimensions of $1024 \times 1024$ pixels. Zero-padding
+        increases the granularity of the frequency spectrum, which can help with
+        the correct identification of the peak frequency.
+\end{enumerate}
+
+Figure \ref{fig:globalsizing-dropletpeak} shows the windowed appearance of
+one such region of interest (although it does not show the padded input to the
+Fourier transform due to space constraints). The Fourier transform yields a
+frequency power spectrum in two dimensions, although we are primarily interested
+in the frequency peak in the horizontal direction (i.e. along $y=0$). In order
+to minimize the misidentification of dominant frequencies,
+\begin{enumerate}
+    \item we clip the spectrum to a band of reasonable frequencies. This is
+        necessary because a) $1/f$-noise causes very low frequencies to dominate
+        in power, although they are of no interest to us, and b) graininess in
+        the original photo can sometimes result in meritless high-frequency
+        peaks;
+    \item we apply a Gaussian blur to the 2D spectrum to remove outliers in the
+        spectrum;
+    \item we discard all regions in which the peak frequency's power does not
+        exceed a certain value;
+    \item we discard all regions in which the \textit{prominence} of the peak
+        freqency's power (i.e. its proportion to the mean power) does not exceed
+        a certain value (this step is optional).
+\end{enumerate}
+The bottom two elements in Figure \ref{fig:globalsizing-dropletpeak} illustrate
+the effect of these steps.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[height=0.38\textheight]{img/globalsizing-dropletpeak.png}
+    \caption{From top to bottom: windowed region of interest; original
+    (unwindowed) region of interest; sine wave representing the identified peak
+frequency; clipped and lowpass-filtered 2D frequency spectrum showing a distinct
+peak at about 90 oscillations across the image width of 1024 pixels; 1D plot of
+the frequency spectrum, with peak identified at $f=91.0$.}
+    \label{fig:globalsizing-dropletpeak}
+\end{figure}
+
+Finally, the peak frequency $f_\text{peak}$ is converted into a fringe count by re-scaling it
+from the padded size $D_\text{padded}\, (= 1024$ pixels) to the width of the strip (which, in the
+context of IPI measurements, should equal the diameter $D_\text{i}$ of the defocussed droplet
+image):
+\nomenclature{$f_\text{peak}$}{Peak frequency}
+\nomenclature{$D_\text{i}$}{Diameter (in pixels) of the defocussed image}
+\nomenclature{$D_\text{padded}$}{Width (in pixels) of the padded input to the
+Fourier transform}
+\begin{equation}
+    N_\text{fr} = f_\text{peak} \frac{D_\text{i}}{D_\text{padded}}
+    \label{fringes-from-diameter}
+\end{equation}
+
+In the current implementation of our algorithm, $D_\text{i}$ must be determined
+and entered manually.
 
 \section{Sources of error with the slit method}
-\subsection{Is the slit centered with respect to the droplets?}
-While we will get the right frequency, we might not get the right defocussed
-droplet size. It may therefore happen that we get the wrong final fringe count.
-With a circular defocussed image, it is relatively easy to approximate the mean
-defocussed diameter; with a line it is impossible to tell whether we are getting
-a cropped image of the center of the circle or one from above (show image).
+\subsection{Misalignment of slit and lens}
 
-While this can be remedied to some extent when applying the mask and setting up
-the camera position (preview the image in the software, maximize diameter), it's
-not very exact, and it's easy to miss a fringe. This will, of course, typically
-result in fringes being missed, and thus the droplets being reported as smaller
-than they are in reality.
+While the above algorithm will generally give a good estimate of the fringe
+\begin{wrapfigure}{r}{0.35\textwidth}
+    \begin{center}
+\includegraphics[width=0.33\textwidth]{img/dropletslitcropping2.jpg}
+\end{center}
+\caption{Only a slit aperture centered on the lens and extending across the
+entire lens entrance will preserve all fringes}
+\label{fig:droplet-slitcropping}
+\end{wrapfigure}
+
+count for a given defocussed droplet image, it cannot know whether the entire
+center portion of the image has indeed passed the slit aperture. It is
+conceivable, after all, that the slit aperture was not perfectly centered on the
+lens entrance, or that the slit aperture was shorter than the diameter of the
+lens entrance. Figure \ref{fig:droplet-slitcropping} illustrates how the slit
+aperture can cause the defocussed image to appear smaller than it is. The
+reduced value for $D_\text{i}$, manually entered in equation
+\eqref{fringes-from-diameter}, will result
+in droplets being reported as smaller than they are in reality.
 
 \section{Calibrating the slit method}
 Taking into account the sources of errors explained in the sections above, it is
 advisable to run a few calibration tests with droplets of different sizes before
 employing the IPI technique for real spray measurements. Recall that, if we
-ignore the Mie error, the relationship between fringe count and droplet diameter
+ignore the Mie error (section \ref{sec:mie-error}), the relationship between fringe count and droplet diameter
 is linear with a constant of proportionality $\kappa$ (see equation
 \eqref{kappa}). The aim of our calibration, then, is to determine the value of
-$\kappa$ from experiment.
+$\kappa$ from experiment -- the premise being that we cannot be certain of the
+values of $D_a$, $z$, and possibly not even $m$ and $\phi$ (although the latter
+can usually be ascertained to a sufficient degree of accuracy).
 
 \subsection{A sample calibration of the slit aperture method}
-This section outlines, step for step, how a slit-aperture IPI
+Using the droplet generator described in section \ref{sec:droplet-generator} and
+the IPI configuration described in section \ref{sec:ipi-setup}, we produced and
+measured monodisperse droplets of many different diameters. The droplet
+diameters were determined both mathematically and photographically, as described
+in section \ref{sec:verify-droplet-diameters}. Out of over 30 sets of IPI
+measurements we selected five sets that exhibited both strong uniformity and
+high photographic quality:
+
+\begin{table}[h]
+\begin{tabular}{rrrrr}
+    \toprule
+Flow rate & Freq. & $D_d$, predicted  & $D_d$, from
+    photo & $N_\text{fr}$ \\
+    \midrule
+    20.8  ml/h  & 5395 Hz  & 127 $\mu$m  & 100-126 $\mu$m &  9.6      \\
+39.7  ml/h  & 1990 Hz  & 220 $\mu$m  & 203     $\mu$m &  16.5     \\
+79.4  ml/h  & 1565 Hz  & 299 $\mu$m  & 290     $\mu$m &             \\
+94.3  ml/h  & 1067 Hz  & 361 $\mu$m  &         $\mu$m &  27.2          \\
+114.1 ml/h  & 1065 Hz  & 386 $\mu$m  &         $\mu$m &  29.8          \\
+    \bottomrule
+\end{tabular}
+\end{table}
+
+The distributions are shown here:
+
+
 
 \subsection{Discussion of Results}
 This is where I list my results and discuss what they might mean for
@@ -490,4 +659,8 @@ calibration purposes.
 
 \chapter{Phase-Doppler Particle Analysis}
 This is on PDPA method.
+
+
+\bibliographystyle{myplainnat}
+\bibliography{bibliography}
 \end{document}
