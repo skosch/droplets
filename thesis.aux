@@ -13,8 +13,10 @@
 \@writefile{toc}{\contentsline {section}{\numberline {2.3}Droplet generator}{7}}
 \newlabel{sec:droplet-generator}{{2.3}{7}}
 \@writefile{toc}{\contentsline {section}{\numberline {2.4}Verification of droplet sizes}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Colliding droplets}{7}}
+\newlabel{sec:droplet-collisions}{{2.4.1}{7}}
 \citation{Pan06}
-\@writefile{toc}{\contentsline {chapter}{\numberline {3}Interferometric Particle\\ Imaging (IPI)}{9}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}Interferometric Particle Imaging (IPI)}{9}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {3.1}Operating principle}{9}}
@@ -54,33 +56,42 @@
 \newlabel{fig:drop-calibration-corrected}{{3.5}{16}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Thin lens assumption}{16}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4.1}Finding the correct value for aperture diameter}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4.2}Error in the Mie approximation at small sizes}{16}}
-\newlabel{sec:mie-error}{{3.4.2}{16}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.5}Error in the Mie approximation at small sizes}{17}}
+\newlabel{sec:mie-error}{{3.5}{17}}
 \citation{Durst94}
 \citation{Pan06}
 \citation{Kawaguchi02}
-\@writefile{toc}{\contentsline {chapter}{\numberline {4}Particle sizing with \\a slit aperture}{17}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Particle sizing with a slit aperture}{19}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Optical theory}{17}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Image processing}{17}}
-\newlabel{fringes-from-diameter}{{4.1}{18}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}Sources of error with the slit method}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Misalignment of slit and lens}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Only a slit aperture centered on the lens and extending across the entire lens entrance will preserve all fringes\relax }}{19}}
-\newlabel{fig:droplet-slitcropping}{{4.4}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.4}Calibrating the slit method}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}A sample calibration of the slit aperture method}{19}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Discussion of Results}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Conclusion}{20}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Before (a) and after (b) installing the slit aperture. The aperture stop pares off the top and bottom halves of the defocussed circles, leaving only a narrow center string in the middle.\relax }}{21}}
-\newlabel{fig:globalsizing}{{4.1}{21}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The image is correlated with that of a solid bright rectangle, which results in peaks that approximately coincide with the centres of the strips. Here, the original photo is shown with rectangles drawn centered at said peaks.\relax }}{22}}
-\newlabel{fig:globalsizing-identifystrips}{{4.2}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}The slit aperture}{19}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Image processing}{19}}
+\newlabel{sec:ipi-slitprocessing}{{4.2}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Before (a) and after (b) installing the slit aperture. The aperture stop pares off the top and bottom halves of the defocussed circles, leaving only a narrow center string in the middle.\relax }}{20}}
+\newlabel{fig:globalsizing}{{4.1}{20}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces The image is correlated with that of a solid bright rectangle, which results in peaks that approximately coincide with the centres of the strips. Here, the original photo is shown with rectangles drawn centered at said peaks.\relax }}{21}}
+\newlabel{fig:globalsizing-identifystrips}{{4.2}{21}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces From top to bottom: windowed region of interest; original (unwindowed) region of interest; sine wave representing the identified peak frequency; clipped and lowpass-filtered 2D frequency spectrum showing a distinct peak at about 90 oscillations across the image width of 1024 pixels; 1D plot of the frequency spectrum, with peak identified at $f=91.0$.\relax }}{22}}
 \newlabel{fig:globalsizing-dropletpeak}{{4.3}{22}}
+\newlabel{fringes-from-diameter}{{4.1}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Sources of error with the slit method}{22}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Misalignment of slit and lens}{22}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces Only a slit aperture centered on the lens and extending across the entire lens entrance will preserve all fringes\relax }}{22}}
+\newlabel{fig:droplet-slitcropping}{{4.4}{22}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Calibrating the slit method}{23}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}A sample calibration of the slit aperture method}{23}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Five sets of calibration data taken with the setup described in Section 3.2\hbox {}\relax }}{23}}
+\newlabel{tab:ipi-calibration-datasets}{{4.1}{23}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces Normalized distributions of measured fringe counts $N_\text  {fr}$ for the five datasets listed in Table 4.1\hbox {}. Solid lines are Gaussian kernel density estimates with $h=0.5$. \relax }}{24}}
+\newlabel{fig:fringe-histograms}{{4.5}{24}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Discussion}{24}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Conclusion}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces Scatterplot of Table 4.1\hbox {} showing the peak fringe counts $\mathaccentV {hat}05E{N}_\text  {fr}$ for each predicted droplet diameter $D_d$\relax }}{25}}
+\newlabel{fig:fringe-regression}{{4.6}{25}}
 \bibstyle{myplainnat}
 \bibdata{bibliography}
-\@writefile{toc}{\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{23}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{27}}
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\bibcite{Pan06}{{1}{2006}{{Pan et~al.}}{{Pan, Shakal, Lai, Calabria, Massoli, and Pust}}}
+\bibcite{Kawaguchi02}{{2}{2002}{{Kawaguchi et~al.}}{{Kawaguchi, Akasaka, and Maeda}}}

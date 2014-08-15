@@ -1,0 +1,21 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Pan et~al.(2006)Pan, Shakal, Lai, Calabria, Massoli, and Pust]{Pan06}
+G.~Pan, J.~Shakal, W.~Lai, R.~Calabria, P.~Massoli, and O.~Pust.
+\newblock Simultaneous global size and velocity measurement of droplets and
+  sprays.
+\newblock \emph{Spray '06 -- Workshop {\"u}ber Sprays, Erfassung von
+  Spr{\"u}hvorg{\"a}ngen und Techniken der Fluidzerst{\"a}ubung}, 2006.
+
+\bibitem[Kawaguchi et~al.(2002)Kawaguchi, Akasaka, and Maeda]{Kawaguchi02}
+T.~Kawaguchi, Y.~Akasaka, and M.~Maeda.
+\newblock Size measurements of droplets and bubbles by advanced interferometric
+  laser imaging technique.
+\newblock \emph{Meas Sci Technol}, 13:\penalty0 308--316, Feb 2002.
+
+\end{thebibliography}

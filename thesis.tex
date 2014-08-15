@@ -2,7 +2,8 @@
 \usepackage{amsmath}
 \usepackage{mathspec}
 \usepackage{sectsty, titlesec}
-\usepackage{wrapfig, booktabs}
+\usepackage{wrapfig}
+\usepackage{tabularx, booktabs}
 \usepackage{nomencl}
 \makenomenclature
 \renewcommand{\nomname}{List of symbols and\\abbreviations}
@@ -74,10 +75,31 @@
 \label{sec:droplet-generator}
     - Droplet generator
 \section{Verification of droplet sizes}
-    - This is where I show pictures and tables, showing that the formula
-    actually works.
+This is where I show pictures and tables, showing that the formula
+actually works.
 
-    \chapter{Interferometric Particle\\ Imaging (IPI)}
+\subsection{Colliding droplets}
+\label{sec:droplet-collisions}
+No droplet generation mechanism is perfect. Small fluctuations in flow rate,
+unwanted harmonic vibrations and air turbulence can cause disturbances in the
+stream of evenly spaced droplets -- the smaller the droplets, the more often
+this happens. Occasionally, this will lead to the collision
+of two droplets some distance away from the orifice.
+
+When two drops of diameter $D_d$ collide, the diameter of the new droplet equals
+\begin{equation}
+    D_{d+d} = 2\sqrt[3]{2\left(\frac{D_d}{2}\right)^3} = \sqrt[3]{2} D_d \approx
+    1.26 D_d.
+\end{equation}
+
+Indeed, secondary peaks will often appear in diameter histograms at precisely 126\% of
+the peak diameter. As long as the underlying phenomenon is understood and kept
+under control, these secondary peaks should be no cause for concern during the
+calibration. Typically, photographs will confirm that a few droplets go astray
+and collide with others. Since the ``real'' diameter peaks are easily discerned,
+the secondary peaks can simply be ignored.
+
+    \chapter[Interferometric Particle Imaging (IPI)]{Interferometric Particle\\ Imaging (IPI)}
 \section{Operating principle}
 The number of fringes $N_\text{fr}$ appearing in the image has a simple linear relationship to
 the droplet diametre $D_d$:
@@ -179,7 +201,7 @@ software extracts the droplets' positions from the focussed photo, and then maps
 those positions onto the defocussed photo based on a set of camera calibration
 photos. This method is sound in principle, but often yields unsatisfactory
 mappings in practice, likely whenever the calibration target plate (Figure
-\ref{fig:dottarget}) is not precisely aligned with the laser sheet. In section
+\ref{fig:dottarget}) is not precisely aligned with the laser sheet. In Section
 \ref{sec:calibration-improvement}, we describe a more accurate and robust method
 of finding the mapping based directly on the pair of droplet photos. 
 
@@ -445,7 +467,7 @@ difficult to determine the accurate distance from light sheet to lens aperture
 (even though the latter measurement is more forgiving, since the distances are
 far greater).
 
-\subsection{Error in the Mie approximation at small sizes}
+\section{Error in the Mie approximation at small sizes}
 \label{sec:mie-error}
 As outlined in paper ... geometric optics deviate from the true Mie scattering
 field when sizes are very small.
@@ -456,8 +478,8 @@ field when sizes are very small.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Particle sizing with \\a slit aperture}
-As we discussed in section \ref{sec:ipi-overlap}, many otherwise well-executed IPI
+\chapter[Particle sizing with a slit aperture]{Particle sizing with \\a slit aperture}
+As we discussed in Section \ref{sec:ipi-overlap}, many otherwise well-executed IPI
 measurements are thwarted by overlapping defocussed droplet images.
 This problem is never more apparent than in efforts to calibrate
 the system using a vibrating orifice droplet generator, as the droplets produced
@@ -474,7 +496,7 @@ forms, e.g. by \citet{Pan06}. Other authors use cylindrical lenses instead
 of slit apertures to achieve the vertical integration of the image
 \cite{Kawaguchi02}.
 
-\begin{figure}[h]
+\begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \centering
@@ -492,10 +514,17 @@ only a narrow center string in the middle.}
     \label{fig:globalsizing}
 \end{figure}
 
-\section{Optical theory}
+\section{The slit aperture}
 Naturally, equations \eqref{kappa} and \eqref{fringedistance-pixels} still hold.
 
+(Insert a diagram of the setup)
+
+(Describe how an aperture can be created in any lab)
+
+(Show a picture of the lens with aperture)
+
 \section{Image processing}
+\label{sec:ipi-slitprocessing}
 Extracting the fringe counts from such an image is straightforward. First, we
 correlate the image with that of a single, solid bright rectangle which shares
 the approximate dimensions of a typical strip in the image. This operation
@@ -613,7 +642,7 @@ in droplets being reported as smaller than they are in reality.
 Taking into account the sources of errors explained in the sections above, it is
 advisable to run a few calibration tests with droplets of different sizes before
 employing the IPI technique for real spray measurements. Recall that, if we
-ignore the Mie error (section \ref{sec:mie-error}), the relationship between fringe count and droplet diameter
+ignore the Mie error (Section \ref{sec:mie-error}), the relationship between fringe count and droplet diameter
 is linear with a constant of proportionality $\kappa$ (see equation
 \eqref{kappa}). The aim of our calibration, then, is to determine the value of
 $\kappa$ from experiment -- the premise being that we cannot be certain of the
@@ -621,34 +650,82 @@ values of $D_a$, $z$, and possibly not even $m$ and $\phi$ (although the latter
 can usually be ascertained to a sufficient degree of accuracy).
 
 \subsection{A sample calibration of the slit aperture method}
-Using the droplet generator described in section \ref{sec:droplet-generator} and
-the IPI configuration described in section \ref{sec:ipi-setup}, we produced and
+Using the droplet generator described in Section \ref{sec:droplet-generator} and
+the IPI configuration described in Section \ref{sec:ipi-setup}, we produced and
 measured monodisperse droplets of many different diameters. The droplet
 diameters were determined both mathematically and photographically, as described
-in section \ref{sec:verify-droplet-diameters}. Out of over 30 sets of IPI
+in Section \ref{sec:verify-droplet-diameters}. Out of over 30 sets of IPI
 measurements we selected five sets that exhibited both strong uniformity and
 high photographic quality:
 
 \begin{table}[h]
-\begin{tabular}{rrrrr}
+    \centering
+    \begin{tabular}{lrrrrr}
     \toprule
-Flow rate & Freq. & $D_d$, predicted  & $D_d$, from
-    photo & $N_\text{fr}$ \\
+    Set & Flow rate & Frequency & $D_d$, predicted  & $D_d$, from
+photo & $\hat{N}_\text{fr}$ \\
     \midrule
-    20.8  ml/h  & 5395 Hz  & 127 $\mu$m  & 100-126 $\mu$m &  9.6      \\
-39.7  ml/h  & 1990 Hz  & 220 $\mu$m  & 203     $\mu$m &  16.5     \\
-79.4  ml/h  & 1565 Hz  & 299 $\mu$m  & 290     $\mu$m &             \\
-94.3  ml/h  & 1067 Hz  & 361 $\mu$m  &         $\mu$m &  27.2          \\
-114.1 ml/h  & 1065 Hz  & 386 $\mu$m  &         $\mu$m &  29.8          \\
+    FA & 20.8  ml/h  & 5395 Hz  & 127 $\mu$m  & 126 $\mu$m &  9.71      \\
+    FB & 39.7  ml/h  & 1990 Hz  & 220 $\mu$m  & 226 $\mu$m &  16.71     \\
+    FC & 79.4  ml/h  & 1565 Hz  & 299 $\mu$m  & 291 $\mu$m &  22.92     \\
+    FD & 94.3  ml/h  & 1067 Hz  & 361 $\mu$m  & 367 $\mu$m &  27.16     \\
+    FE & 114.1 ml/h  & 1065 Hz  & 384 $\mu$m  & 384 $\mu$m &  29.89     \\
     \bottomrule
 \end{tabular}
+\caption{Five sets of calibration data taken with the setup described in Section
+\ref{sec:ipi-setup}}
+\label{tab:ipi-calibration-datasets}
 \end{table}
+\nomenclature{$\hat{N}_\text{fr}$}{Peak fringe count measured}
+The values for $\hat{N}_\text{fr}$, the peak fringe count, are based on the
+histograms (see Figure \ref{fig:fringe-histograms}) showing the distribution of
+fringe counts within each dataset. These fringe counts are of course found by
+the algorithm described in Section \ref{sec:ipi-slitprocessing}.
 
-The distributions are shown here:
+It is worthwhile to point out some apparent idiosyncrasies in the histograms of
+datasets FB and FC. Their peak fringe counts are 16.71 and 22.92, but there
+are secondary peaks at about 21 and 29 fringes, respectively. The latter are
+explained by the collision of droplets as discussed in Section
+\ref{sec:droplet-collisions}, and are ignored for the purposes of calibration.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{img/fringe_histogram.pdf}
+    \caption{Normalized distributions of measured fringe counts $N_\text{fr}$ for the five
+    datasets listed in Table \ref{tab:ipi-calibration-datasets}. Solid lines are
+Gaussian kernel density estimates with $h=0.5$. }
+    \label{fig:fringe-histograms}
+\end{figure}
 
+The close agreement of the droplet diameters found from photographs with those
+predicted by \eqref{berglund} reassures us that we can use the predicted $D_d$
+for further analysis.
 
-\subsection{Discussion of Results}
+At this point, we can least-squares-fit the linear relationship \eqref{kappa} to the primary
+peaks $\hat{N}_\text{fr}$ and the known droplet diameters $D_d$ to find
+$\hat{\kappa}$:
+
+\begin{equation}
+    \hat{\kappa} = \frac{\sum_i D_{d,i} \, \hat{N}_{\text{fr}, i}}{\sum_i
+    D_{d,i}^2}
+\end{equation}
+
+Note that instead of the standard least squares regression we here use a
+simplified formula to force the trend line through the origin, such that $D_d =
+0$ for $N_\text{fr} = 0$. This choice should not be made lightly, since it will
+usually cause the residuals to have a non-zero mean. In this case, however, we
+believe it to be justified.
+
+Based on the values in Table \ref{tab:ipi-calibration-datasets}, we thus arrive
+at a value of $\hat{\kappa} = 0.076573$.
+
+\subsection{Discussion}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/fringe_regression.pdf}
+    \caption{Scatterplot of Table \ref{tab:ipi-calibration-datasets} showing the peak fringe counts $\hat{N}_\text{fr}$ for each predicted droplet diameter $D_d$}
+    \label{fig:fringe-regression}
+\end{figure}
 This is where I list my results and discuss what they might mean for
 calibration purposes.
 

@@ -6,12 +6,20 @@
 		\nompageref{9}
   \item [{$\Delta z$}]\begingroup Distance along the $z$-axis between the focal plane of the lens and the light sheet\nomeqref {3.2}
 		\nompageref{9}
+  \item [{$\hat{N}_\text{fr}$}]\begingroup Peak fringe count measured\nomeqref {4.1}
+		\nompageref{23}
   \item [{$\kappa$}]\begingroup Scalar value relating the fringe count $N_\text{fr}$ to the physical diameter of the particle $D_d$\nomeqref {3.0}
 		\nompageref{9}
+  \item [{$D_\text{i}$}]\begingroup Diameter (in pixels) of the defocussed image\nomeqref {4.0}
+		\nompageref{22}
+  \item [{$D_\text{padded}$}]\begingroup Width (in pixels) of the padded input to the Fourier transform\nomeqref {4.0}
+		\nompageref{22}
   \item [{$D_d$}]\begingroup Physical diameter of the particle (here: droplet)\nomeqref {3.0}
 		\nompageref{9}
   \item [{$d_{p,x}; d_{p,y}$}]\begingroup Physical dimensions of a pixel on the camera's CCD sensor\nomeqref {3.2}
 		\nompageref{9}
+  \item [{$f_\text{peak}$}]\begingroup Peak frequency\nomeqref {4.0}
+		\nompageref{22}
   \item [{$M$}]\begingroup Magnification\nomeqref {3.2}\nompageref{9}
   \item [{$N_\text{fr}$}]\begingroup Number of fringes\nomeqref {3.0}
 		\nompageref{9}
