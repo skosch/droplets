@@ -1,8 +1,8 @@
 \documentclass[10pt]{book}
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
 \usepackage{mathspec}
 \usepackage{sectsty, titlesec}
-\usepackage{wrapfig}
+\usepackage{wrapfig, rotating}
 \usepackage{tabularx, booktabs}
 \usepackage{nomencl}
 \makenomenclature
@@ -100,6 +100,8 @@ and collide with others. Since the ``real'' diameter peaks are easily discerned,
 the secondary peaks can simply be ignored.
 
     \chapter[Interferometric Particle Imaging (IPI)]{Interferometric Particle\\ Imaging (IPI)}
+    [Introductory paragraph], saying that this is also called ILIDS (invented by
+    \citet{Glover95})
 \section{Operating principle}
 The number of fringes $N_\text{fr}$ appearing in the image has a simple linear relationship to
 the droplet diametre $D_d$:
@@ -145,6 +147,70 @@ image of either both glare points or a single bright spot -- depending on
 diffraction effects and the camera's resolution.
 
 (Fill in more details here.)
+\subsection{Influence of the scattering angle $\phi$}
+The scattering angle $\phi$ determines the relative contribution of 
+different scattering orders of light to the imaged fringe pattern. Both
+geometric optics \cite{Vandehulst12} and Mie theory provide methods to compute
+the total scattered intensity for a given $\phi$ and $m$. Some examples can be
+found in \citet{Kawaguchi02} and \citet{Mounaim99}. The geometric analysis
+approach is not valid beyond $\phi > 70^\circ$, as the first-order
+scattered beam ($p=1$) is not visible from this angle \cite{Glover95}.
+
+While authors have identified several forward angles as optimal for their
+applications, e.g. $\phi = 45^\circ$ \cite{Glover95} or $\phi = 66^\circ$
+\cite{Mounaim99}, such configurations inevitably result in a variation in $z$,
+leading to different degrees of defocussing across the image -- unless the
+camera itself is angled with respect to the lens to correct for this
+aberration (the so-called \emph{Scheimpflug condition}). Since the latter
+approach requires specialized optical equipment, $\phi = 90^\circ$ is used in
+many setups, including the one in this paper (Section \ref{sec:ipi-setup}).
+
+\subsection{Optical limits on fringe detection}
+\label{sec:ipi-fringelimits}
+Optics impose theoretical and practical size limits on the droplets to be
+measured. We will outline them in the following paragraphs; the reader is
+referred to \citet{Damaschke02} for a more detailed analysis.
+
+\paragraph{Nyquist criterion for the fringe density.}
+The Nyquist criterion requires that for the camera to be able to resolve a pair
+of neighbouring fringes, they must be at least two pixels apart. This can easily
+be achieved by sufficiently defocussing the lens, which widens the fringe image,
+increasing the number of pixels covered by each fringe. The lens mechanics
+permitting, any arbitrarily large droplet can thus be measured after a quick
+adjustment. In theory, this correction is effective until the defocussed droplet
+image is too large for the CCD sensor, and fringes are cut off. In practice,
+overlap and noise (see below) will cause significant problems long before the
+image can be defocussed beyond the sensor edges.
+
+\paragraph{Overlapping droplet images.}
+As the lens is brought farther out of focus, the droplet images dilate and
+overlap one another. Increasing levels of overlap frustrate attempts to identify
+and analyse the images. Although the slit aperture method discussed in Chapter
+\ref{chp:slit-aperture} was developed to circumvent this effect, it is not
+entirely immune to it -- particularly when droplets are very closely spaced, as
+they often are when vibrating orifice droplet generators are used. See Section
+\ref{sec:ipi-overlap} for a more in-depth discussion.
+
+\paragraph{Signal-to-noise ratio.}
+Image noise is a significant source of trouble in IPI analysis -- indeed, many
+droplet images must be discarded as data sources because they are too noisy.
+Noise affects small droplets in particular because they scatter less light than
+larger ones,\footnote{The scattered intensity grows with the cross-section of
+the droplet} but it is also a problem with deeply out-of-focus images of very
+large droplets, as dilated droplet images spread the same amount of light over a
+greater area on the camera sensor. As a result, they are darker on average than
+less defocussed images. 
+
+\paragraph{Minimum droplet size.}
+\citet{Damaschke02} argue that the smallest measurable droplet is one that
+produces exactly one fringe covered by the aperture. We propose that, at least
+in theory, a partial fringe should be measurable if its image is sufficiently
+zero-padded before the Fourier transform is applied to it. \emph{This might need
+elaboration.} In practice, the intensity of scattered light is likely to drop
+below an acceptable level before the fringes become too large, and noise (see
+above) will become the overwhelming problem. The researcher should also be aware
+that the assumptions of geometric optics that underlie \eqref{kappa} do
+not hold for small droplets (see Section \ref{sec:mie-error} for details).
 
 \section{Setup}
 \label{sec:ipi-setup}
@@ -479,6 +545,7 @@ field when sizes are very small.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter[Particle sizing with a slit aperture]{Particle sizing with \\a slit aperture}
+\label{chp:slit-aperture}
 As we discussed in Section \ref{sec:ipi-overlap}, many otherwise well-executed IPI
 measurements are thwarted by overlapping defocussed droplet images.
 This problem is never more apparent than in efforts to calibrate
@@ -655,7 +722,7 @@ the IPI configuration described in Section \ref{sec:ipi-setup}, we produced and
 measured monodisperse droplets of many different diameters. The droplet
 diameters were determined both mathematically and photographically, as described
 in Section \ref{sec:verify-droplet-diameters}. Out of over 30 sets of IPI
-measurements we selected five sets that exhibited both strong uniformity and
+measurements we selected six sets that exhibited both strong uniformity and
 high photographic quality:
 
 \begin{table}[h]
@@ -668,11 +735,12 @@ photo & $\hat{N}_\text{fr}$ \\
     FA & 20.8  ml/h  & 5395 Hz  & 127 $\mu$m  & 126 $\mu$m &  9.71      \\
     FB & 39.7  ml/h  & 1990 Hz  & 220 $\mu$m  & 226 $\mu$m &  16.71     \\
     FC & 79.4  ml/h  & 1565 Hz  & 299 $\mu$m  & 291 $\mu$m &  22.92     \\
-    FD & 94.3  ml/h  & 1067 Hz  & 361 $\mu$m  & 367 $\mu$m &  27.16     \\
+    FD & 94.3  ml/h  & 1067 Hz  & 361 $\mu$m  & 367 $\mu$m &  27.26     \\
     FE & 114.1 ml/h  & 1065 Hz  & 384 $\mu$m  & 384 $\mu$m &  29.89     \\
+    FF & 175.2 ml/h  & 1038 Hz  & 447 $\mu$m  & 454 $\mu$m &  34.56     \\
     \bottomrule
 \end{tabular}
-\caption{Five sets of calibration data taken with the setup described in Section
+\caption{Six sets of calibration data taken with the setup described in Section
 \ref{sec:ipi-setup}}
 \label{tab:ipi-calibration-datasets}
 \end{table}
@@ -688,14 +756,14 @@ are secondary peaks at about 21 and 29 fringes, respectively. The latter are
 explained by the collision of droplets as discussed in Section
 \ref{sec:droplet-collisions}, and are ignored for the purposes of calibration.
 
-\begin{figure}[h!]
+\begin{sidewaysfigure}[h!]
     \centering
     \includegraphics[width=\textwidth]{img/fringe_histogram.pdf}
-    \caption{Normalized distributions of measured fringe counts $N_\text{fr}$ for the five
-    datasets listed in Table \ref{tab:ipi-calibration-datasets}. Solid lines are
+    \caption{Normalized distributions of measured fringe counts $N_\text{fr}$
+        for the six datasets listed in Table \ref{tab:ipi-calibration-datasets}. Solid lines are
 Gaussian kernel density estimates with $h=0.5$. }
     \label{fig:fringe-histograms}
-\end{figure}
+\end{sidewaysfigure}
 
 The close agreement of the droplet diameters found from photographs with those
 predicted by \eqref{berglund} reassures us that we can use the predicted $D_d$
@@ -711,32 +779,104 @@ $\hat{\kappa}$:
 \end{equation}
 
 Note that instead of the standard least squares regression we here use a
-simplified formula to force the trend line through the origin, such that $D_d =
-0$ for $N_\text{fr} = 0$. This choice should not be made lightly, since it will
-usually cause the residuals to have a non-zero mean. In this case, however, we
-believe it to be justified.
+simplified formula to force the trend line through the origin. This choice
+should not be made lightly, since it will usually cause the residuals to have a
+non-zero mean. In this case, however, we believe it to be justified to require
+that $D_d = 0$ for $N_\text{fr} = 0$.
 
 Based on the values in Table \ref{tab:ipi-calibration-datasets}, we thus arrive
-at a value of $\hat{\kappa} = 0.076573$.
+at a value of $\hat{\kappa} = 76808.1$ with an $R^2$-value of 99.98\%. 
 
 \subsection{Discussion}
+Figure \ref{fig:fringe-regression} illustrates the good agreement on $\kappa$ between
+all datasets. Considering the sheer number of error sources -- from the
+unavoidable non-uniformity of the generated droplets to the uncertainty that
+comes with taking the Fourier transform of a noisy image -- the calibration
+results documented here are a testament to the practical robustness of the
+method.
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{img/fringe_regression.pdf}
     \caption{Scatterplot of Table \ref{tab:ipi-calibration-datasets} showing the peak fringe counts $\hat{N}_\text{fr}$ for each predicted droplet diameter $D_d$}
     \label{fig:fringe-regression}
 \end{figure}
-This is where I list my results and discuss what they might mean for
-calibration purposes.
+It must be remembered, of course, that the peak fringe count values
+$\hat{N}_\text{fr}$ forming the basis of our calculation are taken from the
+peaks of Gaussians fitted to the raw fringe count histograms (see Figure
+\ref{fig:fringe-histograms}. In other words, it is our assumption that all
+droplets from a given dataset produce fringe counts that are normally
+distributed around their respective $\hat{N}_\text{fr}$. The histogram to
+dataset FA shows a much higher deviation than the others -- this may be due to
+genuine variance in the generated droplet diameters or to difficulty in
+processing comparatively weak images with low fringe counts. It seems likely
+that both effects contribute.
+
+We can compare the empirically determined value $\hat{\kappa}$ with the
+mathematical result obtained from \eqref{kappa}. Substituting $\lambda = 532$
+nm, $m = 1.3324$ and $\phi = 90^\circ$, we conclude that
+\begin{equation}
+    \frac{D_a}{z} = 2 \sin \left( \frac{\hat{\kappa} \lambda}{\cos
+    \frac{\phi}{2} - \frac{ m \sin \frac{\phi}{2}}{\sqrt{m^2 + 1 - 2m \cos
+    \frac{\phi}{2}}}} \right) = 2\sin (3.11982 \cdot 10^{-7} \hat{\kappa})
+\end{equation}
+so for $\hat{\kappa} = 76808.1$, $\frac{D_a}{z} = 0.047921$. Recall that this
+quotient is a measure of the collection angle and closely related to the
+numerical aperture NA$=\sin \frac{D_a}{2z}$. If needed, we can now use this
+result to compute the input parameters $D_a$ and $z$ in the DantecStudio IPI
+software: given, for instance, $z = 45.0$ cm, we can obtain the entrace pupil
+diameter as
+\begin{equation}
+    0.047921~\cdot~450\,\mathrm{mm} = 2.156\,\mathrm{mm}
+\end{equation}
+
 
 \section{Conclusion}
-- Conclusion:
-    - Dantec's circle detection algorithm is garbage
-    - Use a slit aperture instead
+\begin{itemize}
+    \item It's impossible to calibrate IPI using a VOAG
+    \item The slit aperture works pretty well
+    \item Calibration is easy, and one or two calibrations are probably enough
+    \item A good collection angle (i.e. camera-laser distance) must be chosen
+\end{itemize}
 
-\chapter{Phase-Doppler Particle Analysis}
-This is on PDPA method.
+\chapter{Phase-Doppler\\Particle Analysis (PDPA)}
+(Introductory paragraph -- PDPA has its roots in 1964, when ...)
 
+\section{Optical principle}
+(Explanation)
+
+\section{Sources of error}
+\begin{enumerate}
+    \item Wrongly entered parameters. The theory behind PDPA involves a lot more
+        variables than are necessary for IPI or Malvern. This means that if
+        something isn't entered correctly, an error is introduced (and the
+        source can be difficult to find).
+    \item Droplet size vs beam size/measurement volume because of Gaussian beam
+        divergence (see p. 209. in book)
+    \item Wrong detector separation values. These seem to change everytime.
+\end{enumerate}
+
+\section{Calibration}
+Calibration is easy in theory:
+\begin{enumerate}
+    \item Calibrate for inherent phase difference using calibration diode
+    \item Set up monodisperse spray
+    \item Set up optical parameters in software
+    \item Take measurement; use coincidence; turn up PMT so that the top
+        intensities saturate just barely
+    \item (Optional) Apply validation somehow
+    \item Use calibration window to determine detector separation values
+    \item Done!
+\end{enumerate}
+
+In practice, I always get error messages when doing the last step, and the
+values are way out of the expected range. The result, then, is that the D20 is
+made very close to the expected monodisperse diameter. Since the D20 is quite
+a bit larger than the actual (and completely obvious) peak value, even these
+"wrong" values aren't correct.
+
+TODO: Find out if it's the optical parameters that are wrong, or if something
+else is missing.
 
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
