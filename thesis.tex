@@ -74,6 +74,17 @@
 \section{Droplet generator}
 \label{sec:droplet-generator}
     - Droplet generator
+
+We use a vibrating orifice droplet generator. The principle is the stimulated
+breakup of a liquid jet, also called Rayleigh breakup, 
+
+The accuracy of the hypodermic needle nozzle often isn't quite as good as that of e.g.
+photofabricated nozzles, as those have sharp edges. The round edges lead to
+variability in discharge coefficient (and mass flow), resulting in variance in
+drop volume \cite{Dressler90}. Nevertheless, for the purpose of verifying the validity of
+measurements, it'll do.
+
+
 \section{Verification of droplet sizes}
 This is where I show pictures and tables, showing that the formula
 actually works.
@@ -853,6 +864,7 @@ diameter as
         source can be difficult to find).
     \item Droplet size vs beam size/measurement volume because of Gaussian beam
         divergence (see p. 209. in book)
+    \item Optical aberrations \cite{Dressler90}
     \item Wrong detector separation values. These seem to change everytime.
 \end{enumerate}
 
@@ -875,8 +887,23 @@ made very close to the expected monodisperse diameter. Since the D20 is quite
 a bit larger than the actual (and completely obvious) peak value, even these
 "wrong" values aren't correct.
 
-TODO: Find out if it's the optical parameters that are wrong, or if something
-else is missing.
+\section{Calibration}
+Calibration is tricky, because 
+
+knowndiam = argmax(gaussian(average(diamAB[within7percent], diamAC[within7percent])))
+
+Since the selection of droplets with <=diff(diam) and the gaussian kernel
+density estimate are one-way functions, it's impossible to work backwards. We
+also want to minimize the angle in the difference-diameter plot, i.e. the PCA is
+supposed to be as close as possible to 0 and 90 degrees. So the only way to do
+this reliably is to iterate over the two AB and AC values to find an optimum.
+
+Nonetheless, even with this method the relationship between the distance values
+AB and AC is typically linear, and once the linear relationship has been found,
+we can find the combination of values that produces the most straight PCA and
+the most centered cluster. Let's approximate the 
+
+
 
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
