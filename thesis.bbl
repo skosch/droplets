@@ -1,4 +1,4 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{20}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -42,5 +42,96 @@ N.~Damaschke, H.~Nobach, and C.~Tropea.
 \newblock Optical limits of particle concentration for multi-dimensional
   particle sizing techniques in fluid mechanics.
 \newblock \emph{Experiments in Fluids}, 32:\penalty0 143--152, 2002.
+
+\bibitem[Durst et~al.(1994)Durst, Tropea, and Xu]{Durst94}
+F.~Durst, C.~Tropea, and T.-H. Xu.
+\newblock The slit effect in phase doppler anemometry.
+\newblock Oct 1994.
+
+\bibitem[Saf(1986)]{Saffman86}
+The use of polarized light for optical particle sizing.
+\newblock In \emph{Proceedings of the 3\textsuperscript{rd} International
+  Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
+  Portugal}, page 18.2, 1986.
+
+\bibitem[Gr{\'e}han et~al.(1980)Gr{\'e}han, Gouesbet, and Rabasse]{Grehan80}
+G.~Gr{\'e}han, G.~Gouesbet, and C.~Rabasse.
+\newblock The computer program supermidi for lorenz-mie theory and the research
+  of one-to-one relationships for particle sizing.
+\newblock In \emph{Proceedings of the symposium on long range and short range
+  optical velocity measurements}, Institut franco-allemand de Saint-Louis,
+  September 1980.
+
+\bibitem[Gouesbet and Gréhan(1982)]{Gouesbet82}
+G.~Gouesbet and G.~Gréhan.
+\newblock Sur la généralisation de la théorie de lorenz-mie.
+\newblock \emph{Journal of Optics}, 13\penalty0 (2):\penalty0 97--103, 1982.
+
+\bibitem[Gou()]{Gouesbet88}
+Light scattering from a sphere arbitrarily located in a gaussian beam, using a
+  bromwich formulation.
+\newblock \emph{Journal of the Optical Society of America A}.
+
+\bibitem[Maheu et~al.(1988)Maheu, Gouesbet, and Gréhan]{Maheu88}
+B.~Maheu, G.~Gouesbet, and G.~Gréhan.
+\newblock A concise presentation of the generalized lorenz-mie theory for
+  arbitrary location of the scatterer in an arbitrary incident profile.
+\newblock \emph{Journal of Optics}, 19\penalty0 (2):\penalty0 59--67, 1988.
+
+\bibitem[Lock and Gouesbet(1994)]{Lock94}
+J.~A. Lock and G.~Gouesbet.
+\newblock A rigorous justification of the localized approximation to the beam
+  shape coefficients in generalized lorenz-mie theory, i. on-axis beams.
+\newblock \emph{Journal of the Optical Society of America A}, 11\penalty0
+  (9):\penalty0 2503--2515, 1994.
+
+\bibitem[Gouesbet and Lock(1994)]{Gouesbet94}
+G.~Gouesbet and J.~A. Lock.
+\newblock A rigorous justification of the localized approximation to the beam
+  shape coefficients in generalized lorenz-mie theory, ii. off-axis beams.
+\newblock \emph{Journal of the Optical Society of America A}, 11\penalty0
+  (9):\penalty0 2516--2525, 1994.
+
+\bibitem[Gouesbet and Gréhan(1996)]{Gouesbet96}
+G.~Gouesbet and G.~Gréhan.
+\newblock Gaussian beam errors in phase-doppler anemometry and their
+  elimination.
+\newblock In R.~Adrian, D.~Durão, F.~Durst, M.~Heitor, M.~Maeda, and
+  J.~Whitelaw, editors, \emph{Developments in Laser Techniques and Applications
+  to Fluid Mechanics}, pages 243--259. Springer Berlin Heidelberg, 1996.
+
+\bibitem[Naq(1994)]{Naqwi96}
+A rigorous procedure for design and response determination of phase doppler
+  systems.
+\newblock In \emph{Proceedings of the 7\textsuperscript{th} International
+  Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
+  Portugal}, pages 340--353, 1994.
+
+\bibitem[Qiu and Hsu(1999)]{Qiu99}
+H.~Qiu and C.~T. Hsu.
+\newblock Method of phase-doppler anemometry free from the measurement-volume
+  effect.
+\newblock \emph{Applied Optics}, 38\penalty0 (13):\penalty0 2737--2742, May
+  1999.
+
+\bibitem[Sipperley and Bachalo(2014)]{Sipperley14}
+C.~M. Sipperley and W.~D. Bachalo.
+\newblock Triple interval phase doppler interferometry: Improved dense sprays
+  measurements and enhanced phase discrimination.
+\newblock In \emph{17th International Symposium on Applications of Laser
+  Techniques to Fluid Mechanics, Lisbon, Portugal}, Jul 2014.
+
+\bibitem[Strakey et~al.(2000)Strakey, Talley, Sankar, and Bachalo]{Strakey00}
+P.~A. Strakey, D.~G. Talley, S.~V. Sankar, and W.~D. Bachalo.
+\newblock Phase doppler interferometry with probe-to-droplet size ratios less
+  than unity. part i: Trajectory errors.
+\newblock \emph{Applied Optics}, 39\penalty0 (22):\penalty0 3875--3886, Aug
+  2000.
+
+\bibitem[Davis and Disimile(2004)]{Davis04}
+J.~M. Davis and P.~J. Disimile.
+\newblock The effect of optical configuration selection on phase doppler
+  anemometer fire suppressant nozzle characterizations.
+\newblock In \emph{14th Halon Options Technical Working Conference}, May 2004.
 
 \end{thebibliography}
