@@ -74,6 +74,17 @@
 \section{Droplet generator}
 \label{sec:droplet-generator}
     - Droplet generator
+
+We use a vibrating orifice droplet generator. The principle is the stimulated
+breakup of a liquid jet, also called Rayleigh breakup, 
+
+The accuracy of the hypodermic needle nozzle often isn't quite as good as that of e.g.
+photofabricated nozzles, as those have sharp edges. The round edges lead to
+variability in discharge coefficient (and mass flow), resulting in variance in
+drop volume \cite{Dressler90}. Nevertheless, for the purpose of verifying the validity of
+measurements, it'll do.
+
+
 \section{Verification of droplet sizes}
 This is where I show pictures and tables, showing that the formula
 actually works.
@@ -887,24 +898,14 @@ spaced wider, which can result in an error on the order of 10\%. (Red Book)
 Davis and Disimile talk about the TAE only tangentially. They provide results of
 the same spray using different masks and focal lengths \cite{Davis04}.
 
+\subsection{Optical aberrations}
+See \citet{Dressler90}.
+
 \subsection{Wrongly entered parameters}
 The optical principle involves many more geometric parameters than are needed
 for the operation of IPI or laser diffraction (Malvern) devices. As a result, an
 excellent interface and a very attentive user are required to ensure accurate
 results.
-
-\section{Calibration}
-Calibration is easy in theory:
-\begin{enumerate}
-    \item Calibrate for inherent phase difference using calibration diode
-    \item Set up monodisperse spray
-    \item Set up optical parameters in software
-    \item Take measurement; use coincidence; turn up PMT so that the top
-        intensities saturate just barely
-    \item (Optional) Apply validation somehow
-    \item Use calibration window to determine detector separation values
-    \item Done!
-\end{enumerate}
 
 In practice, I always get error messages when doing the last step, and the
 values are way out of the expected range. The result, then, is that the D20 is
@@ -912,8 +913,23 @@ made very close to the expected monodisperse diameter. Since the D20 is quite
 a bit larger than the actual (and completely obvious) peak value, even these
 "wrong" values aren't correct.
 
-TODO: Find out if it's the optical parameters that are wrong, or if something
-else is missing.
+\section{Calibration}
+Calibration is tricky, because 
+
+knowndiam = argmax(gaussian(average(diamAB[within7percent], diamAC[within7percent])))
+
+Since the selection of droplets with <=diff(diam) and the gaussian kernel
+density estimate are one-way functions, it's impossible to work backwards. We
+also want to minimize the angle in the difference-diameter plot, i.e. the PCA is
+supposed to be as close as possible to 0 and 90 degrees. So the only way to do
+this reliably is to iterate over the two AB and AC values to find an optimum.
+
+Nonetheless, even with this method the relationship between the distance values
+AB and AC is typically linear, and once the linear relationship has been found,
+we can find the combination of values that produces the most straight PCA and
+the most centered cluster. Let's approximate the 
+
+
 
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
