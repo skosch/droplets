@@ -10,7 +10,7 @@
 \usepackage[numbers]{natbib}
 \usepackage{graphicx,caption,subcaption}
 \setmainfont[Mapping=tex-text]{Crimson}
-\setsansfont[Scale=0.88]{Alte DIN 1451 Mittelschrift}
+\setsansfont[Scale=0.88]{DIN 1451 Mittelschrift}
 %\allsectionsfont{\sffamily}
 %\setmainfon
 %\usepackage{fouriernc}
@@ -851,35 +851,61 @@ diameter as
 \end{itemize}
 
 \chapter{Phase-Doppler\\Particle Analysis (PDPA)}
-(Introductory paragraph -- PDPA has its roots in 1964, when ...)
 
 \section{Optical principle}
 (Explanation)
 
 \section{Sources of error}
-\begin{enumerate}
-    \item Wrongly entered parameters. The theory behind PDPA involves a lot more
-        variables than are necessary for IPI or Malvern. This means that if
-        something isn't entered correctly, an error is introduced (and the
-        source can be difficult to find).
-    \item Droplet size vs beam size/measurement volume because of Gaussian beam
-        divergence (see p. 209. in book)
-    \item Optical aberrations \cite{Dressler90}
-    \item Wrong detector separation values. These seem to change everytime.
-\end{enumerate}
+\subsection{Gaussian beam divergence}
+The theory predicting the linear relationship between detector phase difference
+and droplet diameter is founded on the assumption of very small droplets and
+plane beam wavefronts. \textbf{(Question: is it the wavefront curvature or the
+non-uniformity of the intensity that causes problems?)}
 
-\section{Calibration}
-Calibration is easy in theory:
-\begin{enumerate}
-    \item Calibrate for inherent phase difference using calibration diode
-    \item Set up monodisperse spray
-    \item Set up optical parameters in software
-    \item Take measurement; use coincidence; turn up PMT so that the top
-        intensities saturate just barely
-    \item (Optional) Apply validation somehow
-    \item Use calibration window to determine detector separation values
-    \item Done!
-\end{enumerate}
+The problem is termed \emph{trajectory ambiguity effect} (TAE) or \emph{Gaussian
+beam defect} (GBD) in the literature.
+
+This phenomenon was recognized first by \citet{Saffman86} but had to be neglected until
+the plane-wave scattering theory of Lorenz-Mie optics was extended into
+the \emph{Generalized Lorenz-Mie Theory} (GLMT). Most of this work was
+done by Gouesbet, Gréhan, Maheu, Lock and others throughout the 1980s
+\cite{Grehan80, Gouesbet82, Gouesbet88, Maheu88}, and mathematically
+rigorous formulations were available by the early 1990s \cite{Lock94,
+Gouesbet94}. The 1996 paper by Gouesbet and Gréhan summarizes these developments
+and provides an early overview over the attempts to circumvent the TAE
+\cite{Gouesbet96}. More discussion is given e.g. by 
+
+Solutions are a) a planar setup, b) double-burst measurements, c) epsilon
+validity measurements. It is important to align the receiver properly; the
+tables used by TSI were developed using GLMT by \citet{Naqwi96}.
+
+\subsection{Slit effect}
+Durst et al show experimentally that the slit effect is even more crucial than
+the Gaussian beam effect. \cite{Durst94}. Together with the TAE, this
+is called the measurement volume effect. Qiu and Hsu propose using four
+detectors, instead of three, to resolve this problem entirely \cite{Qiu99}. A
+similar design was verified experimentally by \citet{Sipperley14}.
+
+A more recent review of the phenomenon and associated techniques was given by
+\citet{Strakey00, Strakey01}.
+
+\subsection{Change in fringe frequency over $z$}
+The curved wavefront causes the fringe spacing to vary along the axis of the
+measurement volume. At the near and far ends of the volume, the fringes are
+spaced wider, which can result in an error on the order of 10\%. (Red Book)
+
+\subsection{Selection of lenses and masks}
+Davis and Disimile talk about the TAE only tangentially. They provide results of
+the same spray using different masks and focal lengths \cite{Davis04}.
+
+\subsection{Optical aberrations}
+See \citet{Dressler90}.
+
+\subsection{Wrongly entered parameters}
+The optical principle involves many more geometric parameters than are needed
+for the operation of IPI or laser diffraction (Malvern) devices. As a result, an
+excellent interface and a very attentive user are required to ensure accurate
+results.
 
 In practice, I always get error messages when doing the last step, and the
 values are way out of the expected range. The result, then, is that the D20 is
