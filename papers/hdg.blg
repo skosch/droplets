@@ -1,0 +1,67 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: hdg.aux
+The style file: aipnum4-1.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: hdgNotes.bib
+Database file #2: hdgbibliography.bib
+control{REVTEX41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{N/A}, control.pages{N/A}, control.year{N/A}, control.eprint{N/A}, 
+control{aip41Control}, control.key{N/A}, control.author{N/A}, control.editor{N/A}, control.title{}, control.pages{0}, control.year{N/A}, control.eprint{N/A}, 
+Warning--jnrlst (dependency: not reversed) set 1
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+merlin.mbs aipnum4-1.bst 2010-07-25 4.21a (PWD, AO, DPC) hacked
+Control: key (0) 
+Control: author (8) initials jnrlst
+Control: editor formatted (1) identically to author
+Control: production of article title (-1) disabled
+Control: page (0) single
+Control: year (1) truncated
+Control: production of eprint (0) enabled
+You've used 9 entries,
+            5918 wiz_defined-function locations,
+            1665 strings with 15750 characters,
+and the built_in function-call counts, 6467 in all, are:
+= -- 425
+> -- 131
+< -- 54
++ -- 48
+- -- 45
+* -- 895
+:= -- 697
+add.period$ -- 7
+call.type$ -- 9
+change.case$ -- 28
+chr.to.int$ -- 9
+cite$ -- 9
+duplicate$ -- 634
+empty$ -- 442
+format.name$ -- 59
+if$ -- 1201
+int.to.chr$ -- 1
+int.to.str$ -- 16
+missing$ -- 98
+newline$ -- 73
+num.names$ -- 21
+pop$ -- 318
+preamble$ -- 1
+purify$ -- 35
+quote$ -- 0
+skip$ -- 244
+stack$ -- 0
+substring$ -- 155
+swap$ -- 556
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 10
+type$ -- 98
+warning$ -- 1
+while$ -- 29
+width$ -- 0
+write$ -- 108
+(There was 1 warning)
