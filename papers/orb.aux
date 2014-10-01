@@ -6,17 +6,17 @@
 \citation{Kawaguchi02,Maeda02}
 \citation{Damaschke01}
 \citation{Querel10}
+\citation{Hardalupas10a}
 \citation{Hardalupas10}
 \newlabel{FirstPage}{{}{1}{}{}{}}
-\@writefile{toc}{\contentsline {title}{Eliminating centre discrepancies between simultaneously captured ILIDS and PIV images by means of feature-based homography estimation}{1}{}}
+\@writefile{toc}{\contentsline {title}{Eliminating centre discrepancies between simultaneously captured ILIDS and PIV images by means of direct homography estimation}{1}{}}
 \@writefile{toc}{\contentsline {abstract}{Abstract}{1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A}Calibration and centre discrepancies}{1}{}}
 \citation{Hardalupas10}
+\citation{Hardalupas10a}
 \citation{Hardalupas10}
 \citation{Kurosawa02}
-\citation{Hardalupas10}
-\citation{Hardalupas10}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Homography $\mathbf  {H}$ applied to target pattern image captured by the focused camera and superimposed on the image captured by the defocused camera (here, both cameras were in focus for the calibration only). }}{2}{}}
 \newlabel{fig:plate-calibration}{{1}{2}{}{}{}}
 \newlabel{homography-definition}{{6}{2}{}{}{}}
@@ -36,7 +36,7 @@
 \citation{Muja09}
 \citation{Fischler81}
 \citation{Moisan04}
-\citation{}
+\citation{Morel09}
 \newlabel{sec:review}{{II}{3}{}{}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Review of image registration techniques }{3}{}}
 \newlabel{sec:results}{{III}{3}{}{}{}}
@@ -46,10 +46,16 @@
 \newlabel{fig:making-disks}{{4}{4}{}{}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Visualized inliers in the set of matched keypoints between the mirrored simulated disks (see FIG. 4{}{}{}\hbox {}) and the ILIDS image. }}{4}{}}
 \newlabel{fig:matching}{{5}{4}{}{}{}}
-\citation{Hardalupas10}
 \citation{Chi11}
 \citation{Jian10}
 \citation{Myronenko10}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Focused camera image, after applying corrected homography $\mathbf  {\mathaccentV {hat}05E{H}}$ derived from the matched keypoints, is superimposed onto defocused camera image of droplets.}}{5}{}}
+\newlabel{fig:drop-calibration-corrected}{{6}{5}{}{}{}}
+\newlabel{sec:pointset}{{IV}{5}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Point set registration between droplet centres from two images}{5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Non-rigid variant of the Coherent Point Drift algorithm applied to two point sets. Notice that the probabilistic nature of the matching creates robustness to unmatched points. (Image source: Wikipedia)}}{5}{}}
+\newlabel{fig:cpd}{{7}{5}{}{}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{5}{}}
 \bibdata{orbNotes,orbbibliography}
 \bibcite{Konig86}{{1}{1986}{{K{\"o}nig, Anders,\ and\ Frohn}}{{}}}
 \bibcite{Glover95}{{2}{1995}{{Glover, Skippon,\ and\ Boyle}}{{}}}
@@ -59,28 +65,26 @@
 \bibcite{Maeda02}{{6}{2002}{{Maeda, Akasaka,\ and\ Kawaguchi}}{{}}}
 \bibcite{Damaschke01}{{7}{2001}{{Damaschke\ \emph  {et~al.}}}{{Damaschke, Rasmussen, Tropea,\ and\ Woite}}}
 \bibcite{Querel10}{{8}{2010}{{Qu{\'e}rel\ \emph  {et~al.}}}{{Qu{\'e}rel, Lemaitre, Brunel, Porcheron,\ and\ Gr{\'e}han}}}
-\bibcite{Hardalupas10}{{9}{2010}{{Hardalupas\ \emph  {et~al.}}}{{Hardalupas, Sahu, Taylor,\ and\ Zarogoulidis}}}
-\bibcite{Kurosawa02}{{10}{2002}{{Kurosawa, Hishida,\ and\ Maeda}}{{}}}
-\bibcite{Harris88}{{11}{1988}{{Harris\ and\ Stephens}}{{}}}
-\bibcite{Lowe04}{{12}{2004}{{Lowe}}{{}}}
-\bibcite{Bay08}{{13}{2008}{{Bay\ \emph  {et~al.}}}{{Bay, Ess, Tuytelaars,\ and\ Gool}}}
-\bibcite{Leutenegger11}{{14}{2011}{{Leutenegger, Chli,\ and\ Siegwart}}{{}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Focused camera image, after applying corrected homography $\mathbf  {\mathaccentV {hat}05E{H}}$ derived from the matched keypoints, is superimposed onto defocused camera image of droplets.}}{5}{}}
-\newlabel{fig:drop-calibration-corrected}{{6}{5}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Point set registration between PIV and ILIDS centres}{5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{5}{}}
-\bibcite{Agrawal08}{{15}{2008}{{Agrawal, Konolige,\ and\ Blas}}{{}}}
-\bibcite{Rosten05}{{16}{2005}{{Rosten\ and\ Drummond}}{{}}}
-\bibcite{Rublee11}{{17}{2011}{{Rublee\ \emph  {et~al.}}}{{Rublee, Rabaud, Konolige,\ and\ Bradski}}}
-\bibcite{Calonder10}{{18}{2010}{{Calonder\ \emph  {et~al.}}}{{Calonder, Lepetit, Strecha,\ and\ Fua}}}
-\bibcite{Muja09}{{19}{2009}{{Muja\ and\ Lowe}}{{}}}
-\bibcite{Fischler81}{{20}{1981}{{Fischler\ and\ Bolles}}{{}}}
-\bibcite{Moisan04}{{21}{2004}{{Moisan\ and\ Stival}}{{}}}
-\bibcite{Chi11}{{22}{2011}{{Chi, Ho,\ and\ Yang}}{{}}}
-\bibcite{Jian10}{{23}{2010}{{Jian\ and\ Vemuri}}{{}}}
-\bibcite{Myronenko10}{{24}{2010}{{Myronenko\ and\ Song}}{{}}}
+\bibcite{Hardalupas10a}{{9}{2010}{{Hardalupas, Sahu,\ and\ Taylor}}{{}}}
+\bibcite{Hardalupas10}{{10}{2010}{{Hardalupas\ \emph  {et~al.}}}{{Hardalupas, Sahu, Taylor,\ and\ Zarogoulidis}}}
+\bibcite{Kurosawa02}{{11}{2002}{{Kurosawa, Hishida,\ and\ Maeda}}{{}}}
+\bibcite{Harris88}{{12}{1988}{{Harris\ and\ Stephens}}{{}}}
+\bibcite{Lowe04}{{13}{2004}{{Lowe}}{{}}}
+\bibcite{Bay08}{{14}{2008}{{Bay\ \emph  {et~al.}}}{{Bay, Ess, Tuytelaars,\ and\ Gool}}}
+\bibcite{Leutenegger11}{{15}{2011}{{Leutenegger, Chli,\ and\ Siegwart}}{{}}}
+\bibcite{Agrawal08}{{16}{2008}{{Agrawal, Konolige,\ and\ Blas}}{{}}}
+\bibcite{Rosten05}{{17}{2005}{{Rosten\ and\ Drummond}}{{}}}
+\bibcite{Rublee11}{{18}{2011}{{Rublee\ \emph  {et~al.}}}{{Rublee, Rabaud, Konolige,\ and\ Bradski}}}
+\bibcite{Calonder10}{{19}{2010}{{Calonder\ \emph  {et~al.}}}{{Calonder, Lepetit, Strecha,\ and\ Fua}}}
+\bibcite{Muja09}{{20}{2009}{{Muja\ and\ Lowe}}{{}}}
+\bibcite{Fischler81}{{21}{1981}{{Fischler\ and\ Bolles}}{{}}}
+\bibcite{Moisan04}{{22}{2004}{{Moisan\ and\ Stival}}{{}}}
+\bibcite{Morel09}{{23}{2009}{{Morel\ and\ Yu}}{{}}}
+\bibcite{Chi11}{{24}{2011}{{Chi, Ho,\ and\ Yang}}{{}}}
+\bibcite{Jian10}{{25}{2010}{{Jian\ and\ Vemuri}}{{}}}
+\bibcite{Myronenko10}{{26}{2010}{{Myronenko\ and\ Song}}{{}}}
 \bibstyle{aipnum4-1}
 \citation{REVTEX41Control}
 \citation{aip41Control}
-\newlabel{LastBibItem}{{24}{6}{}{}{}}
+\newlabel{LastBibItem}{{26}{6}{}{}{}}
 \newlabel{LastPage}{{}{6}{}{}{}}
