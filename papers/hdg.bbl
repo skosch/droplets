@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{7}%
+\begin{thebibliography}{9}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -50,6 +50,34 @@
 \providecommand \BibitemShut  [1]{\csname bibitem#1\endcsname}%
 \let\auto@bib@innerbib\@empty
 %</preamble>
+\bibitem [{\citenamefont {Mundo}, \citenamefont {Sommerfeld},\ and\
+  \citenamefont {Tropea}(1995)}]{Mundo95}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {C.}~\bibnamefont
+  {Mundo}}, \bibinfo {author} {\bibfnamefont {M.}~\bibnamefont {Sommerfeld}}, \
+  and\ \bibinfo {author} {\bibfnamefont {C.}~\bibnamefont {Tropea}},\
+  }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {International
+  Journal of Multiphase Flow}\ }\textbf {\bibinfo {volume} {21}},\ \bibinfo
+  {pages} {151} (\bibinfo {year} {1995})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Liu}\ and\ \citenamefont {Agarwal}(1974)}]{Liu74}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {B.~Y.~H.}\
+  \bibnamefont {Liu}}\ and\ \bibinfo {author} {\bibfnamefont {J.~K.}\
+  \bibnamefont {Agarwal}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo
+  {journal} {Journal of Aerosol Science}\ }\textbf {\bibinfo {volume} {5}},\
+  \bibinfo {pages} {145} (\bibinfo {year} {1974})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Savart}(1833)}]{Savart33}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
+  {Savart}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Annales de Chimie et de Physique}\ }\textbf {\bibinfo {volume} {53}},\
+  \bibinfo {pages} {337} (\bibinfo {year} {1833})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Rayleigh}(1879)}]{Rayleigh79}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
+  {Rayleigh}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
+  {Proceedings of the Royal Society of London}\ }\textbf {\bibinfo {volume}
+  {29}},\ \bibinfo {pages} {71} (\bibinfo {year} {1879})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Donnelly}\ and\ \citenamefont
   {Glaberson}(1966)}]{Donnelly66}%
   \BibitemOpen
@@ -88,16 +116,4 @@
   {Str{\"o}m}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
   {Review of Scientific Instruments}\ }\textbf {\bibinfo {volume} {40}},\
   \bibinfo {pages} {778} (\bibinfo {year} {1969})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Savart}(1833)}]{Savart33}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {F.}~\bibnamefont
-  {Savart}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
-  {Annales de Chimie et de Physique}\ }\textbf {\bibinfo {volume} {53}},\
-  \bibinfo {pages} {337} (\bibinfo {year} {1833})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Rayleigh}(1879)}]{Rayleigh79}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {L.}~\bibnamefont
-  {Rayleigh}},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal}
-  {Proceedings of the Royal Society of London}\ }\textbf {\bibinfo {volume}
-  {29}},\ \bibinfo {pages} {71} (\bibinfo {year} {1879})}\BibitemShut {NoStop}%
 \end{thebibliography}%

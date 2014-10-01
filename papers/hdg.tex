@@ -21,68 +21,68 @@ Toronto}
 \end{abstract}
 \maketitle
 \section{Introduction}
-The calibration of spray characterization instruments requires a source of
-monodisperse droplets. Although drop-on-demand approaches promise
-precise control over the droplet generation, their everyday operation poses
-challenges (aspired air bubbles, liquid pileups, satellite droplets, etc.).
-Consequently, researchers often fall back on continous-stream drop generators
-whenever the droplets' exact timing is less important.
+Sources of monodisperse droplets are needed in a wide range of research
+applications from droplet-wall collision experiments\cite{Mundo95} to aerosol
+studies\cite{Liu74}. Our particular case was the calibration of spray
+characterization instruments (Phase-Doppler Anemometry and Interferometric
+Particle Imaging).
 
-Most continuous-stream drop generators are based on the breakup of a liquid jet
-into equally-sized, even-spaced droplets when excited with oscillations of an
-appropriate frequency. This simple principle has been employed for fifty
-years, with orifices typically attached to either one of two vibrating mechanisms: an
-ordinary loudspeaker, first employed by Donnelly and Glaberson\cite{Donnelly66}, or a piezoelectric element, as first proposed by Schneider
-and Hendricks\cite{Schneider64} and popularized by Berglund and Liu's
-design\cite{Berglund73}.
+Although drop-on-demand approaches promise precise control over the droplet
+generation, their everyday operation poses challenges (aspired air bubbles,
+liquid pileups, satellite droplets, etc.). Consequently, researchers often fall
+back on continous-stream drop generators whenever the droplets' exact timing is
+less important.
 
-In this paper, we propose a source of oscillation as inexpensive and ubiquitous
-as a speaker and as convenient as a piezoelectric element: the actuator arm
-found in every magnetic hard drive.
+Most continuous-stream drop generators are based on \emph{Rayleigh breakup},
+i.e. the disintegration of a disturbed liquid jet into droplets. The physics
+behind this phenomenon have been studied for almost two centuries\cite{Savart33,
+Rayleigh79} and are well-understood. When the disturbances are induced by
+carefully controlled mechanical vibration at an appropriate frequency, the
+droplets will be of uniform size and evenly spaced.
+
+This simple principle has been employed for fifty years, with orifices typically
+attached to either one of two vibrating mechanisms: an ordinary loudspeaker,
+first employed by Donnelly and Glaberson\cite{Donnelly66}, or a piezoelectric
+element, as first proposed by Schneider and Hendricks\cite{Schneider64} and
+popularized by Berglund and Liu's design\cite{Berglund73}.
+
+Both approaches have drawbacks: by design, a speaker vibrating at a fixed pitch
+produces an audible sound, jeopardizing the laboratory peace. It is unshapely,
+difficult to fasten onto an experimental setup and its cone provides no robust
+structure to which any type of orifice could be attached. Piezoelectric elements
+cost more and are useful only when integrated with the orifice---precision
+machined droplet generators operating this way are commercially available, but
+unreasonably expensive in many situations. As a result, we felt compelled to
+consider alternative sources of vibration that require a minimum effort to build
+and install using standard lab equipment. We propose that the actuator mechanism
+found in every magnetic hard drive is an optimal low-budget candidate for
+precision oscillation needs:
+
 \begin{figure}
 \centering
 \includegraphics[width=0.42\textwidth]{hdg_images/designpicture.jpg}
 \caption{The fully assembled droplet generator. Nozzle is shown as inserted
 through actuator arm. \label{fig:photo}}
 \end{figure}
-%The concept of \emph{on-demand}
-%droplet generation is embodied by approaches based on contracting piezoelectric
-%elements \cite{Yang97, Ulmke99} or thermal bubble generation \cite{Endo88} -- 
-%excellent reviews were published by Le and Lee \cite{Le98, Lee02}. 
 
-%Some of the existing design approaches are \emph{on-demand} generators, which,
-%by some precisely controlled mechanism, quickly push a fixed amount of liquid
-%out of a small orifice. This category includes designs operating on bending or
-%constricting piezoelectric elements \cite{Yang97, Ulmke99} and those based on
-%thermoresistors. Excellent reviews are given by \cite{AandB}. While
-%drop-on-demand generators are a crucial component in applications like inkjet
-%printing or microfluidics, they tend to suffer from aspired air bubbles, pileup
-%of liquid around the nozzle tip, clogging, and other issues thwarting reliable
-%drop expulsion unless manufactured and operated with great attention to detail.
-%
-%The alternative to on-demand drop generation is continuous drop generation,
-%typically achieved by exciting a liquid jet into regular breakup, although other
-%approaches have been proposed \cite{aerodynamic, turningplate}. These
-%generators are typically used to calibrate spray characterization devices or to
-%study drop coalescence \cite{reddropletbook}.
-
-%The simple principle of breaking up a vertical liquid jet into droplets by means of
-%vibration has been employed for many decades. In most laboratories, two
-%mechanisms have enjoyed a monopoly on the oscillation part: the ordinary
-%loudspeaker, first employed by \citet{Donnelly66}, and piezo elements, as
-%popularized by \citet{Berglund73}.
-
-\section{Characteristics}
-With high-capacity and solid-state devices rapidly pushing older hard drives
+\paragraph*{Very low cost.} With high-capacity and solid-state devices rapidly pushing older hard drives
 into obsolescence, it should be a simple matter to acquire a few specimens for
 demolition. Hard drives come in two form factors---3.5 and 2.5 inches wide,
 respectively---and both can be used for the purposes of this paper. 
 
-Unlike loudspeakers, hard drives have a flat base plate which can be drilled
-into, allowing for easy installation on any experiment jig. Save for a drill and
-a saw, no machining tools are needed for the construction of the droplet
-generator.
+Further, glass needle orifices fabricated for use with existing loudspeaker setups can be
+reused, and are easily produced by hand from heated borosilicate capillaries or
+using a micropipette puller. The process is illustrated in FIG.
+\ref{fig:needles} and in-depth instructions are given by Lee\cite{Lee02}.
+Piezoelectric-based devices, on the other hand, need fitted orifices to produce a range of
+drop sizes.
 
+\paragraph*{Ease of construction and installation.} Unlike loudspeakers, hard
+drives have a flat base plate which can be drilled into, allowing for easy
+installation on any experiment jig. Save for a drill and a saw, no machining
+tools are needed for the construction of the droplet generator.
+
+\paragraph*{High amplitudes without noise.}
 Like piezoelectric elements, vibrating actuator arms are very quiet, enabling
 use at frequencies and amplitudes that would far exceed responsible levels on
 a speaker.  In our experiments, the actuator responded to frequencies throughout
@@ -92,11 +92,31 @@ have not tested the full response range for any given amplitude.
 As an added advantage over other designs, no amplification is needed. Below
 $100\,$Hz, amplitudes on the order of $0.5\,$cm are easily achieved (albeit they
 are of course not needed for droplet production) when a peak-to-peak voltage of
-$2-4\,$V is applied. The movement scales down with the inverse of the frequency,
+$2-4\,$V is applied. The amplitude scales down with the inverse of the frequency,
 however, such that amplitudes are much smaller at typical operating frequencies
 ($0.5-10\,$kHz). Nevertheless, the voltages required are well within the ability
 of any standard laboratory function generator, and can likely even produced by many
 consumer-level computer sound cards.
+
+\section{Operating principle}
+Magnetic hard drives store data as sub-micron-sized patterns of 
+oppositely magnetized dots on disks called \emph{platters}. The read-write head
+is mounted at the tip of an arm that pivots across the platter surface while the
+platter spins. This setup allows the head to access the entire platter surface.
+
+FIG.~\ref{fig:designschematic} illustrates schematically the design of a typical
+actuator arm assembly. The flat voice coil mounted on the surface is responsible for
+the side-to-side movement: as it is positioned under a permanent magnet, the
+coil creates a sideward force when a current flows through its wires. By
+stopping or reversing the current the arm's motion is likewise stopped or
+reversed. Since a typical hard drive's platter spins at up to $7200\,$RPM,
+actuator arms must be able to move with extreme speed and precision. They are
+thus engineered to be very light yet stiff. These characteristics make a
+magnetic hard drive's actuator arm an ideal supplier of in-plane vibrations.
+Indeed, hard drive actuators are remarkable not for their operating principle
+but for their low cost; it is only the economics of mass manufacturing that have in
+recent years enabled these high-speed, lightweight mechanisms to become widely available.
+
 \begin{figure}
 \centering
 \includegraphics[width=0.4\textwidth]{hdg_images/needles.png}
@@ -108,14 +128,9 @@ $200\,\mu$m), heated for longer (I.D. $25\,\mu$m, could be sanded down by about
 $200\,\mu$m), overheated (I.D. $0\,\mu$m). \label{fig:needles}}
 \end{figure}
 
-Finally, glass needle orifices fabricated for use with existing loudspeaker setups can be
-reused, and are easily produced by hand from heated borosilicate capillaries or
-using a micropipette puller. The process is illustrated in FIG.
-\ref{fig:needles} and in-depth instructions are given by Lee\cite{Lee02}.
-Piezoelectric-based devices, on the other hand, need fitted orifices to produce a range of
-drop sizes.
+
 \section{Construction}
-Forgo multi-platter drives, as they are cumbersome to disassemble and have
+If possible, forgo multi-platter drives, as they are more cumbersome to disassemble and have
 bulky, complex actuator assemblies. The device shown in FIG. \ref{fig:photo}
 is based on a single-platter drive.
 
@@ -146,13 +161,20 @@ only because the voice coil leads are delicate and easily torn off. To this end,
 an audio jack into the cover and soldered the voice coil leads to it from the
 bottom. 
 
-\section{Operation} How the nozzle can be held in place falls beyond the scope of
-this article; we note that the interchangeability of nozzles with Luer fittings
-has proved very convenient in our application. The nozzle must be connected to
-an accurately calibrated syringe pump. If a water supply line is integrated into
-the setup via a T-valve between pump and nozzle, ensure that it is shut closed
-before operation since pressure fluctuations at the nozzle are the most common
-culprit for unstable droplet generation.
+\section{Operation}
+We used existing nozzles manufactured by hand from hypodermic needle stubs and
+heated glass capillaries (FIG.~\ref{fig:needles}). We make no claim that this is
+the best approach to take, but we note that the interchangeability of nozzles
+with Luer fittings has proved very convenient in our application. How the nozzle
+can be held in place falls beyond the scope of this article; while we used an
+existing jig from machined aluminum, a small lab stand and clamp should
+suffice.
+
+The nozzle must be connected to an accurately calibrated syringe pump. It is
+convenient to integrate a water supply line into the setup via a T-valve between
+pump and nozzle. In this case, ensure that the valve is shut closed before
+operation, since pressure fluctuations at the nozzle are the most common culprit
+for unstable jet breakup conditions.
 
 As with other vibrating orifice droplet generators, it is crucial that stable
 conditions are established before any experiments can begin. First, ensure that
@@ -160,22 +182,34 @@ the liquid is ejected in a single jet. Multiple jets can be due to a clogged
 orifice (a mixture of distilled water and CLR$\circledR$, drawn back through a
 syringe, is an excellent remedy). Satellite droplets can also form secondary
 jets, in which case the oscillation frequency must be adjusted or the amplitude
-reduced. Satellite
-formation is easily detected by using a gentle air flow to deflect the jet---if
-the droplets are truly monodisperse, they will all deflect at the same
-angle.\cite{Strom69}
+reduced. Satellite formation is easily detected by using a gentle air flow to
+deflect the jet---if the droplets are truly monodisperse, they will all deflect
+at the same angle.\cite{Strom69}
 
-Note also that the orifice diameter $D_o$ dictates that the range of viable
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth]{hdg_images/photo.eps}
+\caption{Photographs of different droplet sizes ($226\,\mu$m and $386\,\mu$m) produced with the droplet
+generator shown in FIG.~\ref{fig:photo}. Scales have been cropped out. \label{fig:dropphoto}}
+\end{figure}
+
+Note also that the orifice diameter $D_o$ dictates the range of viable
 frequencies $f$ as $3.5 \lesssim \frac{Q}{\pi f \left(\frac{D_o}{2}\right)^2}
-\lesssim 7$, where $Q$ is the flow rate). \cite{Savart33, Rayleigh79} In
+\lesssim 7$, where $Q$ is the flow rate. \cite{Savart33, Rayleigh79} In
 practice, $D_o$ need not be
 precisely determined; it is easy to find appropriate settings for $Q$
 and $f$ by viewing the jet against a strobe light, adjusting flow rate for a breakup
 length on the order of $10 D_o$ (empirically for water), then tuning the frequency
-until droplets appear evenly spaced and spherical.
+until droplets appear evenly spaced and spherical. It can be helpful to mount a
+magnifying lens in front of the orifice, as the adjustment procedure can become
+tedious as the droplets become very small.
 
 Under stable conditions, every oscillation of the nozzle will produce one droplet
-downstream,\cite{Rayleigh79} such that the droplet diameter will be $D_d = \sqrt[3]{6Q/(\pi f)}$.
+downstream,\cite{Rayleigh79} such that the droplet diameter will be $D_d =
+\sqrt[3]{6Q/(\pi f)}$. This can be verified photographically, as shown in
+FIG.~\ref{fig:dropphoto}.
 
+\section{Conclusion}
+This is a great droplet generator, because ...
 \bibliography{hdgbibliography}
 \end{document}
