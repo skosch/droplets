@@ -2,87 +2,60 @@ This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 The style file: myplainnat.bst
-Illegal, another \bibstyle command---line 160 of file thesis.aux
- : \bibstyle
- :          {myplainnat}
-I'm skipping whatever remains of this command
-Illegal, another \bibdata command---line 161 of file thesis.aux
- : \bibdata
- :         {bibliography}
-I'm skipping whatever remains of this command
 Database file #1: bibliography.bib
-Repeated entry---line 112 of file bibliography.bib
+I was expecting a `,' or a `}'---line 27 of file bibliography.bib
+ :     
+ :     title={Global phase Doppler technique},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 125 of file bibliography.bib
  : @article{Kawaguchi02
  :                     ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 174 of file bibliography.bib
- :   
- :   volume={5},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 221 of file bibliography.bib
- :   
- :   author={Saffman, M.}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 231 of file bibliography.bib
- :   
- :   author={Naqwi, Amir and Menon, Rajan}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for ""
 Warning--I didn't find a database entry for "Strakey01"
-Name 1 in "Maheu, B., and Gouesbet, G. and Gréhan, G." has a comma at the end for entry Maheu88
-while executing---line 1369 of file myplainnat.bst
-Warning--empty journal in Durst94
-Warning--empty author in Saffman86
-Warning--empty author in Gouesbet88
-Warning--empty year in Gouesbet88
-Warning--empty year in Gouesbet88
-Name 1 in "Maheu, B., and Gouesbet, G. and Gréhan, G." has a comma at the end for entry Maheu88
-while executing---line 1451 of file myplainnat.bst
-Name 1 in "Maheu, B., and Gouesbet, G. and Gréhan, G." has a comma at the end for entry Maheu88
-while executing---line 1451 of file myplainnat.bst
-Warning--empty author in Naqwi96
-You've used 21 entries,
+Warning--empty publisher in Le98
+Warning--empty year in Le98
+Warning--empty year in Le98
+You've used 42 entries,
             2751 wiz_defined-function locations,
-            745 strings with 9348 characters,
-and the built_in function-call counts, 8051 in all, are:
-= -- 682
-> -- 354
-< -- 13
-+ -- 142
-- -- 100
-* -- 617
-:= -- 1208
-add.period$ -- 62
-call.type$ -- 21
-change.case$ -- 41
-chr.to.int$ -- 21
-cite$ -- 30
-duplicate$ -- 442
-empty$ -- 798
-format.name$ -- 136
-if$ -- 1763
+            907 strings with 12915 characters,
+and the built_in function-call counts, 15987 in all, are:
+= -- 1384
+> -- 722
+< -- 33
++ -- 288
+- -- 204
+* -- 1214
+:= -- 2496
+add.period$ -- 129
+call.type$ -- 42
+change.case$ -- 80
+chr.to.int$ -- 42
+cite$ -- 45
+duplicate$ -- 833
+empty$ -- 1532
+format.name$ -- 284
+if$ -- 3429
 int.to.chr$ -- 1
-int.to.str$ -- 22
-missing$ -- 22
-newline$ -- 110
-num.names$ -- 56
-pop$ -- 198
+int.to.str$ -- 43
+missing$ -- 42
+newline$ -- 218
+num.names$ -- 128
+pop$ -- 353
 preamble$ -- 1
-purify$ -- 21
+purify$ -- 42
 quote$ -- 0
-skip$ -- 256
+skip$ -- 475
 stack$ -- 0
-substring$ -- 375
-swap$ -- 80
-text.length$ -- 3
+substring$ -- 812
+swap$ -- 137
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 144
-warning$ -- 6
-while$ -- 58
+type$ -- 285
+warning$ -- 3
+while$ -- 137
 width$ -- 0
-write$ -- 268
-(There were 9 error messages)
+write$ -- 548
+(There were 2 error messages)

@@ -1,9 +1,129 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{42}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Walton and Prewett(1949)]{Walton49}
+W.~H. Walton and W.~C. Prewett.
+\newblock The production of sprays and mists of uniform drop size by means of
+  spinning disc type sprayers.
+\newblock \emph{Proceedings of the Physical Society B}, 62:\penalty0 341--350,
+  Jun 1949.
+
+\bibitem[Merritt and Drinkwater(1977)]{Merritt77}
+C.~R. Merritt and J.~A. Drinkwater.
+\newblock A laboratory device for producing single drops in uniform sizes of
+  150--450 {\textmu}m diameter.
+\newblock \emph{Pesticide Science}, 8:\penalty0 457--562, 1977.
+
+\bibitem[Allan et~al.(1988)Allan, Carlon, Stuempfle, Hoffer, and
+  Pitter]{Allan88}
+C.~R. Allan, H.~R. Carlon, A.~K. Stuempfle, T.~E. Hoffer, and R.~L. Pitter.
+\newblock Survey of the literature: Controlled generation of liquid droplets.
+\newblock Technical Report TR-88164, {Chemical Research, Development \&
+  Engineering Center, U.S. Army Munitions Chemical Command}, Aug 1988.
+
+\bibitem[Lane(1947)]{Lane47}
+W.~R. Lane.
+\newblock A microburette for producing small liquid drops of known size.
+\newblock \emph{Journal of Scientific Instruments}, 24:\penalty0 98, Apr 1947.
+
+\bibitem[Reil and Hallett(1969)]{Reil69}
+K.~Reil and J.~Hallett.
+\newblock An apparatus for the production of uniform sized water drops, at
+  desired time intervals.
+\newblock \emph{Review of Scientific Instruments}, 40:\penalty0 533--534, Apr
+  1969.
+
+\bibitem[Coggins and Baker(1983)]{Coggins83}
+S.~Coggins and E.~A. Baker.
+\newblock Micro sprayers for the laboratory application of pesticides.
+\newblock \emph{Annals of Applied Biology}, 102:\penalty0 149--154, Feb 1983.
+
+\bibitem[Stry(1992)]{Stry92}
+W.~J. Stry.
+\newblock \emph{The combustion of free flowing droplets of chlorinated
+  benzenes, alkanes, and their mixtures}.
+\newblock PhD thesis, SUNY Buffalo, September 1992.
+
+\bibitem[Endo et~al.(1988)Endo, Sato, Saito, Nakagiri, and Ohno]{Endo88}
+I.~Endo, Y.~Sato, S.~Saito, T.~Nakagiri, and S.~Ohno.
+\newblock Bubble jet recording method and apparatus in which a heating element
+  generates bubbles in a liquid flow path to project droplets, February~2 1988.
+\newblock US Patent 4,723,129.
+
+\bibitem[Sergeyev and Shaw(2006)]{Sergeyev06}
+A.~V. Sergeyev and R.~A. Shaw.
+\newblock An inexpensive uniform-size aerosol generator.
+\newblock \emph{Measurement Science and Technology}, 17:\penalty0 N41, 2006.
+
+\bibitem[Yang et~al.(1997)Yang, Chien, King, and Grosshandler]{Yang97}
+J.~C. Yang, W.~Chien, M.~King, and W.~L. Grosshandler.
+\newblock A simple piezoelectric droplet generator.
+\newblock \emph{Experiments in Fluids}, 23:\penalty0 445--447, 1997.
+
+\bibitem[Ulmke et~al.(1999)Ulmke, Wriedt, and Bauckhage]{Ulmke99}
+H.~Ulmke, T.~Wriedt, and K.~Bauckhage.
+\newblock {Piezoelektrischer Tropfengenerator zur Kalibrierung von
+  Partikelz\"{a}hlern}.
+\newblock \emph{Chemie Ingenieur Technik}, 71\penalty0 (12):\penalty0
+  1387--1391, 1999.
+
+\bibitem[Le()]{Le98}
+H.~P. Le.
+\newblock \emph{Progress and trends in inkjet printing technology}, volume~42.
+
+\bibitem[Lee(2002)]{Lee02}
+E.~Lee.
+\newblock \emph{Microdrop Generation}.
+\newblock Nano- and Microscience, Engineering, Technology and Medicine. Taylor
+  \& Francis, 2002.
+
+\bibitem[Amirzadeh~Goghari and Chandra(2008)]{Goghari08}
+A.~Amirzadeh~Goghari and S.~Chandra.
+\newblock Producing droplets smaller than the nozzle diameter by using a
+  pneumatic drop-on-demand droplet generator.
+\newblock \emph{Experiments in Fluids}, 44:\penalty0 105--114, Jan 2008.
+
+\bibitem[Green et~al.(1989)Green, Walsh, Takahashi, and Dryer]{Green89}
+G.~J. Green, D.~E. Walsh, F.~Takahashi, and F.~L. Dryer.
+\newblock Aerodynamic device for generating mono-disperse fuel droplets.
+\newblock \emph{Review of Scientific Instruments (ISSN 0034-6748)},
+  60:\penalty0 646--652, Apr 1989.
+
+\bibitem[Savart(1833)]{Savart33}
+F.~Savart.
+\newblock Memoire sur la constitution des veines liquides lancees par des
+  orifices circulaires en mince paroi.
+\newblock \emph{Annales de Chimie et de Physique}, 53:\penalty0 337--386, 1833.
+
+\bibitem[Rayleigh(1879)]{Rayleigh79}
+L.~Rayleigh.
+\newblock On the capillary phenomena of jets.
+\newblock \emph{Proceedings of the Royal Society of London}, 29:\penalty0
+  71--97, 1879.
+
+\bibitem[Donnelly and Glaberson(1966)]{Donnelly66}
+R.~J. Donnelly and W.~Glaberson.
+\newblock Experiments on the capillary instability of a liquid jet.
+\newblock \emph{Proceedings of the Royal Society of London. Series A.
+  Mathematical and Physical Sciences}, 290\penalty0 (1423):\penalty0 547--556,
+  1966.
+\newblock \doi{10.1098/rspa.1966.0069}.
+
+\bibitem[Schneider and Hendricks(1964)]{Schneider64}
+J.~M. Schneider and C.~D. Hendricks.
+\newblock Source of uniform-sized liquid droplets.
+\newblock \emph{Review of Scientific Instruments}, 35:\penalty0 1349--1350, Oct
+  1964.
+
+\bibitem[Berglund and Liu(1973)]{Berglund73}
+R.~N. Berglund and B.~Y.~H. Liu.
+\newblock Generation of monodisperse aerosol standards.
+\newblock \emph{Environmental Science and Technology}, 7:\penalty0 147--153,
+  Feb 1973.
 
 \bibitem[Dressler and Kraemer(1990)]{Dressler90}
 J.~L. Dressler and G.~O. Kraemer.
@@ -11,6 +131,13 @@ J.~L. Dressler and G.~O. Kraemer.
   phase-doppler particle analyzer.
 \newblock \emph{Liquid Particle Size Measurement Techniques}, 2\penalty0
   (1083):\penalty0 30--44, 1990.
+
+\bibitem[Str{\"o}m(1969)]{Strom69}
+L.~Str{\"o}m.
+\newblock The generation of monodisperse aerosols by means of a disintegrated
+  jet of liquid.
+\newblock \emph{Review of Scientific Instruments}, 40:\penalty0 778--782, Jun
+  1969.
 
 \bibitem[Glover et~al.(1995)Glover, Skippon, and Boyle]{Glover95}
 A.~R. Glover, S.~M. Skippon, and R.~D. Boyle.
@@ -51,10 +178,13 @@ N.~Damaschke, H.~Nobach, and C.~Tropea.
 \bibitem[Durst et~al.(1994)Durst, Tropea, and Xu]{Durst94}
 F.~Durst, C.~Tropea, and T.-H. Xu.
 \newblock The slit effect in phase doppler anemometry.
-\newblock Oct 1994.
+\newblock In \emph{Modern techniques and measurements in fluid flows:
+  Proceedings of the 2nd International Conference on Fluid Dynamic Measurement
+  and Its Applications}, Oct 1994.
 
-\bibitem[Saf(1986)]{Saffman86}
-The use of polarized light for optical particle sizing.
+\bibitem[Saffman(1986)]{Saffman86}
+M.~Saffman.
+\newblock The use of polarized light for optical particle sizing.
 \newblock In \emph{Proceedings of the 3\textsuperscript{rd} International
   Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
   Portugal}, page 18.2, 1986.
@@ -72,10 +202,12 @@ G.~Gouesbet and G.~Gréhan.
 \newblock Sur la généralisation de la théorie de lorenz-mie.
 \newblock \emph{Journal of Optics}, 13\penalty0 (2):\penalty0 97--103, 1982.
 
-\bibitem[Gou()]{Gouesbet88}
-Light scattering from a sphere arbitrarily located in a gaussian beam, using a
-  bromwich formulation.
-\newblock \emph{Journal of the Optical Society of America A}.
+\bibitem[Gouesbet et~al.(1988)Gouesbet, Maheu, and Gréhan]{Gouesbet88}
+G.~Gouesbet, B.~Maheu, and G.~Gréhan.
+\newblock Light scattering from a sphere arbitrarily located in a gaussian
+  beam, using a bromwich formulation.
+\newblock \emph{Journal of the Optical Society of America A}, 5\penalty0
+  (9):\penalty0 1427--1443, 1988.
 
 \bibitem[Maheu et~al.(1988)Maheu, Gouesbet, and Gréhan]{Maheu88}
 B.~Maheu, G.~Gouesbet, and G.~Gréhan.
@@ -105,9 +237,10 @@ G.~Gouesbet and G.~Gréhan.
   J.~Whitelaw, editors, \emph{Developments in Laser Techniques and Applications
   to Fluid Mechanics}, pages 243--259. Springer Berlin Heidelberg, 1996.
 
-\bibitem[Naq(1994)]{Naqwi96}
-A rigorous procedure for design and response determination of phase doppler
-  systems.
+\bibitem[Naqwi and Menon(1994)]{Naqwi96}
+A.~Naqwi and R.~Menon.
+\newblock A rigorous procedure for design and response determination of phase
+  doppler systems.
 \newblock In \emph{Proceedings of the 7\textsuperscript{th} International
   Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
   Portugal}, pages 340--353, 1994.
@@ -128,8 +261,8 @@ C.~M. Sipperley and W.~D. Bachalo.
 
 \bibitem[Strakey et~al.(2000)Strakey, Talley, Sankar, and Bachalo]{Strakey00}
 P.~A. Strakey, D.~G. Talley, S.~V. Sankar, and W.~D. Bachalo.
-\newblock Phase doppler interferometry with probe-to-droplet size ratios less
-  than unity. part i: Trajectory errors.
+\newblock {Phase Doppler Interferometry with Probe-to-Droplet Size Ratios Less
+  Than Unity. Part I: Trajectory Errors}.
 \newblock \emph{Applied Optics}, 39\penalty0 (22):\penalty0 3875--3886, Aug
   2000.
 

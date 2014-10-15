@@ -1,31 +1,38 @@
-\documentclass[10pt]{book}
+\documentclass[11.5pt]{book}
+
 \usepackage{amsmath, amssymb}
 \usepackage{mathspec}
 \usepackage{sectsty, titlesec}
+\usepackage{setspace}
 \usepackage{wrapfig, rotating}
-\usepackage{tabularx, booktabs}
+\usepackage{enumitem,tabularx, booktabs}
 \usepackage{nomencl}
 \makenomenclature
 \renewcommand{\nomname}{List of symbols and\\abbreviations}
 \usepackage[numbers]{natbib}
 \usepackage{graphicx,caption,subcaption}
-\setmainfont[Mapping=tex-text]{Crimson}
-\setsansfont[Scale=0.88]{DIN 1451 Mittelschrift}
+\setmainfont[Mapping=tex-text, Scale=1.1]{Crimson}
+\setsansfont[Scale=1]{Alte DIN 1451 Mittelschrift}
 %\allsectionsfont{\sffamily}
 %\setmainfon
 %\usepackage{fouriernc}
 %\usepackage[T1]{fontenc}
-\setmathsfont(Digits,Latin){Crimson}
-\setmathrm[BoldFont={Crimson Bold}]{Crimson}
-\setmathsfont(Greek)[Scale=1.15]{Crimson}
-
+\setmathsfont(Digits,Latin)[Scale=1.1]{Crimson}
+\setmathrm[BoldFont={Crimson Bold}, Scale=1.1]{Crimson}
+\setmathsfont(Greek)[Scale=1.21]{Crimson}
+\newlist{alist}{itemize}{1}
+\setlist[alist]{label=---,labelindent=2in,leftmargin=9pt,labelsep=6pt,
+itemsep=-1pt}
 % Character shortcuts
 \newcommand*{\Hhat}{\hat{\vphantom{\scalebox{1.2}{H}} H}}
 \newcommand*{\Phat}{\hat{\vphantom{\scalebox{1.2}{P}} P}}
 
-
+% line spacing
+\linespread{1.25}
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
+\setlength{\textwidth}{380pt}
+\setlength{\evensidemargin}{54pt}
 \setlength{\marginparwidth}{1.2in}
 %\titleformat{\section}{\huge\sansnormalfont}{\protect\makebox[0pt][r]{\thesection\quad}}{0em}{}
 \titleformat{\chapter}{\fontsize{32pt}{36pt}\selectfont\bfseries}{}{0em}{}
@@ -51,7 +58,7 @@
 %\usepackage{xunicode}
 \begin{document}
 \title{Experimental verification\\ of the IPI sizing technique}
-\author{Sebastian Kosch}
+\author{Sebastian Kosch, University of Toronto}
 \date{July 2014}
 \maketitle
 
@@ -66,28 +73,330 @@
 \section{What other work has been done in this area}
 
 \chapter{Experimental setup}
+- What kinds of setups there are
+
 - Our setup:
 \section{Dantec system}
     - Dantec system
 \section{PDPA system}
     - TSI system
-\section{Droplet generator}
+
+    \chapter[Monodisperse droplet generation]{Monodisperse\\droplet generation}
 \label{sec:droplet-generator}
-    - Droplet generator
 
-We use a vibrating orifice droplet generator. The principle is the stimulated
-breakup of a liquid jet, also called Rayleigh breakup, 
+To calibrate any droplet sizing device, we need droplets of known and uniform
+size. Sprays or streams of such uniform droplets are called \emph{monodisperse},
+and many different varying approaches to generating them have been proposed,
+each one with advantages and drawbacks.
 
+The most basic type of droplet generator is a capillary tube, for instance a
+hypodermic needle or a pulled glass pipette. Droplets are generated as the
+liquid flows through the tube due to its own weight. As the liquid leaves the
+tube, it wets the tip of the tube and forms a bead held together by surface
+tension. Eventually, the bead's gravitational forces overcome the attraction to
+the tube surface, and the drop separates from the tube.
+
+Given a liquid and its physical properties, the only remaining controllable
+variable is the diameter of the capillary tube tip. As a rule, droplets
+generated in this fashion will be significantly larger than the tube diameter
+from which they grow. Most droplet generators are designed to prevent this from
+happening:
+\begin{alist}
+\item \emph{Aerodynamic} droplet generators use coaxial air flow to shear the
+    forming droplet off of the capillary tip before it can grow to full size.
+\item \emph{On-demand} droplet generators use a pressure pulse to eject a fixed
+    amount of liquid out of the capillary (or other orifice).
+\item \emph{Continuous-stream} droplet generators use mechanical vibrations to
+    break up a continuous jet of liquid emanating from the capillary into
+    monodisperse droplets.
+\end{alist}
+More exotic types of droplet generators exist: \citet{Walton49} suggested that
+water falling on spinning disks is propelled outwards, forming nearly
+monodisperse droplets, and several improved designs have been published since.
+Another approach, e.g. used by \citet{Merritt77}, involves mechanized dipping of
+a needle into a liquid reservoir, and then flicking it so as to produce one
+droplet.
+
+\section{Aerodynamic droplet generators}
+\citet{Allan88} provide a history of aerodynamic designs: the first design was
+published in 1947 by \citet{Lane47}; \citet{Reil69} later improved on it by
+using time-controlled air pulses instead of a continous flow. Coggins and Baker
+\cite{Coggins83} have proposed a more elaborate apparatus with variable air and liquid
+flow and adjustable needle position.
+
+\subsection{Stry design}
+Initial tests based on a design by \citet{Stry92} showed that the ability of the
+instrument to produce droplets below 600$\,\mu$m depends entirely on the
+precision with which the flow of water and air can be controlled.
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{img/setup/stry.pdf}
+\caption{Schematic drawing of the coaxial-flow aerodynamic droplet generator,
+based on \citet{Stry92}. Top: top view, right: rear view (third angle
+projection). Sectional view illustrates operating principle.\label{fig:stry}}
+\end{figure}
+
+\section{On-demand drop generators}
+Drop-on-demand technology finds its most important application in printing.
+Indeed, the most prominent designs representative of this category are the thermal droplet
+generators found in most household inkjet printers, invented by \citet{Endo88}.
+At least one research group, \citet{Sergeyev06}, has succeeded in repurposing
+an old inkjet print head for laboratory droplet generation.
+
+Less widespread, but more flexible in a research setting, are on-demand
+generators driven by the contraction of piezoelectric elements, such as those
+proposed by \citet{Yang97} or \citet{Ulmke99}. Excellent reviews on
+drop-on-demand designs were published by Le and Lee \cite{Le98, Lee02}. 
+
+A curious third type of on-demand generator by \citet{Goghari08} uses a short
+pulse of pressurized air, controlled by a solenoid valve, to eject a small
+amount of liquid through an orifice.
+
+While drop-on-demand generators are a crucial component in applications like inkjet
+printing or microfluidics, they tend to suffer from aspired air bubbles, pileup
+of liquid around the nozzle tip, clogging, and other issues thwarting reliable
+drop expulsion unless manufactured and operated with great attention to detail.
+
+\subsection{Amirzadeh Goghari and Chandra design}
+We constructed a droplet generator based on the design by \citet{Goghari08}.
+While both its construction from off-the-shelf parts and its operation are
+remarkably straightforward, it has two limitations:
+
+\begin{alist}
+    \item the duration of the air pulse is limited by the response time of the
+        solenoid valve used. The shortest pulse we were able to reliable produce
+        was on the order of a few milliseconds, which did not permit us to
+        produce droplets smaller than a few hundred microns in diameter, and
+    \item the head of water over the orifice must be kept very low to prevent 
+        leakage. As a result, the number of droplets that can be ejected is
+        limited before the water needs to be replenished.
+\end{alist}
+
+Owed to our lack of access to an automatic micropipette puller, the nozzles used
+in this experiment were not optimal, which likely contributed to our experience
+of frequent satellite droplets and liquid buildup at the nozzle tip.
+
+\subsection{Modified Yang design}
+A popular piezoelectric-based drop-on-demand design was proposed by
+\citet{Yang97}. It consists of a liquid-filled chamber, one wall of which is the
+underside of a piezoelectric disk---a brass disk coated with a circular piece of
+piezoelectric material, commonly found in electric buzzers.
+
+To evaluate the performance of such a drop generator, we constructed several
+modifications of it, the final one of which is shown in Fig.~\ref{fig:flatyang}.
+To make the chamber as flat as possible, minimizing the distance between
+piezoelectric disk and orifice, it has a depth of only about 2.5$\,$mm, the
+thickness of a sheet of acrylic. A second sheet holds the disk in place, while a
+third sheet makes up the bottom wall of the chamber. Nozzle and inlet are glued
+directly into the bottom sheet.
+
+To operate the droplet generator, water is fed through
+the inlet port until the chamber is filled and all air bubbles have escaped
+through the upward-facing nozzle. The generator is then turned so that the nozzle
+faces down and $30\,$ms pulses of about $30\,$V are delivered to the
+piezoelectric disk.
+
+The greatest challenge faced was the accumulation of liquid on the nozzle
+surface, which quickly led to satellite droplets or thwarted droplet production
+altogether. Again, capillaries drawn with an automatic pipette puller are likely
+more resistant to this effect.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{img/setup/flatyang_exploded.pdf}
+\caption{Top and right: schematic cross-section and exploded view of our
+    piezoelectric droplet generator. Bottom left: photomicrograph of the nozzle
+    tip ejecting a column of water (diameter $\approx 125\,\mu$m), which is about to coalesce into a
+round droplet. \label{fig:flatyang}}
+\end{figure}
+
+\subsection{Failed approaches}
+- Making orifices in acrylic sheets by drilling with needles (beautiful, but too
+large) or by poking through it with heated needles (kinda works, but the holes
+are super rough because hot plastics tends to bubble up and deform).
+
+\section{Continuous-stream drop generation}
+There exist continuous-stream drop generators based on coaxial air flow
+\cite{Green89} and on,
+but most continuous-stream drop generators are based on
+\emph{Rayleigh breakup}, i.e. the disintegration of a disturbed liquid jet into
+droplets. The physics behind this phenomenon have been studied for almost two
+centuries \cite{Savart33, Rayleigh79} and are well-understood. When the jet
+disturbances are induced by carefully controlled mechanical vibrations at an
+appropriate frequency, the droplets will be of uniform size and evenly spaced.
+
+This simple principle has been employed to generate droplets for fifty years,
+with orifices typically attached to either one of two vibrating mechanisms: an
+ordinary loudspeaker, first used by \citet{Donnelly66}, or
+a piezoelectric element, as first proposed by \citet{Schneider64} and popularized by Berglund and Liu's
+design \cite{Berglund73}.
+
+
+\subsection{Hard-drive based drop generator}
 The accuracy of the hypodermic needle nozzle often isn't quite as good as that of e.g.
 photofabricated nozzles, as those have sharp edges. The round edges lead to
 variability in discharge coefficient (and mass flow), resulting in variance in
 drop volume \cite{Dressler90}. Nevertheless, for the purpose of verifying the validity of
 measurements, it'll do.
 
+% TODO: write that the bulk of this section has been adapted from Kosch et al.,
+% journal XYZ
+Both speaker-based and piezo-based approaches have certain drawbacks: by design,
+a speaker vibrating at a fixed pitch produces an audible sound, jeopardizing the
+laboratory peace. Speakers are unshapely, difficult to fasten onto an
+experimental setup and their cones provide no robust structure to which any type
+of orifice could be attached. Piezoelectric elements cost more and are useful
+only when integrated with the orifice---precision machined droplet generators
+operating this way are commercially available, but unreasonably expensive in
+many situations. As a result, we felt compelled to consider alternative sources
+of vibration that require a minimum effort to build and install using standard
+lab equipment, and chose the actuator mechanism found in every magnetic hard
+drive for the following properties:
 
-\section{Verification of droplet sizes}
+\paragraph*{Very low cost.} With high-capacity and solid-state devices rapidly pushing older hard drives
+into obsolescence, it should be a simple matter to acquire a few decommissioned specimens for
+demolition. Hard drives come in two form factors---3.5 and 2.5 inches wide,
+respectively---and both can be used for the purposes of this paper. 
+
+Further, glass needle orifices fabricated for use with existing loudspeaker setups can be
+reused, and are easily produced by hand from heated borosilicate capillaries or
+using a micropipette puller. The process is illustrated in FIG.
+\ref{fig:needles} and in-depth instructions are given by Lee\cite{Lee02}.
+Piezoelectric-based devices, on the other hand, need fitted orifices to produce a range of
+drop sizes.
+
+\paragraph*{Ease of construction and installation.} Unlike loudspeakers, hard
+drives have a flat base plate which can be drilled into, allowing for easy
+installation on any experiment jig. Save for a drill and a saw, no machining
+tools are needed for the construction of the droplet generator.
+
+\paragraph*{High amplitudes without noise.}
+Like piezoelectric elements, vibrating actuator arms are very quiet, enabling
+use at frequencies and amplitudes that would far exceed responsible levels on
+a speaker.  In our experiments, the actuator responded to frequencies throughout
+our hearing range---i.e., up to $17\,$kHz---and likely well beyond, though we
+have not tested the full response range for any given amplitude.
+
+As an added advantage over other designs, no amplification is needed. Below
+$100\,$Hz, amplitudes on the order of $0.5\,$cm are easily achieved (albeit they
+are of course not needed for droplet production) when a peak-to-peak voltage of
+$2-4\,$V is applied. The amplitude scales down with the inverse of the frequency,
+however, such that amplitudes are much smaller at typical operating frequencies
+($0.5-10\,$kHz). Nevertheless, the voltages required are well within the ability
+of any standard laboratory function generator, and can likely even produced by many
+consumer-level computer sound cards.
+
+\subsubsection{Operating principle}
+Magnetic hard drives store data as sub-micron-sized patterns of 
+oppositely magnetized dots on disks called \emph{platters}. The read-write head
+is mounted at the tip of an arm that pivots across the platter surface while the
+platter spins. This setup allows the head to access the entire platter surface.
+
+FIG.~\ref{fig:designschematic} illustrates schematically the design of a typical
+actuator arm assembly. The flat voice coil mounted on the surface is responsible
+for the arm's side-to-side movement: as it is positioned under a permanent
+magnet, the coil creates a sideward force when a current flows through its
+wires. By stopping or reversing the current the arm's motion is likewise stopped
+or reversed. Since a typical hard drive's platter spins at up to $7200\,$RPM,
+actuator arms must be able to move with extreme speed and precision. They are
+thus engineered to be very light yet stiff. These characteristics make a
+magnetic hard drive's actuator arm an ideal supplier of in-plane vibrations.
+Indeed, hard drive actuators are remarkable not for their operating principle
+but for their low cost; it is only the economics of mass manufacturing that has
+in recent years enabled these high-speed, lightweight precision mechanisms to
+become so widely available.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{papers/hdg_images/needles.png}
+\includegraphics[width=0.35\textwidth]{papers/hdg_images/needletips.png}
+\caption{Above: assembly of nozzle from
+low-gauge hypodermic syringe (Luer fitting) and capillary. Below: nozzle tip
+fabrication, capillary from left to right: broken, sanded, heated in a flame (I.D.
+$200\,\mu$m), heated for longer (I.D. $25\,\mu$m, could be sanded down by about
+$200\,\mu$m), overheated (I.D. $0\,\mu$m). \label{fig:needles}}
+\end{figure}
+
+
+\subsubsection{Construction}
+If possible, forgo multi-platter drives, as they are more cumbersome to disassemble and have
+bulky, complex actuator assemblies. The device shown in FIG. \ref{fig:photo}
+is based on a single-platter drive.
+
+\paragraph{Dismantle and cut.} After removing the hard drive cover, remove
+the magnet holder, arm axis, arm, ribbon wires, circuit boards, and platters
+such that only the base plate remains. Now the corner of the base plate holding
+the actuator arm assembly can be cut out to yield the result shown in FIG.
+\ref{fig:designschematic}. A band saw, jigsaw or powered hacksaw will be very
+useful, although not necessary. The goal is to allow the tip of the arm to
+protrude over the edge.
+
+\paragraph{Expose coil leads.} Next, remove the read/write head and all
+wiring leading to it, along with any connected I/O and servo circuitry. Be
+careful, however, not to tear off the two strands powering the voice coil. If
+they are integrated in a ribbon you wish to remove, ensure that exposed
+terminals remain onto which you can solder new leads.
+\begin{figure}
+\centering
+\includegraphics[width=0.4\textwidth]{papers/hdg_images/dropletgenerator_exploded.pdf}
+\caption{Top view of a hard drive and exploded view of the cut-out base
+plate, actuator arm, axis, and magnet assembly. \label{fig:designschematic}}
+\end{figure}
+\paragraph{Add protective cover.} We recommend bolting on a cover plate, such
+as a small sheet of acrylic or polycarbonate, to protect the protruding arm from
+accidental bending. Drill a hole through the cover to allow the nozzle to be
+threaded through the arm. A severable
+connection from coil to function generator is preferable to a direct wire, if
+only because the voice coil leads are delicate and easily torn off. To this end, we epoxied
+an audio jack into the cover and soldered the voice coil leads to it from the
+bottom. 
+
+\subsubsection{Operation}
+To use the droplet generator, simply insert a nozzle through a small hole at the
+tip of the actuator arm---typically at least one hole will already be present, but you may wish to drill
+more---and connect the voice coil leads to the output terminal of a function
+generator set to an initial peak-to-peak voltage of $1\,$V and a sinusoid frequency of
+about $50\,$Hz, which should cause weak but perceptible oscillations.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth]{papers/hdg_images/photo.eps}
+\caption{Photographs of different droplet sizes ($220\,\mu$m and $386\,\mu$m,
+    $f=1.990\,$kHz and $1.065\,$kHz respectively) produced with the droplet
+generator shown in FIG.~\ref{fig:photo}. Scales have been cropped out. \label{fig:dropphoto}}
+\end{figure}
+We used existing nozzles manufactured by hand from hypodermic needle stubs and
+heated glass capillaries (FIG.~\ref{fig:needles}). We make no claim that this is
+the best approach to take, but we note that the interchangeability of nozzles
+with Luer fittings has proved very convenient in our application. How the nozzle
+can be held in place falls beyond the scope of this article; while we used an
+existing setup made from machined aluminum, a small lab stand and clamp should
+suffice to hold the male Luer fitting connecting the feed tube to the nozzle.
+
+The nozzle must be supplied by an accurately calibrated syringe pump. It is
+convenient to integrate a large liquid reservoir (or tap water hose) via a
+T-valve between the between pump and nozzle to permit quick topping up of the
+syringe. In such a setup ensure that the reservoir valve is shut closed before operation,
+since pressure fluctuations at the nozzle are the most common culprit for
+unstable jet breakup conditions.
+
+As with other vibrating orifice droplet generators, it is crucial that stable
+conditions are established before any experiments can begin. First, confirm that
+the liquid is ejected in a single jet. Multiple jets can be due to a clogged
+orifice (a mixture of distilled water and CLR®, drawn back through a
+syringe, is an excellent remedy). Satellite droplets can also form secondary
+jets, in which case the oscillation frequency must be adjusted or the amplitude
+reduced. Satellite formation is easily detected by using a gentle air flow to
+deflect the jet---if the droplets are truly monodisperse, they will all deflect
+at the same angle.\cite{Strom69}
+
+
+\section{Photographic verification of droplet sizes}
 This is where I show pictures and tables, showing that the formula
 actually works.
+
+While there are different methods of photographing droplets, just taking
+pictures in front of a strobe light has worked well.
 
 \subsection{Colliding droplets}
 \label{sec:droplet-collisions}
@@ -232,7 +541,7 @@ etc.)
 \subsection{Too much overlap}
 \label{sec:ipi-overlap}
 This is a section where I refer to the paper that calculates overlap
-probabilities. I explain that many droplets are mis-identified (either high-freq
+probabilities/overlap coefficients. I explain that many droplets are mis-identified (either high-freq
 is seen as low-freq, or noise is seen as high-freq) and where I point out that
 while Hanning windows and min-distance/max-overlap filters help a little bit,
 they also skew the representativeness of the sample because only small,
@@ -242,7 +551,37 @@ I explain that there isn't really an easy method of fixing this, and that any
 time spent attempting to deal with the problem is better spent building a slit
 aperture system, as described in the next chapter.
 
-\subsection{Droplet detection and camera mapping}
+\subsection{Thin lens assumption}
+What matters is the Numerical Aperture (NA), which is (the sine of half of) the
+collection angle. When we have a simple lens, we can calculate this as
+\begin{equation}
+    \mathrm{NA} = \sin \frac{d_a}{2z}\\
+    3\alpha \rho = \sqrt{2 \lambda x r}
+\end{equation}
+
+The Dantec manual suggests using the distance from light sheet to front of the
+lens for $z$, and the ratio of min focal length and max f-number to find $d_a$.
+This, however, does not result in an accurate value for the collection angle
+with all lenses.
+
+We are assuming, then, that the effective aperture (the entrance pupil) always
+stays constant throughout the focussing range of the lens. This is not
+necessarily the case, as there are lenses which change both the physical and the
+virtual size of the aperture when focussing. The best way to get the collecting
+angle is to go by magnification
+
+Here is where I make the claim that it is impossible to determine the actual
+exact value for the numerical aperture of the lens. Similarly, it can be quite
+difficult to determine the accurate distance from light sheet to lens aperture
+(even though the latter measurement is more forgiving, since the distances are
+far greater).
+
+\subsection{Error in the Mie approximation at small sizes}
+\label{sec:mie-error}
+As outlined in paper ... geometric optics deviate from the true Mie scattering
+field when sizes are very small.
+
+\subsection{Centre discrepancies}
 The most challenging stage of the measurement process is the detection of the
 defocussed droplet images. Since the defocussed images assume the shape of the
 aperture, which is wide open in most applications,\footnote{see Chapter
@@ -257,6 +596,9 @@ the same size as a consequence of equation \eqref{}.
 \label{fig:droplet-overlap}
 \end{figure}
 
+\section{Eliminating centre discrepancies and the need for camera calibration}
+%TODO: Say that the bulk of the following work is from Kosch and Ashgriz,
+%submitted to journal/conference XYZ
 It thus stands to reason that a simple circle detection technique would suffice
 to detect the droplet images in the photos. A polar adaptation of the Hough
 accumulator technique (such as the OpenCV implementation
@@ -518,36 +860,6 @@ to improve the identification of droplets.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Thin lens assumption}
-What matters is the Numerical Aperture (NA), which is (the sine of half of) the
-collection angle. When we have a simple lens, we can calculate this as
-\begin{equation}
-    \mathrm{NA} = \sin \frac{d_a}{2z}\\
-    3\alpha \rho = \sqrt{2 \lambda x r}
-\end{equation}
-
-The Dantec manual suggests using the distance from light sheet to front of the
-lens for $z$, and the ratio of min focal length and max f-number to find $d_a$.
-This, however, does not result in an accurate value for the collection angle
-with all lenses.
-
-We are assuming, then, that the effective aperture (the entrance pupil) always
-stays constant throughout the focussing range of the lens. This is not
-necessarily the case, as there are lenses which change both the physical and the
-virtual size of the aperture when focussing. The best way to get the collecting
-angle is to go by magnification
-
-\subsection{Finding the correct value for aperture diameter}
-Here is where I make the claim that it is impossible to determine the actual
-exact value for the numerical aperture of the lens. Similarly, it can be quite
-difficult to determine the accurate distance from light sheet to lens aperture
-(even though the latter measurement is more forgiving, since the distances are
-far greater).
-
-\section{Error in the Mie approximation at small sizes}
-\label{sec:mie-error}
-As outlined in paper ... geometric optics deviate from the true Mie scattering
-field when sizes are very small.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
