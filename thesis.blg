@@ -3,59 +3,73 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 The style file: myplainnat.bst
 Database file #1: bibliography.bib
-I was expecting a `,' or a `}'---line 27 of file bibliography.bib
- :     
- :     title={Global phase Doppler technique},
-(Error may have been on previous line)
+Repeated entry---line 293 of file bibliography.bib
+ : @article{Pan06
+ :               ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 125 of file bibliography.bib
+Repeated entry---line 300 of file bibliography.bib
+ : @inproceedings{Damaschke01
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 313 of file bibliography.bib
+ : @article{Damaschke02
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 379 of file bibliography.bib
+ : @article{Querel10
+ :                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 403 of file bibliography.bib
  : @article{Kawaguchi02
  :                     ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for ""
+Repeated entry---line 416 of file bibliography.bib
+ : @article{Glover95
+ :                  ,
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Strakey01"
 Warning--empty publisher in Le98
 Warning--empty year in Le98
 Warning--empty year in Le98
-You've used 42 entries,
+You've used 64 entries,
             2751 wiz_defined-function locations,
-            907 strings with 12915 characters,
-and the built_in function-call counts, 15987 in all, are:
-= -- 1384
-> -- 722
-< -- 33
-+ -- 288
-- -- 204
-* -- 1214
-:= -- 2496
-add.period$ -- 129
-call.type$ -- 42
-change.case$ -- 80
-chr.to.int$ -- 42
-cite$ -- 45
-duplicate$ -- 833
-empty$ -- 1532
-format.name$ -- 284
-if$ -- 3429
-int.to.chr$ -- 1
-int.to.str$ -- 43
-missing$ -- 42
-newline$ -- 218
-num.names$ -- 128
-pop$ -- 353
+            1038 strings with 17081 characters,
+and the built_in function-call counts, 25779 in all, are:
+= -- 2238
+> -- 1164
+< -- 54
++ -- 459
+- -- 330
+* -- 1923
+:= -- 3918
+add.period$ -- 195
+call.type$ -- 64
+change.case$ -- 124
+chr.to.int$ -- 63
+cite$ -- 67
+duplicate$ -- 1374
+empty$ -- 2471
+format.name$ -- 448
+if$ -- 5608
+int.to.chr$ -- 2
+int.to.str$ -- 65
+missing$ -- 64
+newline$ -- 328
+num.names$ -- 194
+pop$ -- 576
 preamble$ -- 1
-purify$ -- 42
+purify$ -- 64
 quote$ -- 0
-skip$ -- 475
+skip$ -- 824
 stack$ -- 0
-substring$ -- 812
-swap$ -- 137
-text.length$ -- 5
+substring$ -- 1354
+swap$ -- 294
+text.length$ -- 17
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 285
+type$ -- 439
 warning$ -- 3
-while$ -- 137
+while$ -- 222
 width$ -- 0
-write$ -- 548
-(There were 2 error messages)
+write$ -- 832
+(There were 6 error messages)

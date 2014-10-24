@@ -4,7 +4,7 @@
 \usepackage{mathspec}
 \usepackage{sectsty, titlesec}
 \usepackage{setspace}
-\usepackage{wrapfig, rotating}
+\usepackage{wrapfig, rotating, subcaption}
 \usepackage{enumitem,tabularx, booktabs}
 \usepackage{nomencl}
 \makenomenclature
@@ -17,6 +17,10 @@
 %\setmainfon
 %\usepackage{fouriernc}
 %\usepackage[T1]{fontenc}
+\newcommand*{\figref}[1]{Fig.~\ref{#1}}
+\newcommand*{\secref}[1]{Section~\ref{#1}}
+\newcommand*{\chpref}[1]{Chapter~\ref{#1}}
+\newcommand*{\tableref}[1]{Table~\ref{#1}}
 \setmathsfont(Digits,Latin)[Scale=1.1]{Crimson}
 \setmathrm[BoldFont={Crimson Bold}, Scale=1.1]{Crimson}
 \setmathsfont(Greek)[Scale=1.21]{Crimson}
@@ -57,7 +61,7 @@ itemsep=-1pt}
 \parskip 0pt
 %\usepackage{xunicode}
 \begin{document}
-\title{Experimental verification\\ of the IPI sizing technique}
+\title{Experimental verification\\ of the ILIDS sizing technique}
 \author{Sebastian Kosch, University of Toronto}
 \date{July 2014}
 \maketitle
@@ -183,7 +187,7 @@ underside of a piezoelectric disk---a brass disk coated with a circular piece of
 piezoelectric material, commonly found in electric buzzers.
 
 To evaluate the performance of such a drop generator, we constructed several
-modifications of it, the final one of which is shown in Fig.~\ref{fig:flatyang}.
+modifications of it, the final one of which is shown in \figref{fig:flatyang}.
 To make the chamber as flat as possible, minimizing the distance between
 piezoelectric disk and orifice, it has a depth of only about 2.5$\,$mm, the
 thickness of a sheet of acrylic. A second sheet holds the disk in place, while a
@@ -198,7 +202,9 @@ piezoelectric disk.
 
 The greatest challenge faced was the accumulation of liquid on the nozzle
 surface, which quickly led to satellite droplets or thwarted droplet production
-altogether. Again, capillaries drawn with an automatic pipette puller are likely
+altogether.  % TODO: add detail about the different nozzle types we tried
+
+Again, capillaries drawn with an automatic pipette puller are likely
 more resistant to this effect.
 
 \begin{figure}
@@ -210,10 +216,14 @@ more resistant to this effect.
 round droplet. \label{fig:flatyang}}
 \end{figure}
 
-\subsection{Failed approaches}
-- Making orifices in acrylic sheets by drilling with needles (beautiful, but too
-large) or by poking through it with heated needles (kinda works, but the holes
-are super rough because hot plastics tends to bubble up and deform).
+\subsection{Piezo-based drop generator}
+We tried building a Piezodropper from old piezoelectric elements squeezing glass
+capillaries (just like in the Ulmke paper), but two of the piezo elements were
+broken, and the third one had a capillary that clogged up repeatedly. We
+abandoned the approach before building a functioning droplet generator, although
+it seems attractive in practice. One downside is that the generation of
+amplified signals isn't straightforward -- we used a soundcard connected to an
+amplifier to generate the signals.
 
 \section{Continuous-stream drop generation}
 There exist continuous-stream drop generators based on coaxial air flow
@@ -231,6 +241,12 @@ ordinary loudspeaker, first used by \citet{Donnelly66}, or
 a piezoelectric element, as first proposed by \citet{Schneider64} and popularized by Berglund and Liu's
 design \cite{Berglund73}.
 
+\subsection{Speaker-based drop generator}
+We used a big plastic underwater woofer, with a bendable metal strap taped to
+the cone. The end of the metal strap touched and vibrated the nozzle. At large
+droplet sizes, this is no problem at all, but once we get to about 1 kHz, the
+amplitude needs to go up considerably to yield a reliable breakup. In practice,
+this means that it gets very loud, jeopardizing the laboratory peace.
 
 \subsection{Hard-drive based drop generator}
 The accuracy of the hypodermic needle nozzle often isn't quite as good as that of e.g.
@@ -258,12 +274,12 @@ into obsolescence, it should be a simple matter to acquire a few decommissioned 
 demolition. Hard drives come in two form factors---3.5 and 2.5 inches wide,
 respectively---and both can be used for the purposes of this paper. 
 
-Further, glass needle orifices fabricated for use with existing loudspeaker setups can be
-reused, and are easily produced by hand from heated borosilicate capillaries or
-using a micropipette puller. The process is illustrated in FIG.
-\ref{fig:needles} and in-depth instructions are given by Lee\cite{Lee02}.
-Piezoelectric-based devices, on the other hand, need fitted orifices to produce a range of
-drop sizes.
+Further, glass needle orifices fabricated for use with existing loudspeaker
+setups can be reused, and are easily produced by hand from heated borosilicate
+capillaries or using a micropipette puller. The process is illustrated in
+\figref{fig:needles} and in-depth instructions are given by Lee\cite{Lee02}.
+Piezoelectric-based devices, on the other hand, need fitted orifices to produce
+a range of drop sizes.
 
 \paragraph*{Ease of construction and installation.} Unlike loudspeakers, hard
 drives have a flat base plate which can be drilled into, allowing for easy
@@ -292,7 +308,7 @@ oppositely magnetized dots on disks called \emph{platters}. The read-write head
 is mounted at the tip of an arm that pivots across the platter surface while the
 platter spins. This setup allows the head to access the entire platter surface.
 
-FIG.~\ref{fig:designschematic} illustrates schematically the design of a typical
+\figref{fig:designschematic} illustrates schematically the design of a typical
 actuator arm assembly. The flat voice coil mounted on the surface is responsible
 for the arm's side-to-side movement: as it is positioned under a permanent
 magnet, the coil creates a sideward force when a current flows through its
@@ -306,29 +322,27 @@ but for their low cost; it is only the economics of mass manufacturing that has
 in recent years enabled these high-speed, lightweight precision mechanisms to
 become so widely available.
 
-\begin{figure}
+\subsubsection{Construction}
+\begin{wrapfigure}[14]{R}{0.5\textwidth}
 \centering
-\includegraphics[width=0.4\textwidth]{papers/hdg_images/needles.png}
-\includegraphics[width=0.35\textwidth]{papers/hdg_images/needletips.png}
+\includegraphics[width=0.4\textwidth]{img/setup/needles.png}
+\includegraphics[width=0.35\textwidth]{img/setup/needletips.png}
 \caption{Above: assembly of nozzle from
 low-gauge hypodermic syringe (Luer fitting) and capillary. Below: nozzle tip
 fabrication, capillary from left to right: broken, sanded, heated in a flame (I.D.
 $200\,\mu$m), heated for longer (I.D. $25\,\mu$m, could be sanded down by about
 $200\,\mu$m), overheated (I.D. $0\,\mu$m). \label{fig:needles}}
-\end{figure}
-
-
-\subsubsection{Construction}
+\end{wrapfigure}
 If possible, forgo multi-platter drives, as they are more cumbersome to disassemble and have
-bulky, complex actuator assemblies. The device shown in FIG. \ref{fig:photo}
+bulky, complex actuator assemblies. The device shown in \figref{fig:harddrive-photo}
 is based on a single-platter drive.
 
 \paragraph{Dismantle and cut.} After removing the hard drive cover, remove
 the magnet holder, arm axis, arm, ribbon wires, circuit boards, and platters
 such that only the base plate remains. Now the corner of the base plate holding
-the actuator arm assembly can be cut out to yield the result shown in FIG.
-\ref{fig:designschematic}. A band saw, jigsaw or powered hacksaw will be very
-useful, although not necessary. The goal is to allow the tip of the arm to
+the actuator arm assembly can be cut out to yield the result shown in
+\figref{fig:designschematic}. A band saw, jigsaw or powered hacksaw will be
+very useful, although not necessary. The goal is to allow the tip of the arm to
 protrude over the edge.
 
 \paragraph{Expose coil leads.} Next, remove the read/write head and all
@@ -338,9 +352,16 @@ they are integrated in a ribbon you wish to remove, ensure that exposed
 terminals remain onto which you can solder new leads.
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{papers/hdg_images/dropletgenerator_exploded.pdf}
-\caption{Top view of a hard drive and exploded view of the cut-out base
-plate, actuator arm, axis, and magnet assembly. \label{fig:designschematic}}
+        \begin{subfigure}[b]{0.45\textwidth}
+            \includegraphics[width=\textwidth]{img/setup/dropletgenerator_exploded.pdf}
+            \caption{\label{fig:harddrive-photo}}
+        \end{subfigure}~\begin{subfigure}[b]{0.45\textwidth}
+            \includegraphics[width=\textwidth]{img/setup/designpicture.jpg}
+            \caption{\label{fig:designschematic}}
+        \end{subfigure}
+        \caption{(a) top view of a hard drive and exploded view of the cut-out base
+        plate, actuator arm, axis, and magnet assembly; (b) assembled droplet
+    generator with cover plate and nozzle inserted through actuator arm.}
 \end{figure}
 \paragraph{Add protective cover.} We recommend bolting on a cover plate, such
 as a small sheet of acrylic or polycarbonate, to protect the protruding arm from
@@ -358,15 +379,9 @@ more---and connect the voice coil leads to the output terminal of a function
 generator set to an initial peak-to-peak voltage of $1\,$V and a sinusoid frequency of
 about $50\,$Hz, which should cause weak but perceptible oscillations.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.3\textwidth]{papers/hdg_images/photo.eps}
-\caption{Photographs of different droplet sizes ($220\,\mu$m and $386\,\mu$m,
-    $f=1.990\,$kHz and $1.065\,$kHz respectively) produced with the droplet
-generator shown in FIG.~\ref{fig:photo}. Scales have been cropped out. \label{fig:dropphoto}}
-\end{figure}
+
 We used existing nozzles manufactured by hand from hypodermic needle stubs and
-heated glass capillaries (FIG.~\ref{fig:needles}). We make no claim that this is
+heated glass capillaries (\figref{fig:needles}). We make no claim that this is
 the best approach to take, but we note that the interchangeability of nozzles
 with Luer fittings has proved very convenient in our application. How the nozzle
 can be held in place falls beyond the scope of this article; while we used an
@@ -391,14 +406,46 @@ deflect the jet---if the droplets are truly monodisperse, they will all deflect
 at the same angle.\cite{Strom69}
 
 
-\section{Photographic verification of droplet sizes}
-This is where I show pictures and tables, showing that the formula
-actually works.
+\section{Determining the produced droplet size}
+With droplet generators based on Rayleigh breakup, such as the HDG, this is easy
+to do; just take the flow rate and divide by the number of droplets produced per
+second (which, under stable conditions, equals the vibration frequency as each
+instability turns into one droplet). If we assume perfect sphericity, we can
+convert this droplet volume into a diameter. After cancelling terms, the
+expression for $D_d$ becomes
+\begin{equation}
+    D_{d} = \sqrt[3]{\frac{6Q}{\pi f}}\label{eq:dropdia-continuous}
+\end{equation}
+
+The reliablity of the underlying assumption has been verified photographically
+for several different nozzle orifice diameters and frequencies, some of which
+are given as part of the ILIDS calibration.
+
+\subsection{Photographing droplets}
+With drop-on-demand approaches, the diameter of the produced droplet is more
+difficult to predict, particularly since not the whole squeezing volume may
+result in ejected liquid (e.g. with the Chandra generator, it's just a small
+droplet). So to find out how big these droplets are (or just to verify the accuracy of
+Eq.~\eqref{eq:dropdia-continuous}), we must resort to photographic means.
 
 While there are different methods of photographing droplets, just taking
 pictures in front of a strobe light has worked well.
 
-\subsection{Colliding droplets}
+We used a scale placed next to the droplet stream, and then used a conversion
+between pixels to find the size. Of course, this method suffers from barrel
+distortion that inevitably happens, especially with a zoom lens. 
+% TODO: measure the barrel distortion.
+\begin{wrapfigure}[19]{L}{0.4\textwidth}
+\centering
+\includegraphics[width=0.35\textwidth]{papers/hdg_images/photo.eps}
+\caption{Photographs of different droplet sizes ($220\,\mu$m and $386\,\mu$m,
+    $f=1.990\,$kHz and $1.065\,$kHz respectively) produced with the droplet
+generator shown in \figref{fig:hdg-photo}. Scales have been cropped out.
+\label{fig:hdg-dropphoto}}
+\end{wrapfigure}
+Figure X shows a typical droplet stream photo (at different sizes).
+
+\subsection{Droplet collisions}
 \label{sec:droplet-collisions}
 No droplet generation mechanism is perfect. Small fluctuations in flow rate,
 unwanted harmonic vibrations and air turbulence can cause disturbances in the
@@ -419,9 +466,29 @@ calibration. Typically, photographs will confirm that a few droplets go astray
 and collide with others. Since the ``real'' diameter peaks are easily discerned,
 the secondary peaks can simply be ignored.
 
-    \chapter[Interferometric Particle Imaging (IPI)]{Interferometric Particle\\ Imaging (IPI)}
-    [Introductory paragraph], saying that this is also called ILIDS (invented by
-    \citet{Glover95})
+\chapter[ILIDS]{ILIDS}
+Interferometric Laser Imaging for Droplet Sizing (ILIDS), also known as
+Interferometric Particle Imaging (IPI) and MSI (Mie Scattering Imaging) is an
+optical droplet sizing method in which a spray is illuminated by a sheet of
+laser light and the scattered light is imaged laterally. The laser light is both
+reflected and refracted by the droplets, such that each droplet produces a pair
+of apparent ``glare points''. When seen through a lens away from the focal
+plane, each pair of glare points---being sources of coherent monochromatic
+light---appears as an interference pattern which, after falling through a
+circular aperture, casts an image that is a circular disk of fringes.  The
+spatial frequency of the fringes is (to a very close approximation) linearly
+related to the particle size. The phenomenon was first described by
+\citet{Konig86} and later in greater detail by \citet{Glover95}. Turnkey ILIDS
+setups for spray characteriziation are now widely available, comprising
+typically a pulsed Nd:YAG-laser, one or two CCD cameras, a timing circuit, and a
+piece of image processing software.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{img/setup/ipi_setup_simple.pdf}
+\caption{Perpendicular ($\phi=90^\circ$), single-camera ILIDS setup
+\label{fig:ipi-setup-simple}}
+\end{figure}
 \section{Operating principle}
 The number of fringes $N_\text{fr}$ appearing in the image has a simple linear relationship to
 the droplet diametre $D_d$:
@@ -462,28 +529,37 @@ CCD sensor}
   \label{fringedistance-pixels}
 \end{equation}
 Of course, equation \eqref{fringedistance-pixels} is only meaningful where $\Delta z \gg
-0$. If the image is (approximately) focussed, fringes will give way to a sharp
-image of either both glare points or a single bright spot -- depending on
-diffraction effects and the camera's resolution.
+0$. When the image is brought into focus ($z\approx 0$), fringes will give way to a sharp
+image of the glare points.\footnote{To be exact, diffraction will
+cause every point to be imaged as an Airy disk, but we shall neglect
+this effect here.} Of course, if the pixel density is too low to resolve
+both glare points, a single bright spot will appear. 
 
-(Fill in more details here.)
 \subsection{Influence of the scattering angle $\phi$}
-The scattering angle $\phi$ determines the relative contribution of 
-different scattering orders of light to the imaged fringe pattern. Both
-geometric optics \cite{Vandehulst12} and Mie theory provide methods to compute
-the total scattered intensity for a given $\phi$ and $m$. Some examples can be
-found in \citet{Kawaguchi02} and \citet{Mounaim99}. The geometric analysis
-approach is not valid beyond $\phi > 70^\circ$, as the first-order
-scattered beam ($p=1$) is not visible from this angle \cite{Glover95}.
+The scattering angle $\phi$, illustrated in \figref{fig:droplet-rays}, determines the
+relative contribution of different scattering orders of light to the imaged
+fringe pattern. Both geometric optics \cite{Vandehulst12} and Mie theory provide
+methods to compute the total scattered intensity for a given $\phi$ and $m$;
+some examples can be found in \citet{Kawaguchi02} and \citet{Mounaim99}. The
+geometric analysis approach is not valid beyond $\phi > 70^\circ$, as the
+first-order scattered beam ($p=1$) is not visible from this angle
+\cite{Glover95}.
+
+\begin{wrapfigure}[14]{R}{0.5\textwidth}
+\centering
+\includegraphics[width=0.4\textwidth]{img/setup/droplet_rays.pdf}
+\caption{Reflected and first-order-refracted light rays, producing two glare
+points when viewed from an angle $\phi$. \label{fig:droplet-rays}}
+\end{wrapfigure}
 
 While authors have identified several forward angles as optimal for their
 applications, e.g. $\phi = 45^\circ$ \cite{Glover95} or $\phi = 66^\circ$
 \cite{Mounaim99}, such configurations inevitably result in a variation in $z$,
-leading to different degrees of defocussing across the image -- unless the
-camera itself is angled with respect to the lens to correct for this
-aberration (the so-called \emph{Scheimpflug condition}). Since the latter
-approach requires specialized optical equipment, $\phi = 90^\circ$ is used in
-many setups, including the one in this paper (Section \ref{sec:ipi-setup}).
+and therefore defocusing, across the image unless the
+camera itself is angled with respect to the lens to correct for this aberration
+(the so-called \emph{Scheimpflug condition}). Since the latter approach requires
+specialized optical equipment, $\phi = 90^\circ$ is used in many setups,
+including the one in this paper.
 
 \subsection{Optical limits on fringe detection}
 \label{sec:ipi-fringelimits}
@@ -493,399 +569,101 @@ referred to \citet{Damaschke02} for a more detailed analysis.
 
 \paragraph{Nyquist criterion for the fringe density.}
 The Nyquist criterion requires that for the camera to be able to resolve a pair
-of neighbouring fringes, they must be at least two pixels apart. This can easily
-be achieved by sufficiently defocussing the lens, which widens the fringe image,
-increasing the number of pixels covered by each fringe. The lens mechanics
-permitting, any arbitrarily large droplet can thus be measured after a quick
-adjustment. In theory, this correction is effective until the defocussed droplet
-image is too large for the CCD sensor, and fringes are cut off. In practice,
-overlap and noise (see below) will cause significant problems long before the
-image can be defocussed beyond the sensor edges.
-
-\paragraph{Overlapping droplet images.}
-As the lens is brought farther out of focus, the droplet images dilate and
-overlap one another. Increasing levels of overlap frustrate attempts to identify
-and analyse the images. Although the slit aperture method discussed in Chapter
-\ref{chp:slit-aperture} was developed to circumvent this effect, it is not
-entirely immune to it -- particularly when droplets are very closely spaced, as
-they often are when vibrating orifice droplet generators are used. See Section
-\ref{sec:ipi-overlap} for a more in-depth discussion.
+of neighbouring fringes, their images must be at least two pixels apart. This
+can easily be achieved by a sufficient defocusing the lens, which widens the
+fringe image, increasing the number of pixels covered by each fringe. The lens
+mechanics permitting, any arbitrarily large droplet can thus be measured after a
+quick adjustment. In theory, this correction is effective until the defocused
+droplet image is too large for the CCD sensor, and fringes are cut off. In
+practice, overlap and noise (see below) will cause significant problems long
+before the image can be defocussed beyond the sensor edges.
 
 \paragraph{Signal-to-noise ratio.}
-Image noise is a significant source of trouble in IPI analysis -- indeed, many
-droplet images must be discarded as data sources because they are too noisy.
-Noise affects small droplets in particular because they scatter less light than
-larger ones,\footnote{The scattered intensity grows with the cross-section of
-the droplet} but it is also a problem with deeply out-of-focus images of very
-large droplets, as dilated droplet images spread the same amount of light over a
+Image noise is a significant source of trouble in ILIDS analysis. Indeed, many
+droplet images must be discarded as data sources because they are too weak
+compared to the noise.
+Small droplets suffer from this more than larger ones because they scatter less
+light,\footnote{The scattered intensity grows with the cross-section of the
+droplet} but the problem also occurs with deeply out-of-focus images of very large
+droplets, as dilated droplet images spread the same amount of light over a
 greater area on the camera sensor. As a result, they are darker on average than
-less defocussed images. 
+less defocused images. 
 
 \paragraph{Minimum droplet size.}
 \citet{Damaschke02} argue that the smallest measurable droplet is one that
-produces exactly one fringe covered by the aperture. We propose that, at least
-in theory, a partial fringe should be measurable if its image is sufficiently
-zero-padded before the Fourier transform is applied to it. \emph{This might need
-elaboration.} In practice, the intensity of scattered light is likely to drop
-below an acceptable level before the fringes become too large, and noise (see
-above) will become the overwhelming problem. The researcher should also be aware
-that the assumptions of geometric optics that underlie \eqref{kappa} do
-not hold for small droplets (see Section \ref{sec:mie-error} for details).
+produces exactly one fringe falling through the aperture. We may speculate that, at least
+in theory, the fringe frequency should be measurable even if only a partial
+fringe is shown. This would require its image to be sufficiently zero-padded
+before the Fourier transform is applied to it. In practice, however, the
+intensity of scattered light typically drops below an acceptable level well before
+the fringes become too large, and noise (see above) will become the overwhelming
+problem.
 
-\section{Setup}
+\paragraph{Deviation from actual Mie scattering for small droplet sizes.}
+ILIDS users should also be aware that the assumptions of geometric optics
+that underlie \eqref{kappa} do not hold for small droplets. \citet{Mounaim99}
+found that for isooctane droplets ($m=1.39$) below $10\,\mu$m, geometric optics
+yield a fringe spacing value about 14\% higher than that predicted by exact Mie
+scattering simulations at $\lambda=532\,$nm. While the deviation quickly
+vanishes for larger droplets, it is nevertheless noteworthy in the context of
+potential error sources.
+
+\paragraph{Overlapping droplet images.}
+The ability to image a whole 2D field of droplets all at once is ILIDS' strongest
+selling point, yet also its curse. When droplets are spaced too closely and the
+lens is sufficiently defocused, the defocused disk images overlap and it becomes
+difficult to determine the fringe counts corresponding to individual droplets.
+\citet{Damaschke02} provide a statistical estimate on the fraction of
+overlapping disks (overlap coefficient). 
+
+
+\section{Types of ILIDS setups}
 \label{sec:ipi-setup}
-(How it's set up, what cameras, what lenses, what laser, timer box, software,
-etc.)
+\subsection{Standard ILIDS}
+The most simple ILIDS configuration, as shown in \figref{fig:ipi-setup-simple},
+consists of a single digital camera with a defocused objective lens, placed at a right
+angle to the laser sheet. The lens aperture is (approximately) circular and
+typically completely open to permit as much light as possible to fall on the
+sensor area.
 
-\section{Common problems and sources of error}
-\subsection{Too much overlap}
-\label{sec:ipi-overlap}
-This is a section where I refer to the paper that calculates overlap
-probabilities/overlap coefficients. I explain that many droplets are mis-identified (either high-freq
-is seen as low-freq, or noise is seen as high-freq) and where I point out that
-while Hanning windows and min-distance/max-overlap filters help a little bit,
-they also skew the representativeness of the sample because only small,
-dispersed satellites are outside of the main flow.
+Both camera and laser are connected to a computer via a timing circuit, and both
+can be triggered simultaneously by software installed on the computer.
+Commercial ILIDS vendors provide the timing circuitry and the software, which
+typically integrates a collection of image processing algorithms that can be
+used to analyze the captured images immediately.
 
-I explain that there isn't really an easy method of fixing this, and that any
-time spent attempting to deal with the problem is better spent building a slit
-aperture system, as described in the next chapter.
+The core problem with all ILIDS setups is the determination of $z$ and $d_a$ in
+\eqref{kappa}.  We will discuss calibration of ILIDS systems in greater detail in
+\secref{} calibration.
 
-\subsection{Thin lens assumption}
-What matters is the Numerical Aperture (NA), which is (the sine of half of) the
-collection angle. When we have a simple lens, we can calculate this as
-\begin{equation}
-    \mathrm{NA} = \sin \frac{d_a}{2z}\\
-    3\alpha \rho = \sqrt{2 \lambda x r}
-\end{equation}
+Images taken in this configuration are very susceptible to excessive
+disk overlap.
 
-The Dantec manual suggests using the distance from light sheet to front of the
-lens for $z$, and the ratio of min focal length and max f-number to find $d_a$.
-This, however, does not result in an accurate value for the collection angle
-with all lenses.
 
-We are assuming, then, that the effective aperture (the entrance pupil) always
-stays constant throughout the focussing range of the lens. This is not
-necessarily the case, as there are lenses which change both the physical and the
-virtual size of the aperture when focussing. The best way to get the collecting
-angle is to go by magnification
+Therefore, measures have been developed to sidestep overlap
+almost entirely or to deal with it during the image processing stage. These
+modifications will be described in the next sections.
 
-Here is where I make the claim that it is impossible to determine the actual
-exact value for the numerical aperture of the lens. Similarly, it can be quite
-difficult to determine the accurate distance from light sheet to lens aperture
-(even though the latter measurement is more forgiving, since the distances are
-far greater).
-
-\subsection{Error in the Mie approximation at small sizes}
-\label{sec:mie-error}
-As outlined in paper ... geometric optics deviate from the true Mie scattering
-field when sizes are very small.
-
-\subsection{Centre discrepancies}
-The most challenging stage of the measurement process is the detection of the
-defocussed droplet images. Since the defocussed images assume the shape of the
-aperture, which is wide open in most applications,\footnote{see Chapter
-\ref{chapter:slitaperture} for a discussion of the benefits of non-circular
-apertures.} they are typically circular. Moreover, they are all more or less of
-the same size as a consequence of equation \eqref{}.
-
-\begin{figure}
-\centering
-%\includegraphics[]{droplet-overlap.jpg}
-\caption{Overlapping defocussed droplet images}
-\label{fig:droplet-overlap}
-\end{figure}
-
-\section{Eliminating centre discrepancies and the need for camera calibration}
-%TODO: Say that the bulk of the following work is from Kosch and Ashgriz,
-%submitted to journal/conference XYZ
-It thus stands to reason that a simple circle detection technique would suffice
-to detect the droplet images in the photos. A polar adaptation of the Hough
-accumulator technique (such as the OpenCV implementation
-\texttt{cv2.HoughCircles()}) or a correlation-based pattern matching method
-(e.g. \texttt{cv2.matchTemplate()}) are both obvious choices for this task.  The
-problem of \emph{droplet overlap}, however, can thwart such efforts (Figure
-\ref{fig:droplet-overlap}). This happens particularly when large droplets are to
-be measured, because their many fringes require larger defocussed images to
-resolve clearly. Indeed, in regions of high droplet density, it can be impossible
-to reliably detect the circular fringe images using the methods mentioned above.
-
-Nevertheless, once droplet image positions are established with confidence, overlap can be
-dealt with to a degree: known overlapping regions can either be excluded
-entirely or serve to help find maximum-likelihood frequency peaks for their
-respective tributary droplet images.
-
-Since the detection of droplet images is so essential, the Dantec DynamicStudio
-software extracts the droplets' positions from the focussed photo, and then maps
-those positions onto the defocussed photo based on a set of camera calibration
-photos. This method is sound in principle, but often yields unsatisfactory
-mappings in practice, likely whenever the calibration target plate (Figure
-\ref{fig:dottarget}) is not precisely aligned with the laser sheet. In Section
-\ref{sec:calibration-improvement}, we describe a more accurate and robust method
-of finding the mapping based directly on the pair of droplet photos. 
-
-Since the mapping error is often a perspectivity, the simple manual
-$x/y$-shift that can be applied in the DynamicStudio software after calibration
-is not a sufficient adjustment.
-
-Dantec supplies a \emph{standard dot target}, a white $10 \times 10\,
-\mathrm{cm}^2$ plate engraved with a pattern of black dots (Figure
-\ref{fig:dottarget}). The plate is to be mounted such that its surface coincides
-perfectly with the laser sheet. Both cameras are then focussed on the dot
-pattern, and a photo is taken with both. This allows the DynamicStudio software
-to calculate the transformation matrix between target plate and
-image for each camera:
-\begin{equation}
-\left[\begin{array}{c} x'\\ y'\\ z'\\ r' \end{array} \right]
-=
-\left[ \begin{array}{cccc}
-S_x & A_{yx} & A_{zx} & T_x \\
-A_{xy} & S_y & A_{zy} & T_y \\
-A_{xz} & A_{xy} & S_z & T_z \\
-P_x & P_y & P_z & S_0
-\end{array} \right]
-\left[ \begin{array}{c} x\\ y \\ z \\ 1 \end{array} \right].
-\end{equation}
-
-In practice, $P_{x,y,z} = 0$ and $S_z = S_0 = 1$, such that the mapping is
-affine (although we will later show that this need not be the case). The
-$z$-components (third row/column) are ignored, such that a $3 \times 3$ matrix
-suffices for the purposes of this discussion:
-\begin{equation}
-\left[\begin{array}{c} x'\\ y'\\ r' \end{array} \right]
-=
-\left[ \begin{array}{ccc}
-S_x & A_{yx} &  T_x \\
-A_{xy} & S_y &  T_y \\
-P_x & P_y & S_0
-\end{array} \right]
-\left[ \begin{array}{c} x\\ y \\ 1 \end{array} \right].
-\end{equation}
-
-The DynamicStudio software thus finds the camera matrices
-$\mathbf{P}_\text{foc}$ and $\mathbf{P}_\text{def}$ mapping the
-object (the target plate) onto the two camera images:\footnote{Henceforth, the
-    subscripts ``foc'' and ``def'' shall designate the focussed and defocussed
-    cameras, respectively -- even though both are focussed when the initial
-calibration photo is taken.}
-\begin{align}
-    \mathbf{x}_\text{foc}' &= \mathbf{P}_\text{foc} \, \mathbf{x} \\
-    \mathbf{x}_\text{def}' &= \mathbf{P}_\text{def} \, \mathbf{x}.
-\end{align}
-
-It follows that the quotient of the two matrices, also known as the homography
-\begin{equation}
-    \mathbf{H} = \mathbf{P}_\text{def} \, \mathbf{P}_\text{foc}
-\end{equation}
-can be used to map the focussed image onto the defocussed image:
-\begin{equation}
-    \mathbf{H}\, \mathbf{x}_\text{foc}' = \mathbf{x}_\text{def}'.
-    \label{homography-definition}
-\end{equation}
-
-In practice, it is not always possible to ensure that the dot target plate is
-aligned with the laser light sheet to absolute perfection. This introduces a
-perspective error in the homography matrix $\mathbf{H}$. Figure
-\ref{fig:plate-calibration} shows that even though the calibration images
-are mapped perfectly, there is a perspective error in Figure
-\ref{fig:drop-calibration-off}.
-
-\begin{figure}
-        \centering
-        \begin{subfigure}[b]{0.45\textheight}
-                \includegraphics[height=0.4\textheight]{img/plate-calibration.jpg}
-                \caption{Focussed camera image, after applying homography, is
-                    superimposed onto defocussed camera image of dot target
-                plate.}
-                \label{fig:plate-calibration}
-        \end{subfigure}
-        \vskip 2.5em
-        \begin{subfigure}[b]{0.45\textheight}
-            \centering
-                \includegraphics[height=0.4\textheight]{img/drop-calibration-off.jpg}
-                \caption{Focussed camera image, after applying homography
-                    derived from the calibration images, is superimposed onto
-                defocussed camera image of droplets.}
-                \label{fig:drop-calibration-off}
-        \end{subfigure}
-        \caption{Illustration of the perspective error from misaligned
-        calibration target plate}
-        \label{fig:calibration-error}
-\end{figure}
-
-To correct for this error, we can use image registration techniques to derive
-the homography mapping \emph{directly} from the focussed and defocussed droplet
-images, doing away with the need for calibration pictures altogether. Once we
-find the corrected homography $\mathbf{\Hhat}$, we use it to find
-\begin{equation}
-    \mathbf{\Phat}_\text{def} = \mathbf{\Hhat} \, \mathbf{P}_\text{foc},
-    \label{corrected-homography-use}
-\end{equation}
-which can be manually entered into the DynamicStudio software to replace
-$\mathbf{P}_\text{def}$.
-
-\subsubsection{Finding the corrected homography}
-Image registration is the process of finding the best possible mapping of one
-image onto another -- in other words, it is a term for homography-finding
-techniques. The basic process comprises three steps:
-\begin{enumerate}
-    \item \textbf{Feature detection:} Finding ``features'', i.e. unique points or regions in the images --
-        such as corners, arcs, or contrasting regions which stay
-        relatively stable even when the image is thresholded.
-    \item \textbf{Feature description:} Converting the detected features into
-        numerical vectors.
-    \item \textbf{Feature matching:} Finding good correspondences between
-        features in the two images -- this often requires inlier/outlier
-        decision-making, e.g. RANSAC.
-\end{enumerate}
-
-Naturally, image registration is impossible to achieve between our focussed and
-defocussed images. We therefore first apply the following steps to our focussed
-image:
-
-\begin{enumerate}
-    \item Mask the image, excluding all areas that are known not to contain
-        droplets.
-    \item Subtract the pixel-wise minimum or mean taken over all images taken by
-        the camera. This step will remove hot pixels on the camera's CCD sensor
-        and other static noise.
-    \item Erode the image, using a $3 \times 3$ or $5 \times 5$ kernel. This
-        will close any remaining bright pixels which are likely noise.
-    \item Locate the intensity peaks in the remaining image.
-    \item Fill a new image with black, then draw white circles of diameter $D_d$
-        onto it, centered at the respective positions of the intensity peaks
-        detected in the focussed image.
-\end{enumerate}
-
-The result of these operations is shown in Figure \ref{fig:dilating-droplet-dots}.
-\begin{figure}
-        \centering
-        \begin{subfigure}[b]{0.45\textheight}
-                \includegraphics[height=0.4\textheight]{img/focussed.jpg}
-                \caption{Focussed camera image.}
-                \label{fig:focussed}
-        \end{subfigure}
-        \vskip 2.5em
-        \begin{subfigure}[b]{0.45\textheight}
-            \centering
-                \includegraphics[height=0.4\textheight]{img/focussed-dilated.jpg}
-                \caption{Simulated defocussed camera image based on focussed
-                camera image, used for registration.}
-                \label{fig:focussed-dilated}
-        \end{subfigure}
-        \caption{Using the focussed image to simulate the defocussed image for
-        registration}
-        \label{fig:dilating-droplet-dots}
-\end{figure}
-
-Image registration algorithms are often not very robust. This is especially true
-when the two pictures are not photos taken from slightly different angles.
-Moreover, image processing algorithms have runtime complexities that grow at
-least with the area of the image. We therefore prepare our focussed image by
-shrinking it to half the size (transformation $\mathbf{S}_{0.5}$) and mirroring
-it horizontally (transformation $\mathbf{M}_h$).
-
-Our image registration algorithm makes use of the affine invariance of the
-\textsc{asift}
-algorithm \cite{}, but instead of the patented \textsc{sift} detector/descriptor pair
-\cite{}, we use \textsc{orb} \cite{} for feature detection and \textsc{brief} \cite{} for feature
-description. A more detailed explanation of the algorithm can be found in
-Appendix \ref{appendix:asift}. Figure \ref{fig:asift-matching} shows a
-successful mapping between focussed and defocussed images.
-
-The homography found by the registration algorithm, $\mathbf{K}$, must now be
-converted into a homography between the original images, $\mathbf{\Hhat}$. We
-see that
-\begin{equation}
-    \mathbf{K}\, \mathbf{M}_h\, \mathbf{S}_{0.5}\, \mathbf{P}_\text{foc} =
-    \mathbf{S}_{0.5} \mathbf{P}_\text{def};
-\end{equation}
-note here that the mirroring operation is applied only on one side of the
-equation, since the original images are mirrored and the goal is to undo this
-before running the image registration. To bring this into the form required by
-\eqref{homography-definition}, we write
-\begin{align}
-    \mathbf{S}_{0.5}^{-1}\, \mathbf{K}\, \mathbf{M}_h\, \mathbf{S}_{0.5}\,
-    \mathbf{P}_\text{foc} &=
-     \mathbf{S}_{0.5}^{-1}\, \mathbf{S}_{0.5} \mathbf{P}_\text{def} \\
-     &= \mathbf{P}_\text{def}
- \end{align}
-Finally, it turns out that DynamicStudio violates convention by placing the
-coordinate origin at the bottom left corner of the image. We must therefore 
-pre- and post-multiply by $\mathbf{M}_v^{\pm 1}$ to arrive at our final
-expression for $\mathbf{\Hhat}$:
-\begin{equation}
-    \mathbf{\Hhat} = \mathbf{M}_v\, \mathbf{S}_{0.5}^{-1}\, \mathbf{K}\,
-    \mathbf{M}_h\, \mathbf{S}_{0.5}\, \mathbf{M}_v^{-1}.
-\end{equation}
-We shall provide the transformation matrices for convenience:
-\begin{align}
-    \mathbf{M}_h &= \left[ \begin{array}{ccc}
-    -1 & 0 & \text{(image width)} \\
-            0 & 1 & 0 \\
-            0 & 0 & 1
-    \end{array} \right] \\
-    \mathbf{M}_v &= \left[ \begin{array}{ccc}
-            1 & 0 & 0 \\
-    0 & -1 & \text{(image height)} \\
-            0 & 0 & 1
-    \end{array} \right] \\
-    \mathbf{S}_{0.5} &= \left[ \begin{array}{ccc}
-            0.5 & 0 & 0 \\
-    0 & 0.5 & 0 \\
-            0 & 0 & 1
-    \end{array} \right]
-\end{align}
-  
-The improved matching achieved using $\mathbf{\Phat}_\text{def}$ is shown in
-Figure \ref{fig:drop-calibration-corrected}. Having calculated $\mathbf{\Phat}_\text{def}$ using
-equation \eqref{corrected-homography-use}, we can import it into DynamicStudio
-to improve the identification of droplets.
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{img/asift-matching.jpg}
-    \caption{Matching between focussed and defocussed images.}
-    \label{fig:asift-matching}
-\end{figure}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.45\textheight]{img/drop-calibration-corrected.jpg}
-    \caption{Focussed camera image, after applying homography
-        derived from image registration, is superimposed onto defocussed
-    camera image of droplets.}
-    \label{fig:drop-calibration-corrected}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                            SLIT APERTURES                                   %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\chapter[Particle sizing with a slit aperture]{Particle sizing with \\a slit aperture}
-\label{chp:slit-aperture}
-As we discussed in Section \ref{sec:ipi-overlap}, many otherwise well-executed IPI
-measurements are thwarted by overlapping defocussed droplet images.
+\subsection{ILIDS with optical compression}
 This problem is never more apparent than in efforts to calibrate
 the system using a vibrating orifice droplet generator, as the droplets produced
 thereby are spaced very closely and produce heavily overlapping defocussed
 images. Fortunately, there exists a simple and reliable technique to deal with
 this problem: a slit aperture, installed directly in front of the lens, masks
 the defocussed droplet images such that only a thin strip across their center
-passes through the lens. The effect is shown in Figure \ref{fig:globalsizing}. 
+passes through the lens. The effect is shown in \figref{fig:globalsizing}. 
 
-The idea of optically compressing an image in one direction is
-well-known from the field of spectroscopy. It was first introduced to the area
-of fluid measurement by \citet{Durst94}, and has since been employed in various
-forms, e.g. by \citet{Pan06}. Other authors use cylindrical lenses instead
-of slit apertures to achieve the vertical integration of the image
-\cite{Kawaguchi02}.
+Arguably the most popular way to reduce the amount of overlap is the use of
+optical compression techniques, whether by means of a slit aperture \cite{Pan06}
+or a cylindrical lens \cite{Kawaguchi02, Maeda02}. However, some techniques
+(e.g. Global Phase-Doppler \cite{Damaschke01} and intensity-analyzing
+methods \cite{Querel10}) or use cases (e.g. very low signal-to-noise ratios)
+require the full disk image to be available. In these cases, the standard
+approach is to identify the location and outline of each disk image, such that
+the fringe analysis can either be limited to non-overlapping regions or be
+otherwise modified to take overlapping fringes into account.
 
+Naturally, equations \eqref{kappa} and \eqref{fringedistance-pixels} still hold.
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -903,18 +681,10 @@ of slit apertures to achieve the vertical integration of the image
 only a narrow center string in the middle.}
     \label{fig:globalsizing}
 \end{figure}
+Also mention that this can be used in conjecture with an additional, focused
+camera, to capture things like speed (PIV), evaporation (PLIF), etc. Why we
+don't need it.
 
-\section{The slit aperture}
-Naturally, equations \eqref{kappa} and \eqref{fringedistance-pixels} still hold.
-
-(Insert a diagram of the setup)
-
-(Describe how an aperture can be created in any lab)
-
-(Show a picture of the lens with aperture)
-
-\section{Image processing}
-\label{sec:ipi-slitprocessing}
 Extracting the fringe counts from such an image is straightforward. First, we
 correlate the image with that of a single, solid bright rectangle which shares
 the approximate dimensions of a typical strip in the image. This operation
@@ -922,14 +692,14 @@ yields intensity
 peaks centered over our regions of interest. We remove closely adjacent peaks,
 as they may represent questionable or overlapping strips. Compared to the sheer
 number of correctly identified strips, the number of legitimate data points lost
-this way is negligible. Figure \ref{fig:globalsizing-identifystrips} shows the
+this way is negligible. \figref{fig:globalsizing-identifystrips} shows the
 result of such an attempt at identifying the strips.
 
 \begin{figure}[h]
     \centering
     \includegraphics[height=0.38\textheight]{img/globalsizing-identifystrips.png}
     \caption{The image is correlated with that of a solid bright rectangle, which
-        results in peaks that approximately coincide with the centres of the
+        results in peaks that approximately coincide with the centers of the
         strips. Here, the original photo is shown with rectangles drawn centered
     at said peaks.}
     \label{fig:globalsizing-identifystrips}
@@ -955,7 +725,7 @@ three steps are performed before the Fourier transform is taken:
         the correct identification of the peak frequency.
 \end{enumerate}
 
-Figure \ref{fig:globalsizing-dropletpeak} shows the windowed appearance of
+\figref{fig:globalsizing-dropletpeak} shows the windowed appearance of
 one such region of interest (although it does not show the padded input to the
 Fourier transform due to space constraints). The Fourier transform yields a
 frequency power spectrum in two dimensions, although we are primarily interested
@@ -975,7 +745,7 @@ to minimize the misidentification of dominant frequencies,
         freqency's power (i.e. its proportion to the mean power) does not exceed
         a certain value (this step is optional).
 \end{enumerate}
-The bottom two elements in Figure \ref{fig:globalsizing-dropletpeak} illustrate
+The bottom two elements in \figref{fig:globalsizing-dropletpeak} illustrate
 the effect of these steps.
 
 \begin{figure}[h]
@@ -989,6 +759,12 @@ the frequency spectrum, with peak identified at $f=91.0$.}
     \label{fig:globalsizing-dropletpeak}
 \end{figure}
 
+\begin{wrapfigure}[12]{R}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.35\textwidth]{img/dropletslitcropping2.jpg}
+    \caption{Only a slit aperture centered on the lens and extending across the
+    entire lens entrance will preserve all fringes \label{fig:droplet-slitcropping}}
+\end{wrapfigure}
 Finally, the peak frequency $f_\text{peak}$ is converted into a fringe count by re-scaling it
 from the padded size $D_\text{padded}\, (= 1024$ pixels) to the width of the strip (which, in the
 context of IPI measurements, should equal the diameter $D_\text{i}$ of the defocussed droplet
@@ -1002,37 +778,89 @@ Fourier transform}
     \label{fringes-from-diameter}
 \end{equation}
 
-In the current implementation of our algorithm, $D_\text{i}$ must be determined
-and entered manually.
-
-\section{Sources of error with the slit method}
-\subsection{Misalignment of slit and lens}
-
 While the above algorithm will generally give a good estimate of the fringe
-\begin{wrapfigure}{r}{0.35\textwidth}
-    \begin{center}
-\includegraphics[width=0.33\textwidth]{img/dropletslitcropping2.jpg}
-\end{center}
-\caption{Only a slit aperture centered on the lens and extending across the
-entire lens entrance will preserve all fringes}
-\label{fig:droplet-slitcropping}
-\end{wrapfigure}
-
 count for a given defocussed droplet image, it cannot know whether the entire
 center portion of the image has indeed passed the slit aperture. It is
 conceivable, after all, that the slit aperture was not perfectly centered on the
 lens entrance, or that the slit aperture was shorter than the diameter of the
-lens entrance. Figure \ref{fig:droplet-slitcropping} illustrates how the slit
+lens entrance. \figref{fig:droplet-slitcropping} illustrates how the slit
 aperture can cause the defocussed image to appear smaller than it is. The
 reduced value for $D_\text{i}$, manually entered in equation
 \eqref{fringes-from-diameter}, will result
 in droplets being reported as smaller than they are in reality.
 
+As noted above, ILIDS with optical compression can be used with an additional,
+focused camera behind a beam splitter, as shown in
+\figref{fig:ipi-setup-double}.\footnote{Alternatively, the two cameras may image
+    the spray from different angles, e.g. as demonstrated by \citet{Glover95},
+    although this complicates the setup as the Scheimpflug condition must be
+fulfilled.} The latter may provide e.g. PIV images for a
+velocity analysis or LIF images for evaporation studies. This was demonstrated
+by \citet{Hardalupas10} and \citet{Hardalupas10a}. However, such setups suffer
+from \emph{center discrepancies}. \secref{sec:point-set-registration} documents
+how such center discrepancies can be dealt with.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{img/setup/ipi_setup_double.pdf}
+\caption{Perpendicular ($\phi=90^\circ$), double-camera ILIDS setup}
+\label{fig:ipi-setup-double}
+\end{figure}
+
+\subsection{Additional focused image for disk detection}
+As described above, running a simple frequency analysis on bright regions in an
+ILIDS image is futile when two of the fringe disks overlap, as it is not clear
+how many droplets are associated with the region and where their disks infringe.
+While optical compression provides a very good solution to this problem, it is
+not always applicable: some techniques (e.g. Global
+Phase-Doppler \cite{Damaschke01} and intensity-analyzing methods \cite{Querel10})
+or use cases (e.g. very low signal-to-noise ratios) require the full disk image
+to be available. In these cases, the standard approach is to identify the
+location and outline of each disk image, such that the fringe analysis can
+either be limited to non-overlapping regions or be otherwise modified to take
+overlapping fringes into account. Additionally, once disk centers are found, the
+software can apply Hanning windows to the disks as well as ignore disk pairs
+that are too close.\footnote{The latter is an effective control mechanism, but
+    is liable to skew the representativeness of the sample because small,
+dispersed satellites outside of the main flow are most likely to be validated.}
+
+To identify the location of overlapping disks in the image, an additional camera
+is introduced to capture a focused image of the spray simultaneously with the
+defocused ILIDS camera. The setup is identical to that shown in
+\figref{fig:ipi-setup-double}. The intensity peaks in the focused image are then taken
+to be the droplet positions (i.e. disk centers) in the defocused image.
+
+The problem with this, as with all multi-camera setups, are center
+discrepancies. We show how to overcome that in
+\secref{sec:keypoint-registration}.
+
 \section{Calibrating the slit method}
+What matters is the Numerical Aperture (NA), which is (the sine of half of) the
+collection angle. When we have a simple lens, we can calculate this as
+\begin{equation}
+    \mathrm{NA} = \sin \frac{d_a}{2z}
+\end{equation}
+
+The Dantec manual suggests using the distance from light sheet to front of the
+lens for $z$, and the ratio of min focal length and max f-number to find $d_a$.
+This, however, does not result in an accurate value for the collection angle
+with all lenses.
+
+We are assuming, then, that the effective aperture (the entrance pupil) always
+stays constant throughout the focussing range of the lens. This is not
+necessarily the case, as there are lenses which change both the physical and the
+virtual size of the aperture when focussing.
+
+Here is where I make the claim that it is impossible to determine the actual
+exact value for the numerical aperture of the lens. Similarly, it can be quite
+difficult to determine the accurate distance from light sheet to lens aperture
+(even though the latter measurement is more forgiving, since the distances are
+far greater).
+
 Taking into account the sources of errors explained in the sections above, it is
 advisable to run a few calibration tests with droplets of different sizes before
 employing the IPI technique for real spray measurements. Recall that, if we
-ignore the Mie error (Section \ref{sec:mie-error}), the relationship between fringe count and droplet diameter
+ignore the Mie error (\secref{sec:mie-error}), the relationship between fringe count and droplet diameter
 is linear with a constant of proportionality $\kappa$ (see equation
 \eqref{kappa}). The aim of our calibration, then, is to determine the value of
 $\kappa$ from experiment -- the premise being that we cannot be certain of the
@@ -1040,15 +868,15 @@ values of $D_a$, $z$, and possibly not even $m$ and $\phi$ (although the latter
 can usually be ascertained to a sufficient degree of accuracy).
 
 \subsection{A sample calibration of the slit aperture method}
-Using the droplet generator described in Section \ref{sec:droplet-generator} and
-the IPI configuration described in Section \ref{sec:ipi-setup}, we produced and
+Using the droplet generator described in \secref{sec:droplet-generator} and
+the IPI configuration described in \secref{sec:ipi-setup}, we produced and
 measured monodisperse droplets of many different diameters. The droplet
 diameters were determined both mathematically and photographically, as described
-in Section \ref{sec:verify-droplet-diameters}. Out of over 30 sets of IPI
+in \secref{sec:verify-droplet-diameters}. Out of over 30 sets of IPI
 measurements we selected six sets that exhibited both strong uniformity and
 high photographic quality:
 
-\begin{table}[h]
+\begin{table}[h!]
     \centering
     \begin{tabular}{lrrrrr}
     \toprule
@@ -1063,27 +891,27 @@ photo & $\hat{N}_\text{fr}$ \\
     FF & 175.2 ml/h  & 1038 Hz  & 447 $\mu$m  & 454 $\mu$m &  34.56     \\
     \bottomrule
 \end{tabular}
-\caption{Six sets of calibration data taken with the setup described in Section
-\ref{sec:ipi-setup}}
+\caption{Six sets of calibration data taken with the setup described in \secref{sec:ipi-setup}}
 \label{tab:ipi-calibration-datasets}
 \end{table}
 \nomenclature{$\hat{N}_\text{fr}$}{Peak fringe count measured}
 The values for $\hat{N}_\text{fr}$, the peak fringe count, are based on the
-histograms (see Figure \ref{fig:fringe-histograms}) showing the distribution of
+histograms (see \figref{fig:fringe-histograms}) showing the distribution of
 fringe counts within each dataset. These fringe counts are of course found by
-the algorithm described in Section \ref{sec:ipi-slitprocessing}.
+the algorithm described in \secref{sec:ipi-slitprocessing}.
 
 It is worthwhile to point out some apparent idiosyncrasies in the histograms of
-datasets FB and FC. Their peak fringe counts are 16.71 and 22.92, but there
-are secondary peaks at about 21 and 29 fringes, respectively. The latter are
-explained by the collision of droplets as discussed in Section
-\ref{sec:droplet-collisions}, and are ignored for the purposes of calibration.
+datasets FB and FC. Their peak fringe counts are 16.71 and 22.92, but there are
+secondary peaks at about 21 and 29 fringes, respectively. The latter are
+explained by the collision of droplets as discussed in
+\secref{sec:droplet-collisions}, and are ignored for the purposes of
+calibration.
 
-\begin{sidewaysfigure}[h!]
+\begin{sidewaysfigure}[p]
     \centering
     \includegraphics[width=\textwidth]{img/fringe_histogram.pdf}
     \caption{Normalized distributions of measured fringe counts $N_\text{fr}$
-        for the six datasets listed in Table \ref{tab:ipi-calibration-datasets}. Solid lines are
+        for the six datasets listed in \tableref{tab:ipi-calibration-datasets}. Solid lines are
 Gaussian kernel density estimates with $h=0.5$. }
     \label{fig:fringe-histograms}
 \end{sidewaysfigure}
@@ -1107,27 +935,26 @@ should not be made lightly, since it will usually cause the residuals to have a
 non-zero mean. In this case, however, we believe it to be justified to require
 that $D_d = 0$ for $N_\text{fr} = 0$.
 
-Based on the values in Table \ref{tab:ipi-calibration-datasets}, we thus arrive
+Based on the values in \tableref{tab:ipi-calibration-datasets}, we thus arrive
 at a value of $\hat{\kappa} = 76808.1$ with an $R^2$-value of 99.98\%. 
 
-\subsection{Discussion}
-Figure \ref{fig:fringe-regression} illustrates the good agreement on $\kappa$ between
+\figref{fig:fringe-regression} illustrates the good agreement on $\kappa$ between
 all datasets. Considering the sheer number of error sources -- from the
 unavoidable non-uniformity of the generated droplets to the uncertainty that
 comes with taking the Fourier transform of a noisy image -- the calibration
 results documented here are a testament to the practical robustness of the
 method.
 
-\begin{figure}[h!]
+\begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{img/fringe_regression.pdf}
-    \caption{Scatterplot of Table \ref{tab:ipi-calibration-datasets} showing the peak fringe counts $\hat{N}_\text{fr}$ for each predicted droplet diameter $D_d$}
+    \caption{Scatterplot of \tableref{tab:ipi-calibration-datasets} showing the peak fringe counts $\hat{N}_\text{fr}$ for each predicted droplet diameter $D_d$}
     \label{fig:fringe-regression}
 \end{figure}
 It must be remembered, of course, that the peak fringe count values
 $\hat{N}_\text{fr}$ forming the basis of our calculation are taken from the
-peaks of Gaussians fitted to the raw fringe count histograms (see Figure
-\ref{fig:fringe-histograms}. In other words, it is our assumption that all
+peaks of Gaussians fitted to the raw fringe count histograms (see
+\figref{fig:fringe-histograms}. In other words, it is our assumption that all
 droplets from a given dataset produce fringe counts that are normally
 distributed around their respective $\hat{N}_\text{fr}$. The histogram to
 dataset FA shows a much higher deviation than the others -- this may be due to
@@ -1154,14 +981,415 @@ diameter as
 \end{equation}
 
 
-\section{Conclusion}
-\begin{itemize}
-    \item It's impossible to calibrate IPI using a VOAG
-    \item The slit aperture works pretty well
-    \item Calibration is easy, and one or two calibrations are probably enough
-    \item A good collection angle (i.e. camera-laser distance) must be chosen
-\end{itemize}
+\section{Removing center discrepancies with keypoint registration}
+\label{sec:keypoint-registration}
 
+%TODO: Say that the bulk of the following work is from Kosch and Ashgriz,
+%submitted to journal/conference XYZ
+As mentioned above, to allow both cameras to image the same physical region in
+the spray, they are either placed behind a beamsplitter at a right angle to the
+light sheet, or placed separately at different angles. The latter approach makes
+for a more difficult setup, since Scheimpflug's rule demands that the camera
+must be tilted with respect to the objective lens, but it gives the user the
+freedom to choose the highest-intensity scattering angle.
+
+In any of the above cases, the use of two cameras requires that their images be
+mapped onto one another. This is commonly achieved by means of a camera
+calibration procedure, in which a target pattern (e.g. as in \figref{fig:plate-calibration}) of known dimensions is
+photographed by each camera. A pattern recognition algorithm then determines the
+object-to-image mappings for each camera:
+
+
+\begin{equation}
+\left[\begin{array}{c} x'\\ y'\\ z'\\ r' \end{array} \right]
+=
+\left[ \begin{array}{cccc}
+S_x & A_{yx} & A_{zx} & T_x \\
+A_{xy} & S_y & A_{zy} & T_y \\
+A_{xz} & A_{xy} & S_z & T_z \\
+P_x & P_y & P_z & S_0
+\end{array} \right]
+\left[ \begin{array}{c} x\\ y \\ z \\ 1 \end{array} \right].
+\end{equation}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.45\textheight]{img/orb/plate-calibration.jpg}
+    \caption{Homography $\mathbf{H}$ applied to target pattern image captured by
+        the focused camera and superimposed on the image captured by the
+        defocused camera (here, both cameras were in focus for the calibration
+        only).
+    \label{fig:plate-calibration}}
+\end{figure}
+
+In our case, Dantec supplied a \emph{standard dot target}, a white $10 \times 10\,
+\mathrm{cm}^2$ plate engraved with a pattern of black dots. The plate is to be
+mounted such that its surface coincides perfectly with the laser sheet. 
+
+In practice, $P_{x,y,z} = 0$ and $S_0 = 1$ is assumed, such that the mapping is
+affine. The $z$-components (third row/column) are further assumed to be zero,
+such that a $3 \times 3$ matrix suffices for the purposes of this discussion:
+\begin{equation}
+\left[\begin{array}{c} x'\\ y'\\ r' \end{array} \right]
+=
+\left[ \begin{array}{ccc}
+S_x & A_{yx} &  T_x \\
+A_{xy} & S_y &  T_y \\
+P_x & P_y & S_0
+\end{array} \right]
+\left[ \begin{array}{c} x\\ y \\ 1 \end{array} \right].
+\end{equation}
+
+The calibration algorithm thus finds the camera matrices
+$\mathbf{P}_\text{foc}$ and $\mathbf{P}_\text{def}$ mapping the
+object coordinates $\mathbf{x}$ onto the two camera images
+$\mathbf{x}_\text{foc}'$ and $\mathbf{x}_\text{def}'$ (the respective 
+    subscripts shall hence designate the focused and defocused
+    cameras):
+\begin{align}
+    \mathbf{x}_\text{foc}' &= \mathbf{P}_\text{foc} \, \mathbf{x} \\
+    \mathbf{x}_\text{def}' &= \mathbf{P}_\text{def} \, \mathbf{x}.
+\end{align}
+
+It follows that the quotient of the two matrices, also known as the homography
+\begin{equation}
+    \mathbf{H} = \mathbf{P}_\text{def} \, \mathbf{P}_\text{foc}^{-1}
+\end{equation}
+can be used to map the focused image onto the defocused image, as shown in \figref{fig:plate-calibration}:
+\begin{equation}
+    \mathbf{H}\, \mathbf{x}_\text{foc}' = \mathbf{x}_\text{def}'.
+    \label{homography-definition}
+\end{equation}
+Unfortunately, the calibration procedure itself introduces an unwanted
+distortion: to capture a viable photo of the target pattern, the defocused
+camera must be temporarily brought into focus, as was done in
+\figref{fig:plate-calibration}. This is not mentioned e.g. in the
+application manual of Dantec's IPI system, but is a practical necessity.
+Bringing a camera out of focus not only introduces a blur, it also scales the
+image extents. \figref{fig:discrepancy}, adapted from \citet{Hardalupas10},
+shows schematically how this effect creates ``center discrepancies''. Since the
+extents of the defocused image are either smaller or larger than those of the
+focused image, depending on the direction of defocusing, all droplet images are
+projected either closer to or farther away from the image center. The
+discrepancy is worst for droplets far away from the image center. As a result,
+the centers of objects in simulatenously captured focused and defocused images
+no longer align (\figref{fig:drop-calibration-off}), and the calibration
+procedure becomes self-defeating.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\textwidth]{img/orb/discrepancy.pdf}
+\caption{Schematic showing the source of center discrepancies in the case of
+parallel image and object planes \label{fig:discrepancy}}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[height=0.45\textheight]{img/orb/drop-calibration-off.jpg}
+    \caption{Focused camera image, after applying homography $\mathbf{H}$
+        derived from the calibration images, is superimposed onto
+    defocused camera image of droplets. Discrepancies between object centers
+grow towards the edge of the image.}
+    \label{fig:drop-calibration-off}
+\end{figure}
+
+While this error is easy to account for in the ideal case of right angles and
+perfect alignments (simply rescaling the image would solve the problem) the
+situation becomes more difficult in practice when the target pattern is no longer
+parallel to the camera sensor (intentionally or accidentally) or when
+cylindrical lenses are used to add optical compression. In fact, there is no
+guarantee that affine mappings are sufficient in the general case.
+
+Surprisingly, only Hardalupas~\emph{et al.} \cite{Hardalupas10, Hardalupas10a}
+have hitherto published a discussion of this effect, and the only previous
+mention known to the authors is in \citet{Kurosawa02}, who dismissed it as a
+``positioning error''.
+
+Hardalupas \emph{et al.} identified the centers of particles in both PIV
+(focused) and ILIDS (defocused) images. They then empirically estimated the
+magnitude of the center discrepancy effect along the vertical axis, which
+enabled them to improve the accuracy of their nearest-neighbour-based droplet
+image matching algorithm.
+
+We found that algorithms developed by the computer
+vision community in recent years can obviate the need for calibration entirely.
+Instead, we can use visual correspondences between the focused and defocused
+images to find the mapping between them directly. To that end, we first provide
+in \secref{sec:keypoint-review} a brief overview over popular methods in the field of automated (linear)
+\emph{registration}, i.e. the art of finding a \emph{homography} (geometric
+mapping) between two \emph{epipolar images} (images of the same object, taken
+from different positions and angles). \secref{sec:keypoint-results} documents 
+our approach in greater detail and shows the result of a successful
+recalibration.
+
+\subsection{Review of image registration techniques \label{sec:keypoint-review}} Given two
+identical images that have been rotated, shifted or even scaled with respect to
+one another, the applied transformation can theoretically be found by means of a
+brute-force search. This method is not feasible in practice, not only because of
+its enormous computational complexity (there are no gradients to guide the
+search) but also because of its inability to deal with noise, focal blur,
+perspective changes and other nonlinearities introduced by the photographic
+process. Conversely, normalized cross-correlation measures between images, as
+commonly used in PIV, are unaffected by noise but not invariant to rotation and
+scale and therefore not generally practical. The standard approach to image
+registration is therefore a three-step process. First, \emph{keypoints}, i.e.
+``interesting'' points in the images are found by a keypoint detection
+algorithm.  Then, a small image patch at every keypoint is extracted and
+converted into a \emph{feature vector}, a set of numbers providing a very
+general description of the image patch that accounts for scale, rotation, blur,
+contrast, etc. Finally, matches between similar feature vectors from the two
+images are found, outliers are removed, and the homography is calculated.
+
+However, the results of a keypoint detection algorithm
+must be as repeatable as possible, i.e. the same set keypoints should be found
+in both images regardless of their relative position, rotation, scale, etc. 
+For instance, the Harris corner detector \cite{Harris88}, one of the earliest
+keypoint detectors, is sensitive to scale and thus often unusable.
+
+The recent decade has seen a rapidly growing collection of proposed keypoint detectors,
+beginning with \textsc{sift} \cite{Lowe04}, \textsc{surf} \cite{Bay08} and
+\textsc{brisk} \cite{Leutenegger11}, all of which include keypoint extractors, to
+\textsc{censure} \cite{Agrawal08}, optimized for speed, and
+\textsc{fast} \cite{Rosten05}, which incorporates machine learning methods.
+Finally, the recent publication of \textsc{orb} \cite{Rublee11} includes a
+rotation-aware version of \textsc{fast} used in this paper. Many more have been
+developed but are not included here for brevity's sake.
+
+Keypoint extractors (sometimes called \emph{descriptors}) are often optimized
+for and therefore included with keypoint detectors, as in the instances
+mentioned above. Some however are standalone algorithms, such as
+\textsc{brief} \cite{Calonder10}.
+
+It is straightforward to find matching keypoints by searching for pairs
+with the smallest arithmetic distance between their feature vectors (e.g. using the $L^2$ norm). This nearest-neighbour search
+can be done exhaustively in linear time to find the optimal matching, but many
+faster, if approximate, search methods exist. We should note \textsc{flann} \cite{Muja09},
+a publicly available collection of such implementations which includes a fully
+automatic parameter selection heuristic.
+
+Finally, the homography, assuming one exists, can be derived from the set of
+matched keypoint coordinate pairs. Since many of the found matches will be
+wrong, it is of essence to use a robust estimator, i.e. a type of regression
+model designed to ignore outliers. Possibly the oldest of these methods is
+\textsc{ransac} \cite{Fischler81}, an iterative procedure in which sets of data points are
+chosen at random and discarded if the agreement between a model fit to them and
+all other data points falls below a carefully chosen threshold. \textsc{ransac} was used
+for this paper, although other robust methods exist. The criterion developed by
+\citet{Moisan04} deserves special mention in our context; it does away with
+\textsc{ransac}'s hard threshold and instead takes into consideration the probability of
+a match to be in consensus with epipolar geometry.
+
+\subsection{Using affine oriented \textsc{fast}, \textsc{brief} and \textsc{ransac} to estimate the homography
+between PIV and ILIDS photographs \label{sec:results}}
+
+Existing PIV/ILIDS systems derive the homography from the result of a camera
+calibration procedure which the user is required to perform before analyzing
+images.
+Although the final value of $\mathbf{H}$ is invisible to the user in our copy of
+Dantec's DynamicStudio software, the camera matrices $\mathbf{P}_\text{foc}$ and
+$\mathbf{P}_\text{def}$ can be shown and edited. We therefore must find a
+corrected homography $\mathbf{\hat{H}}$ that allows us to compute
+\begin{equation}
+    \mathbf{\hat{P}}_\text{def} = \mathbf{\hat{H}} \, \mathbf{P}_\text{foc}
+    \label{corrected-homography-use}
+\end{equation}
+so that we can replace $\mathbf{P}_\text{def}$ with $\mathbf{\hat{P}}_\text{def}$ in
+the software, effectively correcting $\mathbf{H}$ to $\mathbf{\hat{H}}$.
+
+To efficiently extract keypoints, we combined three algorithms:
+\textsc{asift} \cite{Morel09} to deal with skew transformations; an oriented version of
+\textsc{fast}, published as part of \textsc{orb}, to detect keypoints; and
+standard \textsc{brief} as a keypoint extractor.
+
+\textsc{asift} is a method originally developed to be used with \textsc{sift}.
+It introduces invariance to affine mappings by simulating various
+projective transformations while \textsc{fast} and \textsc{brief} are run repeatedly.
+This slows the analysis down, but given the infinitude of
+possible angled camera-camera-object configurations, it is wise to maintain a
+flexible framework.
+
+We should note that the original \textsc{asift} with
+\textsc{sift} works well, but \textsc{sift} is encumbered by patents. To
+encourage vendors of imaging systems to adopt the proposed algorithms, we made
+it our goal to find a freely available replacement.
+
+Recall that the disks in the defocused image are missing from the focused image,
+rendering a registration between them impossible. It is straightforward to
+simulate the disks, however. We followed the following protocol on our focused
+images:
+\begin{enumerate}
+    \item Mask the image, blacking out all areas that are known not to contain
+        droplets.
+    \item Subtract the pixel-wise minimum or mean value taken over all images
+        taken by the camera. This step serves to black out defective hot pixels
+        on the camera's CCD and other static noise.
+    \item Erode the image, using a $3\times 3$ or $5\times 5$ kernel. This will
+        close any remaining bright pixels which are likely noise.
+    \item Locate the intensity peaks in the remaining image.
+    \item Fill a blank image with black, then draw bright circles of diameter
+        $D_\text{disk}$ onto it, centerd at the respective positions of the
+        intensity peaks detected in the focused image. (Note that simply dilating
+        the result of the previous step will not lead to circular disks.)
+\end{enumerate}
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/orb/dilation.jpg}
+    \caption{Simulating disks based on the focused image. \label{fig:making-disks}}
+\end{figure}
+
+The result of performing these operations on our sample image is shown in \figref{fig:making-disks}. We determined the disk diameter $D_\text{disk}$
+empirically from the defocused images, although it is naturally preferable to
+automate this step, e.g. using circular Hough transforms or cross-correlation
+with circular masks. There may be simpler ways of achieving the same result,
+e.g. by means of Gaussian filters, distance transforms and thresholding
+operations. However, we found the protocol described above to be quite robust to
+noise and fast enough for our application.
+
+Implementations of \textsc{orb} and \textsc{brief} are freely available through
+the OpenCV project, which provides bindings for the C++ and Python languages. We
+used these implementations to find and extract matching keypoints between our
+sample images, shown in \figref{fig:matching}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/orb/asift-matching.jpg}
+    \caption{Visualized inliers in the set of matched keypoints between the
+    mirrored simulated disks (see \figref{fig:making-disks}) and the ILIDS image. \label{fig:matching}}
+\end{figure}
+
+The matches shown in \figref{fig:matching} were found using a most basic
+method: brute-force match search, followed by a \textsc{ransac} estimation of the
+homography matrix $\mathbf{K}$ using a threshold of 10.
+
+Since the two cameras were positioned behind a beamsplitter in our setup, the
+defocused image was flipped horizontally. We therefore first mirrored it
+horizontally, using the transformation matrix
+\begin{equation*}
+    \mathbf{M}_h = \left[ \begin{array}{ccc}
+    -1 & 0 & \text{(image width)} \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+    \end{array} \right].
+\end{equation*}
+To speed up the image registration process, it can be helpful to first down-scale the
+images. To reduce an image to half of its original size, apply
+\begin{equation*}
+    \mathbf{S}_{0.5} = \left[ \begin{array}{ccc}
+    0.5 & 0 & 0 \\
+            0 & 0.5 & 0 \\
+            0 & 0 & 1
+    \end{array} \right].
+\end{equation*}
+While the above operations might not be strictly necessary, we found that they
+significantly improved the quality of the matches identified.
+If the registration algorithms mentioned above now find a homography matrix
+$\mathbf{K}$, then we can write
+\begin{equation}
+    \mathbf{K}\, \mathbf{M}_h\, \mathbf{S}_{0.5}\, \mathbf{P}_\text{foc} =
+    \mathbf{S}_{0.5} \mathbf{P}_\text{def}
+\end{equation}
+and to bring this into a form similar to \eqref{homography-definition}, 
+\begin{align}
+    \mathbf{S}_{0.5}^{-1}\, \mathbf{K}\, \mathbf{M}_h\, \mathbf{S}_{0.5}\,
+    \mathbf{P}_\text{foc} &=
+     \mathbf{S}_{0.5}^{-1}\, \mathbf{S}_{0.5} \mathbf{P}_\text{def} \\
+     &= \mathbf{P}_\text{def}
+\end{align}
+
+Finally, it turns out that Dantec's DynamicStudio software violates convention
+by placing the coordinate origin at the bottom (not top) left corner of the
+image. We must therefore pre- and post-multiply by $\mathbf{M}_v^{\pm 1}$, with
+\begin{equation*}
+    \mathbf{M}_v = \left[ \begin{array}{ccc}
+            1 & 0 & 0 \\
+    0 & -1 & \text{(image height)} \\
+            0 & 0 & 1
+    \end{array} \right],
+\end{equation*}
+to arrive at our final expression for $\mathbf{\hat{H}}$:
+\begin{equation}
+    \mathbf{\hat{H}} = \mathbf{M}_v\, \mathbf{S}_{0.5}^{-1}\, \mathbf{K}\,
+    \mathbf{M}_h\, \mathbf{S}_{0.5}\, \mathbf{M}_v^{-1}.
+\end{equation}
+Substitution of $\mathbf{\hat{H}}$ into \eqref{corrected-homography-use} yields
+$\mathbf{\hat{P}}_\text{def}$, which can be manually entered into the
+DynamicStudio software. \figref{fig:drop-calibration-corrected} illustrates
+how the use of $\mathbf{\hat{H}}$ leads to an improved alignment compared to
+\figref{fig:drop-calibration-off}. Note that a slight projective distortion
+is necessary for optimal registration, confirming that it is infeasible to restrict the homography
+to affine matrices.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=0.45\textheight]{img/orb/drop-calibration-corrected.jpg}
+    \caption{Focused camera image, after applying corrected homography
+        $\mathbf{\hat{H}}$ derived from the matched keypoints, is superimposed onto
+    defocused camera image of droplets.}
+    \label{fig:drop-calibration-corrected}
+\end{figure}
+
+\section{Removing center discrepancies with point set registration}
+\label{sec:point-set-registration}
+The keypoint matching approach described above is not applicable when a slit
+aperture was used to reduce overlap, as in the paper by Hardalupas
+\emph{et~al.}, so we will outline briefly how to use registration algorithms
+with such setups.\footnote{While slit strip images could be
+simulated over the focused image (in a procedure analogous to that illustrated
+in \figref{fig:making-disks}), the lack of overlap between them could make it
+significantly more difficult to find ``interesting'' keypoints in the simulated
+image.}
+
+Keypoints are not required, when the absence of overlap allows
+us to identify focused and defocused objects centers directly from the respective
+images and find a projection mapping between them. Indeed, Hardalupas
+\emph{et~al.} successfully registered their PIV and ILIDS images that way: using
+wavelet transforms at various frequencies, they identified the putative droplet
+centers on both focused and defocused images.  Then, using a continuous,
+single-stream monodisperse droplet generator, they estimated how the magnitude
+of the center discrepancies varied over the image.  After applying this
+empirically estimated distortion to the captured focused images, they matched each
+focused droplet to the closest defocused droplet (if one could be found within an
+subjectively chosen search distance).
+
+Although they reported good success using this method, it requires both an
+empirical estimation of the center discrepancies every time the camera is
+defocused \emph{and} a guess at the appropriate search window size. Moreover,
+mismatches are likely as the naive closest-neighbour search is not robust to
+noise. To eliminate these steps, we suggest that droplet matches be found
+directly using a robust point set registration algorithm.
+
+Since the early 1990s, computer vision researchers have accumulated an
+impressive body of work on this topic, most of it focusing either
+on rigid transformations (i.e. translation and rotation only) or non-rigid
+transformations (typically understood to include nonlinear warping). The problem
+at hand requires an algorithm able to deal with projective transforms, which
+are non-rigid but linear.
+
+The only paper known to the authors to specifically address this case is by
+\citet{Chi11}, who propose an iterative search based on image moments. Since
+image moments are an aggregate metric, they do not directly lead to a
+droplet-to-droplet correspondence. Still, closest-neighbour matches after
+application of this algorithm would likely produce results no worse than those
+found after estimating the transformation empirically.
+
+Robust non-rigid methods are also applicable in this case and deserve some
+mention. Many of them are probabilistic relaxations of the Iterative Closest
+Point algorithm, which simply searches for the least-squares-optimal rigid
+mapping. Several of these approaches were reviewed and generalized by
+\citet{Jian10}. A slightly different approach, named Coherent Point
+Drift\cite{Myronenko10}, is also highly popular and illustrated in \figref{fig:cpd}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{img/orb/pointset.eps}
+    \caption{Non-rigid variant of the Coherent Point Drift algorithm applied to
+    two point sets. Notice that the probabilistic nature of the matching creates
+robustness to unmatched points. (Image source: Wikipedia)}
+    \label{fig:cpd}
+\end{figure}
+
+We forgo at this point a documentation of the application and refer the reader to
+Hardalupas \emph{et al.}, who describe their center identification technique in
+good detail, and to the above-mentioned authors, who have published freely
+available implementations of their algorithms online.
 \chapter{Phase-Doppler\\Particle Analysis (PDPA)}
 
 \section{Optical principle}
@@ -1215,7 +1443,7 @@ See \citet{Dressler90}.
 
 \subsection{Wrongly entered parameters}
 The optical principle involves many more geometric parameters than are needed
-for the operation of IPI or laser diffraction (Malvern) devices. As a result, an
+for the operation of ILIDS or laser diffraction (Malvern) devices. As a result, an
 excellent interface and a very attentive user are required to ensure accurate
 results.
 
@@ -1241,8 +1469,14 @@ AB and AC is typically linear, and once the linear relationship has been found,
 we can find the combination of values that produces the most straight PCA and
 the most centered cluster. Let's approximate the 
 
-
-
+\chapter{Breakup of a water jet when colliding with an air jet}
+We built an angle plate like this:
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/setup/angleplate.pdf}
+    \caption{Angle plate setup}
+    \label{fig:angle-plate}
+\end{figure}
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
 \end{document}

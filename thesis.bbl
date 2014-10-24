@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{64}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -139,11 +139,17 @@ L.~Str{\"o}m.
 \newblock \emph{Review of Scientific Instruments}, 40:\penalty0 778--782, Jun
   1969.
 
+\bibitem[K{\"o}nig et~al.(1986)K{\"o}nig, Anders, and Frohn]{Konig86}
+G.~K{\"o}nig, K.~Anders, and A.~Frohn.
+\newblock A new light-scattering technique to measure the diameter of
+  periodically generated moving droplets.
+\newblock \emph{Journal of Aerosol Science}, 17:\penalty0 157--167, 1986.
+
 \bibitem[Glover et~al.(1995)Glover, Skippon, and Boyle]{Glover95}
 A.~R. Glover, S.~M. Skippon, and R.~D. Boyle.
 \newblock Interferometric laser imaging for droplet sizing: a method for
   droplet-size measurement in sparse spray systems.
-\newblock \emph{Appl Opt}, 34:\penalty0 8409--8421, Dec 1995.
+\newblock \emph{Applied Optics}, 34:\penalty0 8409--8421, Dec 1995.
 
 \bibitem[Pan et~al.(2006)Pan, Shakal, Lai, Calabria, Massoli, and Pust]{Pan06}
 G.~Pan, J.~Shakal, W.~Lai, R.~Calabria, P.~Massoli, and O.~Pust.
@@ -175,12 +181,143 @@ N.~Damaschke, H.~Nobach, and C.~Tropea.
   particle sizing techniques in fluid mechanics.
 \newblock \emph{Experiments in Fluids}, 32:\penalty0 143--152, 2002.
 
-\bibitem[Durst et~al.(1994)Durst, Tropea, and Xu]{Durst94}
-F.~Durst, C.~Tropea, and T.-H. Xu.
-\newblock The slit effect in phase doppler anemometry.
-\newblock In \emph{Modern techniques and measurements in fluid flows:
-  Proceedings of the 2nd International Conference on Fluid Dynamic Measurement
-  and Its Applications}, Oct 1994.
+\bibitem[Maeda et~al.(2002)Maeda, Akasaka, and Kawaguchi]{Maeda02}
+M.~Maeda, Y.~Akasaka, and T.~Kawaguchi.
+\newblock Improvements of the interferometric technique for simultaneous
+  measurement of droplet size and velocity vector field and its application to
+  a transient spray.
+\newblock \emph{Experiments in Fluids}, 33:\penalty0 125--134, Jun 2002.
+
+\bibitem[Damaschke et~al.(2001)Damaschke, Rasmussen, Tropea, and
+  Woite]{Damaschke01}
+N.~Damaschke, S.~Rasmussen, C.~Tropea, and A.~Woite.
+\newblock Global phase doppler technique.
+\newblock In \emph{6th International Congress on Optical Particle
+  Characterisation, Brighton, UK}, 2001.
+
+\bibitem[Qu{\'e}rel et~al.(2010)Qu{\'e}rel, Lemaitre, Brunel, Porcheron, and
+  Gr{\'e}han]{Querel10}
+A.~Qu{\'e}rel, P.~Lemaitre, M.~Brunel, E.~Porcheron, and G.~Gr{\'e}han.
+\newblock Real-time processing algorithm of global interferometric laser
+  imaging for the droplet sizing (ilids) in airborne research.
+\newblock In \emph{15th International Symposium on Applications of Laser
+  Techniques to Fluid Mechanics}, Jul 2010.
+
+\bibitem[Hardalupas et~al.(2010{\natexlab{a}})Hardalupas, Sahu, Taylor, and
+  Zarogoulidis]{Hardalupas10}
+Y.~Hardalupas, S.~Sahu, A.~M. K.~P. Taylor, and K.~Zarogoulidis.
+\newblock Simultaneous planar measurement of droplet velocity and size with gas
+  phase velocities in a spray by combined ilids and piv techniques.
+\newblock \emph{Experiments in Fluids}, 49:\penalty0 417--434,
+  2010{\natexlab{a}}.
+
+\bibitem[Hardalupas et~al.(2010{\natexlab{b}})Hardalupas, Sahu, and
+  Taylor]{Hardalupas10a}
+Y.~Hardalupas, S.~Sahu, and A.~M. K.~P. Taylor.
+\newblock Measurement of vapour concentration and droplet size and velocity in
+  an evaporative spray.
+\newblock In \emph{15th International Symposium on Applications of Laser
+  Techniques to Fluid Mechanics}, Jul 2010{\natexlab{b}}.
+
+\bibitem[Kurosawa et~al.(2002)Kurosawa, Hishida, and Maeda]{Kurosawa02}
+R.~Kurosawa, K.~Hishida, and M.~Maeda.
+\newblock Combined measurement of lif and ilids for vapor concentration and
+  droplets size and velocity in a spray.
+\newblock In \emph{11th International Symposium on Applications of Laser
+  Techniques to Fluid Mechanics, Lisbon, Portugal}, 2002.
+
+\bibitem[Harris and Stephens(1988)]{Harris88}
+C.~Harris and M.~Stephens.
+\newblock A combined corner and edge detector.
+\newblock In \emph{Procedings of the Alvey Vision Conference 1988}, pages
+  23.1--23.6, Jan 1988.
+
+\bibitem[Lowe(2004)]{Lowe04}
+D.~G. Lowe.
+\newblock Distinctive image features from scale-invariant keypoints.
+\newblock In \emph{International Journal of Computer Vision}, volume~60,
+  page~91, Nov 2004.
+
+\bibitem[Bay et~al.(2008)Bay, Ess, Tuytelaars, and Gool]{Bay08}
+H.~Bay, A.~Ess, T.~Tuytelaars, and L.~V. Gool.
+\newblock Speeded-up robust features (surf).
+\newblock \emph{Computer Vision and Image Understanding}, 110:\penalty0
+  346--359, 2008.
+
+\bibitem[Leutenegger et~al.(2011)Leutenegger, Chli, and
+  Siegwart]{Leutenegger11}
+S.~Leutenegger, M.~Chli, and R.~Y. Siegwart.
+\newblock Brisk: Binary robust invariant scalable keypoints.
+\newblock In \emph{2011 IEEE International Conference on Computer Vision
+  (ICCV)}, pages 2548--2555, 2011.
+
+\bibitem[Agrawal et~al.(2008)Agrawal, Konolige, and Blas]{Agrawal08}
+M.~Agrawal, K.~Konolige, and M.~R. Blas.
+\newblock Censure: Center surround extremas for realtime feature detection and
+  matching.
+\newblock In \emph{10th European Conference on Computer Vision}, pages
+  102--115, 2008.
+
+\bibitem[Rosten and Drummond(2005)]{Rosten05}
+E.~Rosten and T.~Drummond.
+\newblock Fusing points and lines for high performance tracking.
+\newblock In \emph{2005 IEEE International Conference on Computer Vision
+  (ICCV)}, volume~2, pages 1508--1515, 2005.
+
+\bibitem[Rublee et~al.(2011)Rublee, Rabaud, Konolige, and Bradski]{Rublee11}
+E.~Rublee, V.~Rabaud, K.~Konolige, and G.~Bradski.
+\newblock Orb: an efficient alternative to sift or surf.
+\newblock In \emph{2011 IEEE International Conference on Computer Vision
+  (ICCV)}, pages 2564--2571, Nov 2011.
+
+\bibitem[Calonder et~al.(2010)Calonder, Lepetit, Strecha, and Fua]{Calonder10}
+M.~Calonder, V.~Lepetit, C.~Strecha, and P.~Fua.
+\newblock Brief: Binary robust independent elementary features.
+\newblock In \emph{11th European Conference on Computer Vision}, volume LNCS
+  6314, pages 778--792, 2010.
+
+\bibitem[Muja and Lowe(2009)]{Muja09}
+M.~Muja and D.~G. Lowe.
+\newblock Fast approximate nearest neighbours with automatic algorithm
+  configuration.
+\newblock In \emph{International Conference on Computer Vision Theory and
+  Applications}, pages 331--340, Feb 2009.
+
+\bibitem[Fischler and Bolles(1981)]{Fischler81}
+M.~A. Fischler and R.~C. Bolles.
+\newblock Random sample consensus: A paradigm for model fitting with
+  applications to image analysis and automated cartography.
+\newblock \emph{Communications of the ACM}, 24:\penalty0 381--395, Jun 1981.
+
+\bibitem[Moisan and Stival(2004)]{Moisan04}
+L.~Moisan and B.~Stival.
+\newblock A probabilistic criterion to detect rigid point matches between two
+  images and estimate the fundamental matrix.
+\newblock \emph{International Journal of Computer Vision}, 57:\penalty0
+  201--218, 2004.
+
+\bibitem[Morel and Yu(2009)]{Morel09}
+J.-M. Morel and G.~Yu.
+\newblock Asift: a new framework for fully affine invariant image comparison.
+\newblock \emph{SIAM Journal on Imaging Sciences}, 2:\penalty0 438--469, 2009.
+
+\bibitem[Chi et~al.(2011)Chi, Ho, and Yang]{Chi11}
+Y.-T. Chi, J.~Ho, and M.-H. Yang.
+\newblock A direct method for estimating planar projective transform.
+\newblock In \emph{10th Asian Conference on Computer Vision}, pages 268--281,
+  2011.
+
+\bibitem[Jian and Vemuri(2010)]{Jian10}
+B.~Jian and B.~C. Vemuri.
+\newblock Robust point set registration using gaussian mixture models.
+\newblock \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, Dec 2010.
+
+\bibitem[Myronenko and Song(2010)]{Myronenko10}
+A.~Myronenko and X.~Song.
+\newblock Point set registration: coherent point drift.
+\newblock \emph{IEEE transactions on pattern analysis and machine
+  intelligence}, 32:\penalty0 2262--2275, Dec 2010.
 
 \bibitem[Saffman(1986)]{Saffman86}
 M.~Saffman.
@@ -244,6 +381,13 @@ A.~Naqwi and R.~Menon.
 \newblock In \emph{Proceedings of the 7\textsuperscript{th} International
   Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
   Portugal}, pages 340--353, 1994.
+
+\bibitem[Durst et~al.(1994)Durst, Tropea, and Xu]{Durst94}
+F.~Durst, C.~Tropea, and T.-H. Xu.
+\newblock The slit effect in phase doppler anemometry.
+\newblock In \emph{Modern techniques and measurements in fluid flows:
+  Proceedings of the 2nd International Conference on Fluid Dynamic Measurement
+  and Its Applications}, Oct 1994.
 
 \bibitem[Qiu and Hsu(1999)]{Qiu99}
 H.~Qiu and C.~T. Hsu.
