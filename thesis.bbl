@@ -1,4 +1,4 @@
-\begin{thebibliography}{64}
+\begin{thebibliography}{69}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -318,6 +318,38 @@ A.~Myronenko and X.~Song.
 \newblock Point set registration: coherent point drift.
 \newblock \emph{IEEE transactions on pattern analysis and machine
   intelligence}, 32:\penalty0 2262--2275, Dec 2010.
+
+\bibitem[Doppler(1842)]{Doppler42}
+C.~Doppler.
+\newblock {\"U}ber das farbige licht der doppelsterne und einiger anderer
+  gestirne des himmels.
+\newblock \emph{Abhandlungen der k. b{\"o}hm. Gesellschaft der Wissenschaften},
+  5:\penalty0 465--482, 1842.
+
+\bibitem[Whiton et~al.(1998)Whiton, Smith, Bigler, Wilk, and Harbuck]{Whiton98}
+R.~C. Whiton, P.~L. Smith, S.~G. Bigler, K.~E. Wilk, and A.~C. Harbuck.
+\newblock History of operational use of weather radar by u.s. weather services.
+  part ii: Development of operational doppler weather radars.
+\newblock \emph{Weather and Forecasting}, 13:\penalty0 244--252, 1998.
+
+\bibitem[Yeh and Cummins(1964)]{Yeh64}
+Y.~Yeh and H.~Z. Cummins.
+\newblock Localized fluid flow measurements with an he-ne laser spectrometer.
+\newblock \emph{Applied Physics Letters}, 4:\penalty0 176--178, May 1964.
+
+\bibitem[{Durst} and {Zare}(1976)]{Durst76}
+F.~{Durst} and M.~{Zare}.
+\newblock {Laser Doppler measurements in two-phase flows}.
+\newblock In P.~{Buchhave}, J.~M. {Delhaye}, F.~{Durst}, W.~K. {George},
+  K.~{Refslund}, and J.~H. {Whitelaw}, editors, \emph{The Accuracy of Flow
+  Measurements by Laser Doppler Methods, Proceedings of the LDA-Symposium '95,
+  Copenhagen, Denmark}, pages 403--429, 1976.
+
+\bibitem[Wigley(1978)]{Wigley78}
+G.~Wigley.
+\newblock The sizing of large droplets by laser anemometry.
+\newblock \emph{Journal of Physics E: Scientific Instruments}, 11:\penalty0
+  639--642, 1978.
 
 \bibitem[Saffman(1986)]{Saffman86}
 M.~Saffman.

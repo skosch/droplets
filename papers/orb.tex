@@ -114,7 +114,7 @@ P_x & P_y & S_0
 \left[ \begin{array}{c} x\\ y \\ 1 \end{array} \right].
 \end{equation}
 
-The calibration algorithm thus finds the camera matrices
+The camera calibration algorithm thus finds the camera matrices
 $\mathbf{P}_\text{foc}$ and $\mathbf{P}_\text{def}$ mapping the
 object coordinates $\mathbf{x}$ onto the two camera images
 $\mathbf{x}_\text{foc}'$ and $\mathbf{x}_\text{def}'$ (the respective 
@@ -135,7 +135,7 @@ can be used to map the focused image onto the defocused image, as shown in FIG.~
     \label{homography-definition}
 \end{equation}
 
-Unfortunately, the calibration procedure itself introduces an unwanted
+Unfortunately, the camera calibration procedure itself introduces an unwanted
 distortion: to capture a viable photo of the target pattern, the defocused
 camera must be temporarily brought into focus, as was done in
 FIG. \ref{fig:plate-calibration}. This is not mentioned e.g. in the
@@ -185,7 +185,7 @@ enabled them to improve the accuracy of their nearest-neighbour-based droplet
 image matching algorithm.
 
 In this article, we show that existing algorithms developed by the computer
-vision community in recent years can obviate the need for calibration entirely.
+vision community in recent years can obviate the need for camera calibration entirely.
 Instead, we can use visual correspondences between the focused and defocused
 images to find the mapping between them directly. To that end, we first provide
 in Section \ref{sec:review} a brief overview over popular methods in the field of automated (linear)

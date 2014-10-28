@@ -32,7 +32,7 @@ itemsep=-1pt}
 \newcommand*{\Phat}{\hat{\vphantom{\scalebox{1.2}{P}} P}}
 
 % line spacing
-\linespread{1.25}
+\linespread{1.35}
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
 \setlength{\textwidth}{380pt}
@@ -61,9 +61,10 @@ itemsep=-1pt}
 \parskip 0pt
 %\usepackage{xunicode}
 \begin{document}
-\title{Experimental verification\\ of the ILIDS sizing technique}
+\title{Calibration of ILIDS and PDPA droplet sizing systems and their
+application to the breakup of impacting water and air jets}
 \author{Sebastian Kosch, University of Toronto}
-\date{July 2014}
+\date{2015}
 \maketitle
 
 \printnomenclature[5em]
@@ -85,7 +86,10 @@ itemsep=-1pt}
 \section{PDPA system}
     - TSI system
 
-    \chapter[Monodisperse droplet generation]{Monodisperse\\droplet generation}
+\chapter{Mie scattering}
+Some stuff on scattering.
+
+\chapter[Monodisperse droplet generation]{Monodisperse\\droplet generation}
 \label{sec:droplet-generator}
 
 To calibrate any droplet sizing device, we need droplets of known and uniform
@@ -1390,10 +1394,72 @@ We forgo at this point a documentation of the application and refer the reader t
 Hardalupas \emph{et al.}, who describe their center identification technique in
 good detail, and to the above-mentioned authors, who have published freely
 available implementations of their algorithms online.
-\chapter{Phase-Doppler\\Particle Analysis (PDPA)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%% PDPA %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter[Phase-Doppler Particle Analysis]{Phase-Doppler\\Particle Analysis (PDPA)}
+Phase-Doppler anemometry and droplet sizing techniques are based on the
+far-field intensity fluctuations in the laser light scattered by passing
+droplets. Unlike ILIDS, however, PDPA uses intersecting laser beams (instead of
+a laser sheet) to illuminate the droplets. Whereas ILIDS \emph{images} the
+infringement pattern cast by the glare points on the illuminated droplet, PDPA
+measures the fringe spacings indirectly by relating them to the phase difference 
+between the signals recorded by a pair of adjacent detectors. 
+
+\citet{Doppler42} suggested in 1842 that the slight differences in wavelength between
+the colours of various stars could be used to determine the stars' velocities relative to
+Earth. A century later, military radar operators during World War II realized that the Doppler
+effect could be exploited to estimate target velocities using their radar
+systems. Soon, meteorologists had adopted the technology to measure wind speeds
+\cite{Whiton98}. The flurry of activity around Doppler measurements in the
+ensuing years produced the first laser-based particle anemometry system,
+designed in 1964 by \citet{Yeh64}, and several novel beam-detector
+configurations have been proposed since. Among them are the popular dual-beam
+configurations, constitutiting a departure from the original reference beam
+systems which can be more difficult to align. A exemplary dual-beam setup is
+shown in \figref{fig:pdpa-setup}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{img/setup/pdpa_setup.pdf}
+    \caption{Typical commercial PDPA configuration using transmitter and
+        receiver probes \label{fig:pdpa-setup}}
+\end{figure}
+
+Laser-Doppler anemometry (LDA, also known as laser-Doppler velocimetry or LDV)
+provides velocity measurements only. The 1970s saw the discovery that the fringe
+patterns cast by the scattered light could be analyzed to yield size information
+\cite{Durst76, Wigley78}. This technique is now widely used and often
+integrated into the detecting and processing hardware of commercial LDA systems,
+typically under the name of phase-Doppler Anemometry (PDA) or phase-Doppler
+particle analysis (PDPA).
+
+PDPA can be used to ascertain droplet size distributions with a very high
+precision. Nevertheless, its accuracy hinges on the knowledge of a large number
+of distances, angles and voltages. A single erroneous one of them will throw
+off the result, leaving the operator none the wiser. We shall therefore discuss
+briefly the various sources of error in this chapter, and provide some pointers
+to their resolution. The focus is on measurements of size, not velocity.
 
 \section{Optical principle}
-(Explanation)
+Mie scattering, described in \secref{sec:mie-scattering}, 
+The two beams, coming from top and bottom, create two glare points at 30 deg (30
+deg off-angle). The two glare points cause a moving pattern of dark and bright
+fringes. The pattern is picked up by both receivers, both of which record a
+modulated sinusoid as the droplet falls past them.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/setup/pdpa_moire.pdf}
+    \caption{Moiré-style visualization of the interference pattern cast by the
+    two glare points. Left: glare points on small particles are close, resulting
+in wide fringes. The signals recorded by detectors A and B are shifted in time
+by a phase difference $\Delta \Phi_{AB}$, which is due to the detectors' known
+separation in space. Right: glare points on larger particles are farther apart,
+resulting in narrower fringes and a larger phase difference.
+\label{fig:pdpa-moire}}
+\end{figure}
 
 \section{Sources of error}
 \subsection{Gaussian beam divergence}

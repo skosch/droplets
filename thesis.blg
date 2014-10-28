@@ -31,45 +31,45 @@ Warning--I didn't find a database entry for "Strakey01"
 Warning--empty publisher in Le98
 Warning--empty year in Le98
 Warning--empty year in Le98
-You've used 64 entries,
+You've used 69 entries,
             2751 wiz_defined-function locations,
-            1038 strings with 17081 characters,
-and the built_in function-call counts, 25779 in all, are:
-= -- 2238
-> -- 1164
-< -- 54
-+ -- 459
-- -- 330
-* -- 1923
-:= -- 3918
-add.period$ -- 195
-call.type$ -- 64
-change.case$ -- 124
-chr.to.int$ -- 63
-cite$ -- 67
-duplicate$ -- 1374
-empty$ -- 2471
-format.name$ -- 448
-if$ -- 5608
+            1073 strings with 18144 characters,
+and the built_in function-call counts, 27911 in all, are:
+= -- 2426
+> -- 1261
+< -- 59
++ -- 497
+- -- 358
+* -- 2081
+:= -- 4246
+add.period$ -- 210
+call.type$ -- 69
+change.case$ -- 134
+chr.to.int$ -- 68
+cite$ -- 72
+duplicate$ -- 1481
+empty$ -- 2671
+format.name$ -- 485
+if$ -- 6068
 int.to.chr$ -- 2
-int.to.str$ -- 65
-missing$ -- 64
-newline$ -- 328
-num.names$ -- 194
-pop$ -- 576
+int.to.str$ -- 70
+missing$ -- 69
+newline$ -- 353
+num.names$ -- 211
+pop$ -- 616
 preamble$ -- 1
-purify$ -- 64
+purify$ -- 69
 quote$ -- 0
-skip$ -- 824
+skip$ -- 892
 stack$ -- 0
-substring$ -- 1354
-swap$ -- 294
-text.length$ -- 17
+substring$ -- 1492
+swap$ -- 315
+text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 439
+type$ -- 474
 warning$ -- 3
-while$ -- 222
+while$ -- 243
 width$ -- 0
-write$ -- 832
+write$ -- 897
 (There were 6 error messages)

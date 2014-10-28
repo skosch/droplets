@@ -6,7 +6,7 @@
 %Control: page (0) single
 %Control: year (1) truncated
 %Control: production of eprint (0) enabled
-\begin{thebibliography}{26}%
+\begin{thebibliography}{27}%
 \makeatletter
 \providecommand \@ifxundefined [1]{%
  \@ifx{#1\undefined}
@@ -265,6 +265,13 @@
   }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {SIAM Journal on
   Imaging Sciences}\ }\textbf {\bibinfo {volume} {2}},\ \bibinfo {pages} {438}
   (\bibinfo {year} {2009})}\BibitemShut {NoStop}%
+\bibitem [{Note1()}]{Note1}%
+  \BibitemOpen
+  \bibinfo {note} {While slit strip images could be simulated over the focused
+  image (in a procedure analogous to that illustrated in FIG. \ref
+  {fig:making-disks}), the lack of overlap between them could make it
+  significantly more difficult to find ``interesting'' keypoints in the
+  simulated image.}\BibitemShut {Stop}%
 \bibitem [{\citenamefont {Chi}, \citenamefont {Ho},\ and\ \citenamefont
   {Yang}(2011)}]{Chi11}%
   \BibitemOpen
