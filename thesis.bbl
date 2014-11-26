@@ -1,9 +1,32 @@
-\begin{thebibliography}{69}
+\begin{thebibliography}{74}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Albrecht et~al.(2003)Albrecht, Borys, Damaschke, and
+  Tropea]{Albrecht03}
+H.-E. Albrecht, M.~Borys, N.~Damaschke, and C.~Tropea.
+\newblock \emph{Laser Doppler and Phase Doppler Measurement Techniques}.
+\newblock Springer, 2003.
+
+\bibitem[Hecht(2002)]{Hecht02}
+E.~Hecht.
+\newblock \emph{Optics}.
+\newblock Addison-Wesley Longman, Incorporated, 2002.
+\newblock ISBN 9780805385663.
+\newblock URL \url{http://books.google.ca/books?id=7aG6QgAACAAJ}.
+
+\bibitem[van~de Hulst(2012)]{Vandehulst12}
+H.~van~de Hulst.
+\newblock \emph{Light Scattering by Small Particles}.
+\newblock Dover Books on Physics. Dover Publications, 2012.
+
+\bibitem[Ng(2000)]{Ng00}
+L.~N. Ng.
+\newblock \emph{Manipulation of Particles On Optical Waveguides}.
+\newblock PhD thesis, University of Southampton, September 2000.
 
 \bibitem[Walton and Prewett(1949)]{Walton49}
 W.~H. Walton and W.~C. Prewett.
@@ -157,11 +180,6 @@ G.~Pan, J.~Shakal, W.~Lai, R.~Calabria, P.~Massoli, and O.~Pust.
   sprays.
 \newblock \emph{Spray '06 -- Workshop {\"u}ber Sprays, Erfassung von
   Spr{\"u}hvorg{\"a}ngen und Techniken der Fluidzerst{\"a}ubung}, 2006.
-
-\bibitem[van~de Hulst(2012)]{Vandehulst12}
-H.~van~de Hulst.
-\newblock \emph{Light Scattering by Small Particles}.
-\newblock Dover Books on Physics. Dover Publications, 2012.
 
 \bibitem[Kawaguchi et~al.(2002)Kawaguchi, Akasaka, and Maeda]{Kawaguchi02}
 T.~Kawaguchi, Y.~Akasaka, and M.~Maeda.
@@ -351,6 +369,19 @@ G.~Wigley.
 \newblock \emph{Journal of Physics E: Scientific Instruments}, 11:\penalty0
   639--642, 1978.
 
+\bibitem[Thyagarajan and Ghatak(2010)]{Thyagarajan10}
+K.~Thyagarajan and A.~Ghatak.
+\newblock \emph{Lasers: Fundamentals and Applications}.
+\newblock Graduate Texts in Physics. Springer, 2010.
+
+\bibitem[Naqwi and Menon(1994)]{Naqwi96}
+A.~Naqwi and R.~Menon.
+\newblock A rigorous procedure for design and response determination of phase
+  doppler systems.
+\newblock In \emph{Proceedings of the 7\textsuperscript{th} International
+  Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
+  Portugal}, pages 340--353, 1994.
+
 \bibitem[Saffman(1986)]{Saffman86}
 M.~Saffman.
 \newblock The use of polarized light for optical particle sizing.
@@ -406,14 +437,6 @@ G.~Gouesbet and G.~Gréhan.
   J.~Whitelaw, editors, \emph{Developments in Laser Techniques and Applications
   to Fluid Mechanics}, pages 243--259. Springer Berlin Heidelberg, 1996.
 
-\bibitem[Naqwi and Menon(1994)]{Naqwi96}
-A.~Naqwi and R.~Menon.
-\newblock A rigorous procedure for design and response determination of phase
-  doppler systems.
-\newblock In \emph{Proceedings of the 7\textsuperscript{th} International
-  Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
-  Portugal}, pages 340--353, 1994.
-
 \bibitem[Durst et~al.(1994)Durst, Tropea, and Xu]{Durst94}
 F.~Durst, C.~Tropea, and T.-H. Xu.
 \newblock The slit effect in phase doppler anemometry.
@@ -435,12 +458,20 @@ C.~M. Sipperley and W.~D. Bachalo.
 \newblock In \emph{17th International Symposium on Applications of Laser
   Techniques to Fluid Mechanics, Lisbon, Portugal}, Jul 2014.
 
-\bibitem[Strakey et~al.(2000)Strakey, Talley, Sankar, and Bachalo]{Strakey00}
+\bibitem[Strakey et~al.(2000{\natexlab{a}})Strakey, Talley, Sankar, and
+  Bachalo]{Strakey00}
 P.~A. Strakey, D.~G. Talley, S.~V. Sankar, and W.~D. Bachalo.
 \newblock {Phase Doppler Interferometry with Probe-to-Droplet Size Ratios Less
   Than Unity. Part I: Trajectory Errors}.
 \newblock \emph{Applied Optics}, 39\penalty0 (22):\penalty0 3875--3886, Aug
-  2000.
+  2000{\natexlab{a}}.
+
+\bibitem[Strakey et~al.(2000{\natexlab{b}})Strakey, Talley, Sankar, and
+  Bachalo]{Strakey00a}
+P.~A. Strakey, D.~G. Talley, S.~V. Sankar, and W.~D. Bachalo.
+\newblock Phase-doppler interferometry with probe-to-droplet size ratios less
+  than unity. part ii. application of the technique.
+\newblock \emph{Appl Opt}, 39:\penalty0 3887--3893, Aug 2000{\natexlab{b}}.
 
 \bibitem[Davis and Disimile(2004)]{Davis04}
 J.~M. Davis and P.~J. Disimile.

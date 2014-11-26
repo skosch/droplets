@@ -4,20 +4,22 @@
 %\usepackage[numbers]{natbib}
 \usepackage{graphicx}
 \begin{document}
-\title{An inexpensive vibrating orifice monodisperse droplet generator using a hard
+\title{A simple vibrating orifice monodisperse droplet generator using a hard
 drive actuator arm}
 \author{Sebastian Kosch and Nasser Ashgriz}
 \email{\{skosch,ashgriz\}@mie.utoronto.ca}
 \affiliation{Department of Industrial and Mechanical Engineering, University of
 Toronto}
 \begin{abstract}
-    We propose that the voice coil actuators found in magnetic hard drives are
+    We propose that the rotary voice coil actuators found in magnetic hard drives are
     fit to supercede loudspeakers as vibration sources in the laboratory setting. A
     specific use case is the excitation of a liquid jet to induce controlled
-    breakup into monodisperse droplets. Like speakers, hard drive actuators are cheap and
-    ubiquitous, but they are less unwieldy and offer greater amplitudes without
-    producing noise. No machining tools or amplifying electronics
-    are needed for the construction and operation of the presented droplet generator.
+    breakup into monodisperse droplets. Like loudspeakers, which are typically
+    used, hard drive actuators are cheap and ubiquitous, but they are less
+    unwieldy and supply greater amplitudes without producing noise. Frequencies
+    between 0 and 17 kHz, and likely beyond, can be reproduced reliably. No machining
+    tools or amplifying electronics are needed for the construction and
+    operation of the presented droplet generator.
 \end{abstract}
 \maketitle
 \section{Introduction}
@@ -63,9 +65,9 @@ precision oscillation needs:
 
 \begin{figure}
 \centering
-\includegraphics[width=0.42\textwidth]{hdg_images/designpicture.jpg}
+\includegraphics[width=0.42\textwidth]{hdg_images/designpicture.eps}
 \caption{The fully assembled droplet generator. Nozzle is shown as inserted
-through actuator arm. \label{fig:photo}}
+through one of the holes in the actuator arm. \label{fig:photo}}
 \end{figure}
 
 \paragraph*{Very low cost.} With high-capacity and solid-state devices rapidly pushing older hard drives
@@ -108,11 +110,16 @@ is mounted at the tip of an arm that pivots across the platter surface while the
 platter spins. This setup allows the head to access the entire platter surface.
 
 FIG.~\ref{fig:designschematic} illustrates schematically the design of a typical
-actuator arm assembly. The flat voice coil mounted on the surface is responsible
+rotary actuator arm assembly. The flat voice coil mounted on the surface is responsible
 for the arm's side-to-side movement: as it is positioned under a permanent
-magnet, the coil creates a sideward force when a current flows through its
-wires. By stopping or reversing the current the arm's motion is likewise stopped
-or reversed. Since a typical hard drive's platter spins at up to $7200\,$RPM,
+magnet, the coil creates a sideward force (\emph{Lorenz} or \emph{Laplace}
+force) when a current flows through its wires. The force is aligned with the
+cross product of the current direction and the magnetic field lines. By stopping
+or reversing the current, the arm's motion is likewise stopped or reversed. An
+applied sinusoid signal can thus be used to make the arm oscillate laterally at
+the desired frequency.
+
+Since a typical hard drive's platter spins at up to $7200\,$RPM,
 actuator arms must be able to move with extreme speed and precision. They are
 thus engineered to be very light yet stiff. These characteristics make a
 magnetic hard drive's actuator arm an ideal supplier of in-plane vibrations.
@@ -123,8 +130,7 @@ become so widely available.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{hdg_images/needles.png}
-\includegraphics[width=0.35\textwidth]{hdg_images/needletips.png}
+\includegraphics[width=0.4\textwidth]{hdg_images/needlescombo.eps}
 \caption{Above: assembly of nozzle from
 low-gauge hypodermic syringe (Luer fitting) and capillary. Below: nozzle tip
 fabrication, capillary from left to right: broken, sanded, heated in a flame (I.D.
@@ -153,7 +159,7 @@ they are integrated in a ribbon you wish to remove, ensure that exposed
 terminals remain onto which you can solder new leads.
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{hdg_images/dropletgenerator_exploded.pdf}
+\includegraphics[width=0.4\textwidth]{hdg_images/dge.eps}
 \caption{Top view of a hard drive and exploded view of the cut-out base
 plate, actuator arm, axis, and magnet assembly. \label{fig:designschematic}}
 \end{figure}
@@ -208,10 +214,10 @@ at the same angle.\cite{Strom69}
 
 Note also that the orifice diameter $D_o$ dictates the range of viable
 frequencies $f$ as 
-\begin{equation*}
+\begin{equation}
     3.5 \lesssim \frac{Q}{\pi f \left(\frac{D_o}{2}\right)^2}
 \lesssim 7,
-\end{equation*}
+\end{equation}
 where $Q$ is the flow rate.\cite{Savart33, Rayleigh79} In
 practice, $D_o$ need not be
 precisely determined; it is easy to find appropriate settings for $Q$
@@ -223,7 +229,7 @@ tedious as the droplets become very small.
 
 Under stable conditions, every oscillation of the nozzle will produce one droplet
 downstream,\cite{Rayleigh79} such that the droplet diameter will be 
-\begin{equation*}D_d = \sqrt[3]{6Q/(\pi f)}.\end{equation*} This can be verified photographically, as shown in
+\begin{equation}D_d = \sqrt[3]{6Q/(\pi f)}.\end{equation} This can be verified photographically, as shown in
 FIG.~\ref{fig:dropphoto}.
 
 \section{Conclusion}

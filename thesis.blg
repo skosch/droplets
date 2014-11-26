@@ -3,73 +3,76 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 The style file: myplainnat.bst
 Database file #1: bibliography.bib
-Repeated entry---line 293 of file bibliography.bib
+Repeated entry---line 303 of file bibliography.bib
  : @article{Pan06
  :               ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 300 of file bibliography.bib
+Repeated entry---line 310 of file bibliography.bib
  : @inproceedings{Damaschke01
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 313 of file bibliography.bib
+Repeated entry---line 323 of file bibliography.bib
  : @article{Damaschke02
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 379 of file bibliography.bib
+Repeated entry---line 343 of file bibliography.bib
+ : @book{Albrecht03
+ :                 ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 389 of file bibliography.bib
  : @article{Querel10
  :                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 403 of file bibliography.bib
+Repeated entry---line 413 of file bibliography.bib
  : @article{Kawaguchi02
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 416 of file bibliography.bib
+Repeated entry---line 426 of file bibliography.bib
  : @article{Glover95
  :                  ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "Strakey01"
 Warning--empty publisher in Le98
 Warning--empty year in Le98
 Warning--empty year in Le98
-You've used 69 entries,
+You've used 74 entries,
             2751 wiz_defined-function locations,
-            1073 strings with 18144 characters,
-and the built_in function-call counts, 27911 in all, are:
-= -- 2426
-> -- 1261
-< -- 59
-+ -- 497
-- -- 358
-* -- 2081
-:= -- 4246
-add.period$ -- 210
-call.type$ -- 69
-change.case$ -- 134
-chr.to.int$ -- 68
-cite$ -- 72
-duplicate$ -- 1481
-empty$ -- 2671
-format.name$ -- 485
-if$ -- 6068
-int.to.chr$ -- 2
-int.to.str$ -- 70
-missing$ -- 69
-newline$ -- 353
-num.names$ -- 211
-pop$ -- 616
+            1100 strings with 18839 characters,
+and the built_in function-call counts, 29548 in all, are:
+= -- 2562
+> -- 1344
+< -- 62
++ -- 532
+- -- 382
+* -- 2200
+:= -- 4522
+add.period$ -- 228
+call.type$ -- 74
+change.case$ -- 140
+chr.to.int$ -- 72
+cite$ -- 77
+duplicate$ -- 1572
+empty$ -- 2820
+format.name$ -- 516
+if$ -- 6410
+int.to.chr$ -- 3
+int.to.str$ -- 75
+missing$ -- 76
+newline$ -- 380
+num.names$ -- 226
+pop$ -- 661
 preamble$ -- 1
-purify$ -- 69
+purify$ -- 74
 quote$ -- 0
-skip$ -- 892
+skip$ -- 937
 stack$ -- 0
-substring$ -- 1492
-swap$ -- 315
+substring$ -- 1533
+swap$ -- 329
 text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 474
+type$ -- 500
 warning$ -- 3
-while$ -- 243
+while$ -- 255
 width$ -- 0
-write$ -- 897
-(There were 6 error messages)
+write$ -- 964
+(There were 7 error messages)

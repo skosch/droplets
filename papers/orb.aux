@@ -1,6 +1,11 @@
 \relax 
+\emailauthor{skosch@mie.utoronto.ca}{Sebastian~Kosch}
+\emailauthor{ashgriz@mie.utoronto.ca}{Nasser Ashgriz\corref {cor1}}
 \citation{Konig86}
 \citation{Glover95}
+\Newlabel{cor1}{1}
+\Newlabel{mie}{a}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}}
 \citation{Damaschke02}
 \citation{Pan06}
 \citation{Kawaguchi02,Maeda02}
@@ -8,23 +13,21 @@
 \citation{Querel10}
 \citation{Hardalupas10a}
 \citation{Hardalupas10}
-\newlabel{FirstPage}{{}{1}{}{}{}}
-\@writefile{toc}{\contentsline {title}{Eliminating center discrepancies between simultaneously captured ILIDS and PIV images by means of direct homography estimation}{1}{}}
-\@writefile{toc}{\contentsline {abstract}{Abstract}{1}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A}Camera calibration and center discrepancies}{1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Camera calibration and center discrepancies}{2}}
 \citation{Hardalupas10}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Homography $\mathbf  {H}$ applied to target pattern image captured by the focused camera and superimposed on the image captured by the defocused camera (here, both cameras were in focus for the calibration only). }}{3}}
+\newlabel{fig:plate-calibration}{{1}{3}}
+\newlabel{homography-definition}{{6}{3}}
 \citation{Hardalupas10a}
 \citation{Hardalupas10}
 \citation{Kurosawa02}
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Homography $\mathbf  {H}$ applied to target pattern image captured by the focused camera and superimposed on the image captured by the defocused camera (here, both cameras were in focus for the calibration only). }}{2}{}}
-\newlabel{fig:plate-calibration}{{1}{2}{}{}{}}
-\newlabel{homography-definition}{{6}{2}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Schematic showing the source of center discrepancies in the case of parallel image and object planes }}{2}{}}
-\newlabel{fig:discrepancy}{{2}{2}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Focused camera image, after applying homography $\mathbf  {H}$ derived from the calibration images, is superimposed onto defocused camera image of droplets. Discrepancies between object centers grow towards the edge of the image.}}{2}{}}
-\newlabel{fig:drop-calibration-off}{{3}{2}{}{}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B}Context and structure of this paper}{2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Schematic showing the source of center discrepancies in the case of parallel image and object planes }}{4}}
+\newlabel{fig:discrepancy}{{2}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Context and structure of this paper}{4}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Focused camera image, after applying homography $\mathbf  {H}$ derived from the calibration images, is superimposed onto defocused camera image of droplets. Discrepancies between object centers grow towards the edge of the image.}}{5}}
+\newlabel{fig:drop-calibration-off}{{3}{5}}
+\newlabel{sec:review}{{2}{5}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Review of image registration techniques }{5}}
 \citation{Harris88}
 \citation{Lowe04}
 \citation{Bay08}
@@ -36,57 +39,51 @@
 \citation{Muja09}
 \citation{Fischler81}
 \citation{Moisan04}
+\citation{dstudio}
+\newlabel{sec:results}{{3}{6}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Using affine oriented FAST, BRIEF and RANSAC to estimate the homography between PIV and ILIDS photographs }{6}}
 \citation{Morel09}
-\newlabel{sec:review}{{II}{3}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {II}Review of image registration techniques }{3}{}}
-\newlabel{sec:results}{{III}{3}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {III}Using affine oriented \textsc  {fast}, \textsc  {brief} and \textsc  {ransac} to estimate the homography between PIV and ILIDS photographs }{3}{}}
-\newlabel{corrected-homography-use}{{7}{3}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Simulating disks based on the focused image. }}{4}{}}
-\newlabel{fig:making-disks}{{4}{4}{}{}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Visualized inliers in the set of matched keypoints between the mirrored simulated disks (see FIG. 4{}{}{}\hbox {}) and the ILIDS image. }}{4}{}}
-\newlabel{fig:matching}{{5}{4}{}{}{}}
-\citation{Note1}
+\newlabel{corrected-homography-use}{{7}{7}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Simulating disks based on the focused image. }}{8}}
+\newlabel{fig:making-disks}{{4}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Visualized inliers in the set of matched keypoints between the mirrored simulated disks (see Fig. 4\hbox {}) and the ILIDS image. }}{8}}
+\newlabel{fig:matching}{{5}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Focused camera image, after applying corrected homography $\mathbf  {\mathaccentV {hat}05E{H}}$ derived from the matched keypoints, is superimposed onto defocused camera image of droplets.}}{9}}
+\newlabel{fig:drop-calibration-corrected}{{6}{9}}
 \citation{Chi11}
 \citation{Jian10}
 \citation{Myronenko10}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Focused camera image, after applying corrected homography $\mathbf  {\mathaccentV {hat}05E{H}}$ derived from the matched keypoints, is superimposed onto defocused camera image of droplets.}}{5}{}}
-\newlabel{fig:drop-calibration-corrected}{{6}{5}{}{}{}}
-\newlabel{sec:pointset}{{IV}{5}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Point set registration between droplet centers from two images}{5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Non-rigid variant of the Coherent Point Drift algorithm applied to two point sets. Notice that the probabilistic nature of the matching creates robustness to unmatched points. (Image source: Wikipedia)}}{5}{}}
-\newlabel{fig:cpd}{{7}{5}{}{}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {V}Conclusion}{5}{}}
-\bibdata{orbNotes,orbbibliography}
-\bibcite{Konig86}{{1}{1986}{{K{\"o}nig, Anders,\ and\ Frohn}}{{}}}
-\bibcite{Glover95}{{2}{1995}{{Glover, Skippon,\ and\ Boyle}}{{}}}
-\bibcite{Damaschke02}{{3}{2002}{{Damaschke, Nobach,\ and\ Tropea}}{{}}}
-\bibcite{Pan06}{{4}{2006}{{Pan\ \emph  {et~al.}}}{{Pan, Shakal, Lai, Calabria, Massoli,\ and\ Pust}}}
-\bibcite{Kawaguchi02}{{5}{2002}{{Kawaguchi, Akasaka,\ and\ Maeda}}{{}}}
-\bibcite{Maeda02}{{6}{2002}{{Maeda, Akasaka,\ and\ Kawaguchi}}{{}}}
-\bibcite{Damaschke01}{{7}{2001}{{Damaschke\ \emph  {et~al.}}}{{Damaschke, Rasmussen, Tropea,\ and\ Woite}}}
-\bibcite{Querel10}{{8}{2010}{{Qu{\'e}rel\ \emph  {et~al.}}}{{Qu{\'e}rel, Lemaitre, Brunel, Porcheron,\ and\ Gr{\'e}han}}}
-\bibcite{Hardalupas10a}{{9}{2010}{{Hardalupas, Sahu,\ and\ Taylor}}{{}}}
-\bibcite{Hardalupas10}{{10}{2010}{{Hardalupas\ \emph  {et~al.}}}{{Hardalupas, Sahu, Taylor,\ and\ Zarogoulidis}}}
-\bibcite{Kurosawa02}{{11}{2002}{{Kurosawa, Hishida,\ and\ Maeda}}{{}}}
-\bibcite{Harris88}{{12}{1988}{{Harris\ and\ Stephens}}{{}}}
-\bibcite{Lowe04}{{13}{2004}{{Lowe}}{{}}}
-\bibcite{Bay08}{{14}{2008}{{Bay\ \emph  {et~al.}}}{{Bay, Ess, Tuytelaars,\ and\ Gool}}}
-\bibcite{Leutenegger11}{{15}{2011}{{Leutenegger, Chli,\ and\ Siegwart}}{{}}}
-\bibcite{Agrawal08}{{16}{2008}{{Agrawal, Konolige,\ and\ Blas}}{{}}}
-\bibcite{Rosten05}{{17}{2005}{{Rosten\ and\ Drummond}}{{}}}
-\bibcite{Rublee11}{{18}{2011}{{Rublee\ \emph  {et~al.}}}{{Rublee, Rabaud, Konolige,\ and\ Bradski}}}
-\bibcite{Calonder10}{{19}{2010}{{Calonder\ \emph  {et~al.}}}{{Calonder, Lepetit, Strecha,\ and\ Fua}}}
-\bibcite{Muja09}{{20}{2009}{{Muja\ and\ Lowe}}{{}}}
-\bibcite{Fischler81}{{21}{1981}{{Fischler\ and\ Bolles}}{{}}}
-\bibcite{Moisan04}{{22}{2004}{{Moisan\ and\ Stival}}{{}}}
-\bibcite{Morel09}{{23}{2009}{{Morel\ and\ Yu}}{{}}}
-\bibcite{Note1}{{24}{}{{Note1}}{{}}}
-\bibcite{Chi11}{{25}{2011}{{Chi, Ho,\ and\ Yang}}{{}}}
-\bibcite{Jian10}{{26}{2010}{{Jian\ and\ Vemuri}}{{}}}
-\bibcite{Myronenko10}{{27}{2010}{{Myronenko\ and\ Song}}{{}}}
-\bibstyle{aipnum4-1}
-\citation{REVTEX41Control}
-\citation{aip41Control}
-\newlabel{LastBibItem}{{27}{6}{}{}{}}
-\newlabel{LastPage}{{}{6}{}{}{}}
+\newlabel{sec:pointset}{{4}{10}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Point set registration between droplet centers from two images}{10}}
+\bibstyle{elsarticle-harv}
+\bibdata{orbbibliography}
+\bibcite{Agrawal08}{{1}{2008}{{Agrawal et~al.}}{{Agrawal, Konolige, and Blas}}}
+\bibcite{Bay08}{{2}{2008}{{Bay et~al.}}{{Bay, Ess, Tuytelaars, and Gool}}}
+\bibcite{Calonder10}{{3}{2010}{{Calonder et~al.}}{{Calonder, Lepetit, Strecha, and Fua}}}
+\bibcite{Chi11}{{4}{2011}{{Chi et~al.}}{{Chi, Ho, and Yang}}}
+\bibcite{Damaschke02}{{5}{2002}{{Damaschke et~al.}}{{Damaschke, Nobach, and Tropea}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Non-rigid variant of the Coherent Point Drift algorithm applied to two point sets. Notice that the probabilistic nature of the matching creates robustness to unmatched points. (Image source: Wikipedia)}}{11}}
+\newlabel{fig:cpd}{{7}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Conclusion}{11}}
+\bibcite{Damaschke01}{{6}{2001}{{Damaschke et~al.}}{{Damaschke, Rasmussen, Tropea, and Woite}}}
+\bibcite{Fischler81}{{7}{1981}{{Fischler and Bolles}}{{}}}
+\bibcite{Glover95}{{8}{1995}{{Glover et~al.}}{{Glover, Skippon, and Boyle}}}
+\bibcite{Hardalupas10a}{{9}{2010{}}{{Hardalupas et~al.}}{{Hardalupas, Sahu, and Taylor}}}
+\bibcite{Hardalupas10}{{10}{2010{}}{{Hardalupas et~al.}}{{Hardalupas, Sahu, Taylor, and Zarogoulidis}}}
+\bibcite{Harris88}{{11}{1988}{{Harris and Stephens}}{{}}}
+\bibcite{dstudio}{{12}{2013}{{Inc.}}{{}}}
+\bibcite{Jian10}{{13}{2010}{{Jian and Vemuri}}{{}}}
+\bibcite{Kawaguchi02}{{14}{2002}{{Kawaguchi et~al.}}{{Kawaguchi, Akasaka, and Maeda}}}
+\bibcite{Konig86}{{15}{1986}{{K{\"o}nig et~al.}}{{K{\"o}nig, Anders, and Frohn}}}
+\bibcite{Kurosawa02}{{16}{2002}{{Kurosawa et~al.}}{{Kurosawa, Hishida, and Maeda}}}
+\bibcite{Leutenegger11}{{17}{2011}{{Leutenegger et~al.}}{{Leutenegger, Chli, and Siegwart}}}
+\bibcite{Lowe04}{{18}{2004}{{Lowe}}{{}}}
+\bibcite{Maeda02}{{19}{2002}{{Maeda et~al.}}{{Maeda, Akasaka, and Kawaguchi}}}
+\bibcite{Moisan04}{{20}{2004}{{Moisan and Stival}}{{}}}
+\bibcite{Morel09}{{21}{2009}{{Morel and Yu}}{{}}}
+\bibcite{Muja09}{{22}{2009}{{Muja and Lowe}}{{}}}
+\bibcite{Myronenko10}{{23}{2010}{{Myronenko and Song}}{{}}}
+\bibcite{Pan06}{{24}{2006}{{Pan et~al.}}{{Pan, Shakal, Lai, Calabria, Massoli, and Pust}}}
+\bibcite{Querel10}{{25}{2010}{{Qu{\'e}rel et~al.}}{{Qu{\'e}rel, Lemaitre, Brunel, Porcheron, and Gr{\'e}han}}}
+\bibcite{Rosten05}{{26}{2005}{{Rosten and Drummond}}{{}}}
+\bibcite{Rublee11}{{27}{2011}{{Rublee et~al.}}{{Rublee, Rabaud, Konolige, and Bradski}}}

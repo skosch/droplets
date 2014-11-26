@@ -1,7 +1,5 @@
 \documentclass[11.5pt]{book}
 
-\usepackage{amsmath, amssymb}
-\usepackage{mathspec}
 \usepackage{sectsty, titlesec}
 \usepackage{setspace}
 \usepackage{wrapfig, rotating, subcaption}
@@ -11,6 +9,9 @@
 \renewcommand{\nomname}{List of symbols and\\abbreviations}
 \usepackage[numbers]{natbib}
 \usepackage{graphicx,caption,subcaption}
+%\usepackage{cool}  % for pderiv
+\usepackage{amsmath, amssymb}
+\usepackage{mathspec}
 \setmainfont[Mapping=tex-text, Scale=1.1]{Crimson}
 \setsansfont[Scale=1]{Alte DIN 1451 Mittelschrift}
 %\allsectionsfont{\sffamily}
@@ -21,7 +22,7 @@
 \newcommand*{\secref}[1]{Section~\ref{#1}}
 \newcommand*{\chpref}[1]{Chapter~\ref{#1}}
 \newcommand*{\tableref}[1]{Table~\ref{#1}}
-\setmathsfont(Digits,Latin)[Scale=1.1]{Crimson}
+\setmathsfont(Digits,Latin,Symbols)[Scale=1.1]{Crimson}
 \setmathrm[BoldFont={Crimson Bold}, Scale=1.1]{Crimson}
 \setmathsfont(Greek)[Scale=1.21]{Crimson}
 \newlist{alist}{itemize}{1}
@@ -31,6 +32,10 @@ itemsep=-1pt}
 \newcommand*{\Hhat}{\hat{\vphantom{\scalebox{1.2}{H}} H}}
 \newcommand*{\Phat}{\hat{\vphantom{\scalebox{1.2}{P}} P}}
 
+\newcommand*\pderiv[3][]{\frac{\text{\emph{∂}}^{#1} {#2}}{\text{\emph{∂}}
+{#3}^{#1}}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+\newcommand*\Diff[1]{\mathop{}\!\mathrm{d^#1}}
 % line spacing
 \linespread{1.35}
 \usepackage{fancyhdr}
@@ -71,6 +76,27 @@ application to the breakup of impacting water and air jets}
 
 \chapter{Introduction}
 \section{Why spray sizing is important}
+
+Fluid sprays find application in numerous designs, ranging from fuel injection
+and coating systems to medical and printing devices. Often, the droplet size is
+a major factor in how well these systems perform. Consequently, measuring the
+characteristics of a given spray to a useful degree of accuracy is an important
+task with relevance to several areas of mechanical engineering.
+
+Due to the behaviour and size of the droplets in typical sprays, only
+non-intrusive instrumentation methods come into question. The most popular
+techniques rely on illumination of the spray with laser light. The droplets
+scatter the light, and it is picked up by a set of detectors, such as
+photomultiplier tubes or digital cameras. Depending on the position of the
+detectors, the motion of the droplets, their size, and the laser light's known
+properties, the detected patterns can be processed to yield information about
+the spray's characteristics.
+
+While countless different optical setups are in use in laboratories the world
+over, all of them rely on the same fundamental optical principles governing the
+scattering of light. This paper aims to offer a high-level derivation of these
+principles.
+
 \section{What our contributions in this paper are}
 - Our contributions:
     - Pupillary magnification has to be taken into account
@@ -87,7 +113,423 @@ application to the breakup of impacting water and air jets}
     - TSI system
 
 \chapter{Mie scattering}
-Some stuff on scattering.
+In this chapter, we will discuss some of the fundamentals of Mie scattering.
+The majority of the equations and derivations herein are adapted directly from
+\citet{Albrecht03}.
+For the purposes of this discussion, we will model light as a coupled pair of
+electrical and magnetic fields, $\bf{E}$ and $\bf{B}$, which at every point in
+space obey Maxwell's equations
+\begin{align}
+    \nabla \cdot \bf{E} &= \frac{\rho}{\epsilon_0}\\
+    \nabla \cdot \bf{B} &= 0 \\
+    \nabla \times \bf{E} &= -\pderiv{\bf{B}}{t} \\
+    \nabla \times \bf{B} &= \mu_0 \sigma {\bf E} + \mu_0 \epsilon_0
+    \pderiv{\mathbf{E}}{t},
+\end{align}
+where the constants $\epsilon_0$ and $\mu_0$ represent the electric permittivity
+and magnetic permeability in vacuum, respectively; $\rho$ is the local charge
+density, and $\sigma$ is the electric conductivity (such that $\sigma \bf{E} =
+\bf{J}$ is the current density).
+
+Electromagnetic radiation propagates in a direction $\bf{S}$ orthogonal to the
+planes of oscillation of $\bf{E}$ and $\bf{B}$, which are themselves orthogonal
+to one antoher:
+\begin{equation}
+    {\bf S} = \mathbf{E} \times \mathbf{B}.
+\end{equation}
+$\mathbf{S}$ is called the \emph{Poynting vector}.
+
+Note that this definition leaves $\mathbf{S}$ invariant to a rotation of
+$\mathbf{E}$ and $\mathbf{B}$ around $\mathbf{S}$. The rotation angle is called
+\emph{polarization} and need not be constant along the line of propagation
+(``circular polarization''), although we will here assume that it is (``linear
+polarization'') to simplify our derivations. This assumption is justified in
+typical spray characterization applications, for gas lasers use \emph{Brewster
+windows} both as mirrors and output windows which act as polarization filters.
+
+We will also assume here that $\mathbf{S}$ is approximately constant over the
+surface of the droplet. In other words, we assume the incoming light wave to be
+plane. Whether this is a reasonable assumption depends on the configuration of
+the laser optics, on the width of the laser beams and on the size of the
+droplet. We will see in Section \ref{sec:mietheory} that more complex models
+without this assumption can be used, but they are not suitable for showcasing
+the fundamental concepts behind droplet light scattering.  Finally, we assume
+the droplet in question to be perfectly spherical.
+
+\subsection{Scattering phenomena}
+
+When light hits a spherical, transparent droplet, three phenomena can be
+observed:
+\begin{enumerate}
+    \item Diffraction
+    \item Reflection
+    \item Refraction
+\end{enumerate}
+We will consider each one in this paper, and derive its influence on the
+scattered field.
+
+In the following discussion, we will use a coordinate system centered on the
+droplet. Let the $z$-axis be aligned with the direction of the plane wave
+incident on the droplet, and define the rotation of the $x$-$y$-plane to be at an
+arbitrary but fixed angle with respect to light source and detector. Consider
+then an infinitesimally small light ray scattered by the droplet. We shall
+designate the direction of the scattered ray to be at a deviation angle $\phi$ with
+respect to the $x$-axis, and to be at a deviation angle $\vartheta$ with respect
+to the $z$-axis.
+
+We also define the plane between the scattered direction and the scattered
+direction's projection onto the $x$-$y$-plane as the \emph{scattering plane}. This
+allows us to treat any incident polarization as a linear combination of
+polarization parallel to that scattering plane ($\vartheta$-field) and
+perpendicular to it ($\phi$-field). 
+
+\section{Diffraction} Diffraction, sometimes described as the ``bending'' of
+light waves, is the phenomenon observed when plane waves -- even material waves
+-- encounter the edge of an obstacle and spread out spherically behind it. While
+most of the scattered intensity is focussed along the original wave path, the
+scattered fields from two or more edges will interfere behind the obstacle and
+create an intensity pattern dependent on both the wavelength and the edges'
+separation.
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=0.6\textwidth]{pictures/diffraction.jpg}
+%\caption{Diffraction \cite{orbs}}
+%\label{fig:diffraction}
+%\end{figure}
+
+A droplet in a plane wave, just like a hole of the same size, has one circular
+edge (or a set of infinitely many point-sized edges arranged in a circle). The
+diffracted fields interfere behind the particle, as shown in Figure
+\ref{fig:diffraction}, to form a periodic intensity pattern.
+
+The viability of exploiting diffraction as a spray characterization principle is
+limited, because the phenomenon is strongest when droplet sizes are close to the
+light's wavelength. We will thus focus here on scattering phenomena relevant to
+techniques such as \emph{Phase Doppler Anemometry} and \emph{Interferometric
+Particle Imaging}.
+
+\section{Reflection and refraction}
+Detectors used in spray diagnostics are ultimately based on the photoelectric
+effect, and thus sensitive only to incident light intensity. This is the case
+both for \textsc{CMOS} or \textsc{CCD} cameras used in interferometric
+techniques and for photovoltaic cascade amplifiers commonly used in Phase
+Doppler setups. As a result, we are interested in accurately modelling the light
+intensity at a location $\langle \phi, \vartheta, z \rangle$.
+
+A general description of the scattering process would trace a ray of light
+through the droplet. At every encounter with an interface
+(air$\rightarrow$water, or water$\rightarrow$air inside the droplet), some of
+the light is \emph{reflected off} the interface and some is \emph{refracted
+through} the interface. When first incident, the refracted light ray is cast
+\emph{into} the droplet; subsequent scattering events will refract some light
+\emph{out} of the droplet while the remainder continues scattering within the
+droplet until all energy is refracted out or absorbed as heat. Scattering events
+are enumerated; the \emph{scattering order} $N$ refers to the
+$N$\textsuperscript{th} reflection/refraction.
+
+Total intensity at any location is a function both of the intensity of all
+infinitesimal light rays scattered onto that location, but also of the phases of
+those light rays, as two equally intense light rays will extinguish one another
+if they are in opposite phases. We will thus derive expressions for both
+intensity and phase of infinitesimal light rays scattered through the droplet.
+
+\subsection{Intensity from interface separation}
+Consider an infinitesimal ray incident, at an angle $\theta_i$, on the surface
+of the droplet. We are interested in the respective proportions of light
+reflected and refracted.
+
+Following the continuity requirement for components of $\mathbf{E}$ and
+$\mathbf{B}$ parallel and perpendicular to the droplet's interface (depending on
+the polarization component), and the conservation of energy, we can arrive at
+\emph{Fresnel equations:}
+\begin{align}
+    \label{eq:fresnelequations}
+    &r_\vartheta = \frac{m \cos \theta_i - \cos \theta_t}{m \cos \theta_i +
+\cos \theta_t},\quad
+r_\phi = \frac{\cos \theta_i - m \cos \theta_t}{\cos \theta_i +
+m \cos \theta_t}
+\end{align}
+with $\theta_t = \arcsin\left(\frac{\sin \theta_i}{m}\right)$, and $m$ the
+relative refractive index of droplet and medium (e.g. $m = 1.33/1.0$ for the
+water$\rightarrow$air transition).
+
+Squaring these numbers yields a reflectance coefficient $R = |r|^2$ for both
+polarization directions, and since $R + T = 1$, the computation of $T$ is
+then trivial.
+
+\subsection{Intensity from geometry}
+An infinitesimal plane wave ray incident on a curved surface will inevitably
+experience deviation into a diverging ray (convex surface) or a converging ray
+(concave surface).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{img/scattering/scatterintensity.pdf}
+\caption{Ray divergence due to curved interfaces. Note that here a bubble in
+water is used instead of a droplet. Adapted from \citet{Albrecht03}}
+\label{fig:scatterintensity}
+\end{figure}
+
+Consider Figure \ref{fig:scatterintensity}. An annular ray of surface area
+$\diff A_i$ is incident on the droplet of radius $r_p$. The first-order scattering is shown: the
+infinitesimal thickness of the ray results in an annular illuminated surface
+region between the angles $\theta_i$ and $\theta_i + \diff \theta_i$ of area
+\begin{equation}
+   \diff A_i = \pi r_p^2 \sin(2 \theta_i + \diff \theta_i) \sin(\diff \theta_i)
+\end{equation}
+The reflected portion of the light diverges; its cross-section has a
+divergence angle of $2\diff \theta_i$.
+
+We can now imagine a sphere around the droplet. Its radius equals the distance
+to the detector, $r_{pr}$. The area of that sphere illuminated by the reflected
+portion of $\diff A_i$ can be geometrically shown to be
+\begin{equation}
+    \diff A^{(1)} = 4\pi r_{pr}^2 \sin(2\theta_i + \diff \theta_i)\sin(\diff
+    \theta_i).
+\end{equation}
+The ratio between them is then
+\begin{equation}
+    \label{eq:intensitydivergence}
+    I_r^{(1)} = \frac{\diff A_i}{\diff A^{(1)}} = I_w \frac{r_p^2}{4r_{pr}^2}.
+\end{equation}
+The ratio $r^2_p / r^2_{rp}$ varies based on the setup; to normalize it we
+place a point source of the same intensity of light at the centre of the
+droplet and consider its intensity at $r^2_p$:
+\begin{equation}
+    I_P = I_w\frac{r^2_p}{r^2_{pr}}
+\end{equation}
+We drop this term from equation \eqref{eq:intensitydivergence} and arrive at a
+fixed fraction, or \emph{gain factor}, of $G^{(1)} = \frac{1}{4}$. This number
+represents the ``dilution of energy'' associated with the divergence inherent in
+reflection off a curved surface.
+
+Similar gain factors can be derived for any other scattering order $N$ of light
+leaving the droplet:
+\begin{equation}
+    \label{eq:gainfactor}
+    G^{(N)} = \left| \frac{\sin \theta_i \cos \theta_i}{\sin D^{(N)}} \left(2
+    \frac{(N-1)\cos \theta_i}{m \cos \theta_t} - 2\right)^{-1} \right|
+\end{equation}
+with
+\begin{equation}
+    D^{(N)} = 2(N-1) \arcsin \left(\frac{\sin \theta_i}{m}\right) - (N-2)\pi -
+    2\theta_i.
+\end{equation}
+
+\subsection{Path-length differences}
+Whether light rays interfere constructively or destructively depends on the
+phase difference between them. Since all rays are generated in phase in the
+laser cavity, possible phase differences must be due to path length differences,
+distortion of the wave (focal shift) or reflection effects. We shall first
+discuss the treatment of path lengths.
+
+To effectively compare path lengths between various rays, it is practical to
+establish a reference path length for common comparison. This reference ray is
+typically pictured as passing through the center of the droplet -- an optical
+anomaly as it were, but geometrically useful.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{img/scattering/pathlength.pdf}
+\caption{Path length differences, adapted from \citet{Albrecht03}}
+\label{fig:pathlength}
+\end{figure}
+
+A ray incident at an angle $\theta_i$ and reflected off the surface of the
+particle then has a path length $2kr_p \cos \theta_i$ shorter than that of the
+reference ray, where $k$ is the wave number of the light ray. This situation is
+illustrated in Figure \ref{fig:pathlength}a.
+
+A more general equation for phase length difference is
+\begin{equation}
+    \varphi^{(N)} = 2kr_p(\cos \theta_i - (N-1)m \cos \theta_i),
+\end{equation}
+where $\varphi$ stands for the phase difference and is not to be confused with
+the scattering plane's orientation $\phi$.
+
+\subsection{Phase shifts at reflection}
+A ray's phase is further affected upon reflection. This relationship is quite
+complex and depends on the critical and Brewster angles between the two media,
+the polarization angle and the relative refractive index. For example, the phase
+is flipped when a ray is reflected off a medium with higher refractive index
+(such as a water droplet), if the ray is polarized parallel to the interface and
+the incident angle does not exceed the Brewster angle. Similar relationships
+hold for all other conditions.
+
+The derivations of these phase change formulae follow from the Fresnel equations
+\eqref{eq:fresnelequations} shown above and from the understanding that incident
+and refracted amplitudes must always sum to the refracted amplitude (which is
+zero for total reflection), i.e. continuity of amplitudes across interfaces.
+They are widely published (e.g. \citet{Hecht02}) and algebraically
+straightforward but lengthy, and thus not included here.
+
+\subsection{Phase shifts through focussing}
+While the phase of a plane wave ray does not change (except for the wave's propagation
+through time and space), the phase of a diverging or converging ray is affected
+by the angle determining the ray width change as follows:
+\begin{equation}
+    \varphi^{(N)} = \pi \left( (N-1) - \frac{1}{2}\left[1 +
+    \mathrm{sgn}\left(\pderiv{D^{(N)}}{\theta}\right)\right]\right),
+\end{equation}
+The derivation given in \citet{Vandehulst12} explains this as a phase
+shift of $\pi/2$ whenever an astigmatic ray passes a focal line.
+
+\subsection{Scattering functions}
+The expressions given in the above sections can be combined into
+\emph{scattering functions} for both polarization directions as follows:
+\begin{equation}
+    S_1^{(N)} = \sqrt{i_\phi^{(N)}} \exp(j \varphi_\phi^{(N)}), \quad S_2 =
+    \sqrt{i_\vartheta^{(N)}} \exp(j \varphi_\vartheta^{(N)}).
+\end{equation}
+Here, $i$ is the intensity coefficient
+\begin{equation}
+    i_{\vartheta,\phi}^{(N)}(\lambda, d_p, m, \theta_i) = \left(\frac{\pi
+    d_p}{\lambda}\right)^2 \alpha^{(N)}_{\vartheta,\phi} G^{(N)}
+\end{equation}
+defined in terms of wavelength $\lambda$, droplet
+diameter $d_p$, gain factor $G^{(N)}$ as given in \eqref{eq:gainfactor} above, and
+$\alpha^{(N)}$, which is a shorthand for the product of all applicable
+reflectance and transmittance coefficients:
+\begin{equation}
+    \alpha^{(N)}_{\vartheta,\phi} = \begin{cases} R_{\vartheta,\phi}, & N=1
+    \\[2ex]
+R_{\vartheta,\phi}^{N-2} T_{\vartheta,\phi}^2, & N \geq 2 \end{cases}.
+\end{equation}
+The $\exp(j \varphi_{\phi,\vartheta}^{(N)})$ terms represent the phase shift
+added to the wave function term in \eqref{eq:fulltransfer}
+
+We can use these two-component scattering functions to write a full expression
+relating the incident light wave $\mathbf{E}_i$ in its components $\langle E_{ix},
+E_{iy} \rangle$ to the wave received by the detector, $\mathbf{E}_r$:
+
+\begin{align}
+    \label{eq:fulltransfer}
+    {\bf E}_r = &\frac{\exp(-j k r_{pr})}{k r_{pr}}
+    \left[ \begin{array}{c c}\cos \beta_{\vartheta x} & \cos \beta_{\phi x} \\
+            \cos \beta_{\vartheta y} & \cos \beta_{\phi y} \end{array} \right]
+    \\
+    &\left[ \begin{array}{c c} \sum_{N=0}^{\infty} S_1^{(N)} & 0 \\
+    0 & \sum_{N=0}^{\infty} S_2^{(N)}
+  \end{array} \right] \times
+\left[ \begin{array}{c c} -\sin \phi & \cos \phi \\ \cos \phi & \sin \phi \end{array} \right]
+\left[ \begin{array}{c} E_{ix} \\ E_{iy} \end{array} \right]
+\end{align}
+
+The first term evaluates to a sinusoid function corresponding to the scalar
+component of the light wave. The second term (and first matrix) represents the
+geometrical relationship between the light source and the detector, expressed in
+terms of the off-angle $\beta$. Similarly, the matrix in $\phi$ represents the
+angle between light source and droplet. By multiplying the $\beta$ matrix with
+the appropriate scattering functions (which are summed over all scattering
+orders $N$), we arrive at the correct intensity at the detector's location.
+
+\section{Mie theory}
+The above derivations, commonly termed \emph{geometrical
+optics}, are physically intuitive and therefore useful in the understanding and
+design of measurement instrumentation. Geometrical optics, however, are limited
+to incident waves that are both plane and much smaller in wavelength than the
+droplet diameter. A more general approach is therefore desirable for carrying
+out detailed numerical simulations.
+
+Such a numerical system was developed independently by Ludvig Lorenz and Gustav
+Mie based on analytical solutions presented here briefly. The Mie scattering
+theory decomposes the incoming light into an infinite series of not plane, but
+spherical waves concentrical with the droplet. The spherical waves are not
+uniform; their dependence depends on the angle $\theta$.
+
+The derivation in scalar terms assumes a scalar field magnitude $\psi$ that solves
+\begin{equation}
+    \nabla^2 \psi + k_m^2 \psi = 0
+\end{equation}
+where $k_m^2$ is the magnitude of the field in the surrounding medium.
+
+In spherical coordinates, this leads to
+\begin{equation}
+    \frac{1}{r^2}\pderiv{}{r}(r^2 \pderiv{\psi}{r}) + \frac{1}{r^2 \sin \theta}
+    \pderiv{}{\theta}    (\sin \theta
+    \pderiv{\psi}{\theta}) + \frac{1}{r^2 \sin^2 \theta}
+    \pderiv[2]{\psi}{\psi} + k^2_m \psi = 0
+\end{equation}
+Which is solved by
+\begin{equation}
+    \psi (r, \theta, \phi) = R(r) \Theta (\theta) \exp (\pm i m \phi)
+\end{equation}
+according to \citet{Ng00}.
+
+Solving for the function governing angular dependence, $\Theta(\theta)$, leads
+to Legendre polynomials. Polar plots of the first five such functions of
+both types are shown in Figure \ref{fig:angularfuncs}. 
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[height=0.6\textheight]{pictures/angularfuncs.jpg}
+%    \caption{Associated Legendre polynomials. Incident light is coming from the
+%    left. Plot by Bohren and Huffman \cite{craig}}
+%    \label{fig:angularfuncs}
+%\end{figure}
+
+Solving for $R(r)$, the function describing the intensity of the spherical waves
+as it drops with distance from the droplet, leads to vector spherical harmonics.
+Two-dimensional plots of a few orders of such ``Riccati-Bessel functions'' are
+shown in Figure \ref{fig:besselfuncs}.
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[height=0.8\textheight]{pictures/besselfuncs.jpg}
+%    \caption{Riccati-Bessel functions governing the radial decay of the partial
+%    waves. Plot by Bohren and Huffman \cite{craig}}
+%    \label{fig:besselfuncs}
+%\end{figure}
+
+Each partial wave, in turn, represents the sum of scattering effects up to some
+scattering order $N$ (in practice, no infinite sum can be taken; the maximum
+scattering order to achieve negligible errors depends on the relative
+wavelength). With every refraction out of the droplet -- thus adding to the
+total external field -- the \emph{internal} partial wave loses intensity
+according to respective reflectance and transmittance values. This concept is
+illustrated in Figure \ref{fig:miewaves}.
+
+%\begin{figure}
+%    \centering
+%    \includegraphics[height=0.3\textheight]{pictures/miewaves.jpg}
+%    \caption{Schematic illustration of wave series. By Albrecht et al.
+%    \cite{albrecht}}
+%    \label{fig:miewaves}
+%\end{figure}
+
+The complete model, then, provides a semi-closed expression for the scattering
+functions $S_1$ and $S_2$:
+   \begin{align}
+      S_1(\vartheta) &= \sum_{n=1}^{\infty} a_n\pi_n(\vartheta) +
+      b_n\tau_n(\vartheta) \\
+      S_2(\vartheta) &= \sum_{n=1}^{\infty} a_n\tau_n(\vartheta) +
+      b_n\pi_n(\vartheta) \\
+      a_n &= \frac{2n+1}{2n(n+1)} (1-R^{MM}_{a_n} - \sum_{p=2}^{\infty}
+      T_{a_n}^{MP} (R_{a_n}^{PP})^{p-2} T_{a_n}^{PM}) \\
+      b_n &= \frac{2n+1}{2n(n+1)} (1-R^{MM}_{b_n} - \sum_{p=2}^{\infty}
+      T_{b_n}^{MP} (R_{b_n}^{PP})^{p-2} T_{b_n}^{PM}) \\
+      \mathrm{e.g.\;} R_{b_n}^{PP} &= \frac{\zeta_n(m \frac{\pi
+      d_p}{\lambda})\zeta_n'(\frac{\pi d_p}{\lambda}) -
+      m\zeta_n(\frac{\pi d_p}{\lambda})\zeta_n'(m \frac{\pi
+      d_p}{\lambda})}{-\frac{\pi d_p}{\lambda}\xi_n(m \frac{\pi
+      d_p}{\lambda})\zeta'(\frac{\pi d_p}{\lambda}) + m\zeta_n(\frac{\pi
+      d_p}{\lambda})\frac{\pi d_p}{\lambda}\xi'(m \frac{\pi
+      d_p}{\lambda})}
+    \end{align}
+    where $PP$ stands for interal reflection, $MM$ external reflection, and $MP$
+    and $PM$ for refraction into and out of the particle, respectively. The
+    expression for $R_{b_n}^{PP}$ is shown above to illustrate the coefficents'
+    form. Note that $\pi$ and $\tau$ are the associated Legendre functions
+    shown in Figure \ref{fig:angularfuncs}, and $\zeta$ and $\xi$ are the Riccati-Bessel functions shown in
+    Figure \ref{fig:besselfuncs}.
+
+    \subsection{Results}
+    Some numerical results are presented in Figures \ref{fig:angleresults} and
+    \ref{fig:results} below. The former shows logarithmic and linear plots of the
+    total external intensity depending on the droplet size/wavelength ratio. The
+    latter shows the angular dependence of various scattering orders for both
+    parallel and perpendicular polarizations.
 
 \chapter[Monodisperse droplet generation]{Monodisperse\\droplet generation}
 \label{sec:droplet-generator}
@@ -1444,34 +1886,256 @@ briefly the various sources of error in this chapter, and provide some pointers
 to their resolution. The focus is on measurements of size, not velocity.
 
 \section{Optical principle}
-Mie scattering, described in \secref{sec:mie-scattering}, 
-The two beams, coming from top and bottom, create two glare points at 30 deg (30
-deg off-angle). The two glare points cause a moving pattern of dark and bright
-fringes. The pattern is picked up by both receivers, both of which record a
-modulated sinusoid as the droplet falls past them.
+Only droplets passing through the measurement volume have a chance of being
+detected and characterized, so we will provide here a description of the 
+measurement volume and its interaction with a falling droplet.
+
+To create the measurement volume, two laser beams must intersect where their
+wave fronts are planar. To this end, the transmitter probe features a front lens
+which focuses the beams to a small but finite \emph{waist diameter}. Note that
+focusing onto an infinitesimally small point is impossible: as the beam is
+exiting from a finite-sized aperture, some degree of diffraction is unavoidable
+and will lead to a finite diameter. In the case of most commercial setups, the
+laser exhibits a Gaussian intensity profile, i.e. the light intensity falls off
+smoothly with increasing distance from the beam axis. The diffraction of a
+Gaussian beam generally causes spherically expanding wavefronts
+\cite{Thyagarajan10}; the focusing lens counteracts this effect and leads to
+plane waves at the beam waist.
+
+Borrowing from the terminology used by \citet{Albrecht03}, the \emph{measurement
+volume} is the space in which a particle must be located such that it scatters
+the light onto the detector. For large particles, this will not coincide
+perfectly with the illuminated volume. The measurement volume contains the
+\emph{detection volume}, within which a droplet scatters enough light onto the
+detector to exceed the chosen minimum threshold for detection.
+
+In accord with most introductory texts on PDPA, we will offer two descriptions
+of the scattering effect experienced by the droplets falling through the
+measurement volume: a fringe model for very small droplets, and a Moiré model
+for larger droplets.
+
+\subsection{Particles smaller than the wavelength}
+The intersection of the two beams results in their interference at an angle
+$\Theta$. The alternating extinction and amplification creates a pattern of
+fringes. As the small droplet (assumed to be a single point) falls through the
+fringes, it samples the light intensity, scattering an alternating signal onto
+the detector, which registers a burst of voltage spikes. Since the fringe
+spacing is known and constant, the detected burst frequency is linearly related
+to the velocity of the falling droplet.
+
 \begin{figure}
     \centering
-    \includegraphics[width=\textwidth]{img/setup/pdpa_moire.pdf}
+    \includegraphics[width=0.75\textwidth]{img/setup/pdpa_angles.pdf}
+    \caption{Nomenclature used for the geometry in \figref{fig:pdpa-setup} \label{fig:pdpa-angles}}
+\end{figure}
+
+\subsection{Large particles}
+In practice, we do not deal with droplets smaller than tens of microns (much
+less sub-micron particles, to which the above would apply). We therefore apply a
+somewhat more complex model, in which the fields of both scattered beams are
+considered separately. Indeed, their interference is modelled directly at the
+receiver.
+
+Depending on the the relative refractive index $m$, either the reflected light
+or the light of a certain scattering order dominates when seen from an off-axis
+angle $\phi$. In the setup shown in \figref{fig:pdpa-setup}, $\phi = 60^\circ$
+and $m$ is assumed to be 1.33 (water droplets in air). In this setup, the
+receiver will see the beams mostly as first-order refracted rays. An extensive
+numerical evaluation of these relationships was published by \citet{Naqwi96}.
+
+From the perspective of the receiver, each beam is scattered from a glare point
+on the droplet surface. Due to the path length differences and the falling
+motion past the receiver probe, the intensities from both glare points create a
+beating frequency on both detectors, which are offset in space (on the order of
+millimeters) and therefore measure the beating signal with slight phase shifts
+(on the order of a few $\pi$). \figref{fig:pdpa-moire-static} illustrates how larger
+droplets result in narrower fringes, and thus a larger phase difference.
+
+Note, however, that the patterns shown in \figref{fig:pdpa-moire-static} are
+valid only for stationary droplets. Falling droplets experience a Doppler
+effect: the upward-angled beam is sampled at a relatively higher velocity,
+leading to a higher scattered frequency. The downward-angled beam, on the other
+hand, is scattered at a lowered frequency. The discrepancy in frequency leads to
+curved fringes. Moreover, the direction of the receiver changes as the droplet
+is falling. The result is not directly intuitive: the velocity has no impact at
+all on the phase difference between detectors A and B, and the size has no
+impact on the beat frequency (i.e. burst frequency) measured by the detectors.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/setup/pdpa_moire_static.pdf}
     \caption{Moiré-style visualization of the interference pattern cast by the
     two glare points. Left: glare points on small particles are close, resulting
 in wide fringes. The signals recorded by detectors A and B are shifted in time
 by a phase difference $\Delta \Phi_{AB}$, which is due to the detectors' known
 separation in space. Right: glare points on larger particles are farther apart,
 resulting in narrower fringes and a larger phase difference.
-\label{fig:pdpa-moire}}
+\label{fig:pdpa-moire-static}}
 \end{figure}
+
+For first-order refraction, \citet{Albrecht03} provide the following
+relationship between droplet diameter $d_p$ and the difference in measured
+phase $\Phi$ between two detectors A and B:
+\begin{equation}
+    \begin{split}
+        \Delta \Phi_{AB} &= \beta_{AB} d_p \\
+                         &= \frac{2\pi}{\lambda} \left(\Phi_A - \Phi_B\right) d_p \\  
+                         & 
+        \begin{split}
+            \;=\frac{2\pi}{\lambda} d_p \Bigg[\,&\sqrt{1+m^2-\sqrt{2} m
+        \sqrt{1+\sin \psi_A \sin \frac{\Theta}{2} + \cos \psi_A \cos \phi_A \cos
+    \frac{\Theta}{2}}} \\
+        -{} &\sqrt{1+m^2-\sqrt{2} m \sqrt{1-\sin \psi_A \sin \frac{\Theta}{2} + \cos \psi_A \cos \phi_A \cos
+    \frac{\Theta}{2}}}\\
+        -{}&\sqrt{1+m^2-\sqrt{2} m \sqrt{1+\sin \psi_B \sin \frac{\Theta}{2} + \cos \psi_B \cos \phi_B \cos
+    \frac{\Theta}{2}}}\\
+    +{}&\sqrt{1+m^2-\sqrt{2} m \sqrt{1-\sin \psi_B \sin \frac{\Theta}{2} + \cos \psi_B \cos \phi_B \cos
+    \frac{\Theta}{2}}}\; \Bigg]. \label{eq:pdpa-full}
+\end{split}
+    \end{split}
+\end{equation}
+Note that \figref{fig:pdpa-angles} explains some of the notation used above.
+
+Because of the periodic nature of the arriving signal, any phase difference value
+exceeding one period ($2\pi$) is indistinguishable from one below one period.
+One solution to this problem is to consider the signal bursts from both
+detectors in their entirety and to determine the time shift between them (time
+shift technique) \cite{Albrecht03}. Another, more commonly implemented solution
+is the addition of a third detector, spaced very closely to the first. Then the
+phase difference between detectors A and C is
+\begin{equation}
+    \Delta \Phi_{AC} = \beta_{AC} d_p.
+\end{equation}
+Since the slopes $\beta_{AB}$ and $\beta_{AC}$ are known, we can then deduce how
+many $2\pi$ jumps should be contained in the measured $\Delta \Phi_{AB}$:
+\begin{equation}
+    n_{2\pi} = \mathrm{int}\left[
+        \frac{1}{2\pi}\left(\frac{\beta_{AB}}{\beta_{AC}} \Delta \Phi_{AC} -
+    \Delta\Phi_{AB} \right) + \frac{1}{2}\right]
+\end{equation}
+This allows us to bring $\Delta\Phi_{AB}$ into the range $[0, 2\pi]$:
+\begin{equation}
+    \Delta\Phi_{AB} = \beta_{AB} d_p - 2\pi n_{2\pi}
+\end{equation}
+We are now able to solve for $d_p$:
+\begin{align}
+    d_{p,AB} &= \frac{\Delta\Phi_{AB} + 2\pi n_{2\pi}}{\beta_{AB}}\\
+    d_{p,AC} &= \frac{\Delta\Phi_{AC}}{\beta_{AC}}
+\end{align}
+If the discrepancy between the two values are below a set threshold, the
+measurement is accepted.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/setup/detector_arrangement.pdf}
+    \caption{Typical vertical arrangement of detectors A, B, and C in a receiver
+        probe. Detector separation values are indicated. \label{fig:pdpa-detector-arrangement}}
+\end{figure}
+
+Generally, the elevation angle $\psi$ of a given detector is not known. However,
+it can be estimated from the detector separation values (see
+\figref{fig:pdpa-detector-arrangement}) and the focal length of the receiver's
+lens $f_r$.
+
+\subsection{Calculation in TSI FlowSizer software}
+To verify the results displayed by the TSI FlowSizer software, it was necessary to
+understand how FlowSizer arrives at a diameter distribution from the measured
+phase data. Although their algorithm is not published, it is possible to reverse
+engineer their approach by deriving the required mathematical simplifications.
+We then compared the results to an implementation of the full equation given
+above, based on a set of raw detector phase data.
+
+FlowSizer records the phase differences between detector pairs AB and AC,
+ranging from $-180^\circ$ to $180^\circ$. We must first adjust these values to
+yield strictly positive phase differences. To this end, we add $360^\circ$ to
+all negative phase difference values to map them onto equivalent phositive phase
+differences.
+
+\citet{Albrecht03} then provide a simple approximation of \eqref{eq:pdpa-full}
+under a number of assumptions (e.g. $\sin \psi \approx \psi$ etc.):
+\begin{align}
+    \Delta\Phi_{AB} &\approx -\frac{2\pi}{\lambda} d_p \sin \psi_{AB} \sin
+    \frac{\Theta}{2}\frac{m}{v \sqrt{1 + m^2 - mv}}
+    \label{eq:pdpa-phase-simple-ab}\\
+    \Delta\Phi_{AC} &\approx -\frac{2\pi}{\lambda} d_p \sin \psi_{AC} \sin
+    \frac{\Theta}{2}\frac{m}{v \sqrt{1 + m^2 - mv}}, \label{eq:pdpa-phase-simple-ac}
+\end{align}
+with 
+\begin{align}
+    v_{AB} &= \sqrt{2(1 + \cos \psi_{AB} \cos \phi \cos \frac{\Theta}{2})} \\
+    v_{AC} &= \sqrt{2(1 + \cos \psi_{AC} \cos \phi \cos \frac{\Theta}{2})}
+\end{align}
+
+FlowSizer first makes the assumption that $\cos \psi_{AB} \approx \cos \psi_{AC} \approx
+0.995$, and thus simply computes
+
+\begin{equation}
+    v = \sqrt{2(1 + 0.995 \cos \phi \cos \frac{\Theta}{2})}
+\end{equation}
+
+They also designate as ``slope'' (here, $\gamma$) the second term of
+\eqref{eq:pdpa-phase-simple-ab} and \eqref{eq:pdpa-phase-simple-ac}:
+\begin{equation}
+    \gamma = \frac{m}{v \sqrt{1 + m^2 - mv}}.
+\end{equation}
+
+Also, the fringe distance at the center of the illuminated volume, given
+perfect alignment, is given by \citet{Albrecht03} to be:
+\begin{equation}
+    \delta x = \frac{\lambda}{2 \sin \frac{\Theta}{2}}.
+\end{equation}
+Finally, FlowSizer appears to use the approximation 
+\begin{align}
+    \sin \psi_{AB} &= \frac{\Delta y_{AB}/2}{f_r} \\
+    \sin \psi_{AC} &= \frac{\Delta y_{AC}/2}{f_r},
+\end{align}
+where $\Delta y_{AB}$ is the physical separation between detectors A and B (e.g. in
+millimeters) and $f_r$ is the focal length of the receiver lens.
+
+It follows that \eqref{eq:pdpa-phase-simple-ab} and \eqref{eq:pdpa-phase-simple-ac}, when
+rewritten for $\beta$, can be composed as
+\begin{align}
+    \beta_{AB} &= \frac{\Delta y_{AB}}{2f_r} \gamma \frac{360^\circ}{\delta x} \\
+    \beta_{AC} &= \frac{\Delta y_{AC}}{2f_r} \gamma \frac{360^\circ}{\delta x}
+\end{align}
+Where we write $360^\circ$ instead of $2\pi$ since FlowSizer works with phase
+values in degrees. This is a useful approximation, because now $\beta_{AB}$ and
+$\beta_{AC}$ only depend on constant values (including $\Delta y_{AB}$ and
+$\Delta y_{AC}$, which can be set in the software).
+
+FlowSizer then filters out all $d_{p,AB}, d_{p,AC}$ pairs that differ by more than some
+threshold. The manual recommends seven percent of the maximum measureable size,
+which in practice evaluates to a few tens of microns.
+
+\subsection{Calibration in TSI FlowSizer}
+It follows from the above equations that no calibration should be necessary at
+all, as long as all angles and distances are well-known. However, $\Delta
+y_{AB}$ and $\Delta y_{AC}$ are not typically known to great precision. The
+solution, then, is to determine their values based on the phase differences
+recorded after measuring monodisperse droplets of known size.
+
+The TSI FlowSizer software provides this functionality. Presuming a vibrating
+orifice droplet generator is used, flow rate and frequency can be entered and
+are converted to droplet diameter using \eqref{eq:dropdia-continuous}. The
+software then adjusts $\Delta y_{AB}$ and $\Delta y_{AC}$ such that the peak (if
+any) or some still-unknown measure of average of the diameter distribution
+aligns with the expected droplet diameter. This is easily done, since due to the
+approximation of $\cos \psi \approx 0.995$, the value of $\gamma$ no longer
+depends on $\Delta y_{AB}$ and $\Delta y_{AC}$ and can be set independently.
+
 
 \section{Sources of error}
 \subsection{Gaussian beam divergence}
 The theory predicting the linear relationship between detector phase difference
 and droplet diameter is founded on the assumption of very small droplets and
-plane beam wavefronts. \textbf{(Question: is it the wavefront curvature or the
-non-uniformity of the intensity that causes problems?)}
+plane beam wavefronts. Unfortunately, when particles larger than the beam cross
+the measurement volume in certain directions, glare points of the normally
+dominant scattering order (e.g. first-order refraction) can temporarily become
+weak enough to be dominated by another scattering order (e.g. reflection). This
+phenomenon leads to erroneous results, of course, and is termed \emph{trajectory
+ambiguity effect} (TAE) or \emph{Gaussian beam defect} (GBD) in the literature.
 
-The problem is termed \emph{trajectory ambiguity effect} (TAE) or \emph{Gaussian
-beam defect} (GBD) in the literature.
-
-This phenomenon was recognized first by \citet{Saffman86} but had to be neglected until
+The problem was recognized first by \citet{Saffman86}, but had to be neglected until
 the plane-wave scattering theory of Lorenz-Mie optics was extended into
 the \emph{Generalized Lorenz-Mie Theory} (GLMT). Most of this work was
 done by Gouesbet, Gréhan, Maheu, Lock and others throughout the 1980s
@@ -1479,33 +2143,72 @@ done by Gouesbet, Gréhan, Maheu, Lock and others throughout the 1980s
 rigorous formulations were available by the early 1990s \cite{Lock94,
 Gouesbet94}. The 1996 paper by Gouesbet and Gréhan summarizes these developments
 and provides an early overview over the attempts to circumvent the TAE
-\cite{Gouesbet96}. More discussion is given e.g. by 
+\cite{Gouesbet96}. 
 
-Solutions are a) a planar setup, b) double-burst measurements, c) epsilon
-validity measurements. It is important to align the receiver properly; the
-tables used by TSI were developed using GLMT by \citet{Naqwi96}.
+Solutions proposed in \citet{Albrecht03} include planar setups (a different
+geometry, in which detectors are placed in line with the beams) and validity
+checks between the diameter determined by detector pairs AB and AC.
 
 \subsection{Slit effect}
+Most commercial phase-Doppler systems use a slit aperture in front of the
+detector or receiving fibers \cite{Albrecht03}. This helps to define the
+detection volume in the $z$ dimension (i.e. the beam direction), which is necessary for further statistics
+about flux, and it can be useful when sprays are very dense, as multiple
+droplets may be present within the measurement volume at a time.
+
+It can occur, however, that the aperture cuts off the dominant-order glare point
+of a droplet that is just halfway outside of the visible region. In that case,
+the glare point corresponding to the non-dominant scattering order will
+dominate and result in a wrong measurement. A graphical representation is shown
+in \figref{fig:sliteffect}. 
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/setup/sliteffect.pdf}
+    \caption{Schematic illustrating the slit effect. Two small droplets are
+    passing through the measurement volume (top view; trajectories are into the
+page). The droplet on the left only scatters its refracted glare point onto the
+receiver (as normally intended at $\phi=60^\circ$). Refraction is suppressed,
+however, for the droplet on the right; the slit aperture only allows the
+reflected light to pass. \label{fig:sliteffect}}
+\end{figure}
+
 Durst et al show experimentally that the slit effect is even more crucial than
 the Gaussian beam effect. \cite{Durst94}. Together with the TAE, this
-is called the measurement volume effect. Qiu and Hsu propose using four
-detectors, instead of three, to resolve this problem entirely \cite{Qiu99}. A
-similar design was verified experimentally by \citet{Sipperley14}.
+is called the measurement volume effect. As with the slit effect, three-detector
+setups are significantly less sensitive to this problem because of the
+additional validation. Qiu and Hsu propose using four detectors, instead of
+three, to resolve this problem entirely \cite{Qiu99}. A similar design was
+verified experimentally by \citet{Sipperley14}.
 
-A more recent review of the phenomenon and associated techniques was given by
-\citet{Strakey00, Strakey01}.
+A more recent review of the phenomenon and associated techniques was published by
+\citet{Strakey00, Strakey00a}.
 
 \subsection{Change in fringe frequency over $z$}
-The curved wavefront causes the fringe spacing to vary along the axis of the
-measurement volume. At the near and far ends of the volume, the fringes are
-spaced wider, which can result in an error on the order of 10\%. (Red Book)
+The sphericity of the beam wavefronts causes the fringe spacing to vary along
+the major axis of the measurement volume. At the near and far ends of the
+volume, the fringes are spaced farther apart, which can result in an error on
+the order of 10\% according to \citet{Albrecht03}. The most important factor is
+the beam waist dislocation (i.e. misalignment), which must be minimized. The
+error is also reduced for wider beam waists and larger intersection angles
+$\Theta$.
 
 \subsection{Selection of lenses and masks}
-Davis and Disimile talk about the TAE only tangentially. They provide results of
-the same spray using different masks and focal lengths \cite{Davis04}.
+\citet{Davis04} have shown that the selection of lenses and detector masks
+can have a considerable effect on droplet sizing results. In their experiment,
+they measured the same spray using several combinations of focal lengths and mask
+sizes and found that if the diameter range to be measured is not known a priori,
+it can be very difficult to choose an appropriate lens-mask combination.
 
 \subsection{Optical aberrations}
-See \citet{Dressler90}.
+\citet{Dressler90} investigated several error sources arising in PDPA
+calibration, and found that the spherical aberration of the transmitter lens
+typically gave errors of less than 3\%.
+
+\subsection{Dirty fiber ends}
+The ends of the transmitter fibers should be polished regularly. Dirty or
+scratched fiber ends can mar the Gaussian beam profiles, leading to distortions
+or irregularities in the measurement volume's fringe pattern.
 
 \subsection{Wrongly entered parameters}
 The optical principle involves many more geometric parameters than are needed
@@ -1520,9 +2223,27 @@ a bit larger than the actual (and completely obvious) peak value, even these
 "wrong" values aren't correct.
 
 \section{Calibration}
+
+The calibration of 
+
+- To calibrate, we re-calculate the AB/AC separation values such that the peak
+corresponds with the known diameter. 
+- The "peak" is ambiguous, but we can use Gaussian kernel density estimates to
+find it
+- There is no unique AB/AC pair that aligns the the peak to the known diameter;
+many different pairs are possible.
+- The difference-diameter plot should be as straight as possible, which
+practically means that the PCA should be aligned horizontally (or vertically,
+when it's very thin?). Or we could try to minimize the sum of absolute/squared
+differences.
+- All of this forces us to use a search algorithm. It is not clear how TSI does
+it.
+
+
+
 Calibration is tricky, because 
 
-knowndiam = argmax(gaussian(average(diamAB[within7percent], diamAC[within7percent])))
+peakdiam = argmax(gaussian(average(diamAB[within7percent], diamAC[within7percent])))
 
 Since the selection of droplets with <=diff(diam) and the gaussian kernel
 density estimate are one-way functions, it's impossible to work backwards. We

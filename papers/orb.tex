@@ -1,40 +1,49 @@
-\documentclass[floatfix,aip,rsi,reprint,graphicx]{revtex4-1}
+%\documentclass[floatfix,aip,rsi,reprint,graphicx]{revtex4-1}
+%Complete RSI submission
 % for checking your page length
 %\\documentclass[aip,rsi,preprint,graphicx]{revtex4-1} % for review purposes
+\documentclass[preprint]{elsarticle}
 \usepackage{amsmath, amssymb}
 %\usepackage[numbers]{natbib}
 \usepackage{graphicx}
 \begin{document} \title{Eliminating center discrepancies
 between simultaneously captured ILIDS and PIV images by means of direct
-homography estimation} \author{Sebastian Kosch and Nasser
-Ashgriz} \email{\{skosch,ashgriz\}@mie.utoronto.ca} \affiliation{Department of
-    Industrial and Mechanical Engineering, University of Toronto}
+homography estimation}
+\author[mie]{Sebastian~Kosch}\ead{skosch@mie.utoronto.ca}
+\author[mie]{Nasser Ashgriz\corref{cor1}}\ead{ashgriz@mie.utoronto.ca}
+\cortext[cor1]{Corresponding author}
+\address[mie]{Department of Industrial and Mechanical Engineering, University of Toronto}
     \begin{abstract} Interferometric Laser Imaging for Droplet Sizing (ILIDS
         a.k.a. MSI or IPI) requires the objective lens to be defocused so that
         fringe patterns can be imaged. When two cameras are used (e.g. to
         perform simultaneous PIV and ILIDS measurements or to assist in the
         detection of overlapping droplet images) this defocusing introduces a
         distortion that thwarts an accurate calibration of the two cameras
-        and makes a successful registration of the two images impossible. To
-        overcome the obvious difficulties presented by empirical ad-hoc
-        estimates of this ``center discrepancy'' distortion, the
-        existing feature-based registration and/or point set registration
-        algorithms can be used on the images to find the correct homography
-        directly. This approach eliminates the need for camera calibration and
-        leads to greatly improved matching between images.
-\end{abstract} \maketitle
+        and makes a successful registration of the two images impossible. We
+        show that to overcome the obvious difficulties presented by empirical ad-hoc
+        estimates of this ``center discrepancy'' distortion,  existing
+        feature-based registration and/or point set registration algorithms can
+        be used on the images to find the correct homography directly. This
+        approach eliminates the need for camera calibration and leads to greatly
+    improved matching between images.
+\end{abstract}
+\begin{keyword}
+    ILIDS \sep droplet sizing \sep spray characterization \sep camera
+    calibration \sep center discrepancies \sep image registration
+\end{keyword}
+\maketitle
 
 \section{Introduction} Interferometric Laser Imaging for Droplet Sizing (ILIDS),
 also known as IPI (Interferometric Particle Imaging) and MSI (Mie Scattering
-Imaging) is an optical droplet sizing method in which a spray is illuminated by
+Imaging) is a popular optical droplet sizing method in which a spray is illuminated by
 a sheet of laser light and the scattered light is imaged laterally. The laser
 light is both reflected and refracted by the droplets, such that each droplet
 produces a pair of apparent ``glare points''. When seen through a lens away
-from the focal plane, each pair of glare points---being sources of coherent
-monochromatic light---appears as an interference pattern which, after falling through
+from the focal plane, each pair of glare points (the points being sources of coherent
+monochromatic light) appears as an interference pattern which, after falling through
 a circular aperture, casts an image that is a circular disk of fringes.
 The spatial frequency of the fringes is (to a very close approximation) linearly
-related to the particle size. The phenomenon was first described by
+related to the droplet size. The phenomenon was first described by
 \citet{Konig86} and later in greater detail by \citet{Glover95}. Turnkey ILIDS
 setups for spray characteriziation are now widely available, comprising
 typically a pulsed Nd:YAG-laser, one or two CCD cameras, a timing circuit, and a
@@ -47,10 +56,10 @@ corresponding to individual droplets. \citet{Damaschke02} provide a statistical
 estimate on the fraction of overlapping disks (overlap coefficient).
 
 Arguably the most popular way to reduce the amount of overlap is the use of
-optical compression techniques, whether by means of a slit aperture\cite{Pan06}
-or a cylindrical lens\cite{Kawaguchi02, Maeda02}. However, some techniques
-(e.g. Global Phase-Doppler\cite{Damaschke01} and intensity-analyzing
-methods\cite{Querel10}) or use cases (e.g. very low signal-to-noise ratios)
+optical compression techniques, whether by means of a slit aperture \cite{Pan06}
+or a cylindrical lens \cite{Kawaguchi02, Maeda02}. However, some techniques
+(e.g. Global Phase-Doppler \cite{Damaschke01} and intensity-analyzing
+methods \cite{Querel10}) or use cases (e.g. very low signal-to-noise ratios)
 require the full disk image to be available. In these cases, the standard
 approach is to identify the location and outline of each disk image, such that
 the fringe analysis can either be limited to non-overlapping regions or be
@@ -67,7 +76,7 @@ simultaneously; examples of this are provided by \citet{Hardalupas10a} (ILIDS
 and LIF) and \citet{Hardalupas10} (ILIDS and PIV).
 
 To allow both cameras to image the same physical region in the spray, they are
-either placed behind a beamsplitter at a right angle to the light sheet, or
+either placed behind a beam splitter at a right angle to the light sheet, or
 placed separately at different angles. The latter approach makes for a more
 difficult setup, since Scheimpflug's rule demands that the camera must be tilted
 with respect to the objective lens, but it gives the user the freedom to choose
@@ -75,7 +84,7 @@ the highest-intensity scattering angle.
 
 In any of the above cases, the use of two cameras requires that their images be
 mapped onto one another. This is commonly achieved by means of a camera
-calibration procedure, in which a target pattern (e.g. as in FIG.
+calibration procedure, in which a target pattern (e.g. as in Fig.
 \ref{fig:plate-calibration}) of known dimensions is
 photographed by each camera. A pattern recognition algorithm then determines the
 object-to-image mappings for each camera:
@@ -93,7 +102,7 @@ P_x & P_y & P_z & S_0
 \end{equation}
 \begin{figure}
     \centering
-    \includegraphics[width=0.46\textwidth]{orb_images/plate-calibration.jpg}
+    \includegraphics[width=0.76\textwidth]{orb_images/plate-calibration.jpg}
     \caption{Homography $\mathbf{H}$ applied to target pattern image captured by
         the focused camera and superimposed on the image captured by the
         defocused camera (here, both cameras were in focus for the calibration
@@ -129,7 +138,7 @@ It follows that the quotient of the two matrices, also known as the homography
 \begin{equation}
     \mathbf{H} = \mathbf{P}_\text{def} \, \mathbf{P}_\text{foc}^{-1}
 \end{equation}
-can be used to map the focused image onto the defocused image, as shown in FIG.~\ref{fig:plate-calibration}:
+can be used to map the focused image onto the defocused image, as shown in Fig.~\ref{fig:plate-calibration}:
 \begin{equation}
     \mathbf{H}\, \mathbf{x}_\text{foc}' = \mathbf{x}_\text{def}'.
     \label{homography-definition}
@@ -138,28 +147,28 @@ can be used to map the focused image onto the defocused image, as shown in FIG.~
 Unfortunately, the camera calibration procedure itself introduces an unwanted
 distortion: to capture a viable photo of the target pattern, the defocused
 camera must be temporarily brought into focus, as was done in
-FIG. \ref{fig:plate-calibration}. This is not mentioned e.g. in the
-application manual of Dantec's IPI system, but is a practical necessity.
-Bringing a camera out of focus not only introduces a blur, it also scales the
-image extents. FIG. \ref{fig:discrepancy}, adapted from \citet{Hardalupas10},
+Fig. \ref{fig:plate-calibration}. However, as the camera is out of focus during
+the measurement process, both a blur and a scaling transformation are
+introduced.
+ Fig. \ref{fig:discrepancy}, adapted from \citet{Hardalupas10},
 shows schematically how this effect creates ``center discrepancies''. Since the
 extents of the defocused image are either smaller or larger than those of the
 focused image, depending on the direction of defocusing, all droplet images are
 projected either closer to or farther away from the image center. The
 discrepancy is worst for droplets far away from the image center. As a result,
 the centers of objects in simulatenously captured focused and defocused images
-no longer align (FIG. \ref{fig:drop-calibration-off}), and the calibration
+no longer align (Fig. \ref{fig:drop-calibration-off}), and the camera calibration
 procedure becomes self-defeating.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.45\textwidth]{orb_images/discrepancy.eps}
+\includegraphics[width=0.75\textwidth]{orb_images/discrepancy.eps}
 \caption{Schematic showing the source of center discrepancies in the case of
 parallel image and object planes \label{fig:discrepancy}}
 \end{figure}
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{orb_images/drop-calibration-off.jpg}
+    \includegraphics[width=0.75\textwidth]{orb_images/drop-calibration-off.jpg}
     \caption{Focused camera image, after applying homography $\mathbf{H}$
         derived from the calibration images, is superimposed onto
     defocused camera image of droplets. Discrepancies between object centers
@@ -178,7 +187,7 @@ Surprisingly, only \citet{Hardalupas10a} and \citet{Hardalupas10} have hitherto 
 this effect, and the only previous mention known to the authors is in
 \citet{Kurosawa02}, who dismissed it as a ``positioning error''.
 
-Hardalupas \emph{et al.} identified the centers of particles in both PIV
+Hardalupas et al. identified the centers of particles in both PIV
 (focused) and ILIDS (defocused) images. They then empirically estimated the
 magnitude of the center discrepancy effect along the vertical axis, which
 enabled them to improve the accuracy of their nearest-neighbour-based droplet
@@ -195,7 +204,7 @@ from different positions and angles). Section \ref{sec:results} documents
 our approach in greater detail and shows the result of a successful
 recalibration. While our goal was to automatically identify the disk centers in
 an uncompressed ILIDS image, a somewhat different approach is needed to automate the
-correction procedure proposed by Hardalupas \emph{et al.}; we identify some
+correction procedure proposed by Hardalupas et al.; we identify some
 relevant algorithms in Section \ref{sec:pointset}.
 
 \section{Review of image registration techniques \label{sec:review}} Given two
@@ -206,7 +215,7 @@ its enormous computational complexity (there are no gradients to guide the
 search) but also because of its inability to deal with noise, focal blur,
 perspective changes and other nonlinearities introduced by the photographic
 process. Conversely, normalized cross-correlation measures between images, as
-commonly used in PIV, are unaffected by noise but not invariant to rotation and
+commonly used in PIV, are robust to noise but not invariant to rotation and
 scale and therefore not generally practical. The standard approach to image
 registration is therefore a three-step process. First, \emph{keypoints}, i.e.
 ``interesting'' points in the images are found by a keypoint detection
@@ -219,50 +228,49 @@ images are found, outliers are removed, and the homography is calculated.
 However, the results of a keypoint detection algorithm
 must be as repeatable as possible, i.e. the same set keypoints should be found
 in both images regardless of their relative position, rotation, scale, etc. 
-For instance, the Harris corner detector\cite{Harris88}, one of the earliest
+For instance, the Harris corner detector \cite{Harris88}, one of the earliest
 keypoint detectors, is sensitive to scale and thus often unusable.
 
 The recent decade has seen a rapidly growing collection of proposed keypoint detectors,
-beginning with \textsc{sift}\cite{Lowe04}, \textsc{surf}\cite{Bay08} and
-\textsc{brisk}\cite{Leutenegger11}, all of which include keypoint extractors, to
-\textsc{censure}\cite{Agrawal08}, optimized for speed, and
-\textsc{fast}\cite{Rosten05}, which incorporates machine learning methods.
-Finally, the recent publication of \textsc{orb}\cite{Rublee11} includes a
+beginning with \textsc{sift} \cite{Lowe04}, \textsc{surf} \cite{Bay08} and
+\textsc{brisk} \cite{Leutenegger11}, all of which include keypoint extractors, to
+\textsc{censure} \cite{Agrawal08}, optimized for speed, and
+\textsc{fast} \cite{Rosten05}, which incorporates machine learning methods.
+Finally, the recent publication of \textsc{orb} \cite{Rublee11} includes a
 rotation-aware version of \textsc{fast} used in this paper. Many more have been
 developed but are not included here for brevity's sake.
 
 Keypoint extractors (sometimes called \emph{descriptors}) are often optimized
 for and therefore included with keypoint detectors, as in the instances
 mentioned above. Some however are standalone algorithms, such as
-\textsc{brief}\cite{Calonder10}.
+\textsc{brief} \cite{Calonder10}.
 
 It is straightforward to find matching keypoints by searching for pairs
 with the smallest arithmetic distance between their feature vectors (e.g. using the $L^2$ norm). This nearest-neighbour search
 can be done exhaustively in linear time to find the optimal matching, but many
-faster, if approximate, search methods exist. We should note \textsc{flann}\cite{Muja09},
-a publicly available collection of such implementations which includes a fully
-automatic parameter selection heuristic.
+faster, if approximate, search methods exist. We should note \textsc{flann} \cite{Muja09},
+a publicly available collection of such search algorithms.
 
 Finally, the homography, assuming one exists, can be derived from the set of
-matched keypoint coordinate pairs. Since many of the found matches will be
-wrong, it is of essence to use a robust estimator, i.e. a type of regression
+matched keypoint coordinate pairs. Since some of the found matches will be
+wrong (i.e. not actual correspondences between the images), it is of essence to use a robust estimator, i.e. a type of regression
 model designed to ignore outliers. Possibly the oldest of these methods is
-\textsc{ransac}\cite{Fischler81}, an iterative procedure in which sets of data points are
+\textsc{ransac} \cite{Fischler81}, an iterative procedure in which sets of data points are
 chosen at random and discarded if the agreement between a model fit to them and
 all other data points falls below a carefully chosen threshold. \textsc{ransac} was used
 for this paper, although other robust methods exist. The criterion developed by
-\citet{Moisan04} deserves special mention in our context; it does away with
+ \citet{Moisan04} deserves special mention in our context; it does away with
 \textsc{ransac}'s hard threshold and instead takes into consideration the probability of
 a match to be in consensus with epipolar geometry.
 
-\section{Using affine oriented \textsc{fast}, \textsc{brief} and \textsc{ransac} to estimate the homography
+\section{Using affine oriented FAST, BRIEF and RANSAC to estimate the homography
 between PIV and ILIDS photographs \label{sec:results}}
 
 Existing PIV/ILIDS systems derive the homography from the result of a camera
 calibration procedure which the user is required to perform before analyzing
-images.
-Although the final value of $\mathbf{H}$ is invisible to the user in our copy of
-Dantec's DynamicStudio software, the camera matrices $\mathbf{P}_\text{foc}$ and
+images. For this experiment, we used a copy of Dantec's \emph{DynamicStudio}
+software \cite{dstudio}, which hides the final value of $\mathbf{H}$ from the
+user. However, the camera matrices $\mathbf{P}_\text{foc}$ and
 $\mathbf{P}_\text{def}$ can be shown and edited. We therefore must find a
 corrected homography $\mathbf{\hat{H}}$ that allows us to compute
 \begin{equation}
@@ -273,7 +281,7 @@ so that we can replace $\mathbf{P}_\text{def}$ with $\mathbf{\hat{P}}_\text{def}
 the software, effectively correcting $\mathbf{H}$ to $\mathbf{\hat{H}}$.
 
 To efficiently extract keypoints, we combined three algorithms:
-\textsc{asift}\cite{Morel09} to deal with skew transformations; an oriented version of
+\textsc{asift} \cite{Morel09} to deal with skew transformations; an oriented version of
 \textsc{fast}, published as part of \textsc{orb}, to detect keypoints; and
 standard \textsc{brief} as a keypoint extractor.
 
@@ -302,43 +310,44 @@ images:
     \item Erode the image, using a $3\times 3$ or $5\times 5$ kernel. This will
         close any remaining bright pixels which are likely noise.
     \item Locate the intensity peaks in the remaining image.
-    \item Fill a blank image with black, then draw bright circles of diameter
-        $D_\text{disk}$ onto it, centerd at the respective positions of the
+    \item Fill a new image buffer with black, then draw bright circles of diameter
+        $D_\text{disk}$ onto it, centered at the respective positions of the
         intensity peaks detected in the focused image. (Note that simply dilating
         the result of the previous step will not lead to circular disks.)
 \end{enumerate}
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{orb_images/dilation.jpg}
+    \includegraphics[width=0.9\textwidth]{orb_images/dilation.jpg}
     \caption{Simulating disks based on the focused image. \label{fig:making-disks}}
 \end{figure}
 
-The result of performing these operations on our sample image is shown in FIG.
+The result of performing these operations on our sample image is shown in Fig.
 \ref{fig:making-disks}. We determined the disk diameter $D_\text{disk}$
 empirically from the defocused images, although it is naturally preferable to
 automate this step, e.g. using circular Hough transforms or cross-correlation
 with circular masks. There may be simpler ways of achieving the same result,
 e.g. by means of Gaussian filters, distance transforms and thresholding
 operations. However, we found the protocol described above to be quite robust to
-noise and fast enough for our application.
+noise and fast enough for our application. Note that the homography estimation
+needs to be performed only once (until the camera is moved or refocused).
 
 Implementations of \textsc{orb} and \textsc{brief} are freely available through
 the OpenCV project, which provides bindings for the C++ and Python languages. We
 used these implementations to find and extract matching keypoints between our
-sample images, shown in FIG. \ref{fig:matching}.
+sample images, shown in Fig. \ref{fig:matching}.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.5\textwidth]{orb_images/asift-matching.jpg}
+    \includegraphics[width=0.9\textwidth]{orb_images/asift-matching.jpg}
     \caption{Visualized inliers in the set of matched keypoints between the
-    mirrored simulated disks (see FIG. \ref{fig:making-disks}) and the ILIDS image. \label{fig:matching}}
+    mirrored simulated disks (see Fig. \ref{fig:making-disks}) and the ILIDS image. \label{fig:matching}}
 \end{figure}
 
-The matches shown in FIG. \ref{fig:matching} were found using a most basic
+The matches shown in Fig. \ref{fig:matching} were found using a most basic
 method: brute-force match search, followed by a \textsc{ransac} estimation of the
 homography matrix $\mathbf{K}$ using a threshold of 10.
 
-Since the two cameras were positioned behind a beamsplitter in our setup, the
+Since the two cameras were positioned behind a beam splitter in our setup, the
 defocused image was flipped horizontally. We therefore first mirrored it
 horizontally, using the transformation matrix
 \begin{equation*}
@@ -357,7 +366,7 @@ images. To reduce an image to half of its original size, apply
             0 & 0 & 1
     \end{array} \right].
 \end{equation*}
-While the above operations might not be strictly necessary, we found that they
+While the above operations might not be necessary in theory, we found that they
 significantly improved the quality of the matches identified.
 If the registration algorithms mentioned above now find a homography matrix
 $\mathbf{K}$, then we can write
@@ -390,15 +399,15 @@ to arrive at our final expression for $\mathbf{\hat{H}}$:
 \end{equation}
 Substitution of $\mathbf{\hat{H}}$ into \eqref{corrected-homography-use} yields
 $\mathbf{\hat{P}}_\text{def}$, which can be manually entered into the
-DynamicStudio software. FIG. \ref{fig:drop-calibration-corrected} illustrates
+DynamicStudio software. Fig. \ref{fig:drop-calibration-corrected} illustrates
 how the use of $\mathbf{\hat{H}}$ leads to an improved alignment compared to
-FIG. \ref{fig:drop-calibration-off}. Note that a slight projective distortion
+Fig. \ref{fig:drop-calibration-off}. Note that a slight projective distortion
 is necessary for optimal registration, confirming that it is infeasible to restrict the homography
 to affine matrices.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{orb_images/drop-calibration-corrected.jpg}
+    \includegraphics[width=0.75\textwidth]{orb_images/drop-calibration-corrected.jpg}
     \caption{Focused camera image, after applying corrected homography
         $\mathbf{\hat{H}}$ derived from the matched keypoints, is superimposed onto
     defocused camera image of droplets.}
@@ -410,16 +419,16 @@ aperture was used to reduce overlap, as in the paper by Hardalupas
 \emph{et~al.}, so we will outline briefly how to use registration algorithms
 with such setups.\footnote{While slit strip images could be
 simulated over the focused image (in a procedure analogous to that illustrated
-in FIG.  \ref{fig:making-disks}), the lack of overlap between them could make it
+in Fig.~\ref{fig:making-disks}), the lack of overlap between them could make it
 significantly more difficult to find ``interesting'' keypoints in the simulated
 image.}
 
-Keypoints are not required, when the absence of overlap allows
+Keypoints are not required when the absence of disk overlap allows
 us to identify focused and defocused objects centers directly from the respective
-images and find a projection mapping between them. Indeed, Hardalupas
-\emph{et~al.} successfully registered their PIV and ILIDS images that way: using
+images, as we can directly find a projection mapping between them. Indeed, Hardalupas
+\emph{et~al.} successfully registered their PIV and ILIDS images in that fashion: using
 wavelet transforms at various frequencies, they identified the putative droplet
-centers on both focused and defocused images.  Then, using a continuous,
+center positions on both focused and defocused images.  Then, using a continuous,
 single-stream monodisperse droplet generator, they estimated how the magnitude
 of the center discrepancies varied over the image.  After applying this
 empirically estimated distortion to the captured focused images, they matched each
@@ -441,7 +450,7 @@ at hand requires an algorithm able to deal with projective transforms, which
 are non-rigid but linear.
 
 The only paper known to the authors to specifically address this case is by
-\citet{Chi11}, who propose an iterative search based on image moments. Since
+ \citet{Chi11}, who propose an iterative search based on image moments. Since
 image moments are an aggregate metric, they do not directly lead to a
 droplet-to-droplet correspondence. Still, closest-neighbour matches after
 application of this algorithm would likely produce results no worse than those
@@ -452,10 +461,10 @@ mention. Many of them are probabilistic relaxations of the Iterative Closest
 Point algorithm, which simply searches for the least-squares-optimal rigid
 mapping. Several of these approaches were reviewed and generalized by
 \citet{Jian10}. A slightly different approach, named Coherent Point
-Drift\cite{Myronenko10}, is also highly popular and illustrated in FIG.~\ref{fig:cpd}.
+Drift \cite{Myronenko10}, is also highly popular and illustrated in Fig.~\ref{fig:cpd}.
 \begin{figure}
     \centering
-    \includegraphics[width=0.45\textwidth]{orb_images/pointset.eps}
+    \includegraphics[width=0.75\textwidth]{orb_images/pointset.eps}
     \caption{Non-rigid variant of the Coherent Point Drift algorithm applied to
     two point sets. Notice that the probabilistic nature of the matching creates
 robustness to unmatched points. (Image source: Wikipedia)}
@@ -463,14 +472,14 @@ robustness to unmatched points. (Image source: Wikipedia)}
 \end{figure}
 
 We forgo at this point a documentation of the application and refer the reader to
-Hardalupas \emph{et al.}, who describe their center identification technique in
+Hardalupas et al., who describe their center identification technique in
 good detail, and to the above-mentioned authors, who have published freely
 available implementations of their algorithms online.
 
 \section{Conclusion}
 Existing image registration algorithms, developed primarily for applications in
 robotics and medical imaging, can eliminate the need for camera calibration and
-sidestep the center discrepancy effect in simultaneous focused/defocused imaging
+sidestep the center discrepancy effect in simultaneous focused/defocused droplet imaging
 configurations. We have shown how feature-based registration algorithms can be
 used to estimate homographies between PIV and ILIDS disk images, and we have
 suggested several point set registration methods that will align images based
@@ -483,6 +492,6 @@ Ultimately, our hope is that by incorporating the reviewed algorithms in their
 software, commercial vendors of ILIDS systems will eliminate the need for
 calibration procedures altogether while improving the number of validated
 droplet matches.
-
+\bibliographystyle{elsarticle-harv}
 \bibliography{orbbibliography}
 \end{document}
