@@ -13,7 +13,7 @@
 \usepackage{amsmath, amssymb}
 \usepackage{mathspec}
 \setmainfont[Mapping=tex-text, Scale=1.1]{Crimson}
-\setsansfont[Scale=1]{Alte DIN 1451 Mittelschrift}
+\setsansfont[Scale=1, Path=/home/sebastian/.fonts/]{din1451m.otf}
 %\allsectionsfont{\sffamily}
 %\setmainfon
 %\usepackage{fouriernc}
@@ -461,42 +461,34 @@ Solving for the function governing angular dependence, $\Theta(\theta)$, leads
 to Legendre polynomials. Polar plots of the first five such functions of
 both types are shown in Figure \ref{fig:angularfuncs}. 
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[height=0.6\textheight]{pictures/angularfuncs.jpg}
-%    \caption{Associated Legendre polynomials. Incident light is coming from the
-%    left. Plot by Bohren and Huffman \cite{craig}}
-%    \label{fig:angularfuncs}
-%\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.5\textheight]{img/scattering/radials.pdf}
+    \caption{A few associated Legendre polynomials $\Theta(\theta)$ of order zero (here labelled $P$). Incident light is coming from the
+    left.}
+    \label{fig:angularfuncs}
+\end{figure}
 
 Solving for $R(r)$, the function describing the intensity of the spherical waves
 as it drops with distance from the droplet, leads to vector spherical harmonics.
 Two-dimensional plots of a few orders of such ``Riccati-Bessel functions'' are
 shown in Figure \ref{fig:besselfuncs}.
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[height=0.8\textheight]{pictures/besselfuncs.jpg}
-%    \caption{Riccati-Bessel functions governing the radial decay of the partial
-%    waves. Plot by Bohren and Huffman \cite{craig}}
-%    \label{fig:besselfuncs}
-%\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/scattering/bessel.pdf}
+    \caption{Some Riccati-Bessel functions governing the radial decay of the partial
+    waves.}
+    \label{fig:besselfuncs}
+\end{figure}
 
 Each partial wave, in turn, represents the sum of scattering effects up to some
 scattering order $N$ (in practice, no infinite sum can be taken; the maximum
 scattering order to achieve negligible errors depends on the relative
 wavelength). With every refraction out of the droplet -- thus adding to the
 total external field -- the \emph{internal} partial wave loses intensity
-according to respective reflectance and transmittance values. This concept is
-illustrated in Figure \ref{fig:miewaves}.
+according to respective reflectance and transmittance values.
 
-%\begin{figure}
-%    \centering
-%    \includegraphics[height=0.3\textheight]{pictures/miewaves.jpg}
-%    \caption{Schematic illustration of wave series. By Albrecht et al.
-%    \cite{albrecht}}
-%    \label{fig:miewaves}
-%\end{figure}
 
 The complete model, then, provides a semi-closed expression for the scattering
 functions $S_1$ and $S_2$:
@@ -517,19 +509,20 @@ functions $S_1$ and $S_2$:
       d_p}{\lambda})\frac{\pi d_p}{\lambda}\xi'(m \frac{\pi
       d_p}{\lambda})}
     \end{align}
-    where $PP$ stands for interal reflection, $MM$ external reflection, and $MP$
-    and $PM$ for refraction into and out of the particle, respectively. The
-    expression for $R_{b_n}^{PP}$ is shown above to illustrate the coefficents'
-    form. Note that $\pi$ and $\tau$ are the associated Legendre functions
-    shown in Figure \ref{fig:angularfuncs}, and $\zeta$ and $\xi$ are the Riccati-Bessel functions shown in
-    Figure \ref{fig:besselfuncs}.
+where $PP$ stands for interal reflection, $MM$ external reflection, and $MP$
+and $PM$ for refraction into and out of the particle, respectively. The
+expression for $R_{b_n}^{PP}$ is shown above to illustrate the coefficents'
+form. Note that in the above equations, $\pi$ and $\tau$ are associated Legendre functions and $\zeta$ and $\xi$ are Riccati-Bessel functions.
 
-    \subsection{Results}
-    Some numerical results are presented in Figures \ref{fig:angleresults} and
-    \ref{fig:results} below. The former shows logarithmic and linear plots of the
-    total external intensity depending on the droplet size/wavelength ratio. The
-    latter shows the angular dependence of various scattering orders for both
-    parallel and perpendicular polarizations.
+\subsection{Results}
+Some numerical results are presented in \figref{fig:angleresults} below.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/scattering/results.pdf}
+    \caption{Scattered light intensity based on light incident from the left on a spherical particle of size parameters $x=3$ and $x=5$, where $x = \frac{\pi D_d m}{\lambda}$. Only perpendicularly polarized light intensities are shown. Right column shows logarithmically scaled intensities. Figure adapted from \citet{Albrecht03}.}
+    \label{fig:angleresults}
+\end{figure}
+
 
 \chapter[Monodisperse droplet generation]{Monodisperse\\droplet generation}
 \label{sec:droplet-generator}
@@ -2223,47 +2216,99 @@ a bit larger than the actual (and completely obvious) peak value, even these
 "wrong" values aren't correct.
 
 \section{Calibration}
+If all optical parameters are known, the equations necessary to derive droplet
+diameters and velocities are fully determined. However, $\Delta y_{AB}$ and
+$\Delta y_{AC}$ are not always known to high accuracy and can, in fact, undergo
+slight changes if the receiver is subject to mechanical vibrations over the
+years. The FlowSizer software therefore offers a calibration tool to help
+determine empirical values for $\Delta y_{AB}$ and $\Delta y_{AC}$ given a set
+of measurements of droplets of known size.
 
-The calibration of 
+To calibrate, we must solve for the two values under the
+requirement that the peak of the diameter histogram coincide with the known
+droplet diameter. This is not straightforward for a few reasons:
+\begin{alist}
+\item The epsilson cutoff criterion means that obtaining the diameter histogram from
+        the phase differences is a one-way calculation (a cutoff cannot be
+        reversed algebraically)
+\item The choice of "peak" diameter is questionable. If the measured diameter
+        distribution is not exactly symmetrical, it may be preferable to use a
+        form of average (e.g. $D_{10}, D_{20}, D_{32}$) instead of the diameter
+        corresponding to the true maximum. Alternatively, a Gaussian kernel
+        density estimate of some arbitrary bandwidth may be used.
+\item Since there is no unique pair of values for $\Delta y_{AB}$ and $\Delta
+        y_{AC}$ that will result in the expected peak diameter, an additional
+        relationship must be used to establish the best pair. One source for
+        this could be the difference-diameter plot: one could minimize the sum
+        of absolute or squared differences between AB and AC measurements.
+\end{alist}
+The combination of the above three points means that an iterative search for the
+optimal $\Delta y_{AB}$/$\Delta y_{AC}$ combination is inevitable.
+Alternatively, we can find the set of possible combinations given one set of
+measurements, then find overlaps with the sets of possible combinations from
+other measurement sets. This has been very difficult to do in our experience, as
+shown in \figref{fig:pdpa-zerorelations}.
 
-- To calibrate, we re-calculate the AB/AC separation values such that the peak
-corresponds with the known diameter. 
-- The "peak" is ambiguous, but we can use Gaussian kernel density estimates to
-find it
-- There is no unique AB/AC pair that aligns the the peak to the known diameter;
-many different pairs are possible.
-- The difference-diameter plot should be as straight as possible, which
-practically means that the PCA should be aligned horizontally (or vertically,
-when it's very thin?). Or we could try to minimize the sum of absolute/squared
-differences.
-- All of this forces us to use a search algorithm. It is not clear how TSI does
-it.
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{img/pdpa/all-coinc-AB-AC-zerorelations.pdf}
+    \caption{Result of a set of calibration attempts showing the difficulty in
+            finding a consistent pair of $\Delta y_{AB}$ and $\Delta y_{AC}$
+            values. Each line corresponds to a set of potential values for
+    $\Delta y_{AB}$ and $\Delta y_{AC}$ that would yield a diameter distribution
+    with a peak at the known diameter value shown in the legend.
+    \label{fig:pdpa-zerorelations}}
+\end{figure}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%  BREAKUP OF WATER/AIR JET IMPINGING %%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Calibration is tricky, because 
+\chapter{Breakup of a liquid jet when colliding with a gas jet}
 
-peakdiam = argmax(gaussian(average(diamAB[within7percent], diamAC[within7percent])))
+To our knowledge, the behaviour of a water jet impacted by a gas jet of smaller of
+comparable diameter has not been examined and imaged in detail. We here make an
+attempt at cataloguing this behaviour under various conditions.
 
-Since the selection of droplets with <=diff(diam) and the gaussian kernel
-density estimate are one-way functions, it's impossible to work backwards. We
-also want to minimize the angle in the difference-diameter plot, i.e. the PCA is
-supposed to be as close as possible to 0 and 90 degrees. So the only way to do
-this reliably is to iterate over the two AB and AC values to find an optimum.
+A relevant experimental study was recently performed by \citet{Taranenko13} in
+the context of Kraft smelt shattering in the paper industry. To convert wood
+chips into pulp fit for paper production, they are boiled in a strongly alkaline
+solution of sodium salts (lye and sodium sulfate).  Over time, wood residue
+accumulates in the liquid. To recover the sodium salts, the organic material is
+burned off in a so-called \emph{Kraft recovery boiler}.  The molten salts
+collect at the bottom of the furnace as \emph{smelt}. The smelt can be quenched
+in water, but must be atomized (``shattered'') before making contact with the
+water to prevent too sudden a release of steam which can damage the boiler. The
+interaction of smelt and water has been studied in detail, most recently by
+\citet{Jin13}.
 
-Nonetheless, even with this method the relationship between the distance values
-AB and AC is typically linear, and once the linear relationship has been found,
-we can find the combination of values that produces the most straight PCA and
-the most centered cluster. Let's approximate the 
+In the industrial setting, smelt pours from a spout and is atomized by pressurized steam.
+\citet{Taranenko13} simulated this case using water and air and investigated
+breakup performance using various nozzles and conditions. For this study, we
+were interested in imaging and analyzing the behaviour on a more idealized,
+fundamental level.
 
-\chapter{Breakup of a water jet when colliding with an air jet}
-We built an angle plate like this:
+Our experimental setup shares many characteristics with that of jet-in-crossflow
+experiments (where the crossflow is significantly larger than the jet) and with
+water-water impingement studies.
+
+Severeal jet-jet impingement studies have been published since
+\citet{Dombrowski64}, e.g. the recent analysis by \citet{Li06}.
+
+\section{Experimental setup}
+\figref{fig:angle-plate} shows, schematically, the setup we used to align the
+needles producing liquid and gas jets.
 \begin{figure}
     \centering
     \includegraphics[width=\textwidth]{img/setup/angleplate.pdf}
-    \caption{Angle plate setup}
-    \label{fig:angle-plate}
+    \caption{Angle plate setup. Only one needle holder assembly is shown; two
+    are necessary to perform the experiment. \label{fig:angle-plate}}
 \end{figure}
+
+
+
+
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
 \end{document}

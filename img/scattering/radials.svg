@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="107.53125"
+   height="154.5"
+   viewBox="0 0 107.53125 154.5"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   sodipodi:docname="radials.svg">
+  <metadata
+     id="metadata261">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Gnuplot</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs259">
+    <defs
+       id="defs11">
+      <circle
+         r="0.5"
+         id="gpDot"
+         cx="0"
+         cy="0"
+         sodipodi:cx="0"
+         sodipodi:cy="0"
+         sodipodi:rx="0.5"
+         sodipodi:ry="0.5"
+         style="stroke-width:0.5" />
+      <path
+         d="M -1,0 H 1 M 0,-1 v 2"
+         id="gpPt0"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <path
+         d="M -1,-1 1,1 M 1,-1 -1,1"
+         id="gpPt1"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <path
+         d="M -1,0 1,0 M 0,-1 0,1 m -1,-2 2,2 m -2,0 2,-2"
+         id="gpPt2"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt3"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <rect
+         height="2"
+         width="2"
+         y="-1"
+         x="-1"
+         id="gpPt4"
+         style="fill:currentColor;stroke:currentColor;stroke-width:0.222" />
+      <circle
+         r="1"
+         cy="0"
+         cx="0"
+         id="gpPt5"
+         sodipodi:cx="0"
+         sodipodi:cy="0"
+         sodipodi:rx="1"
+         sodipodi:ry="1"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <use
+         id="gpPt6"
+         xlink:href="#gpPt5"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="600"
+         height="480" />
+      <path
+         d="m 0,-1.33 -1.33,2 2.66,0 z"
+         id="gpPt7"
+         inkscape:connector-curvature="0"
+         style="stroke:currentColor;stroke-width:0.222" />
+      <use
+         id="gpPt8"
+         xlink:href="#gpPt7"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="600"
+         height="480" />
+      <use
+         transform="scale(-1,-1)"
+         id="gpPt9"
+         xlink:href="#gpPt7"
+         style="stroke:currentColor"
+         x="0"
+         y="0"
+         width="600"
+         height="480" />
+      <use
+         id="gpPt10"
+         xlink:href="#gpPt9"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="600"
+         height="480" />
+      <use
+         transform="matrix(0.70710678,0.70710678,-0.70710678,0.70710678,0,0)"
+         id="gpPt11"
+         xlink:href="#gpPt3"
+         style="stroke:currentColor"
+         x="0"
+         y="0"
+         width="600"
+         height="480" />
+      <use
+         id="gpPt12"
+         xlink:href="#gpPt11"
+         style="fill:currentColor;stroke:none"
+         x="0"
+         y="0"
+         width="600"
+         height="480" />
+    </defs>
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1025"
+     id="namedview257"
+     showgrid="false"
+     inkscape:zoom="3.7466667"
+     inkscape:cx="51.005417"
+     inkscape:cy="91.271645"
+     inkscape:window-x="0"
+     inkscape:window-y="30"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <title
+     id="title4">Gnuplot</title>
+  <desc
+     id="desc6">Produced by GNUPLOT 4.6 patchlevel 4 </desc>
+  <rect
+     style="fill:none"
+     id="rect9"
+     height="480"
+     width="600"
+     y="-50.5625"
+     x="-51.78125" />
+  <g
+     id="g27"
+     style="color:#ffffff;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-51.78125,-50.5625)" />
+  <g
+     id="g181"
+     style="color:#a391ff;fill:none;stroke:#000000;stroke-width:1.89893019;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="matrix(0.23789204,0,0,0.29143525,54.68596,47.285404)">
+    <path
+       style="stroke:#000000;stroke-width:1.89893019"
+       inkscape:connector-curvature="0"
+       id="path183"
+       d="m 314.5,230.3 h 0.01" />
+  </g>
+  <g
+     id="g185"
+     style="color:#000000;fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter"
+     transform="translate(-51.78125,-50.5625)" />
+  <path
+     style="color:#008000;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter"
+     d="m 83.51942,15.943233 c -0.01,-2.037258 -0.57745,-3.817039 -1.55747,-5.393447 -0.80527,-1.282553 -1.89029,-2.3324 -3.00699,-3.06038 -1.73784,-1.120749 -3.63806,-1.658138 -5.69787,-1.634092 -1.97464,0.06294 -3.80722,0.6385 -5.47428,1.775775 -1.0456,0.725161 -2.06588,1.736627 -2.81424,2.956478 -0.93472,1.494039 -1.48785,3.218839 -1.53434,5.138418 -0.0411,2.235002 0.60289,4.194906 1.71939,5.875177 0.97874,1.447773 2.25057,2.53159 3.57755,3.239848 1.53756,0.826038 3.18692,1.218917 4.94998,1.199594 2.17248,-0.06797 4.20148,-0.753464 5.99086,-2.153603 1.22207,-0.94392 2.35372,-2.361842 3.007,-3.901039 0.62368,-1.42374 0.93302,-3.057939 0.81728,-4.770041 C 83.3383,13.237803 82.66037,11.45512 81.55331,9.954713 80.39474,8.380622 78.94203,7.323648 77.39749,6.658192 75.93448,6.034853 74.33411,5.766068 72.69424,5.883651 c -2.37092,0.209233 -4.59891,1.16626 -6.44577,3.050935 -1.12689,1.18557 -1.98378,2.638807 -2.42873,4.241082 -0.32868,1.119239 -0.46338,2.403172 -0.34696,3.664901 0.17541,1.980945 0.89247,3.74328 2.0278,5.24232 1.36183,1.775263 3.08406,2.873013 4.88058,3.466541 1.29038,0.418674 2.68642,0.575526 4.08643,0.443945 2.11489,-0.231629 4.09803,-1.056154 5.80582,-2.616437 1.07391,-0.988287 1.99594,-2.303082 2.53667,-3.712127 0.45473,-1.14167 0.70302,-2.364286 0.71012,-3.71213"
+     id="path207"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccccccccccccccccc" />
+  <path
+     style="color:#00ffff;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter"
+     d="m 99.09256,55.17645 c 0.0189,-3.9571 -2.62235,-7.169577 -5.45312,-8.868047 -5.08628,-3.03829 -11.33485,-2.97042 -16.77143,-1.17791 -5.78919,1.93394 -11.26412,5.968327 -14.72479,11.863307 -1.80463,3.17584 -3.03646,6.67009 -2.77464,10.58443 0.22341,2.5565 1.3134,4.96645 3.33781,5.51938 2.38262,0.45426 3.99409,-1.96481 4.40919,-4.61071 0.43491,-2.59709 -0.0449,-5.31476 -0.86536,-7.63963 -1.68797,-4.73579 -4.80778,-8.54611 -8.35137,-11.32483 -4.81432,-3.726887 -10.323751,-5.681857 -15.974749,-5.637177 -4.150803,0.11487 -8.344016,1.23775 -11.565557,4.52656 -1.9338,2.007467 -3.160613,4.835497 -2.774635,7.942537 0.445341,3.5002 2.968519,6.33096 5.604216,7.84156 5.313877,3.03519 11.796671,2.80691 17.375795,0.75724 6.18964,-2.32038 12.00549,-7.01661 15.12314,-13.98356 1.10708,-2.596697 1.83618,-5.480007 1.51094,-8.497837 -0.29482,-2.73419 -1.6816,-5.28896 -4.03834,-5.26697 -2.37194,0.25039 -3.64252,3.01519 -3.80481,5.85593 -0.19754,3.87485 1.06818,7.299207 2.85705,10.449807 4.34789,7.24181 11.70618,11.70536 18.98289,12.75515 5.01351,0.64607 10.27427,-0.0905 14.39514,-3.65154 1.99668,-1.81494 3.50292,-4.40741 3.504,-7.42087"
+     id="path229"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccccccccccccccccccc" />
+  <path
+     style="color:#157545;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter"
+     d="m 99.35751,95.80906 c -0.0139,-2.4256 -1.63144,-4.26791 -3.29433,-5.44326 -3.17228,-2.10513 -6.74975,-2.72744 -10.33978,-2.78097 -5.10399,-0.0453 -10.09775,1.22638 -14.87988,3.45926 -4.32322,2.0846 -8.44056,4.96467 -11.76548,8.93643 -1.63533,2.01397 -3.24608,4.46305 -3.79264,7.17287 -0.1723,0.96365 -0.18636,2.11 0.34604,2.78098 0.36214,0.4884 0.92475,0.58631 1.5226,0.45784 1.75512,-0.54263 3.16923,-2.61226 4.09715,-4.59539 1.64132,-3.54808 2.24011,-7.70379 1.97937,-11.88697 -0.30055,-3.78758 -1.2726,-7.49151 -3.32202,-10.39474 -0.90568,-1.18691 -1.87711,-2.20805 -3.16975,-2.32313 -1.11272,-0.0517 -1.62865,1.05418 -1.55028,2.40791 0.12496,2.00646 1.0032,3.73265 1.97937,5.40933 2.35441,3.74255 5.63791,6.69114 9.0525,8.97035 5.11021,3.35876 10.91328,5.44989 16.69314,5.96892 4.17738,0.31605 8.4223,-0.0206 12.22227,-2.10269 1.54588,-0.87942 3.04559,-2.16483 3.82032,-3.98493 0.5807,-1.34406 0.51793,-3.17514 -0.1661,-4.42582 -1.09236,-2.2295 -3.15203,-3.49942 -5.12145,-4.37496 -4.60384,-1.8584 -9.73815,-1.78224 -14.53383,-0.81394 -5.67869,1.19124 -11.26746,3.79744 -16.00106,7.69856 -2.61985,2.20817 -5.02713,4.78064 -6.72709,8.0377 -0.6935,1.4877 -1.34271,3.02221 -1.20423,4.79887 0.14218,1.13211 0.77136,1.80125 1.79943,1.64484 1.85633,-0.45555 3.29048,-2.61314 4.26326,-4.64626 1.64063,-3.5863 2.25203,-7.82453 1.95168,-12.05654 -0.31456,-3.664 -1.26407,-7.25158 -3.22513,-10.08951 -0.91069,-1.2345 -1.93484,-2.32945 -3.2528,-2.44183 -0.61751,-0.0397 -1.09632,0.32577 -1.3565,0.94959 -0.37355,0.9547 -0.1781,2.29495 0.13842,3.27274 0.74468,2.50628 2.27724,4.72255 3.848,6.57938 3.88272,4.48591 8.69494,7.53849 13.77254,9.59775 4.78468,1.86636 9.75368,2.79289 14.78298,2.35705 2.99711,-0.32685 6.00817,-1.05776 8.60957,-3.03533 1.47325,-1.15287 2.814,-2.89865 2.8251,-5.08715"
+     id="path240"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccc" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3575"
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     transform="matrix(0.22722517,0,0,0.22722517,4.414802,-5.58796)"><flowRegion
+       id="flowRegion3577"><rect
+         id="rect3579"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243" /></flowRegion><flowPara
+       id="flowPara3581"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift Italic">P</flowPara></flowRoot>  <flowRoot
+     transform="matrix(0.17012193,0,0,0.17012193,12.080219,2.905189)"
+     xml:space="preserve"
+     id="flowRoot3575-8-7"
+     style="font-size:286.1038208%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+       id="flowRegion3577-3-5"><rect
+         id="rect3579-2-3"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243"
+         style="font-size:286.1038208%;baseline-shift:sub" /></flowRegion><flowPara
+       id="flowPara3581-2-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift">1</flowPara></flowRoot>  <flowRoot
+     transform="matrix(0.17012193,0,0,0.17012193,13.148029,-2.89301)"
+     xml:space="preserve"
+     id="flowRoot3575-8-7-8"
+     style="font-size:286.13128662%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+       id="flowRegion3577-3-5-5"><rect
+         id="rect3579-2-3-4"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243"
+         style="font-size:286.13128662%;baseline-shift:sub" /></flowRegion><flowPara
+       id="flowPara3581-2-2-6"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift">0</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3575-6"
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     transform="matrix(0.22722517,0,0,0.22722517,4.414609,74.26977)"><flowRegion
+       id="flowRegion3577-3"><rect
+         id="rect3579-9"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243" /></flowRegion><flowPara
+       id="flowPara3581-3"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift Italic">P</flowPara></flowRoot>  <flowRoot
+     transform="matrix(0.17012193,0,0,0.17012193,12.080026,82.76292)"
+     xml:space="preserve"
+     id="flowRoot3575-8-7-3"
+     style="font-size:286.13433838%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+       id="flowRegion3577-3-5-1"><rect
+         id="rect3579-2-3-7"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243"
+         style="font-size:286.13433838%;baseline-shift:sub" /></flowRegion><flowPara
+       id="flowPara3581-2-2-0"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift">3</flowPara></flowRoot>  <flowRoot
+     transform="matrix(0.17012193,0,0,0.17012193,13.147836,76.96472)"
+     xml:space="preserve"
+     id="flowRoot3575-8-7-8-2"
+     style="font-size:286.15264893%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+       id="flowRegion3577-3-5-5-5"><rect
+         id="rect3579-2-3-4-0"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243"
+         style="font-size:286.15264893%;baseline-shift:sub" /></flowRegion><flowPara
+       id="flowPara3581-2-2-6-7"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift">0</flowPara></flowRoot>  <flowRoot
+     xml:space="preserve"
+     id="flowRoot3575-6-5"
+     style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+     transform="matrix(0.22722517,0,0,0.22722517,4.414443,33.646447)"><flowRegion
+       id="flowRegion3577-3-2"><rect
+         id="rect3579-9-8"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243" /></flowRegion><flowPara
+       id="flowPara3581-3-9"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift Italic">P</flowPara></flowRoot>  <flowRoot
+     transform="matrix(0.17012193,0,0,0.17012193,12.079861,42.139597)"
+     xml:space="preserve"
+     id="flowRoot3575-8-7-3-7"
+     style="font-size:286.1618042%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+       id="flowRegion3577-3-5-1-1"><rect
+         id="rect3579-2-3-7-8"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243"
+         style="font-size:286.1618042%;baseline-shift:sub" /></flowRegion><flowPara
+       id="flowPara3581-2-2-0-9"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift">2</flowPara></flowRoot>  <flowRoot
+     transform="matrix(0.17012193,0,0,0.17012193,13.14767,36.341397)"
+     xml:space="preserve"
+     id="flowRoot3575-8-7-8-2-2"
+     style="font-size:286.17095947%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><flowRegion
+       id="flowRegion3577-3-5-5-5-1"><rect
+         id="rect3579-2-3-4-0-8"
+         width="286.49149"
+         height="141.92464"
+         x="26.799599"
+         y="66.682243"
+         style="font-size:286.17095947%;baseline-shift:sub" /></flowRegion><flowPara
+       id="flowPara3581-2-2-6-7-2"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift">0</flowPara></flowRoot>  <path
+     style="color:#000094;fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:butt;stroke-linejoin:miter"
+     d="m 99.37117,136.75335 c -0.0624,-2.1238 -1.79638,-3.46258 -3.28886,-4.3169 -4.49587,-2.27859 -9.49785,-2.33382 -14.31624,-1.87912 -7.81662,0.93926 -15.59535,3.80164 -22.28966,8.82001 -2.31521,1.85536 -4.71241,3.91972 -6.12171,6.80546 -0.36227,0.70395 -0.69078,2.07394 0.11055,2.42085 1.02585,0.29415 2.02185,-0.4439 2.90194,-1.08346 3.19336,-2.61861 5.51049,-6.64502 7.10284,-11.03771 1.08101,-3.20366 1.81648,-6.61476 1.49242,-10.10661 -0.18087,-1.26808 -0.47476,-2.83407 -1.4786,-3.16572 -0.97413,-0.0351 -1.35105,1.29156 -1.57534,2.30234 -0.50791,2.77667 -0.0708,5.76946 0.5942,8.44757 1.36556,5.13239 3.87604,9.95775 7.36541,13.15383 1.0242,0.81648 2.04193,1.68403 3.27504,1.54054 0.79607,-0.14923 0.70557,-1.44373 0.37311,-2.14998 -1.15372,-2.68214 -3.31897,-4.65608 -5.36168,-6.41609 -6.3265,-5.06205 -13.71241,-8.00467 -21.2118,-9.26017 -5.119061,-0.75495 -10.498312,-0.88177 -15.394098,1.16811 -1.671691,0.78981 -3.58008,1.93266 -4.117995,4.07989 -0.385463,1.94576 0.967206,3.52558 2.266277,4.40153 3.143516,2.10758 6.745599,2.5491 10.26734,2.70865 7.743099,0.13079 15.514096,-2.03698 22.538396,-5.92516 3.67768,-2.12521 7.36767,-4.70383 10.04625,-8.44757 0.60789,-1.01096 1.36261,-2.07013 1.17459,-3.35194 -0.28999,-0.93945 -1.47123,-0.62505 -2.10045,-0.27086 -2.1332,1.1339 -3.87064,3.31207 -5.33404,5.55271 -2.53168,4.08059 -4.37012,9.04973 -4.58783,14.15265 -0.038,1.83079 0.0644,3.83233 1.00877,5.0787 1.57967,1.25697 2.30955,-1.94636 2.30773,-3.63974 0.16266,-4.04063 -0.89177,-7.85406 -2.39064,-11.46093 -1.71159,-3.78578 -3.94185,-7.31825 -6.9923,-9.3956 -0.69729,-0.40884 -1.66147,-0.92762 -2.36301,-0.44015 -0.65145,0.68965 -0.11929,1.90122 0.24874,2.65785 1.79584,3.23693 4.62757,5.49927 7.39303,7.49954 7.05155,4.78167 15.11343,7.47631 23.17407,7.95664 4.1717,0.14718 8.4226,-0.12014 12.25724,-2.2177 1.39085,-0.84397 2.98676,-2.16777 3.02769,-4.16454"
+     id="path251"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccccccccccccccccccccccccccccccccccc" />
+  <g
+     id="g3305"
+     transform="translate(-42.439613,-52.340021)">
+    <flowRoot
+       transform="matrix(0.22722517,0,0,0.22722517,46.854001,167.54238)"
+       style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="flowRoot3575-6-5-8"
+       xml:space="preserve"><flowRegion
+         id="flowRegion3577-3-2-2"><rect
+           y="66.682243"
+           x="26.799599"
+           height="141.92464"
+           width="286.49149"
+           id="rect3579-9-8-8" /></flowRegion><flowPara
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift Italic"
+         id="flowPara3581-3-9-7">P</flowPara></flowRoot>    <flowRoot
+       style="font-size:286.17401123%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="flowRoot3575-8-7-3-7-9"
+       xml:space="preserve"
+       transform="matrix(0.17012193,0,0,0.17012193,54.519419,176.03553)"><flowRegion
+         id="flowRegion3577-3-5-1-1-2"><rect
+           style="font-size:286.17401123%;baseline-shift:sub"
+           y="66.682243"
+           x="26.799599"
+           height="141.92464"
+           width="286.49149"
+           id="rect3579-2-3-7-8-5" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift"
+         id="flowPara3581-2-2-0-9-5">4</flowPara></flowRoot>    <flowRoot
+       style="font-size:286.17401123%;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;baseline-shift:sub;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       id="flowRoot3575-8-7-8-2-2-5"
+       xml:space="preserve"
+       transform="matrix(0.17012193,0,0,0.17012193,55.587228,170.23733)"><flowRegion
+         id="flowRegion3577-3-5-5-5-1-5"><rect
+           style="font-size:286.17401123%;baseline-shift:sub"
+           y="66.682243"
+           x="26.799599"
+           height="141.92464"
+           width="286.49149"
+           id="rect3579-2-3-4-0-8-9" /></flowRegion><flowPara
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:DIN 1451 Mittelschrift;-inkscape-font-specification:DIN 1451 Mittelschrift"
+         id="flowPara3581-2-2-6-7-2-1">0</flowPara></flowRoot>  </g>
+</svg>

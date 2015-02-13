@@ -34,45 +34,47 @@ I'm skipping whatever remains of this entry
 Warning--empty publisher in Le98
 Warning--empty year in Le98
 Warning--empty year in Le98
-You've used 74 entries,
+Warning--empty school in Taranenko13
+Warning--empty school in Jin13
+You've used 76 entries,
             2751 wiz_defined-function locations,
-            1100 strings with 18839 characters,
-and the built_in function-call counts, 29548 in all, are:
-= -- 2562
-> -- 1344
-< -- 62
-+ -- 532
-- -- 382
-* -- 2200
-:= -- 4522
-add.period$ -- 228
-call.type$ -- 74
-change.case$ -- 140
-chr.to.int$ -- 72
-cite$ -- 77
-duplicate$ -- 1572
-empty$ -- 2820
-format.name$ -- 516
-if$ -- 6410
+            1109 strings with 19035 characters,
+and the built_in function-call counts, 30024 in all, are:
+= -- 2606
+> -- 1358
+< -- 64
++ -- 540
+- -- 386
+* -- 2228
+:= -- 4608
+add.period$ -- 234
+call.type$ -- 76
+change.case$ -- 142
+chr.to.int$ -- 74
+cite$ -- 81
+duplicate$ -- 1602
+empty$ -- 2860
+format.name$ -- 522
+if$ -- 6502
 int.to.chr$ -- 3
-int.to.str$ -- 75
+int.to.str$ -- 77
 missing$ -- 76
-newline$ -- 380
-num.names$ -- 226
-pop$ -- 661
+newline$ -- 390
+num.names$ -- 232
+pop$ -- 675
 preamble$ -- 1
-purify$ -- 74
+purify$ -- 76
 quote$ -- 0
-skip$ -- 937
+skip$ -- 957
 stack$ -- 0
-substring$ -- 1533
-swap$ -- 329
+substring$ -- 1537
+swap$ -- 333
 text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 500
-warning$ -- 3
-while$ -- 255
+type$ -- 514
+warning$ -- 5
+while$ -- 259
 width$ -- 0
-write$ -- 964
+write$ -- 988
 (There were 7 error messages)

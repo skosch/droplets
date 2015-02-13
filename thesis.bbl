@@ -1,4 +1,4 @@
-\begin{thebibliography}{74}
+\begin{thebibliography}{76}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -478,5 +478,16 @@ J.~M. Davis and P.~J. Disimile.
 \newblock The effect of optical configuration selection on phase doppler
   anemometer fire suppressant nozzle characterizations.
 \newblock In \emph{14th Halon Options Technical Working Conference}, May 2004.
+
+\bibitem[Taranenko(2013)]{Taranenko13}
+A.~Taranenko.
+\newblock \emph{Shattering Kraft Recovery Boiler Smelt by a Steam Jet}.
+\newblock PhD thesis, 2013.
+
+\bibitem[Jin(2013)]{Jin13}
+X.~Jin.
+\newblock \emph{Interaction between a Molten Smelt Droplet and Water at
+  Different Temperatures}.
+\newblock PhD thesis, 2013.
 
 \end{thebibliography}

@@ -12,10 +12,10 @@ drive actuator arm}
 Toronto}
 \begin{abstract}
     We propose that the rotary voice coil actuators found in magnetic hard drives are
-    fit to supercede loudspeakers as vibration sources in the laboratory setting. A
+    fit to supercede loudspeakers as expedient vibration sources in the laboratory setting. A
     specific use case is the excitation of a liquid jet to induce controlled
     breakup into monodisperse droplets. Like loudspeakers, which are typically
-    used, hard drive actuators are cheap and ubiquitous, but they are less
+    used for prototyping such devices, hard drive actuators are cheap and ubiquitous, but they are less
     unwieldy and supply greater amplitudes without producing noise. Frequencies
     between 0 and 17 kHz, and likely beyond, can be reproduced reliably. No machining
     tools or amplifying electronics are needed for the construction and
@@ -29,7 +29,8 @@ studies\cite{Liu74}. Our particular case was the calibration of optical spray
 characterization instruments (Phase-Doppler Anemometry and Interferometric
 Particle Imaging).
 
-Although drop-on-demand approaches promise precise control over the droplet
+Although drop-on-demand approaches (e.g. via pressure pulses, microfluidic
+devices etc.) promise precise control over the droplet
 generation, their everyday operation poses challenges (aspired air bubbles,
 liquid pileups, satellite droplets, etc.). Consequently, researchers often fall
 back on relatively hassle-free continous-stream drop generators whenever the
@@ -55,20 +56,13 @@ difficult to fasten onto an experimental setup and their cones provide no robust
 structure to which any type of orifice could be attached. Piezoelectric elements
 cost more and are useful only when integrated with the orifice---precision
 machined droplet generators operating this way are commercially available, but
-unreasonably expensive in many situations. As a result, we felt compelled to
+unreasonably expensive for early-stage projects. As a result, we felt compelled to
 consider alternative sources of vibration that require a minimum effort to build
 and install using standard lab equipment.
 
 We propose that the actuator mechanism
 found in every magnetic hard drive is an optimal low-budget candidate for
 precision oscillation needs:
-
-\begin{figure}
-\centering
-\includegraphics[width=0.42\textwidth]{hdg_images/designpicture.eps}
-\caption{The fully assembled droplet generator. Nozzle is shown as inserted
-through one of the holes in the actuator arm. \label{fig:photo}}
-\end{figure}
 
 \paragraph*{Very low cost.} With high-capacity and solid-state devices rapidly pushing older hard drives
 into obsolescence, it should be a simple matter to acquire a few decommissioned specimens for
@@ -81,6 +75,15 @@ using a micropipette puller. The process is illustrated in FIG.
 \ref{fig:needles} and in-depth instructions are given by Lee\cite{Lee02}.
 Piezoelectric-based devices, on the other hand, need fitted orifices to produce a range of
 drop sizes.
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth]{hdg_images/needlescombo.eps}
+\caption{Above: assembly of nozzle from
+low-gauge hypodermic syringe (Luer fitting) and capillary. Below: nozzle tip
+fabrication, capillary from left to right: broken, sanded, heated in a flame (I.D.
+$200\,\mu$m), heated for longer (I.D. $25\,\mu$m, could be sanded down by about
+$200\,\mu$m), overheated (I.D. $0\,\mu$m). \label{fig:needles}}
+\end{figure}
 
 \paragraph*{Ease of construction and installation.} Unlike loudspeakers, hard
 drives have a flat base plate which can be drilled into, allowing for easy
@@ -89,18 +92,18 @@ tools are needed for the construction of the droplet generator.
 
 \paragraph*{High amplitudes without noise.}
 Like piezoelectric elements, vibrating actuator arms are very quiet, enabling
-use at frequencies and amplitudes that would far exceed responsible levels on
+use at frequencies and amplitudes that far exceed responsible levels on
 a speaker.  In our experiments, the actuator responded to frequencies throughout
 our hearing range---i.e., up to $17\,$kHz---and likely well beyond, though we
-have not tested the full response range for any given amplitude.
+have not tested the full response range.
 
 As an added advantage over other designs, no amplification is needed. Below
 $100\,$Hz, amplitudes on the order of $0.5\,$cm are easily achieved (albeit they
 are of course not needed for droplet production) when a peak-to-peak voltage of
 $2-4\,$V is applied. The amplitude scales down with the inverse of the frequency,
-however, such that amplitudes are much smaller at typical operating frequencies
+however, such that they are much smaller at typical operating frequencies
 ($0.5-10\,$kHz). Nevertheless, the voltages required are well within the ability
-of any standard laboratory function generator, and can likely even produced by many
+of any standard laboratory function generator; they can likely even be produced by many
 consumer-level computer sound cards.
 
 \section{Operating principle}
@@ -119,23 +122,32 @@ or reversing the current, the arm's motion is likewise stopped or reversed. An
 applied sinusoid signal can thus be used to make the arm oscillate laterally at
 the desired frequency.
 
-Since a typical hard drive's platter spins at up to $7200\,$RPM,
-actuator arms must be able to move with extreme speed and precision. They are
-thus engineered to be very light yet stiff. These characteristics make a
-magnetic hard drive's actuator arm an ideal supplier of in-plane vibrations.
-Indeed, hard drive actuators are remarkable not for their operating principle
-but for their low cost; it is only the economics of mass manufacturing that has
-in recent years enabled these high-speed, lightweight precision mechanisms to
-become so widely available.
+%Since a typical hard drive's platter spins at up to $7200\,$RPM,
+%actuator arms must be able to move with extreme speed and precision. They are
+%thus engineered to be very light yet stiff. These characteristics make a
+%magnetic hard drive's actuator arm an ideal supplier of in-plane vibrations.
+%Indeed, hard drive actuators are remarkable not for their operating principle
+%but for their low cost; it is only the economics of mass manufacturing that has
+%in recent years enabled these high-speed, lightweight precision mechanisms to
+%become so widely available.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{hdg_images/needlescombo.eps}
-\caption{Above: assembly of nozzle from
-low-gauge hypodermic syringe (Luer fitting) and capillary. Below: nozzle tip
-fabrication, capillary from left to right: broken, sanded, heated in a flame (I.D.
-$200\,\mu$m), heated for longer (I.D. $25\,\mu$m, could be sanded down by about
-$200\,\mu$m), overheated (I.D. $0\,\mu$m). \label{fig:needles}}
+\includegraphics[width=0.3\textwidth]{hdg_images/dge.eps}
+\caption{Top view of a hard drive and exploded view of the cut-out base
+plate, actuator arm, axis, and magnet assembly. \label{fig:designschematic}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.35\textwidth]{hdg_images/designpicture.eps}
+\caption{A fully assembled droplet generator from a single-platter drive. Nozzle is shown as inserted
+through one of the holes in the actuator arm. \label{fig:photo}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.35\textwidth]{hdg_images/numbers.pdf}
+\caption{A multi-platter hard drive after removing cover and detaching circuit board (4). Top
+        magnet is removed. Base plate can be cut along dashed line. \label{fig:numbers}}
 \end{figure}
 
 
@@ -145,54 +157,45 @@ bulky, complex actuator assemblies. The device shown in FIG. \ref{fig:photo}
 is based on a single-platter drive.
 
 \paragraph{Dismantle and cut.} After removing the hard drive cover, remove
-the magnet holder, arm axis, arm, ribbon wires, circuit boards, and platters
-such that only the base plate remains. Now the corner of the base plate holding
-the actuator arm assembly can be cut out to yield the result shown in FIG.
+the top magnet, arm axis (1 in FIG. \ref{fig:numbers}), arm (2), ribbon wires (3), circuit boards (4), and
+platters (5) such that only the base plate remains. Now the corner of the base plate holding
+the actuator arm assembly can be cut out (dashed line) to yield a shape as shown in FIG.
 \ref{fig:designschematic}. A band saw, jigsaw or powered hacksaw will be very
 useful, although not necessary. The goal is to allow the tip of the arm to
-protrude over the edge.
+protrude over the edge. After cutting, reinstall the arm, axis, and top magnet.
 
-\paragraph{Expose coil leads.} Next, remove the read/write head and all
-wiring leading to it, along with any connected I/O and servo circuitry. Be
-careful, however, not to tear off the two strands powering the voice coil. If
-they are integrated in a ribbon you wish to remove, ensure that exposed
-terminals remain onto which you can solder new leads.
-\begin{figure}
-\centering
-\includegraphics[width=0.4\textwidth]{hdg_images/dge.eps}
-\caption{Top view of a hard drive and exploded view of the cut-out base
-plate, actuator arm, axis, and magnet assembly. \label{fig:designschematic}}
-\end{figure}
+\paragraph{Expose coil leads.} Next, remove the read/write head (6) and all
+wiring leading to it, along with any connected I/O and servo circuitry (4). Be
+careful, however, not to tear off the two strands powering the voice coil, which
+are often integrated in the same ribbon cable (3). If you wish to remove the
+latter, ensure that exposed terminals (7) remain onto which you can solder new leads.
+
 \paragraph{Add protective cover.} We recommend bolting on a cover plate, such
-as a small sheet of acrylic or polycarbonate, to protect the protruding arm from
+as a small sheet of transparent plastic, to protect the protruding arm from
 accidental bending. Drill a hole through the cover to allow the nozzle to be
 threaded through the arm. A severable
 connection from coil to function generator is preferable to a direct wire, if
 only because the voice coil leads are delicate and easily torn off. To this end, we epoxied
-an audio jack into the cover and soldered the voice coil leads to it from the
-bottom. 
+an audio jack into the cover plate (see FIG. \ref{fig:photo}) and soldered the voice coil leads to it from the
+bottom.
 
 \section{Operation}
 To use the droplet generator, simply insert a nozzle through a small hole at the
-tip of the actuator arm---typically at least one hole will already be present, but you may wish to drill
-more---and connect the voice coil leads to the output terminal of a function
+tip of the actuator arm---typically at least one hole will already be present
+where the read/write head was installed---and connect the voice coil leads to the output terminal of a function
 generator set to an initial peak-to-peak voltage of $1\,$V and a sinusoid frequency of
 about $50\,$Hz, which should cause weak but perceptible oscillations.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.3\textwidth]{hdg_images/photo.eps}
-\caption{Photographs of different droplet sizes ($220\,\mu$m and $386\,\mu$m,
-    $f=1.990\,$kHz and $1.065\,$kHz respectively) produced with the droplet
-generator shown in FIG.~\ref{fig:photo}. Scales have been cropped out. \label{fig:dropphoto}}
-\end{figure}
-We used existing nozzles manufactured by hand from hypodermic needle stubs and
-heated glass capillaries (FIG.~\ref{fig:needles}). We make no claim that this is
-the best approach to take, but we note that the interchangeability of nozzles
-with Luer fittings has proved very convenient in our application. How the nozzle
-can be held in place falls beyond the scope of this article; while we used an
-existing setup made from machined aluminum, a small lab stand and clamp should
-suffice to hold the male Luer fitting connecting the feed tube to the nozzle.
+Interchangeable nozzles made from needles with Luer fittings, as in FIG.~\ref{fig:needles}, are
+convenient and can be held in place by a male adapter clamped into a lab stand.
+
+%We used existing nozzles manufactured by hand from hypodermic needle stubs and
+%heated glass capillaries (FIG.~\ref{fig:needles}). We make no claim that this is
+%the best approach to take, but we note that the interchangeability of nozzles
+%with Luer fittings has proved very convenient in our application. How the nozzle
+%can be held in place falls beyond the scope of this article; while we used an
+%existing setup made from machined aluminum, a small lab stand and clamp should
+%suffice to hold the male Luer fitting connecting the feed tube to the nozzle.
 
 The nozzle must be supplied by an accurately calibrated syringe pump. It is
 convenient to integrate a large liquid reservoir (or tap water hose) via a
@@ -225,20 +228,35 @@ and $f$ by viewing the jet against a strobe light, adjusting flow rate for a bre
 length on the order of $10 D_o$ (empirically for water), then tuning the frequency
 until droplets appear evenly spaced and spherical. It can be helpful to mount a
 magnifying lens in front of the orifice, as the adjustment procedure can become
-tedious as the droplets become very small.
+tedious when the droplets are very small.
 
 Under stable conditions, every oscillation of the nozzle will produce one droplet
 downstream,\cite{Rayleigh79} such that the droplet diameter will be 
-\begin{equation}D_d = \sqrt[3]{6Q/(\pi f)}.\end{equation} This can be verified photographically, as shown in
-FIG.~\ref{fig:dropphoto}.
+\begin{equation}
+        D_d = \sqrt[3]{6Q/(\pi f)}.\label{eq:rayl}
+\end{equation}
+This can be verified photographically, as shown in FIG.~\ref{fig:dropphoto}.
 
+We have successfully used the generator to produce droplets of
+$0.1-1\,$mm diameter, but both smaller and larger droplets are feasible.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.26\textwidth]{hdg_images/sizes.eps}
+\caption{Some frequency/flow rate conditions under which stable droplets were
+        produced ($\square$ as predicted by Eq. \ref{eq:rayl},
+        {\Large$\diamond$} as estimated
+        from photographs). Photos shown are $D_d = 200\,\mu$m and $D_d = 386\,\mu$m,
+        respectively.
+       \label{fig:dropphoto}}
+\end{figure}
 \section{Conclusion}
 We have successfully utilized the actuator assembly of a standard magnetic hard
 drive as a vibration source in a monodisperse droplet generator. The droplet
 generator is not only inexpensive, but remarkably easy to build and painless in
 its operation---particularly in comparison to loudspeakers or piezoelectric elements.
 These characteristics make hard drive actuators an excellent source of
-vibration, likely not only in the droplet generation context but also for other
+vibration, likely not only in the context of droplet generation but also for other
 purposes in the laboratory or classroom setting.
 \bibliography{hdgbibliography}
 \end{document}
