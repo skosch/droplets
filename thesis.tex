@@ -84,7 +84,7 @@ characteristics of a given spray to a useful degree of accuracy is an important
 task with relevance to several areas of mechanical engineering.
 
 Due to the behaviour and size of the droplets in typical sprays, only
-non-intrusive instrumentation methods come into question. The most popular
+non-intrusive methods can reliably report droplet characteristics. The most popular
 techniques rely on illumination of the spray with laser light. The droplets
 scatter the light, and it is picked up by a set of detectors, such as
 photomultiplier tubes or digital cameras. Depending on the position of the
@@ -94,23 +94,26 @@ the spray's characteristics.
 
 While countless different optical setups are in use in laboratories the world
 over, all of them rely on the same fundamental optical principles governing the
-scattering of light. This paper aims to offer a high-level derivation of these
-principles.
+scattering of light.
 
-\section{What our contributions in this paper are}
-- Our contributions:
-    - Pupillary magnification has to be taken into account
-    - Circle detection algorithm is crap
-\section{What other work has been done in this area}
+\section{Contributions of this paper}
+We present a new monodisperse droplet generating device.
+We reproduce and verify the optical equations behind IPI
+We present a new method for camera alignment in IPI
+We perform a calibration of the IPI system.
+We re-derive the equations underlying PDPA and propose how several
+    simplifications lead to the equations given in the TSI system's software
+We calibrate the PDPA system unsuccessfully and provide an extensive literature
+review of potential error sources in PDPA systems.
 
-\chapter{Experimental setup}
-- What kinds of setups there are
+\section{Experimental setup}
+- TSI system
+- Dantec system
 
-- Our setup:
-\section{Dantec system}
-    - Dantec system
-\section{PDPA system}
-    - TSI system
+\section{Organization of this thesis}
+The first chapter deals with Mie scattering. The second chapter deals with drop
+generation. The third chapter deals with PIV, and the last chapter deals with
+IPI.
 
 \chapter{Mie scattering}
 In this chapter, we will discuss some of the fundamentals of Mie scattering.
@@ -2259,56 +2262,6 @@ shown in \figref{fig:pdpa-zerorelations}.
     with a peak at the known diameter value shown in the legend.
     \label{fig:pdpa-zerorelations}}
 \end{figure}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%  BREAKUP OF WATER/AIR JET IMPINGING %%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\chapter{Breakup of a liquid jet when colliding with a gas jet}
-
-To our knowledge, the behaviour of a water jet impacted by a gas jet of smaller of
-comparable diameter has not been examined and imaged in detail. We here make an
-attempt at cataloguing this behaviour under various conditions.
-
-A relevant experimental study was recently performed by \citet{Taranenko13} in
-the context of Kraft smelt shattering in the paper industry. To convert wood
-chips into pulp fit for paper production, they are boiled in a strongly alkaline
-solution of sodium salts (lye and sodium sulfate).  Over time, wood residue
-accumulates in the liquid. To recover the sodium salts, the organic material is
-burned off in a so-called \emph{Kraft recovery boiler}.  The molten salts
-collect at the bottom of the furnace as \emph{smelt}. The smelt can be quenched
-in water, but must be atomized (``shattered'') before making contact with the
-water to prevent too sudden a release of steam which can damage the boiler. The
-interaction of smelt and water has been studied in detail, most recently by
-\citet{Jin13}.
-
-In the industrial setting, smelt pours from a spout and is atomized by pressurized steam.
-\citet{Taranenko13} simulated this case using water and air and investigated
-breakup performance using various nozzles and conditions. For this study, we
-were interested in imaging and analyzing the behaviour on a more idealized,
-fundamental level.
-
-Our experimental setup shares many characteristics with that of jet-in-crossflow
-experiments (where the crossflow is significantly larger than the jet) and with
-water-water impingement studies.
-
-Severeal jet-jet impingement studies have been published since
-\citet{Dombrowski64}, e.g. the recent analysis by \citet{Li06}.
-
-\section{Experimental setup}
-\figref{fig:angle-plate} shows, schematically, the setup we used to align the
-needles producing liquid and gas jets.
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{img/setup/angleplate.pdf}
-    \caption{Angle plate setup. Only one needle holder assembly is shown; two
-    are necessary to perform the experiment. \label{fig:angle-plate}}
-\end{figure}
-
-
-
-
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
 \end{document}

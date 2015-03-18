@@ -1,4 +1,4 @@
-\begin{thebibliography}{76}
+\begin{thebibliography}{78}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -489,5 +489,16 @@ X.~Jin.
 \newblock \emph{Interaction between a Molten Smelt Droplet and Water at
   Different Temperatures}.
 \newblock PhD thesis, 2013.
+
+\bibitem[Dombrowski and Hooper(1964)]{Dombrowski64}
+N.~Dombrowski and P.~C. Hooper.
+\newblock A study of the sprays formed by the impinging jets in laminar and
+  turbulent flow.
+\newblock \emph{Journal of Fluid Mechanics}, 18:\penalty0 392--400, 1964.
+
+\bibitem[Li and Ashgriz(2006)]{Li06}
+R.~Li and N.~Ashgriz.
+\newblock Characteristics of liquid sheets formed by two impinging jets.
+\newblock \emph{Physics of Fluids}, 18:\penalty0 7104, Aug 2006.
 
 \end{thebibliography}
