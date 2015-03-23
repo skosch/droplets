@@ -1,4 +1,4 @@
-\begin{thebibliography}{74}
+\begin{thebibliography}{78}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -10,6 +10,41 @@
 H.-E. Albrecht, M.~Borys, N.~Damaschke, and C.~Tropea.
 \newblock \emph{Laser Doppler and Phase Doppler Measurement Techniques}.
 \newblock Springer, 2003.
+
+\bibitem[Stry(1992)]{Stry92}
+W.~J. Stry.
+\newblock \emph{The combustion of free flowing droplets of chlorinated
+  benzenes, alkanes, and their mixtures}.
+\newblock PhD thesis, SUNY Buffalo, September 1992.
+
+\bibitem[Inoue et~al.(2008)Inoue, Watanabe, and Himeno]{Inoue08}
+C.~Inoue, T.~Watanabe, and T.~Himeno.
+\newblock Study on atomization process of liquid sheet formed by impinging
+  jets.
+\newblock In \emph{44th AIAA/ASME/SAE/ASEE Joint Propulsion Conference and
+  Exhibit}, pages 1--14, July 2008.
+
+\bibitem[Mehegan et~al.(1971)Mehegan, Campbell, and Scheuerman]{Mehegan71}
+P.~F. Mehegan, D.~T. Campbell, and C.~H. Scheuerman.
+\newblock Investigation of gas-augmented injectors.
+\newblock Technical Report CR-72703 R-8361, NASA, 1971.
+
+\bibitem[Fauchais(2004)]{Fauchais04}
+P.~Fauchais.
+\newblock Understanding plasma spraying.
+\newblock \emph{Journal of Physics D: Applied Physics}, 37\penalty0
+  (9):\penalty0 R86, 2004.
+
+\bibitem[Newman(2005)]{Newman05}
+S.~P. Newman.
+\newblock Principles of metered-dose inhaler design.
+\newblock \emph{Respiratory Care}, 50\penalty0 (9):\penalty0 1177--1190, 2005.
+
+\bibitem[Endo et~al.(1988)Endo, Sato, Saito, Nakagiri, and Ohno]{Endo88}
+I.~Endo, Y.~Sato, S.~Saito, T.~Nakagiri, and S.~Ohno.
+\newblock Bubble jet recording method and apparatus in which a heating element
+  generates bubbles in a liquid flow path to project droplets, February~2 1988.
+\newblock US Patent 4,723,129.
 
 \bibitem[Hecht(2002)]{Hecht02}
 E.~Hecht.
@@ -27,6 +62,14 @@ H.~van~de Hulst.
 L.~N. Ng.
 \newblock \emph{Manipulation of Particles On Optical Waveguides}.
 \newblock PhD thesis, University of Southampton, September 2000.
+
+\bibitem[Naqwi and Menon(1994)]{Naqwi96}
+A.~Naqwi and R.~Menon.
+\newblock A rigorous procedure for design and response determination of phase
+  doppler systems.
+\newblock In \emph{Proceedings of the 7\textsuperscript{th} International
+  Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
+  Portugal}, pages 340--353, 1994.
 
 \bibitem[Walton and Prewett(1949)]{Walton49}
 W.~H. Walton and W.~C. Prewett.
@@ -64,18 +107,6 @@ K.~Reil and J.~Hallett.
 S.~Coggins and E.~A. Baker.
 \newblock Micro sprayers for the laboratory application of pesticides.
 \newblock \emph{Annals of Applied Biology}, 102:\penalty0 149--154, Feb 1983.
-
-\bibitem[Stry(1992)]{Stry92}
-W.~J. Stry.
-\newblock \emph{The combustion of free flowing droplets of chlorinated
-  benzenes, alkanes, and their mixtures}.
-\newblock PhD thesis, SUNY Buffalo, September 1992.
-
-\bibitem[Endo et~al.(1988)Endo, Sato, Saito, Nakagiri, and Ohno]{Endo88}
-I.~Endo, Y.~Sato, S.~Saito, T.~Nakagiri, and S.~Ohno.
-\newblock Bubble jet recording method and apparatus in which a heating element
-  generates bubbles in a liquid flow path to project droplets, February~2 1988.
-\newblock US Patent 4,723,129.
 
 \bibitem[Sergeyev and Shaw(2006)]{Sergeyev06}
 A.~V. Sergeyev and R.~A. Shaw.
@@ -373,14 +404,6 @@ G.~Wigley.
 K.~Thyagarajan and A.~Ghatak.
 \newblock \emph{Lasers: Fundamentals and Applications}.
 \newblock Graduate Texts in Physics. Springer, 2010.
-
-\bibitem[Naqwi and Menon(1994)]{Naqwi96}
-A.~Naqwi and R.~Menon.
-\newblock A rigorous procedure for design and response determination of phase
-  doppler systems.
-\newblock In \emph{Proceedings of the 7\textsuperscript{th} International
-  Symposium on Applications of Laser Anemometry to Fluid Mechanics, Lisbon,
-  Portugal}, pages 340--353, 1994.
 
 \bibitem[Saffman(1986)]{Saffman86}
 M.~Saffman.

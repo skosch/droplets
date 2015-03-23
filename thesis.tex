@@ -1,4 +1,4 @@
-\documentclass[11.5pt]{book}
+\documentclass[11.5pt,oneside]{book}
 
 \usepackage{sectsty, titlesec}
 \usepackage{setspace}
@@ -13,7 +13,7 @@
 \usepackage{amsmath, amssymb}
 \usepackage{mathspec}
 \setmainfont[Mapping=tex-text, Scale=1.1]{Crimson}
-\setsansfont[Scale=1, Path=/home/sebastian/.fonts/]{din1451m.ttf}
+\setsansfont[Scale=1, Path=./]{din1451m.otf}
 %\allsectionsfont{\sffamily}
 %\setmainfon
 %\usepackage{fouriernc}
@@ -61,9 +61,11 @@ itemsep=-1pt}
   \fancyhf{} % remove everything
   \renewcommand{\headrulewidth}{0pt} % remove lines as well
   \renewcommand{\footrulewidth}{0pt}
+\fancyfoot[C]{\sffamily \thepage}
 }
 
 \parskip 0pt
+
 %\usepackage{xunicode}
 \begin{document}
 
@@ -97,13 +99,16 @@ itemsep=-1pt}
   \vskip 1.3in
   © Copyright by Sebastian Kosch 2015
 \end{center}
+
+%\pagestyle{plain}
 \pagebreak
-Sebastian Kosch: \emph{Calibration of ILIDS and PDPA droplet sizing systems.}\\
+\noindent Sebastian Kosch: \emph{Calibration of ILIDS and PDPA droplet sizing systems.}\\
 Master's thesis (MASc), Department of Mechanical and Industrial Engineering,\\
 University of Toronto.\\
 April 2015.
 
 \section*{Abstract}
+\thispagestyle{plain}
 \begin{doublespace}
 This is the abstract. (150 words max.) This is doublespaced. This is
 doublespaced. This is doublespace.d
@@ -111,6 +116,7 @@ doublespaced. This is doublespace.d
 \vfill
 \pagebreak
 \section*{Acknowledgements}
+\thispagestyle{plain}
 These are my acknowledgments
 \vfill
 \tableofcontents
@@ -118,15 +124,14 @@ These are my acknowledgments
 \listoffigures
 \printnomenclature[5em]
 
-\mainmatter
-\chapter{Introduction}
-\section{Why spray sizing is important}
-
-Fluid sprays find application in numerous designs, ranging from fuel injection
-and coating systems to medical and printing devices. Often, the droplet size is
-a major factor in how well these systems perform. Consequently, measuring the
-characteristics of a given spray to a useful degree of accuracy is an important
-task with relevance to several areas of mechanical engineering.
+\mainmatter \pagestyle{fancy} \chapter{Introduction}
+Fluid sprays find application in numerous fields, ranging from rocket propellant
+atomizers \citep{Inoue08, Mehegan71} to plasma coating systems
+\citep{Fauchais04} and from medical inhalers \citep{Newman05} to inkjet
+printers \citep{Endo88}. More often than not, the droplet size is a major factor in how well
+these systems perform. Consequently, the ability to measure the characteristics
+of a given spray to a certain degree of accuracy is a crucial requirement
+during the design process of many products.
 
 Due to the behaviour and size of the droplets in typical sprays, only
 non-intrusive methods can reliably report droplet characteristics. The most popular
@@ -137,30 +142,75 @@ detectors, the motion of the droplets, their size, and the laser light's known
 properties, the detected patterns can be processed to yield information about
 the spray's characteristics.
 
-While countless different optical setups are in use in laboratories the world
-over, all of them rely on the same fundamental optical principles governing the
-scattering of light.
+Two systems are particularly popular: ILIDS (Interferometric Laser Imaging for
+Droplet Sizing), which relies on imaging an illuminated section of the spray,
+and PDPA (Phase-Doppler Particle Analysis), which makes a series of point
+measurements at the intersection of multiple laser beams. The former, in
+combination with a PIV system (Particle Image Velocimetry) for velocity
+measurements, promises a simple way of obtaining flow and size fields for entire
+areas of the spray plume at a time. The latter exploited 
+promises very high precision measurements of both velocity and size at single
+points in the spray.
 
-\section{Contributions of this paper}
-We present a new monodisperse droplet generating device.
-We reproduce and verify the optical equations behind IPI
-We present a new method for camera alignment in IPI
-We perform a calibration of the IPI system.
-We re-derive the equations underlying PDPA and propose how several
-    simplifications lead to the equations given in the TSI system's software
-We calibrate the PDPA system unsuccessfully and provide an extensive literature
-review of potential error sources in PDPA systems.
+Although both types of systems have been commercially available for decades, the
+scientific publications cover mainly variations and improvements on previous
+designs as well as novel applications of the techniques. Literature dealing with
+the practical aspects of their use is scant. In particular, we felt a need for
+a high-level guide to calibrating the devices using standard lab equipment,
+including advice on generating uniform droplets and a review of potential error
+sources.
 
-\section{Experimental setup}
-- TSI system
-- Dantec system
+\section{Research objectives}
+The objective of the presented work was threefold:
+\begin{alist}
+\item to calibrate our Dantec IPI (ILIDS) droplet sizing system and to verify
+        its accuracy photographically;
+\item to identify and remedy error sources inherent in the ILIDS technique;
+\item to understand, document, and verify the algorithm underlying the
+        calibration procedure in the TSI FlowSizer PDPA system.
+\end{alist}
+
+The need to verify the systems' accuracy was prompted by discrepancies found by
+previous students between ILIDS and PDPA results for identical spray nozzles.
+
+The main contributions made towards these ends are as follows:
+\begin{alist}
+\item a novel droplet generator design, which resulted from extensive
+        experimental tests to identify the ideal source of monodisperse droplets
+        for calibration purposes;
+\item a computer-vision-based technique that eliminates the need for camera
+        calibration in combined ILIDS/PIV systems, which addresses the centre
+        discrepancy effect;
+\item an extensive literature review of potential error sources in PDPA
+        measurements.
+\end{alist}
 
 \section{Organization of this thesis}
-The first chapter deals with Mie scattering. The second chapter deals with drop
-generation. The third chapter deals with PIV, and the last chapter deals with
-IPI.
+\paragraph{Chapter Two} contains a high-level review of the light scattering models
+underlying the sizing technologies.
 
-\chapter{Mie scattering}
+\paragraph{Chapter Three} offers an overview over
+existing droplet generation techniques and introduces the novel harddrive-based
+droplet generator design.
+
+\paragraph{Chapter Four} provides an introduction to the ILIDS
+method, along with a summary of theoretical and practical limitations. We focus
+on different setups and how to avoid common pitfalls—including in
+particular a proposed homography estimation algorithm to overcome the problem of
+centre discrepancies. We also provide a discussion on and example of the
+calibration process.
+
+\paragraph{Chapter Five} deals with the common sticking points
+encountered in PDPA, and offers an explanation of the inner workings of the TSI
+FlowSizer software that will help researchers understand the calibration
+process.
+
+\paragraph{Chapter Six} contains a summary of the contributions and an outlook
+on potential future work.
+
+\paragraph{Appendices} containing code and data are provided for completeness.
+
+\chapter{Geometrical optics and Mie scattering}
 In this chapter, we will discuss some of the fundamentals of Mie scattering.
 The majority of the equations and derivations herein are adapted directly from
 \citet{Albrecht03}.
@@ -741,61 +791,87 @@ it seems attractive in practice. One downside is that the generation of
 amplified signals isn't straightforward -- we used a soundcard connected to an
 amplifier to generate the signals.
 
-\section{Continuous-stream drop generation}
-There exist continuous-stream drop generators based on coaxial air flow
-\cite{Green89} and on,
-but most continuous-stream drop generators are based on
-\emph{Rayleigh breakup}, i.e. the disintegration of a disturbed liquid jet into
-droplets. The physics behind this phenomenon have been studied for almost two
-centuries \cite{Savart33, Rayleigh79} and are well-understood. When the jet
-disturbances are induced by carefully controlled mechanical vibrations at an
-appropriate frequency, the droplets will be of uniform size and evenly spaced.
+\section{Continuous-stream droplet generation using a computer hard drive}
 
+A third category of droplet generators comprises devices operating on the basis
+of \emph{Rayleigh breakup}, i.e. the disintegration of a disturbed round liquid
+jet into single droplets. The physics behind this phenomenon have been
+understood for almost two centuries—they were first studied
+by \citet{Savart33} and later explained by \citet{Rayleigh79}. Waves on
+the free surface of the jet can grow to a critical point at which those surface
+tension forces promoting pinch-off overcome those restoring the smooth jet. When
+the waves are induced by carefully controlled mechanical vibrations at an
+appropriate frequency, the droplets will be of uniform size and evenly spaced.
+\footnote{The content presented in this section has, in edited form,
+        been accepted for publication in the journal ``Review of Scientific
+        Instruments'' under the title ``A simple vibrating orifice monodisperse
+ droplet generator using a hard drive actuator arm''.}
+
+While it is possible to induce the disturbances using coaxial \cite{Green89} and
+even perpendicular air flow,\footnote{The finding that a crossflow of air can,
+        under the right conditions, induce regular Rayleigh breakup is a recent
+        result of a separate research project on gas-water impingement that is
+yet unpublished.} it is far easier to create them by vibrating the orifice.
 This simple principle has been employed to generate droplets for fifty years,
 with orifices typically attached to either one of two vibrating mechanisms: an
-ordinary loudspeaker, first used by \citet{Donnelly66}, or
-a piezoelectric element, as first proposed by \citet{Schneider64} and popularized by Berglund and Liu's
-design \cite{Berglund73}.
+ordinary loudspeaker, first used by Donnelly and Glaberson \cite{Donnelly66}, or
+a piezoelectric element, as first proposed by Schneider and
+Hendricks \cite{Schneider64} and popularized by Berglund and Liu's
+design \cite{Berglund73}. 
 
-\subsection{Speaker-based drop generator}
-We used a big plastic underwater woofer, with a bendable metal strap taped to
-the cone. The end of the metal strap touched and vibrated the nozzle. At large
-droplet sizes, this is no problem at all, but once we get to about 1 kHz, the
-amplitude needs to go up considerably to yield a reliable breakup. In practice,
-this means that it gets very loud, jeopardizing the laboratory peace.
+We first used a large plastic underwater woofer with a bendable metal strap taped to
+the cone. The end of said metal strap touched and vibrated the nozzle. This
+method is effective when the nozzle is relatively large (diameters $\geq$ 1 mm)
+and frequencies are in the 100s of Hz. Thinner jets require higher frequencies
+to break up evenly, but at tones above 1 kHz the amplitude needs to go up
+considerably to ensure a reliable breakup. Taking into account the response
+curve of human hearing, this means that the generation of sub-millimetre
+droplets jeopardizes the laboratory peace.
 
-\subsection{Hard-drive based drop generator}
-The accuracy of the hypodermic needle nozzle often isn't quite as good as that of e.g.
-photofabricated nozzles, as those have sharp edges. The round edges lead to
-variability in discharge coefficient (and mass flow), resulting in variance in
-drop volume \cite{Dressler90}. Nevertheless, for the purpose of verifying the validity of
-measurements, it'll do.
+Most commercially sold droplet generators employ the principle of Rayleigh breakup by
+piezoelectric vibration. \citet{Berglund73} proposed a design featuring a jewel
+orifice mounted into a machined cup sitting on a piezoelectric ring element.
+Because they lack a speaker's cone, piezoelectric elements are barely audible
+even when they oscillate at higher frequencies and amplitudes. Although these
+devices are well-suited to (and, in fact, often marketed towards) the
+calibration of sizing instruments—they typically include digital controls and a
+pressurized-air system to disperse the droplets into a cloud—they are too
+expensive for occasional laboratory use or early-stage prototyping projects.
 
-% TODO: write that the bulk of this section has been adapted from Kosch et al.,
-% journal XYZ
-Both speaker-based and piezo-based approaches have certain drawbacks: by design,
-a speaker vibrating at a fixed pitch produces an audible sound, jeopardizing the
-laboratory peace. Speakers are unshapely, difficult to fasten onto an
-experimental setup and their cones provide no robust structure to which any type
-of orifice could be attached. Piezoelectric elements cost more and are useful
-only when integrated with the orifice---precision machined droplet generators
-operating this way are commercially available, but unreasonably expensive in
-many situations. As a result, we felt compelled to consider alternative sources
-of vibration that require a minimum effort to build and install using standard
-lab equipment, and chose the actuator mechanism found in every magnetic hard
-drive for the following properties:
+As a result, we felt compelled to
+consider alternative sources of vibration that require a minimum effort to build
+and install using standard lab equipment.
+
+\subsection{Advantages of hard drive actuators}
+We propose that the actuator mechanism
+found in every magnetic hard drive is an optimal low-budget candidate for
+precision oscillation needs:
 
 \paragraph*{Very low cost.} With high-capacity and solid-state devices rapidly pushing older hard drives
 into obsolescence, it should be a simple matter to acquire a few decommissioned specimens for
 demolition. Hard drives come in two form factors---3.5 and 2.5 inches wide,
 respectively---and both can be used for the purposes of this paper. 
 
-Further, glass needle orifices fabricated for use with existing loudspeaker
-setups can be reused, and are easily produced by hand from heated borosilicate
-capillaries or using a micropipette puller. The process is illustrated in
-\figref{fig:needles} and in-depth instructions are given by Lee\cite{Lee02}.
-Piezoelectric-based devices, on the other hand, need fitted orifices to produce
-a range of drop sizes.
+Further, glass needle orifices fabricated for use with existing loudspeaker setups can be
+reused, and are easily produced by hand from heated borosilicate capillaries or
+using a micropipette puller. The process is illustrated in \figref{fig:needles}
+and in-depth instructions are given by \citet{Lee02}. When needles with Luer
+fittings are used, the nozzles become exchangeable. Heated glass capillaries
+will have round orifice edges, which according to
+\citet{Dressler90} leads to a noticeable variance in discharge coefficient and
+thus drop volume, but we have not been able to confirm this problem.
+
+Piezoelectric-based devices, on the other hand, need fitted orifices to produce a range of
+drop sizes.
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{papers/hdg_images/needlescombo.eps}
+\caption{Above: assembly of nozzle from
+low-gauge hypodermic syringe (Luer fitting) and capillary. Below: nozzle tip
+fabrication, capillary from left to right: broken, sanded, heated in a flame (I.D.
+$200\,\mu$m), heated for longer (I.D. $25\,\mu$m, could be sanded down by about
+$200\,\mu$m), overheated (I.D. $0\,\mu$m). \label{fig:needles}}
+\end{figure}
 
 \paragraph*{Ease of construction and installation.} Unlike loudspeakers, hard
 drives have a flat base plate which can be drilled into, allowing for easy
@@ -804,32 +880,37 @@ tools are needed for the construction of the droplet generator.
 
 \paragraph*{High amplitudes without noise.}
 Like piezoelectric elements, vibrating actuator arms are very quiet, enabling
-use at frequencies and amplitudes that would far exceed responsible levels on
+use at frequencies and amplitudes that far exceed responsible levels on
 a speaker.  In our experiments, the actuator responded to frequencies throughout
 our hearing range---i.e., up to $17\,$kHz---and likely well beyond, though we
-have not tested the full response range for any given amplitude.
+have not tested the full response range.
 
 As an added advantage over other designs, no amplification is needed. Below
 $100\,$Hz, amplitudes on the order of $0.5\,$cm are easily achieved (albeit they
 are of course not needed for droplet production) when a peak-to-peak voltage of
 $2-4\,$V is applied. The amplitude scales down with the inverse of the frequency,
-however, such that amplitudes are much smaller at typical operating frequencies
+however, such that they are much smaller at typical operating frequencies
 ($0.5-10\,$kHz). Nevertheless, the voltages required are well within the ability
-of any standard laboratory function generator, and can likely even produced by many
+of any standard laboratory function generator; they can likely even be produced by many
 consumer-level computer sound cards.
 
-\subsubsection{Operating principle}
+\subsection{Operating principle}
 Magnetic hard drives store data as sub-micron-sized patterns of 
 oppositely magnetized dots on disks called \emph{platters}. The read-write head
 is mounted at the tip of an arm that pivots across the platter surface while the
 platter spins. This setup allows the head to access the entire platter surface.
 
 \figref{fig:designschematic} illustrates schematically the design of a typical
-actuator arm assembly. The flat voice coil mounted on the surface is responsible
+rotary actuator arm assembly. The flat voice coil mounted on the surface is responsible
 for the arm's side-to-side movement: as it is positioned under a permanent
-magnet, the coil creates a sideward force when a current flows through its
-wires. By stopping or reversing the current the arm's motion is likewise stopped
-or reversed. Since a typical hard drive's platter spins at up to $7200\,$RPM,
+magnet, the coil creates a sideward force (\emph{Lorenz} or \emph{Laplace}
+force) when a current flows through its wires. The force is aligned with the
+cross product of the current direction and the magnetic field lines. By stopping
+or reversing the current, the arm's motion is likewise stopped or reversed. An
+applied sinusoid signal can thus be used to make the arm oscillate laterally at
+the desired frequency.
+
+Since a typical hard drive's platter spins at up to $7200\,$RPM,
 actuator arms must be able to move with extreme speed and precision. They are
 thus engineered to be very light yet stiff. These characteristics make a
 magnetic hard drive's actuator arm an ideal supplier of in-plane vibrations.
@@ -838,71 +919,63 @@ but for their low cost; it is only the economics of mass manufacturing that has
 in recent years enabled these high-speed, lightweight precision mechanisms to
 become so widely available.
 
-\subsubsection{Construction}
-\begin{wrapfigure}[14]{R}{0.5\textwidth}
+\subsection{Construction}
+
+\begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{img/setup/needles.png}
-\includegraphics[width=0.35\textwidth]{img/setup/needletips.png}
-\caption{Above: assembly of nozzle from
-low-gauge hypodermic syringe (Luer fitting) and capillary. Below: nozzle tip
-fabrication, capillary from left to right: broken, sanded, heated in a flame (I.D.
-$200\,\mu$m), heated for longer (I.D. $25\,\mu$m, could be sanded down by about
-$200\,\mu$m), overheated (I.D. $0\,\mu$m). \label{fig:needles}}
-\end{wrapfigure}
+\includegraphics[width=0.6\textwidth]{papers/hdg_images/dge.eps}
+\caption{Top view of a hard drive and exploded view of the cut-out base
+plate, actuator arm, axis, and magnet assembly. \label{fig:designschematic}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.65\textwidth]{papers/hdg_images/designpicture.eps}
+\caption{A fully assembled droplet generator from a single-platter drive. Nozzle is shown as inserted
+through one of the holes in the actuator arm. \label{fig:photo}}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.65\textwidth]{papers/hdg_images/numbers.eps}
+\caption{A multi-platter hard drive after removing cover and detaching circuit board (4). Top
+        magnet is removed. Base plate can be cut along dashed line. \label{fig:numbers}}
+\end{figure}
+
 If possible, forgo multi-platter drives, as they are more cumbersome to disassemble and have
 bulky, complex actuator assemblies. The device shown in \figref{fig:harddrive-photo}
 is based on a single-platter drive.
 
 \paragraph{Dismantle and cut.} After removing the hard drive cover, remove
-the magnet holder, arm axis, arm, ribbon wires, circuit boards, and platters
-such that only the base plate remains. Now the corner of the base plate holding
-the actuator arm assembly can be cut out to yield the result shown in
-\figref{fig:designschematic}. A band saw, jigsaw or powered hacksaw will be
-very useful, although not necessary. The goal is to allow the tip of the arm to
-protrude over the edge.
+the top magnet, arm axis (1 in FIG. \ref{fig:numbers}), arm (2), ribbon wires (3), circuit boards (4), and
+platters (5) such that only the base plate remains. Now the corner of the base plate holding
+the actuator arm assembly can be cut out (dashed line) to yield a shape as shown in FIG.
+\ref{fig:designschematic}. A band saw, jigsaw or powered hacksaw will be very
+useful, although not necessary. The goal is to allow the tip of the arm to
+protrude over the edge. After cutting, reinstall the arm, axis, and top magnet.
 
-\paragraph{Expose coil leads.} Next, remove the read/write head and all
-wiring leading to it, along with any connected I/O and servo circuitry. Be
-careful, however, not to tear off the two strands powering the voice coil. If
-they are integrated in a ribbon you wish to remove, ensure that exposed
-terminals remain onto which you can solder new leads.
-\begin{figure}
-\centering
-        \begin{subfigure}[b]{0.45\textwidth}
-            \includegraphics[width=\textwidth]{img/setup/dropletgenerator_exploded.pdf}
-            \caption{\label{fig:harddrive-photo}}
-        \end{subfigure}~\begin{subfigure}[b]{0.45\textwidth}
-            \includegraphics[width=\textwidth]{img/setup/designpicture.jpg}
-            \caption{\label{fig:designschematic}}
-        \end{subfigure}
-        \caption{(a) top view of a hard drive and exploded view of the cut-out base
-        plate, actuator arm, axis, and magnet assembly; (b) assembled droplet
-    generator with cover plate and nozzle inserted through actuator arm.}
-\end{figure}
+\paragraph{Expose coil leads.} Next, remove the read/write head (6) and all
+wiring leading to it, along with any connected I/O and servo circuitry (4). Be
+careful, however, not to tear off the two strands powering the voice coil, which
+are often integrated in the same ribbon cable (3). If you wish to remove the
+latter, ensure that exposed terminals (7) remain onto which you can solder new leads.
+
 \paragraph{Add protective cover.} We recommend bolting on a cover plate, such
-as a small sheet of acrylic or polycarbonate, to protect the protruding arm from
+as a small sheet of transparent plastic, to protect the protruding arm from
 accidental bending. Drill a hole through the cover to allow the nozzle to be
 threaded through the arm. A severable
 connection from coil to function generator is preferable to a direct wire, if
 only because the voice coil leads are delicate and easily torn off. To this end, we epoxied
-an audio jack into the cover and soldered the voice coil leads to it from the
-bottom. 
+an audio jack into the cover plate (see FIG. \ref{fig:photo}) and soldered the voice coil leads to it from the
+bottom.
 
-\subsubsection{Operation}
+\section{Operation}
 To use the droplet generator, simply insert a nozzle through a small hole at the
-tip of the actuator arm---typically at least one hole will already be present, but you may wish to drill
-more---and connect the voice coil leads to the output terminal of a function
+tip of the actuator arm---typically at least one hole will already be present
+where the read/write head was installed---and connect the voice coil leads to the output terminal of a function
 generator set to an initial peak-to-peak voltage of $1\,$V and a sinusoid frequency of
 about $50\,$Hz, which should cause weak but perceptible oscillations.
 
-
-We used existing nozzles manufactured by hand from hypodermic needle stubs and
-heated glass capillaries (\figref{fig:needles}). We make no claim that this is
-the best approach to take, but we note that the interchangeability of nozzles
-with Luer fittings has proved very convenient in our application. How the nozzle
-can be held in place falls beyond the scope of this article; while we used an
-existing setup made from machined aluminum, a small lab stand and clamp should
-suffice to hold the male Luer fitting connecting the feed tube to the nozzle.
+Interchangeable nozzles made from needles with Luer fittings, as in FIG.~\ref{fig:needles}, are
+convenient and can be held in place by a male adapter clamped into a lab stand.
 
 The nozzle must be supplied by an accurately calibrated syringe pump. It is
 convenient to integrate a large liquid reservoir (or tap water hose) via a
@@ -921,6 +994,45 @@ reduced. Satellite formation is easily detected by using a gentle air flow to
 deflect the jet---if the droplets are truly monodisperse, they will all deflect
 at the same angle.\cite{Strom69}
 
+%%%%%%%%%%%%55
+Note also that the orifice diameter $D_o$ dictates the range of viable
+frequencies $f$ as 
+\begin{equation}
+    3.5 \lesssim \frac{Q}{\pi f \left(\frac{D_o}{2}\right)^2}
+\lesssim 7,
+\end{equation}
+where $Q$ is the flow rate.\cite{Savart33, Rayleigh79} In
+practice, $D_o$ need not be
+precisely determined; it is easy to find appropriate settings for $Q$
+and $f$ by viewing the jet against a strobe light, adjusting flow rate for a breakup
+length on the order of $10 D_o$ (empirically for water), then tuning the frequency
+until droplets appear evenly spaced and spherical. It can be helpful to mount a
+magnifying lens in front of the orifice, as the adjustment procedure can become
+tedious when the droplets are very small.
+
+Under stable conditions, every oscillation of the nozzle will produce one droplet
+downstream,\cite{Rayleigh79} such that the droplet diameter will be 
+\begin{equation}
+        D_d = \sqrt[3]{6Q/(\pi f)}.\label{eq:rayl}
+\end{equation}
+This can be verified photographically, as shown in FIG.~\ref{fig:dropphoto}.
+
+We have successfully used the generator to produce droplets of
+$0.1-1\,$mm diameter, but both smaller and larger droplets are feasible.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.26\textwidth]{sizes.eps}
+\caption{Some frequency/flow rate conditions under which stable droplets were
+        produced ($\square$ as predicted by Eq. \ref{eq:rayl},
+        {\Large$\diamond$} as estimated
+        from photographs). Photos shown are $D_d = 200\,\mu$m and $D_d = 386\,\mu$m,
+        respectively.
+       \label{fig:dropphoto}}
+\end{figure}
+
+
+%%%%%%%%%%5
 
 \section{Determining the produced droplet size}
 With droplet generators based on Rayleigh breakup, such as the HDG, this is easy
@@ -2336,6 +2448,14 @@ shown in \figref{fig:pdpa-zerorelations}.
     with a peak at the known diameter value shown in the legend.
     \label{fig:pdpa-zerorelations}}
 \end{figure}
+
+\chapter{Conclusions}
+Summary of findings is given here
+
+\section{Summary of contributions}
+
+\section{Future work}
+
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
 \end{document}

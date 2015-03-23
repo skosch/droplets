@@ -31,49 +31,48 @@ Repeated entry---line 426 of file bibliography.bib
  : @article{Glover95
  :                  ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "orbs"
 Warning--empty publisher in Le98
 Warning--empty year in Le98
 Warning--empty year in Le98
-You've used 74 entries,
+You've used 78 entries,
             2751 wiz_defined-function locations,
-            1101 strings with 18843 characters,
-and the built_in function-call counts, 29548 in all, are:
-= -- 2562
-> -- 1344
-< -- 62
-+ -- 532
-- -- 382
-* -- 2200
-:= -- 4522
-add.period$ -- 228
-call.type$ -- 74
-change.case$ -- 140
-chr.to.int$ -- 72
-cite$ -- 77
-duplicate$ -- 1572
-empty$ -- 2820
-format.name$ -- 516
-if$ -- 6410
+            1127 strings with 19384 characters,
+and the built_in function-call counts, 30965 in all, are:
+= -- 2682
+> -- 1400
+< -- 66
++ -- 556
+- -- 398
+* -- 2303
+:= -- 4745
+add.period$ -- 240
+call.type$ -- 78
+change.case$ -- 148
+chr.to.int$ -- 76
+cite$ -- 81
+duplicate$ -- 1652
+empty$ -- 2961
+format.name$ -- 536
+if$ -- 6719
 int.to.chr$ -- 3
-int.to.str$ -- 75
-missing$ -- 76
-newline$ -- 380
-num.names$ -- 226
-pop$ -- 661
+int.to.str$ -- 79
+missing$ -- 79
+newline$ -- 400
+num.names$ -- 238
+pop$ -- 693
 preamble$ -- 1
-purify$ -- 74
+purify$ -- 78
 quote$ -- 0
-skip$ -- 937
+skip$ -- 983
 stack$ -- 0
-substring$ -- 1533
-swap$ -- 329
-text.length$ -- 18
+substring$ -- 1592
+swap$ -- 344
+text.length$ -- 20
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 500
+type$ -- 528
 warning$ -- 3
-while$ -- 255
+while$ -- 267
 width$ -- 0
-write$ -- 964
+write$ -- 1016
 (There were 7 error messages)

@@ -1,68 +1,74 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Why spray sizing is important}{1}
-\contentsline {section}{\numberline {1.2}Contributions of this paper}{1}
-\contentsline {section}{\numberline {1.3}Experimental setup}{2}
-\contentsline {section}{\numberline {1.4}Organization of this thesis}{2}
-\contentsline {chapter}{\numberline {2}Mie scattering}{3}
-\contentsline {section}{\numberline {2.1}Diffraction}{4}
-\contentsline {section}{\numberline {2.2}Reflection and refraction}{5}
-\contentsline {subsection}{\numberline {2.2.1}Intensity from interface separation}{6}
-\contentsline {subsection}{\numberline {2.2.2}Intensity from geometry}{6}
-\contentsline {subsection}{\numberline {2.2.3}Path-length differences}{8}
-\contentsline {subsection}{\numberline {2.2.4}Phase shifts at reflection}{9}
-\contentsline {subsection}{\numberline {2.2.5}Phase shifts through focussing}{9}
-\contentsline {subsection}{\numberline {2.2.6}Scattering functions}{10}
-\contentsline {section}{\numberline {2.3}Mie theory }{11}
-\contentsline {chapter}{\numberline {3}Monodisperse droplet generation}{15}
-\contentsline {section}{\numberline {3.1}Aerodynamic droplet generators}{16}
-\contentsline {subsection}{\numberline {3.1.1}Stry design}{16}
-\contentsline {section}{\numberline {3.2}On-demand drop generators}{18}
-\contentsline {subsection}{\numberline {3.2.1}Amirzadeh Goghari and Chandra design}{18}
-\contentsline {subsection}{\numberline {3.2.2}Modified Yang design}{19}
-\contentsline {subsection}{\numberline {3.2.3}Piezo-based drop generator}{19}
-\contentsline {section}{\numberline {3.3}Continuous-stream drop generation}{21}
-\contentsline {subsection}{\numberline {3.3.1}Speaker-based drop generator}{21}
-\contentsline {subsection}{\numberline {3.3.2}Hard-drive based drop generator}{21}
-\contentsline {subsubsection}{Operating principle}{23}
-\contentsline {subsubsection}{Construction}{23}
-\contentsline {paragraph}{Dismantle and cut.}{23}
-\contentsline {paragraph}{Expose coil leads.}{24}
-\contentsline {paragraph}{Add protective cover.}{24}
-\contentsline {subsubsection}{Operation}{24}
-\contentsline {section}{\numberline {3.4}Determining the produced droplet size}{25}
-\contentsline {subsection}{\numberline {3.4.1}Photographing droplets}{26}
-\contentsline {subsection}{\numberline {3.4.2}Droplet collisions}{26}
-\contentsline {chapter}{\numberline {4}ILIDS}{29}
-\contentsline {section}{\numberline {4.1}Operating principle}{29}
-\contentsline {subsection}{\numberline {4.1.1}Influence of the scattering angle ${"φ}$}{31}
-\contentsline {subsection}{\numberline {4.1.2}Optical limits on fringe detection}{31}
-\contentsline {paragraph}{Nyquist criterion for the fringe density.}{31}
-\contentsline {paragraph}{Signal-to-noise ratio.}{32}
-\contentsline {paragraph}{Minimum droplet size.}{32}
-\contentsline {paragraph}{Deviation from actual Mie scattering for small droplet sizes.}{32}
-\contentsline {paragraph}{Overlapping droplet images.}{32}
-\contentsline {section}{\numberline {4.2}Types of ILIDS setups}{33}
-\contentsline {subsection}{\numberline {4.2.1}Standard ILIDS}{33}
-\contentsline {subsection}{\numberline {4.2.2}ILIDS with optical compression}{33}
-\contentsline {subsection}{\numberline {4.2.3}Additional focused image for disk detection}{37}
-\contentsline {section}{\numberline {4.3}Calibrating the slit method}{39}
-\contentsline {subsection}{\numberline {4.3.1}A sample calibration of the slit aperture method}{39}
-\contentsline {section}{\numberline {4.4}Removing center discrepancies with keypoint registration}{43}
-\contentsline {subsection}{\numberline {4.4.1}Review of image registration techniques }{47}
-\contentsline {subsection}{\numberline {4.4.2}Using affine oriented \textsc {fast}, \textsc {brief} and \textsc {ransac} to estimate the homography between PIV and ILIDS photographs }{48}
-\contentsline {section}{\numberline {4.5}Removing center discrepancies with point set registration}{52}
-\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{55}
-\contentsline {section}{\numberline {5.1}Optical principle}{56}
-\contentsline {subsection}{\numberline {5.1.1}Particles smaller than the wavelength}{57}
-\contentsline {subsection}{\numberline {5.1.2}Large particles}{57}
-\contentsline {subsection}{\numberline {5.1.3}Calculation in TSI FlowSizer software}{61}
-\contentsline {subsection}{\numberline {5.1.4}Calibration in TSI FlowSizer}{62}
-\contentsline {section}{\numberline {5.2}Sources of error}{63}
-\contentsline {subsection}{\numberline {5.2.1}Gaussian beam divergence}{63}
-\contentsline {subsection}{\numberline {5.2.2}Slit effect}{63}
-\contentsline {subsection}{\numberline {5.2.3}Change in fringe frequency over $z$}{64}
-\contentsline {subsection}{\numberline {5.2.4}Selection of lenses and masks}{65}
-\contentsline {subsection}{\numberline {5.2.5}Optical aberrations}{65}
-\contentsline {subsection}{\numberline {5.2.6}Dirty fiber ends}{65}
-\contentsline {subsection}{\numberline {5.2.7}Wrongly entered parameters}{65}
-\contentsline {section}{\numberline {5.3}Calibration}{66}
+\contentsline {section}{\numberline {1.1}Research objectives}{2}
+\contentsline {section}{\numberline {1.2}Organization of this thesis}{2}
+\contentsline {paragraph}{Chapter Two}{2}
+\contentsline {paragraph}{Chapter Three}{2}
+\contentsline {paragraph}{Chapter Four}{2}
+\contentsline {paragraph}{Chapter Five}{3}
+\contentsline {paragraph}{Chapter Six}{3}
+\contentsline {paragraph}{Appendices}{3}
+\contentsline {chapter}{\numberline {2}Geometrical optics and Mie scattering}{4}
+\contentsline {section}{\numberline {2.1}Diffraction}{5}
+\contentsline {section}{\numberline {2.2}Reflection and refraction}{6}
+\contentsline {subsection}{\numberline {2.2.1}Intensity from interface separation}{7}
+\contentsline {subsection}{\numberline {2.2.2}Intensity from geometry}{7}
+\contentsline {subsection}{\numberline {2.2.3}Path-length differences}{9}
+\contentsline {subsection}{\numberline {2.2.4}Phase shifts at reflection}{10}
+\contentsline {subsection}{\numberline {2.2.5}Phase shifts through focussing}{10}
+\contentsline {subsection}{\numberline {2.2.6}Scattering functions}{11}
+\contentsline {section}{\numberline {2.3}Mie theory }{12}
+\contentsline {chapter}{\numberline {3}Monodisperse droplet generation}{16}
+\contentsline {section}{\numberline {3.1}Aerodynamic droplet generators}{17}
+\contentsline {subsection}{\numberline {3.1.1}Stry design}{17}
+\contentsline {section}{\numberline {3.2}On-demand drop generators}{19}
+\contentsline {subsection}{\numberline {3.2.1}Amirzadeh Goghari and Chandra design}{19}
+\contentsline {subsection}{\numberline {3.2.2}Modified Yang design}{20}
+\contentsline {subsection}{\numberline {3.2.3}Piezo-based drop generator}{20}
+\contentsline {section}{\numberline {3.3}Continuous-stream droplet generation using a computer hard drive}{22}
+\contentsline {subsection}{\numberline {3.3.1}Advantages of hard drive actuators}{23}
+\contentsline {subsection}{\numberline {3.3.2}Operating principle}{24}
+\contentsline {subsection}{\numberline {3.3.3}Construction}{25}
+\contentsline {paragraph}{Dismantle and cut.}{25}
+\contentsline {paragraph}{Expose coil leads.}{27}
+\contentsline {paragraph}{Add protective cover.}{27}
+\contentsline {section}{\numberline {3.4}Operation}{27}
+\contentsline {section}{\numberline {3.5}Determining the produced droplet size}{28}
+\contentsline {subsection}{\numberline {3.5.1}Photographing droplets}{28}
+\contentsline {subsection}{\numberline {3.5.2}Droplet collisions}{29}
+\contentsline {chapter}{\numberline {4}ILIDS}{30}
+\contentsline {section}{\numberline {4.1}Operating principle}{30}
+\contentsline {subsection}{\numberline {4.1.1}Influence of the scattering angle ${"φ}$}{32}
+\contentsline {subsection}{\numberline {4.1.2}Optical limits on fringe detection}{32}
+\contentsline {paragraph}{Nyquist criterion for the fringe density.}{32}
+\contentsline {paragraph}{Signal-to-noise ratio.}{33}
+\contentsline {paragraph}{Minimum droplet size.}{33}
+\contentsline {paragraph}{Deviation from actual Mie scattering for small droplet sizes.}{33}
+\contentsline {paragraph}{Overlapping droplet images.}{33}
+\contentsline {section}{\numberline {4.2}Types of ILIDS setups}{34}
+\contentsline {subsection}{\numberline {4.2.1}Standard ILIDS}{34}
+\contentsline {subsection}{\numberline {4.2.2}ILIDS with optical compression}{34}
+\contentsline {subsection}{\numberline {4.2.3}Additional focused image for disk detection}{38}
+\contentsline {section}{\numberline {4.3}Calibrating the slit method}{40}
+\contentsline {subsection}{\numberline {4.3.1}A sample calibration of the slit aperture method}{40}
+\contentsline {section}{\numberline {4.4}Removing center discrepancies with keypoint registration}{44}
+\contentsline {subsection}{\numberline {4.4.1}Review of image registration techniques }{48}
+\contentsline {subsection}{\numberline {4.4.2}Using affine oriented \textsc {fast}, \textsc {brief} and \textsc {ransac} to estimate the homography between PIV and ILIDS photographs }{49}
+\contentsline {section}{\numberline {4.5}Removing center discrepancies with point set registration}{53}
+\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{56}
+\contentsline {section}{\numberline {5.1}Optical principle}{57}
+\contentsline {subsection}{\numberline {5.1.1}Particles smaller than the wavelength}{58}
+\contentsline {subsection}{\numberline {5.1.2}Large particles}{58}
+\contentsline {subsection}{\numberline {5.1.3}Calculation in TSI FlowSizer software}{62}
+\contentsline {subsection}{\numberline {5.1.4}Calibration in TSI FlowSizer}{63}
+\contentsline {section}{\numberline {5.2}Sources of error}{64}
+\contentsline {subsection}{\numberline {5.2.1}Gaussian beam divergence}{64}
+\contentsline {subsection}{\numberline {5.2.2}Slit effect}{64}
+\contentsline {subsection}{\numberline {5.2.3}Change in fringe frequency over $z$}{65}
+\contentsline {subsection}{\numberline {5.2.4}Selection of lenses and masks}{66}
+\contentsline {subsection}{\numberline {5.2.5}Optical aberrations}{66}
+\contentsline {subsection}{\numberline {5.2.6}Dirty fiber ends}{66}
+\contentsline {subsection}{\numberline {5.2.7}Wrongly entered parameters}{66}
+\contentsline {section}{\numberline {5.3}Calibration}{67}
+\contentsline {chapter}{\numberline {6}Conclusions}{69}
+\contentsline {section}{\numberline {6.1}Summary of contributions}{69}
+\contentsline {section}{\numberline {6.2}Future work}{69}
