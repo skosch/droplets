@@ -13,7 +13,7 @@
 \usepackage{amsmath, amssymb}
 \usepackage{mathspec}
 \setmainfont[Mapping=tex-text, Scale=1.1]{Crimson}
-\setsansfont[Scale=1, Path=/home/sebastian/.fonts/]{din1451m.otf}
+\setsansfont[Scale=1, Path=/home/sebastian/.fonts/]{din1451m.ttf}
 %\allsectionsfont{\sffamily}
 %\setmainfon
 %\usepackage{fouriernc}
@@ -66,14 +66,59 @@ itemsep=-1pt}
 \parskip 0pt
 %\usepackage{xunicode}
 \begin{document}
-\title{Calibration of ILIDS and PDPA droplet sizing systems and their
-application to the breakup of impacting water and air jets}
-\author{Sebastian Kosch, University of Toronto}
-\date{2015}
-\maketitle
 
+\frontmatter
+% cover
+%\title{Calibration of ILIDS and PDPA droplet sizing systems}
+%\author{Sebastian Kosch, University of Toronto}
+%\date{2015}
+%\thispagestyle{empty}
+%\maketitle
+%
+%\pagebreak
+%\thispagestyle{empty}
+%% empty flyleaf
+%\vfill
+%\pagebreak
+% FULL TITLE PAGE
+\thispagestyle{empty}
+\begin{center}
+  \vskip 1in
+  Calibration of ILIDS and PDPA droplet sizing systems
+  \vskip 1.2in
+  by
+  \vskip 1.2in 
+  Sebastian Kosch
+  \vskip 2in
+  A thesis submitted in conformity with the requirements for the degree of\\
+  \emph{Master of Applied Science}\\[2ex]
+  Graduate Department of the Department of Mechanical and Industrial
+  Engineering, University~of~Toronto
+  \vskip 1.3in
+  © Copyright by Sebastian Kosch 2015
+\end{center}
+\pagebreak
+Sebastian Kosch: \emph{Calibration of ILIDS and PDPA droplet sizing systems.}\\
+Master's thesis (MASc), Department of Mechanical and Industrial Engineering,\\
+University of Toronto.\\
+April 2015.
+
+\section*{Abstract}
+\begin{doublespace}
+This is the abstract. (150 words max.) This is doublespaced. This is
+doublespaced. This is doublespace.d
+\end{doublespace}
+\vfill
+\pagebreak
+\section*{Acknowledgements}
+These are my acknowledgments
+\vfill
+\tableofcontents
+\listoftables
+\listoffigures
 \printnomenclature[5em]
 
+\mainmatter
 \chapter{Introduction}
 \section{Why spray sizing is important}
 
@@ -147,8 +192,8 @@ $\mathbf{E}$ and $\mathbf{B}$ around $\mathbf{S}$. The rotation angle is called
 \emph{polarization} and need not be constant along the line of propagation
 (``circular polarization''), although we will here assume that it is (``linear
 polarization'') to simplify our derivations. This assumption is justified in
-typical spray characterization applications, for gas lasers use \emph{Brewster
-windows} both as mirrors and output windows which act as polarization filters.
+typical spray characterization applications, for the \emph{Brewster
+windows} employed as mirrors in the commonly used gas lasers act as polarization filters.
 
 We will also assume here that $\mathbf{S}$ is approximately constant over the
 surface of the droplet. In other words, we assume the incoming light wave to be
@@ -159,8 +204,6 @@ without this assumption can be used, but they are not suitable for showcasing
 the fundamental concepts behind droplet light scattering.  Finally, we assume
 the droplet in question to be perfectly spherical.
 
-\subsection{Scattering phenomena}
-
 When light hits a spherical, transparent droplet, three phenomena can be
 observed:
 \begin{enumerate}
@@ -168,7 +211,7 @@ observed:
     \item Reflection
     \item Refraction
 \end{enumerate}
-We will consider each one in this paper, and derive its influence on the
+We will consider each one and derive its influence on the
 scattered field.
 
 In the following discussion, we will use a coordinate system centered on the
@@ -189,52 +232,56 @@ perpendicular to it ($\phi$-field).
 \section{Diffraction} Diffraction, sometimes described as the ``bending'' of
 light waves, is the phenomenon observed when plane waves -- even material waves
 -- encounter the edge of an obstacle and spread out spherically behind it. While
-most of the scattered intensity is focussed along the original wave path, the
+most of the scattered intensity is focused along the original wave path, the
 scattered fields from two or more edges will interfere behind the obstacle and
 create an intensity pattern dependent on both the wavelength and the edges'
 separation.
 
-%\begin{figure}
-%\centering
-%\includegraphics[width=0.6\textwidth]{pictures/diffraction.jpg}
-%\caption{Diffraction \cite{orbs}}
-%\label{fig:diffraction}
-%\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=0.6\textwidth]{img/scattering/diffraction.png}
+\caption{Diffraction}
+\label{fig:diffraction}
+\end{figure}
 
 A droplet in a plane wave, just like a hole of the same size, has one circular
-edge (or a set of infinitely many point-sized edges arranged in a circle). The
+edge (or, in Huygensian terms, a set of infinitely many point-sized edges arranged in a circle). The
 diffracted fields interfere behind the particle, as shown in Figure
 \ref{fig:diffraction}, to form a periodic intensity pattern.
 
 The viability of exploiting diffraction as a spray characterization principle is
 limited, because the phenomenon is strongest when droplet sizes are close to the
-light's wavelength. We will thus focus here on scattering phenomena relevant to
+light's wavelength. Nevertheless, diffraction-based droplet sizing systems are
+highly popular, particularly because they require no calibration.
+
+We will thus here on scattering phenomena relevant to
 techniques such as \emph{Phase Doppler Anemometry} and \emph{Interferometric
 Particle Imaging}.
 
 \section{Reflection and refraction}
 Detectors used in spray diagnostics are ultimately based on the photoelectric
 effect, and thus sensitive only to incident light intensity. This is the case
-both for \textsc{CMOS} or \textsc{CCD} cameras used in interferometric
-techniques and for photovoltaic cascade amplifiers commonly used in Phase
+both for the \textsc{CMOS} and \textsc{CCD} cameras used in interferometric
+techniques and for the photovoltaic cascade amplifiers commonly used in Phase
 Doppler setups. As a result, we are interested in accurately modelling the light
-intensity at a location $\langle \phi, \vartheta, z \rangle$.
+intensity at a location $\langle \phi, \vartheta, z \rangle$ on the detector
+surface.
 
 A general description of the scattering process would trace a ray of light
 through the droplet. At every encounter with an interface
-(air$\rightarrow$water, or water$\rightarrow$air inside the droplet), some of
+(air$\rightarrow$water, or water$\rightarrow$air from inside the droplet), some of
 the light is \emph{reflected off} the interface and some is \emph{refracted
 through} the interface. When first incident, the refracted light ray is cast
 \emph{into} the droplet; subsequent scattering events will refract some light
-\emph{out} of the droplet while the remainder continues scattering within the
-droplet until all energy is refracted out or absorbed as heat. Scattering events
+\emph{out} of the droplet while the remainder continues being reflected within the
+droplet until all energy is refracted out or dissipated as heat. Scattering events
 are enumerated; the \emph{scattering order} $N$ refers to the
 $N$\textsuperscript{th} reflection/refraction.
 
-Total intensity at any location is a function both of the intensity of all
+Total intensity at any location is a function of the intensity of all
 infinitesimal light rays scattered onto that location, but also of the phases of
 those light rays, as two equally intense light rays will extinguish one another
-if they are in opposite phases. We will thus derive expressions for both
+if they are in opposite phase. We will thus derive expressions for both
 intensity and phase of infinitesimal light rays scattered through the droplet.
 
 \subsection{Intensity from interface separation}
@@ -258,11 +305,11 @@ relative refractive index of droplet and medium (e.g. $m = 1.33/1.0$ for the
 water$\rightarrow$air transition).
 
 Squaring these numbers yields a reflectance coefficient $R = |r|^2$ for both
-polarization directions, and since $R + T = 1$, the computation of $T$ is
-then trivial.
+polarization directions, and from $R + T = 1$ follows the value of its 
+complement, the transmission coefficient $T$.
 
 \subsection{Intensity from geometry}
-An infinitesimal plane wave ray incident on a curved surface will inevitably
+An infinitesimal plane wave ray reflected off of a curved surface will inevitably
 experience deviation into a diverging ray (convex surface) or a converging ray
 (concave surface).
 
@@ -307,7 +354,7 @@ fixed fraction, or \emph{gain factor}, of $G^{(1)} = \frac{1}{4}$. This number
 represents the ``dilution of energy'' associated with the divergence inherent in
 reflection off a curved surface.
 
-Similar gain factors can be derived for any other scattering order $N$ of light
+Similar gain factors can be derived geometrically for any other scattering order $N$ of light
 leaving the droplet:
 \begin{equation}
     \label{eq:gainfactor}
@@ -406,7 +453,8 @@ We can use these two-component scattering functions to write a full expression
 relating the incident light wave $\mathbf{E}_i$ in its components $\langle E_{ix},
 E_{iy} \rangle$ to the wave received by the detector, $\mathbf{E}_r$:
 
-\begin{align}
+\begin{equation}
+  \begin{split}
     \label{eq:fulltransfer}
     {\bf E}_r = &\frac{\exp(-j k r_{pr})}{k r_{pr}}
     \left[ \begin{array}{c c}\cos \beta_{\vartheta x} & \cos \beta_{\phi x} \\
@@ -417,7 +465,8 @@ E_{iy} \rangle$ to the wave received by the detector, $\mathbf{E}_r$:
   \end{array} \right] \times
 \left[ \begin{array}{c c} -\sin \phi & \cos \phi \\ \cos \phi & \sin \phi \end{array} \right]
 \left[ \begin{array}{c} E_{ix} \\ E_{iy} \end{array} \right]
-\end{align}
+\end{split}
+\end{equation}
 
 The first term evaluates to a sinusoid function corresponding to the scalar
 component of the light wave. The second term (and first matrix) represents the
@@ -427,7 +476,7 @@ angle between light source and droplet. By multiplying the $\beta$ matrix with
 the appropriate scattering functions (which are summed over all scattering
 orders $N$), we arrive at the correct intensity at the detector's location.
 
-\section{Mie theory}
+\section{Mie theory \label{sec:mietheory}}
 The above derivations, commonly termed \emph{geometrical
 optics}, are physically intuitive and therefore useful in the understanding and
 design of measurement instrumentation. Geometrical optics, however, are limited
@@ -439,7 +488,7 @@ Such a numerical system was developed independently by Ludvig Lorenz and Gustav
 Mie based on analytical solutions presented here briefly. The Mie scattering
 theory decomposes the incoming light into an infinite series of not plane, but
 spherical waves concentrical with the droplet. The spherical waves are not
-uniform; their dependence depends on the angle $\theta$.
+uniform; their amplitude varies with the angle $\theta$.
 
 The derivation in scalar terms assumes a scalar field magnitude $\psi$ that solves
 \begin{equation}
@@ -517,8 +566,11 @@ and $PM$ for refraction into and out of the particle, respectively. The
 expression for $R_{b_n}^{PP}$ is shown above to illustrate the coefficents'
 form. Note that in the above equations, $\pi$ and $\tau$ are associated Legendre functions and $\zeta$ and $\xi$ are Riccati-Bessel functions.
 
-\subsection{Results}
-Some numerical results are presented in \figref{fig:angleresults} below.
+Some numerical results are presented in \figref{fig:angleresults} below. The
+same methods were used in papers like \citet{Naqwi96} to predict the angular
+variation of scattered intensity that is crucial in designing phase-Doppler
+systems.
+
 \begin{figure}
     \centering
     \includegraphics[width=0.7\textwidth]{img/scattering/results.pdf}
@@ -564,16 +616,38 @@ a needle into a liquid reservoir, and then flicking it so as to produce one
 droplet.
 
 \section{Aerodynamic droplet generators}
+Aerodynamic droplet generators use a stream of gas to assist the droplet in
+detaching from a needle, orifice or stylus before it grows large enough to do so
+by force of gravity alone. The technique promises a simple way to produce small
+droplets, but it can be difficult to control the exact size of the droplets.
+
 \citet{Allan88} provide a history of aerodynamic designs: the first design was
 published in 1947 by \citet{Lane47}; \citet{Reil69} later improved on it by
-using time-controlled air pulses instead of a continous flow. Coggins and Baker
-\cite{Coggins83} have proposed a more elaborate apparatus with variable air and liquid
-flow and adjustable needle position.
-
+using time-controlled air pulses instead of a continous flow.
 \subsection{Stry design}
-Initial tests based on a design by \citet{Stry92} showed that the ability of the
+We performed a large number of initial tests using a device based on a design by
+\citet{Stry92}. \figref{fig:stry} shows a schematic drawing. The droplet
+generator is milled from a solid block of aluminum. A vertical through hole
+is drilled 20 mm from the left edge, and a second horizontal hole is drilled from the side
+to join it as shown. The latter is widened and tapped to accomodate a
+pressurized air supply hose. The vertical hole holds a blunt hypodermic needle,
+which is held by a plastic fitting screwed into a second aluminum block which is
+bolted onto of the first. Because the needles occasionally get clogged and need
+to be replaced, this setup is an improvement over Stry's monolithic
+design. 
+
+Our experiments showed that the ability of the
 instrument to produce droplets below 600$\,\mu$m depends entirely on the
-precision with which the flow of water and air can be controlled.
+precision with which the flow of water and air can be controlled. Regulating the
+fluctuating air pressure supplied by the building with but a simple valve, we
+were unable to reliably produce monodisperse droplets below 600$\,\mu$m for more
+than a few seconds at a time.
+
+While we decided not to pursue this approach further, it is worth noting that Coggins and Baker
+\cite{Coggins83} designed a more elaborate apparatus with variable air and liquid
+flow and adjustable needle position, and succeeded in producing significantly
+smaller droplets on demand.
+
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{img/setup/stry.pdf}
@@ -594,7 +668,7 @@ generators driven by the contraction of piezoelectric elements, such as those
 proposed by \citet{Yang97} or \citet{Ulmke99}. Excellent reviews on
 drop-on-demand designs were published by Le and Lee \cite{Le98, Lee02}. 
 
-A curious third type of on-demand generator by \citet{Goghari08} uses a short
+An interesting third type of on-demand generator by \citet{Goghari08} uses a short
 pulse of pressurized air, controlled by a solenoid valve, to eject a small
 amount of liquid through an orifice.
 
@@ -644,7 +718,7 @@ piezoelectric disk.
 
 The greatest challenge faced was the accumulation of liquid on the nozzle
 surface, which quickly led to satellite droplets or thwarted droplet production
-altogether.  % TODO: add detail about the different nozzle types we tried
+altogether. This was a problem particularly with the 
 
 Again, capillaries drawn with an automatic pipette puller are likely
 more resistant to this effect.
@@ -1018,7 +1092,7 @@ mechanics permitting, any arbitrarily large droplet can thus be measured after a
 quick adjustment. In theory, this correction is effective until the defocused
 droplet image is too large for the CCD sensor, and fringes are cut off. In
 practice, overlap and noise (see below) will cause significant problems long
-before the image can be defocussed beyond the sensor edges.
+before the image can be defocused beyond the sensor edges.
 
 \paragraph{Signal-to-noise ratio.}
 Image noise is a significant source of trouble in ILIDS analysis. Indeed, many
@@ -1089,10 +1163,10 @@ modifications will be described in the next sections.
 \subsection{ILIDS with optical compression}
 This problem is never more apparent than in efforts to calibrate
 the system using a vibrating orifice droplet generator, as the droplets produced
-thereby are spaced very closely and produce heavily overlapping defocussed
+thereby are spaced very closely and produce heavily overlapping defocused
 images. Fortunately, there exists a simple and reliable technique to deal with
 this problem: a slit aperture, installed directly in front of the lens, masks
-the defocussed droplet images such that only a thin strip across their center
+the defocused droplet images such that only a thin strip across their center
 passes through the lens. The effect is shown in \figref{fig:globalsizing}. 
 
 Arguably the most popular way to reduce the amount of overlap is the use of
@@ -1119,7 +1193,7 @@ Naturally, equations \eqref{kappa} and \eqref{fringedistance-pixels} still hold.
         \caption{}
     \end{subfigure}
     \caption{Before (a) and after (b) installing the slit aperture. The aperture
-    stop pares off the top and bottom halves of the defocussed circles, leaving
+    stop pares off the top and bottom halves of the defocused circles, leaving
 only a narrow center string in the middle.}
     \label{fig:globalsizing}
 \end{figure}
@@ -1209,10 +1283,10 @@ the frequency spectrum, with peak identified at $f=91.0$.}
 \end{wrapfigure}
 Finally, the peak frequency $f_\text{peak}$ is converted into a fringe count by re-scaling it
 from the padded size $D_\text{padded}\, (= 1024$ pixels) to the width of the strip (which, in the
-context of IPI measurements, should equal the diameter $D_\text{i}$ of the defocussed droplet
+context of IPI measurements, should equal the diameter $D_\text{i}$ of the defocused droplet
 image):
 \nomenclature{$f_\text{peak}$}{Peak frequency}
-\nomenclature{$D_\text{i}$}{Diameter (in pixels) of the defocussed image}
+\nomenclature{$D_\text{i}$}{Diameter (in pixels) of the defocused image}
 \nomenclature{$D_\text{padded}$}{Width (in pixels) of the padded input to the
 Fourier transform}
 \begin{equation}
@@ -1221,12 +1295,12 @@ Fourier transform}
 \end{equation}
 
 While the above algorithm will generally give a good estimate of the fringe
-count for a given defocussed droplet image, it cannot know whether the entire
+count for a given defocused droplet image, it cannot know whether the entire
 center portion of the image has indeed passed the slit aperture. It is
 conceivable, after all, that the slit aperture was not perfectly centered on the
 lens entrance, or that the slit aperture was shorter than the diameter of the
 lens entrance. \figref{fig:droplet-slitcropping} illustrates how the slit
-aperture can cause the defocussed image to appear smaller than it is. The
+aperture can cause the defocused image to appear smaller than it is. The
 reduced value for $D_\text{i}$, manually entered in equation
 \eqref{fringes-from-diameter}, will result
 in droplets being reported as smaller than they are in reality.

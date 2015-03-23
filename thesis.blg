@@ -31,53 +31,49 @@ Repeated entry---line 426 of file bibliography.bib
  : @article{Glover95
  :                  ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "Mehegan71"
-Warning--I didn't find a database entry for "Rakesh09"
-Warning--I didn't find a database entry for "Rakesh13"
+Warning--I didn't find a database entry for "orbs"
 Warning--empty publisher in Le98
 Warning--empty year in Le98
 Warning--empty year in Le98
-Warning--empty school in Taranenko13
-Warning--empty school in Jin13
-You've used 78 entries,
+You've used 74 entries,
             2751 wiz_defined-function locations,
-            1128 strings with 19373 characters,
-and the built_in function-call counts, 30760 in all, are:
-= -- 2673
-> -- 1388
-< -- 66
-+ -- 552
-- -- 394
-* -- 2282
-:= -- 4722
-add.period$ -- 240
-call.type$ -- 78
-change.case$ -- 146
-chr.to.int$ -- 76
-cite$ -- 83
-duplicate$ -- 1640
-empty$ -- 2931
-format.name$ -- 536
-if$ -- 6660
+            1101 strings with 18843 characters,
+and the built_in function-call counts, 29548 in all, are:
+= -- 2562
+> -- 1344
+< -- 62
++ -- 532
+- -- 382
+* -- 2200
+:= -- 4522
+add.period$ -- 228
+call.type$ -- 74
+change.case$ -- 140
+chr.to.int$ -- 72
+cite$ -- 77
+duplicate$ -- 1572
+empty$ -- 2820
+format.name$ -- 516
+if$ -- 6410
 int.to.chr$ -- 3
-int.to.str$ -- 79
-missing$ -- 78
-newline$ -- 400
-num.names$ -- 238
-pop$ -- 689
+int.to.str$ -- 75
+missing$ -- 76
+newline$ -- 380
+num.names$ -- 226
+pop$ -- 661
 preamble$ -- 1
-purify$ -- 78
+purify$ -- 74
 quote$ -- 0
-skip$ -- 980
+skip$ -- 937
 stack$ -- 0
-substring$ -- 1578
-swap$ -- 338
+substring$ -- 1533
+swap$ -- 329
 text.length$ -- 18
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 528
-warning$ -- 5
-while$ -- 266
+type$ -- 500
+warning$ -- 3
+while$ -- 255
 width$ -- 0
-write$ -- 1014
+write$ -- 964
 (There were 7 error messages)
