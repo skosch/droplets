@@ -280,7 +280,7 @@ polarization parallel to that scattering plane ($\vartheta$-field) and
 perpendicular to it ($\phi$-field). 
 
 \section{Diffraction} Diffraction, sometimes described as the ``bending'' of
-light waves, is the phenomenon observed when plane waves -- even material waves
+light waves, is the phenomenon observed when plane waves---even material waves
 -- encounter the edge of an obstacle and spread out spherically behind it. While
 most of the scattered intensity is focused along the original wave path, the
 scattered fields from two or more edges will interfere behind the obstacle and
@@ -426,7 +426,7 @@ discuss the treatment of path lengths.
 
 To effectively compare path lengths between various rays, it is practical to
 establish a reference path length for common comparison. This reference ray is
-typically pictured as passing through the center of the droplet -- an optical
+typically pictured as passing through the center of the droplet---an optical
 anomaly as it were, but geometrically useful.
 
 \begin{figure}
@@ -587,8 +587,8 @@ shown in Figure \ref{fig:besselfuncs}.
 Each partial wave, in turn, represents the sum of scattering effects up to some
 scattering order $N$ (in practice, no infinite sum can be taken; the maximum
 scattering order to achieve negligible errors depends on the relative
-wavelength). With every refraction out of the droplet -- thus adding to the
-total external field -- the \emph{internal} partial wave loses intensity
+wavelength). With every refraction out of the droplet---thus adding to the
+total external field---the \emph{internal} partial wave loses intensity
 according to respective reflectance and transmittance values.
 
 
@@ -788,7 +788,7 @@ capillaries (just like in the Ulmke paper), but two of the piezo elements were
 broken, and the third one had a capillary that clogged up repeatedly. We
 abandoned the approach before building a functioning droplet generator, although
 it seems attractive in practice. One downside is that the generation of
-amplified signals isn't straightforward -- we used a soundcard connected to an
+amplified signals isn't straightforward---we used a soundcard connected to an
 amplifier to generate the signals.
 
 \section{Continuous-stream droplet generation using a computer hard drive}
@@ -974,7 +974,7 @@ where the read/write head was installed---and connect the voice coil leads to th
 generator set to an initial peak-to-peak voltage of $1\,$V and a sinusoid frequency of
 about $50\,$Hz, which should cause weak but perceptible oscillations.
 
-Interchangeable nozzles made from needles with Luer fittings, as in FIG.~\ref{fig:needles}, are
+Interchangeable nozzles made from needles with Luer fittings, as in \figref{fig:needles}, are
 convenient and can be held in place by a male adapter clamped into a lab stand.
 
 The nozzle must be supplied by an accurately calibrated syringe pump. It is
@@ -995,13 +995,14 @@ deflect the jet---if the droplets are truly monodisperse, they will all deflect
 at the same angle.\cite{Strom69}
 
 %%%%%%%%%%%%55
+\section{Determining the produced droplet size}
 Note also that the orifice diameter $D_o$ dictates the range of viable
 frequencies $f$ as 
 \begin{equation}
     3.5 \lesssim \frac{Q}{\pi f \left(\frac{D_o}{2}\right)^2}
 \lesssim 7,
 \end{equation}
-where $Q$ is the flow rate.\cite{Savart33, Rayleigh79} In
+where $Q$ is the flow rate \cite{Savart33, Rayleigh79}. In
 practice, $D_o$ need not be
 precisely determined; it is easy to find appropriate settings for $Q$
 and $f$ by viewing the jet against a strobe light, adjusting flow rate for a breakup
@@ -1011,18 +1012,18 @@ magnifying lens in front of the orifice, as the adjustment procedure can become
 tedious when the droplets are very small.
 
 Under stable conditions, every oscillation of the nozzle will produce one droplet
-downstream,\cite{Rayleigh79} such that the droplet diameter will be 
+downstream, such that the droplet diameter, assuming perfect sphericity, will be 
 \begin{equation}
         D_d = \sqrt[3]{6Q/(\pi f)}.\label{eq:rayl}
 \end{equation}
-This can be verified photographically, as shown in FIG.~\ref{fig:dropphoto}.
+This can be verified photographically, as shown in \figref{fig:dropphoto}.
 
 We have successfully used the generator to produce droplets of
 $0.1-1\,$mm diameter, but both smaller and larger droplets are feasible.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.26\textwidth]{sizes.eps}
+\includegraphics[width=0.56\textwidth]{papers/hdg_images/sizes.eps}
 \caption{Some frequency/flow rate conditions under which stable droplets were
         produced ($\square$ as predicted by Eq. \ref{eq:rayl},
         {\Large$\diamond$} as estimated
@@ -1030,24 +1031,6 @@ $0.1-1\,$mm diameter, but both smaller and larger droplets are feasible.
         respectively.
        \label{fig:dropphoto}}
 \end{figure}
-
-
-%%%%%%%%%%5
-
-\section{Determining the produced droplet size}
-With droplet generators based on Rayleigh breakup, such as the HDG, this is easy
-to do; just take the flow rate and divide by the number of droplets produced per
-second (which, under stable conditions, equals the vibration frequency as each
-instability turns into one droplet). If we assume perfect sphericity, we can
-convert this droplet volume into a diameter. After cancelling terms, the
-expression for $D_d$ becomes
-\begin{equation}
-    D_{d} = \sqrt[3]{\frac{6Q}{\pi f}}\label{eq:dropdia-continuous}
-\end{equation}
-
-The reliablity of the underlying assumption has been verified photographically
-for several different nozzle orifice diameters and frequencies, some of which
-are given as part of the ILIDS calibration.
 
 \subsection{Photographing droplets}
 With drop-on-demand approaches, the diameter of the produced droplet is more
@@ -1061,23 +1044,20 @@ pictures in front of a strobe light has worked well.
 
 We used a scale placed next to the droplet stream, and then used a conversion
 between pixels to find the size. Of course, this method suffers from barrel
-distortion that inevitably happens, especially with a zoom lens. 
-% TODO: measure the barrel distortion.
-\begin{wrapfigure}[19]{L}{0.4\textwidth}
-\centering
-\includegraphics[width=0.35\textwidth]{papers/hdg_images/photo.eps}
-\caption{Photographs of different droplet sizes ($220\,\mu$m and $386\,\mu$m,
-    $f=1.990\,$kHz and $1.065\,$kHz respectively) produced with the droplet
-generator shown in \figref{fig:hdg-photo}. Scales have been cropped out.
-\label{fig:hdg-dropphoto}}
-\end{wrapfigure}
-Figure X shows a typical droplet stream photo (at different sizes).
+distortion that inevitably happens, especially with a zoom lens. The
+coefficients of this distortion are known and publically available for most
+lenses. We have not applied this correction in our photos, since the error
+introduced by blurred edges is likely more significant.
+
+Flash lighting is best applied through a diffusing screen placed behind the
+droplets. Standard flash lamps may not always be fast enough---in that case,
+gas discharge strobe lamps serve the same purpose.
 
 \subsection{Droplet collisions}
 \label{sec:droplet-collisions}
 No droplet generation mechanism is perfect. Small fluctuations in flow rate,
 unwanted harmonic vibrations and air turbulence can cause disturbances in the
-stream of evenly spaced droplets -- the smaller the droplets, the more often
+stream of evenly spaced droplets---the smaller the droplets, the more often
 this happens. Occasionally, this will lead to the collision
 of two droplets some distance away from the orifice.
 
@@ -1095,21 +1075,22 @@ and collide with others. Since the ``real'' diameter peaks are easily discerned,
 the secondary peaks can simply be ignored.
 
 \chapter[ILIDS]{ILIDS}
-Interferometric Laser Imaging for Droplet Sizing (ILIDS), also known as
-Interferometric Particle Imaging (IPI) and MSI (Mie Scattering Imaging) is an
-optical droplet sizing method in which a spray is illuminated by a sheet of
-laser light and the scattered light is imaged laterally. The laser light is both
-reflected and refracted by the droplets, such that each droplet produces a pair
-of apparent ``glare points''. When seen through a lens away from the focal
-plane, each pair of glare points---being sources of coherent monochromatic
-light---appears as an interference pattern which, after falling through a
-circular aperture, casts an image that is a circular disk of fringes.  The
-spatial frequency of the fringes is (to a very close approximation) linearly
-related to the particle size. The phenomenon was first described by
-\citet{Konig86} and later in greater detail by \citet{Glover95}. Turnkey ILIDS
-setups for spray characteriziation are now widely available, comprising
-typically a pulsed Nd:YAG-laser, one or two CCD cameras, a timing circuit, and a
-piece of image processing software.
+Interferometric Laser Imaging for Droplet Sizing (ILIDS), also known
+as IPI (Interferometric Particle Imaging) and MSI (Mie Scattering
+Imaging) is a popular optical droplet sizing method in which a spray
+is illuminated by a sheet of laser light and the scattered light is
+imaged laterally. The laser light is both reflected and refracted by the
+droplets, such that each droplet produces a pair of apparent ``glare
+points''. When seen through a lens away from the focal plane, each pair
+of glare points (the points being sources of coherent monochromatic
+light) appears as an interference pattern which, after falling through
+a circular aperture, casts an image that is a circular disk of fringes.
+The spatial frequency of the fringes is (to a very close approximation)
+linearly related to the droplet size. The phenomenon was first described
+by \citet{Konig86} and later in greater detail by \citet{Glover95}.
+Turnkey ILIDS setups for spray characteriziation are now widely
+available, comprising typically a pulsed Nd:YAG-laser, one or two CCD
+cameras, a timing circuit, and a piece of image processing software.
 
 \begin{figure}
 \centering
@@ -1119,7 +1100,7 @@ piece of image processing software.
 \end{figure}
 \section{Operating principle}
 The number of fringes $N_\text{fr}$ appearing in the image has a simple linear relationship to
-the droplet diametre $D_d$:
+the droplet diameter $D_d$:
 \nomenclature{$N_\text{fr}$}{Number of fringes}
 \nomenclature{$\kappa$}{Scalar value relating the fringe count $N_\text{fr}$ to
 the physical diameter of the particle $D_d$}
@@ -1135,7 +1116,7 @@ where $\kappa$ is a constant derived from the optical configuration:
     \label{kappa}
 \end{equation}
 
-In the above expression $D_a$ is the aperture diametre, $z$ is the distance of
+In the above expression $D_a$ is the aperture diameter, $z$ is the distance of
 the lens to the laser sheet, $\phi$ is the off-axis angle (90 degrees in most
 setups, including ours), and $m$ is the relative refractive index of the
 droplets (1.333 for water in air).
@@ -1183,11 +1164,12 @@ points when viewed from an angle $\phi$. \label{fig:droplet-rays}}
 While authors have identified several forward angles as optimal for their
 applications, e.g. $\phi = 45^\circ$ \cite{Glover95} or $\phi = 66^\circ$
 \cite{Mounaim99}, such configurations inevitably result in a variation in $z$,
-and therefore defocusing, across the image unless the
-camera itself is angled with respect to the lens to correct for this aberration
+and therefore in a variation in the degree of defocusing, across the image unless the
+camera itself is similarly angled with respect to the lens to correct for this aberration
 (the so-called \emph{Scheimpflug condition}). Since the latter approach requires
 specialized optical equipment, $\phi = 90^\circ$ is used in many setups,
-including the one in this paper.
+including the one in this paper, although it is far from ideal in terms of
+scattered light intensity (culminating in a suboptimal signal-to-noise ratio).
 
 \subsection{Optical limits on fringe detection}
 \label{sec:ipi-fringelimits}
@@ -1227,7 +1209,7 @@ intensity of scattered light typically drops below an acceptable level well befo
 the fringes become too large, and noise (see above) will become the overwhelming
 problem.
 
-\paragraph{Deviation from actual Mie scattering for small droplet sizes.}
+\paragraph{Discrepancy between geometrical optics and Mie scattering for small droplet sizes.}
 ILIDS users should also be aware that the assumptions of geometric optics
 that underlie \eqref{kappa} do not hold for small droplets. \citet{Mounaim99}
 found that for isooctane droplets ($m=1.39$) below $10\,\mu$m, geometric optics
@@ -1260,13 +1242,20 @@ Commercial ILIDS vendors provide the timing circuitry and the software, which
 typically integrates a collection of image processing algorithms that can be
 used to analyze the captured images immediately.
 
-The core problem with all ILIDS setups is the determination of $z$ and $d_a$ in
-\eqref{kappa}.  We will discuss calibration of ILIDS systems in greater detail in
-\secref{} calibration.
+ILIDS has two main challenges.
 
-Images taken in this configuration are very susceptible to excessive
+The core challenge with all ILIDS setups is the determination of $z$ and $d_a$ in
+\eqref{kappa}. We will discuss calibration of ILIDS systems in greater detail in
+\secref{sec:ilids-calibration}.
+
+Images taken in this standard configuration are very susceptible to excessive
 disk overlap.
 
+The ability to image a whole 2D field of droplets all at once is ILIDS' strongest
+selling point, yet also its curse. When droplets are spaced too closely, their
+defocused disk images overlap and it becomes difficult to determine the fringe counts
+corresponding to individual droplets. \citet{Damaschke02} provide a statistical
+estimate on the fraction of overlapping disks (overlap coefficient).
 
 Therefore, measures have been developed to sidestep overlap
 almost entirely or to deal with it during the image processing stage. These
@@ -1343,7 +1332,7 @@ three steps are performed before the Fourier transform is taken:
 \begin{enumerate}
     \item a weak ($3 \times 3$) Gaussian blur is applied to the region
         (optional);
-    \item a Hanning window is applied to the region -- both horizontally and
+    \item a Hanning window is applied to the region---both horizontally and
         vertically. This reduces the ``sinc ringing'' effect encountered when
         taking the Fourier transform of finite signals;
     \item the region is padded with zeros in all directions to yield a larger
@@ -1491,11 +1480,12 @@ employing the IPI technique for real spray measurements. Recall that, if we
 ignore the Mie error (\secref{sec:mie-error}), the relationship between fringe count and droplet diameter
 is linear with a constant of proportionality $\kappa$ (see equation
 \eqref{kappa}). The aim of our calibration, then, is to determine the value of
-$\kappa$ from experiment -- the premise being that we cannot be certain of the
+$\kappa$ from experiment---the premise being that we cannot be certain of the
 values of $D_a$, $z$, and possibly not even $m$ and $\phi$ (although the latter
 can usually be ascertained to a sufficient degree of accuracy).
 
-\subsection{A sample calibration of the slit aperture method}
+\subsection{A sample calibration of the slit aperture method
+\label{sec:ilids-calibration}}
 Using the droplet generator described in \secref{sec:droplet-generator} and
 the IPI configuration described in \secref{sec:ipi-setup}, we produced and
 measured monodisperse droplets of many different diameters. The droplet
@@ -1567,9 +1557,9 @@ Based on the values in \tableref{tab:ipi-calibration-datasets}, we thus arrive
 at a value of $\hat{\kappa} = 76808.1$ with an $R^2$-value of 99.98\%. 
 
 \figref{fig:fringe-regression} illustrates the good agreement on $\kappa$ between
-all datasets. Considering the sheer number of error sources -- from the
+all datasets. Considering the sheer number of error sources---from the
 unavoidable non-uniformity of the generated droplets to the uncertainty that
-comes with taking the Fourier transform of a noisy image -- the calibration
+comes with taking the Fourier transform of a noisy image---the calibration
 results documented here are a testament to the practical robustness of the
 method.
 
@@ -1585,7 +1575,7 @@ peaks of Gaussians fitted to the raw fringe count histograms (see
 \figref{fig:fringe-histograms}. In other words, it is our assumption that all
 droplets from a given dataset produce fringe counts that are normally
 distributed around their respective $\hat{N}_\text{fr}$. The histogram to
-dataset FA shows a much higher deviation than the others -- this may be due to
+dataset FA shows a much higher deviation than the others---this may be due to
 genuine variance in the generated droplet diameters or to difficulty in
 processing comparatively weak images with low fringe counts. It seems likely
 that both effects contribute.

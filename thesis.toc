@@ -35,40 +35,40 @@
 \contentsline {section}{\numberline {3.5}Determining the produced droplet size}{28}
 \contentsline {subsection}{\numberline {3.5.1}Photographing droplets}{28}
 \contentsline {subsection}{\numberline {3.5.2}Droplet collisions}{29}
-\contentsline {chapter}{\numberline {4}ILIDS}{30}
-\contentsline {section}{\numberline {4.1}Operating principle}{30}
-\contentsline {subsection}{\numberline {4.1.1}Influence of the scattering angle ${"φ}$}{32}
-\contentsline {subsection}{\numberline {4.1.2}Optical limits on fringe detection}{32}
-\contentsline {paragraph}{Nyquist criterion for the fringe density.}{32}
-\contentsline {paragraph}{Signal-to-noise ratio.}{33}
-\contentsline {paragraph}{Minimum droplet size.}{33}
-\contentsline {paragraph}{Deviation from actual Mie scattering for small droplet sizes.}{33}
-\contentsline {paragraph}{Overlapping droplet images.}{33}
-\contentsline {section}{\numberline {4.2}Types of ILIDS setups}{34}
-\contentsline {subsection}{\numberline {4.2.1}Standard ILIDS}{34}
-\contentsline {subsection}{\numberline {4.2.2}ILIDS with optical compression}{34}
-\contentsline {subsection}{\numberline {4.2.3}Additional focused image for disk detection}{38}
-\contentsline {section}{\numberline {4.3}Calibrating the slit method}{40}
-\contentsline {subsection}{\numberline {4.3.1}A sample calibration of the slit aperture method}{40}
-\contentsline {section}{\numberline {4.4}Removing center discrepancies with keypoint registration}{44}
-\contentsline {subsection}{\numberline {4.4.1}Review of image registration techniques }{48}
-\contentsline {subsection}{\numberline {4.4.2}Using affine oriented \textsc {fast}, \textsc {brief} and \textsc {ransac} to estimate the homography between PIV and ILIDS photographs }{49}
-\contentsline {section}{\numberline {4.5}Removing center discrepancies with point set registration}{53}
-\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{56}
-\contentsline {section}{\numberline {5.1}Optical principle}{57}
-\contentsline {subsection}{\numberline {5.1.1}Particles smaller than the wavelength}{58}
-\contentsline {subsection}{\numberline {5.1.2}Large particles}{58}
-\contentsline {subsection}{\numberline {5.1.3}Calculation in TSI FlowSizer software}{62}
-\contentsline {subsection}{\numberline {5.1.4}Calibration in TSI FlowSizer}{63}
-\contentsline {section}{\numberline {5.2}Sources of error}{64}
-\contentsline {subsection}{\numberline {5.2.1}Gaussian beam divergence}{64}
-\contentsline {subsection}{\numberline {5.2.2}Slit effect}{64}
-\contentsline {subsection}{\numberline {5.2.3}Change in fringe frequency over $z$}{65}
-\contentsline {subsection}{\numberline {5.2.4}Selection of lenses and masks}{66}
-\contentsline {subsection}{\numberline {5.2.5}Optical aberrations}{66}
-\contentsline {subsection}{\numberline {5.2.6}Dirty fiber ends}{66}
-\contentsline {subsection}{\numberline {5.2.7}Wrongly entered parameters}{66}
-\contentsline {section}{\numberline {5.3}Calibration}{67}
-\contentsline {chapter}{\numberline {6}Conclusions}{69}
-\contentsline {section}{\numberline {6.1}Summary of contributions}{69}
-\contentsline {section}{\numberline {6.2}Future work}{69}
+\contentsline {chapter}{\numberline {4}ILIDS}{31}
+\contentsline {section}{\numberline {4.1}Operating principle}{31}
+\contentsline {subsection}{\numberline {4.1.1}Influence of the scattering angle ${"φ}$}{33}
+\contentsline {subsection}{\numberline {4.1.2}Optical limits on fringe detection}{33}
+\contentsline {paragraph}{Nyquist criterion for the fringe density.}{33}
+\contentsline {paragraph}{Signal-to-noise ratio.}{34}
+\contentsline {paragraph}{Minimum droplet size.}{34}
+\contentsline {paragraph}{Discrepancy between geometrical optics and Mie scattering for small droplet sizes.}{34}
+\contentsline {paragraph}{Overlapping droplet images.}{34}
+\contentsline {section}{\numberline {4.2}Types of ILIDS setups}{35}
+\contentsline {subsection}{\numberline {4.2.1}Standard ILIDS}{35}
+\contentsline {subsection}{\numberline {4.2.2}ILIDS with optical compression}{35}
+\contentsline {subsection}{\numberline {4.2.3}Additional focused image for disk detection}{39}
+\contentsline {section}{\numberline {4.3}Calibrating the slit method}{41}
+\contentsline {subsection}{\numberline {4.3.1}A sample calibration of the slit aperture method }{41}
+\contentsline {section}{\numberline {4.4}Removing center discrepancies with keypoint registration}{45}
+\contentsline {subsection}{\numberline {4.4.1}Review of image registration techniques }{49}
+\contentsline {subsection}{\numberline {4.4.2}Using affine oriented \textsc {fast}, \textsc {brief} and \textsc {ransac} to estimate the homography between PIV and ILIDS photographs }{50}
+\contentsline {section}{\numberline {4.5}Removing center discrepancies with point set registration}{54}
+\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{57}
+\contentsline {section}{\numberline {5.1}Optical principle}{58}
+\contentsline {subsection}{\numberline {5.1.1}Particles smaller than the wavelength}{59}
+\contentsline {subsection}{\numberline {5.1.2}Large particles}{59}
+\contentsline {subsection}{\numberline {5.1.3}Calculation in TSI FlowSizer software}{63}
+\contentsline {subsection}{\numberline {5.1.4}Calibration in TSI FlowSizer}{64}
+\contentsline {section}{\numberline {5.2}Sources of error}{65}
+\contentsline {subsection}{\numberline {5.2.1}Gaussian beam divergence}{65}
+\contentsline {subsection}{\numberline {5.2.2}Slit effect}{65}
+\contentsline {subsection}{\numberline {5.2.3}Change in fringe frequency over $z$}{66}
+\contentsline {subsection}{\numberline {5.2.4}Selection of lenses and masks}{67}
+\contentsline {subsection}{\numberline {5.2.5}Optical aberrations}{67}
+\contentsline {subsection}{\numberline {5.2.6}Dirty fiber ends}{67}
+\contentsline {subsection}{\numberline {5.2.7}Wrongly entered parameters}{67}
+\contentsline {section}{\numberline {5.3}Calibration}{68}
+\contentsline {chapter}{\numberline {6}Conclusions}{70}
+\contentsline {section}{\numberline {6.1}Summary of contributions}{70}
+\contentsline {section}{\numberline {6.2}Future work}{70}
