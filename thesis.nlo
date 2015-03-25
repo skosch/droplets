@@ -6,7 +6,7 @@
 \nomenclatureentry{a$M$@[{$M$}]\begingroup Magnification\nomeqref {4.2}|nompageref}{32}
 \nomenclatureentry{a$s_x$@[{$s_x$}]\begingroup Distance, in pixels, between two adjacent fringes\nomeqref {4.2}|nompageref}{32}
 \nomenclatureentry{a$d_{p,x}; d_{p,y}$@[{$d_{p,x}; d_{p,y}$}]\begingroup Physical dimensions of a pixel on the camera's CCD sensor\nomeqref {4.2}|nompageref}{32}
-\nomenclatureentry{a$f_\text{peak}$@[{$f_\text{peak}$}]\begingroup Peak frequency\nomeqref {4.3}|nompageref}{38}
-\nomenclatureentry{a$D_\text{i}$@[{$D_\text{i}$}]\begingroup Diameter (in pixels) of the defocused image\nomeqref {4.3}|nompageref}{38}
-\nomenclatureentry{a$D_\text{padded}$@[{$D_\text{padded}$}]\begingroup Width (in pixels) of the padded input to the Fourier transform\nomeqref {4.3}|nompageref}{38}
+\nomenclatureentry{a$f_\text{peak}$@[{$f_\text{peak}$}]\begingroup Peak frequency\nomeqref {4.3}|nompageref}{39}
+\nomenclatureentry{a$D_\text{i}$@[{$D_\text{i}$}]\begingroup Diameter (in pixels) of the defocused image\nomeqref {4.3}|nompageref}{39}
+\nomenclatureentry{a$D_\text{padded}$@[{$D_\text{padded}$}]\begingroup Width (in pixels) of the padded input to the Fourier transform\nomeqref {4.3}|nompageref}{39}
 \nomenclatureentry{a$\hat{N}_\text{fr}$@[{$\hat{N}_\text{fr}$}]\begingroup Peak fringe count measured\nomeqref {4.5}|nompageref}{42}

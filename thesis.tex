@@ -4,7 +4,7 @@
 \usepackage{sectsty, titlesec}
 \usepackage{setspace}
 \usepackage{wrapfig, rotating, subcaption}
-\usepackage{enumitem,tabularx, booktabs}
+\usepackage{enumitem,tabularx, booktabs, longtable}
 \usepackage{nomencl}
 \makenomenclature
 \renewcommand{\nomname}{List of symbols and\\abbreviations}
@@ -15,10 +15,23 @@
 \usepackage{mathspec}
 \setmainfont[Mapping=tex-text, Scale=1.1]{Crimson}
 \setsansfont[Scale=1, Path=./]{din1451m.otf}
+\setmonofont{Sauce Code Powerline}
 %\allsectionsfont{\sffamily}
 %\setmainfon
 %\usepackage{fouriernc}
 %\usepackage[T1]{fontenc}
+\usepackage{listings}
+\lstset{
+language=Python,
+showstringspaces=false,
+formfeed=newpage,
+tabsize=4,
+breaklines=true,
+commentstyle=\itshape,
+basicstyle=\ttfamily\small,
+morekeywords={models, lambda, forms}
+} 
+
 \newcommand*{\figref}[1]{Fig.~\ref{#1}}
 \newcommand*{\secref}[1]{Section~\ref{#1}}
 \newcommand*{\chpref}[1]{Chapter~\ref{#1}}
@@ -111,19 +124,42 @@ April 2015.
 \section*{Abstract}
 \thispagestyle{plain}
 \begin{doublespace}
-This is the abstract. (150 words max.) This is doublespaced. This is
-doublespaced. This is doublespace.d
+Laser-based droplet sizing techniques are widely used in industrial prototyping and
+diagnostics applications. However, their ability to immediately output highly
+precise droplet size distribution charts, seemingly without any significant user
+input, belies their vulnerability to bad input parameters, noise, and optical
+aberrations that can only be identified and resolved by means of careful
+calibration using monodisperse droplets. The contribution of this paper is
+threefold: first, we provide a review of well-known and obscure sticking points
+identified in various publications and how they apply in the context of ILIDS
+and PDPA calibration procedures; second, we present a novel, cheap and simple
+droplet generator design of the continuous-stream type, based on the rotary
+actuator of a computer hard drive; third, we submit a proof-of-concept design of
+a computer vision algorithm to eliminate the need for camera calibration in
+combined PIV/ILIDS systems.
 \end{doublespace}
 \vfill
 \pagebreak
 \section*{Acknowledgements}
 \thispagestyle{plain}
-These are my acknowledgments
+I must thank, first and foremost, Prof. Nasser Ashgriz, who has supported me
+throughout this thesis (and on projects beyond) with his patience, experience, and knowledge
+while allowing me the room in my own way. Thank you for entrusting me, a Civil
+Engineering major, with your research project---and for indulging all of my crazy ideas.
+
+I am hugely indebted to our technologists, machinists, and lab wizards
+Terry Zak, Osmond Sargeant, and Keith Hockley for showing me the ropes. Without
+your guidance and advice, this thesis could not have been written. The same
+respect is due to Amirreza Amighi, who guided me through the early stages of my
+work and imbued me with an appreciation for well-designed experiments.
+
+Finally I want to express my gratitude to my family and my best friend, QP, for
+everything. I wouldn't have made it here without you guys.
 \vfill
 \tableofcontents
 \listoftables
 \listoffigures
-\printnomenclature[5em]
+%\printnomenclature[5em]
 
 \mainmatter \pagestyle{fancy} \chapter{Introduction}
 Fluid sprays find application in numerous fields, ranging from rocket propellant
@@ -161,7 +197,6 @@ a high-level guide to calibrating the devices using standard lab equipment,
 including advice on generating uniform droplets and a review of potential error
 sources.
 
-\section{Research objectives}
 The objective of the presented work was threefold:
 \begin{alist}
 \item to calibrate our Dantec IPI (ILIDS) droplet sizing system and to verify
@@ -1042,8 +1077,12 @@ Eq.~\eqref{eq:rayl}), we must resort to photographic means.
 
 While there are different methods of photographing droplets, just taking
 pictures in front of a strobe light has worked well.
-
-We used a scale placed next to the droplet stream, and then used a conversion
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.46\textwidth]{img/dropletscale.jpg}
+\caption{Scale besides droplet stream. \label{fig:dropletscale}}
+\end{figure}
+We used a millimetre scale (see \figref{fig:dropletscale}) placed next to the droplet stream, and then used a conversion
 between pixels to find the size. Of course, this method suffers from barrel
 distortion that inevitably happens, especially with a zoom lens. The
 coefficients of this distortion are known and publically available for most
@@ -1155,12 +1194,12 @@ geometric analysis approach is not valid beyond $\phi > 70^\circ$, as the
 first-order scattered beam ($p=1$) is not visible from this angle
 \cite{Glover95}.
 
-\begin{wrapfigure}[14]{R}{0.5\textwidth}
+\begin{figure}
 \centering
-\includegraphics[width=0.4\textwidth]{img/setup/droplet_rays.pdf}
+\includegraphics[width=0.5\textwidth]{img/setup/droplet_rays.pdf}
 \caption{Reflected and first-order-refracted light rays, producing two glare
 points when viewed from an angle $\phi$. \label{fig:droplet-rays}}
-\end{wrapfigure}
+\end{figure}
 
 While authors have identified several forward angles as optimal for their
 applications, e.g. $\phi = 45^\circ$ \cite{Glover95} or $\phi = 66^\circ$
@@ -1731,6 +1770,48 @@ parallel to the camera sensor (intentionally or accidentally) or when
 cylindrical lenses are used to add optical compression. In fact, there is no
 guarantee that affine mappings are sufficient in the general case.
 
+\subsection{Misidentified droplets in Dantec DynamicStudio software}
+\tableref{tab:flowsizererrors} shows that the identification of disk images (and
+particularly overlapping disk images) is, in practice, highly problematic and
+only rarely leads to reasonable results. Most telling is the sensitivity of the
+disk recognition algorithm to extremely small changes in the settings (e.g.
+expected disk image diameter in pixels or windowing type).
+
+The success rate of our own attempts to recognize overlapping disks has been
+disappointing, as evidenced in the Appendix.
+
+\begin{table}
+        \centering
+        \begin{tabular}{ l r r r r r r r }
+                \toprule
+                Config&	ml/h &	Hz	&  True Dia. &	$D_{10}$ &	$D_{32}$ &	Count & Std. Dev. \\
+                \midrule
+A&   	110.7&	1192&	366.6&       	282.5	&    314.8&	95  &	66.9 \\
+B&   	110.7&	1192&	366.6&       	264.0     &    279.9&	95  &	44.1 \\
+C&   	110.7&	1192&	366.6&       	80.3	&    82.4 &  126& 	10.4 \\
+D&   	110.7&	1192&	366.6&       	75.6	&    149.6&	279 &	45.3 \\
+E&   	110.7&	1192&	366.6&       	73.9	&    142.9&	275 &	42.7 \\
+A&   	110.7&	1960&	310.6&       	79.6	&    160.3&	629 &	49.5 \\
+B&   	110.7&	1960&	310.6&       	213.4	&    239.6&	167 &	50.5 \\
+C&   	110.7&	1960&	310.6&       	164.9	&    199.5&	488 &	48.4 \\
+A&   	110.7&	1982&	309.4&       	802.9	&    810.7&	227 &	54.0   \\
+B&   	110.7&	1982&	309.4&       	524.6	&    674.6&	495 &	249.2\\
+C&   	110.7&	1982&	309.4&       	524.6	&    674.6&	495 &	249.2\\
+A&   	110.7&	2044&	306.3&       	92.8	&    112.4&	284 &	81.4 \\
+B&   	110.7&	2044&	306.3&       	142.0 	&    182.9&	216 &	53.2 \\
+                \bottomrule
+        \end{tabular}
+        \caption{Some sample data showing the effect of changing the image
+                processing parameters in the FlowSizer software (``Config''
+                column) very slightly. The ``$D_{10}$'' and ``$D_{32}$'' columns list
+                the respective averages found by the FlowSizer software,
+                respectively; the ``Count'' column lists the number of
+                recognized disks. The ``Std. Dev.'' column indicates the
+                standard deviation in the size distribution
+        found.\label{tab:flowsizererrors}}
+\end{table}
+
+\subsection{Eliminating the centre discrepancy effect}
 Surprisingly, only Hardalupas~\emph{et al.} \cite{Hardalupas10, Hardalupas10a}
 have hitherto published a discussion of this effect, and the only previous
 mention known to the authors is in \citet{Kurosawa02}, who dismissed it as a
@@ -2507,7 +2588,7 @@ and/or peaks of Gaussian kernel density estimates.
 \end{figure}
 
 This result, surprising at first, is reflected by the complete unpredictability
-of the $\Delta y_{AB}$/$\Delta y_{AC}$ values suggested by the FlowSizer
+of the $\Delta y_{AB}$ and $\Delta y_{AC}$ values suggested by the FlowSizer
 calibration tool when given a measured distribution and known diameter
 (furthermore, it appears that FlowSizer uses the $D_{20}$ measure as the
 ``peak'', which often exceeds the real peak).
@@ -2578,9 +2659,44 @@ question with any certainty.
 \pagebreak
 \appendix
 \chapter{Appendix}
-\addcontentsline{toc}{section}{Detection and
-Fourier analysis of compressed ILIDS images}
-\section*{Detection and Fourier analysis of\\compressed ILIDS images}
-Python code
-%\lstinputlistings{}
+\addcontentsline{toc}{section}{Detecting overlapping disks using a circular
+Hough transform}
+\section*{Detecting overlapping disks using\\a circular Hough transform}
+The following Python code uses the circular Hough transform provided by the
+OpenCV package to detect circular structures in an ILIDS image. The circles are
+masked by a Gabor patch (i.e. an exponential fade) and a Fourier transform is
+applied to find a frequency peak within a range of near-horizontal directions.
+The identified circles, along with the calculated droplet sizes, are shown.
+\lstinputlisting{papers/houghscript.py}
+\begin{figure}
+    \centering
+    \includegraphics[height=0.9\textheight]{img/houghdrops.jpg}
+    \caption{Droplet sizes as estimated by the above script. Not that only some
+    of the droplets were identified correctly by the circular Hough algorithm.}
+\end{figure}
+
+
+%\addcontentsline{toc}{section}{Detection of stripes and ILIDS size analysis}
+%\section*{Detection of stripes and ILIDS size analysis}
+%%\lstinputlistings{}
+%
+%\addcontentsline{toc}{section}{Reverse PDPA analysis}
+%\section*{Reverse PDPA analysis}
+%%\lstinputlistings{}
+
+\addcontentsline{toc}{section}{Sample set of raw PDPA data}
+\section*{Sample set of raw PDPA data}
+The following data points were acquired for a combination of 110.7 ml/h and 1522
+Hz. Only the first 50 rows are shown.
+
+\begin{longtable}{r r r r}
+        \centering
+%\toprule
+Diameter (um)&Intensity (mV)&AB Phase (deg)&AC Phase (deg)\\
+%\midrule
+        \input{papers/125_coincident.csv}
+        %\bottomrule
+\end{longtable}
+
+
 \end{document}

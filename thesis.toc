@@ -1,10 +1,9 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Research objectives}{2}
-\contentsline {section}{\numberline {1.2}Organization of this thesis}{2}
+\contentsline {section}{\numberline {1.1}Organization of this thesis}{2}
 \contentsline {paragraph}{Chapter Two}{2}
 \contentsline {paragraph}{Chapter Three}{2}
 \contentsline {paragraph}{Chapter Four}{2}
-\contentsline {paragraph}{Chapter Five}{3}
+\contentsline {paragraph}{Chapter Five}{2}
 \contentsline {paragraph}{Chapter Six}{3}
 \contentsline {paragraph}{Appendices}{3}
 \contentsline {chapter}{\numberline {2}Geometrical optics and Mie scattering}{4}
@@ -39,11 +38,11 @@
 \contentsline {section}{\numberline {4.1}Operating principle}{31}
 \contentsline {subsection}{\numberline {4.1.1}Influence of the scattering angle ${"φ}$}{33}
 \contentsline {subsection}{\numberline {4.1.2}Optical limits on fringe detection}{33}
-\contentsline {paragraph}{Nyquist criterion for the fringe density.}{33}
+\contentsline {paragraph}{Nyquist criterion for the fringe density.}{34}
 \contentsline {paragraph}{Signal-to-noise ratio.}{34}
 \contentsline {paragraph}{Minimum droplet size.}{34}
 \contentsline {paragraph}{Discrepancy between geometrical optics and Mie scattering for small droplet sizes.}{34}
-\contentsline {paragraph}{Overlapping droplet images.}{34}
+\contentsline {paragraph}{Overlapping droplet images.}{35}
 \contentsline {section}{\numberline {4.2}Types of ILIDS setups}{35}
 \contentsline {subsection}{\numberline {4.2.1}Standard ILIDS}{35}
 \contentsline {subsection}{\numberline {4.2.2}ILIDS with optical compression }{36}
@@ -51,26 +50,29 @@
 \contentsline {section}{\numberline {4.3}Calibration of a system with optical compression}{41}
 \contentsline {subsection}{\numberline {4.3.1}A sample calibration of the slit aperture method }{42}
 \contentsline {section}{\numberline {4.4}Removing centre discrepancies using keypoint registration}{45}
-\contentsline {subsection}{\numberline {4.4.1}Review of image registration techniques }{51}
-\contentsline {subsection}{\numberline {4.4.2}Using affine oriented \textsc {fast}, \textsc {brief} and \textsc {ransac} to estimate the homography between PIV and ILIDS photographs }{52}
-\contentsline {section}{\numberline {4.5}Removing center discrepancies with point set registration}{55}
-\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{60}
-\contentsline {section}{\numberline {5.1}Optical principle}{61}
-\contentsline {subsection}{\numberline {5.1.1}Particles smaller than the wavelength}{62}
-\contentsline {subsection}{\numberline {5.1.2}Large particles}{62}
-\contentsline {subsection}{\numberline {5.1.3}Calculation of droplet sizes in the TSI FlowSizer software }{66}
-\contentsline {subsection}{\numberline {5.1.4}Calibration in TSI FlowSizer}{67}
-\contentsline {section}{\numberline {5.2}Sources of error}{68}
-\contentsline {subsection}{\numberline {5.2.1}Gaussian beam divergence}{68}
-\contentsline {subsection}{\numberline {5.2.2}Slit effect}{69}
-\contentsline {subsection}{\numberline {5.2.3}Change in fringe frequency over $z$}{70}
-\contentsline {subsection}{\numberline {5.2.4}Selection of lenses and masks}{70}
-\contentsline {subsection}{\numberline {5.2.5}Optical aberrations}{70}
-\contentsline {subsection}{\numberline {5.2.6}Dirty fiber ends}{70}
-\contentsline {subsection}{\numberline {5.2.7}Wrongly entered parameters}{71}
-\contentsline {section}{\numberline {5.3}Calibration of the PDPA sizing system}{71}
-\contentsline {chapter}{\numberline {6}Conclusions}{74}
-\contentsline {section}{\numberline {6.1}Other contributions}{75}
-\contentsline {section}{\numberline {6.2}Future work}{75}
-\contentsline {chapter}{\numberline {A}Appendix}{84}
-\contentsline {section}{Detection and Fourier analysis of compressed ILIDS images}{84}
+\contentsline {subsection}{\numberline {4.4.1}Misidentified droplets in Dantec DynamicStudio software}{48}
+\contentsline {subsection}{\numberline {4.4.2}Eliminating the centre discrepancy effect}{50}
+\contentsline {subsection}{\numberline {4.4.3}Review of image registration techniques }{52}
+\contentsline {subsection}{\numberline {4.4.4}Using affine oriented \textsc {fast}, \textsc {brief} and \textsc {ransac} to estimate the homography between PIV and ILIDS photographs }{53}
+\contentsline {section}{\numberline {4.5}Removing center discrepancies with point set registration}{56}
+\contentsline {chapter}{\numberline {5}Phase-Doppler Particle Analysis}{61}
+\contentsline {section}{\numberline {5.1}Optical principle}{62}
+\contentsline {subsection}{\numberline {5.1.1}Particles smaller than the wavelength}{63}
+\contentsline {subsection}{\numberline {5.1.2}Large particles}{63}
+\contentsline {subsection}{\numberline {5.1.3}Calculation of droplet sizes in the TSI FlowSizer software }{67}
+\contentsline {subsection}{\numberline {5.1.4}Calibration in TSI FlowSizer}{68}
+\contentsline {section}{\numberline {5.2}Sources of error}{69}
+\contentsline {subsection}{\numberline {5.2.1}Gaussian beam divergence}{69}
+\contentsline {subsection}{\numberline {5.2.2}Slit effect}{70}
+\contentsline {subsection}{\numberline {5.2.3}Change in fringe frequency over $z$}{71}
+\contentsline {subsection}{\numberline {5.2.4}Selection of lenses and masks}{71}
+\contentsline {subsection}{\numberline {5.2.5}Optical aberrations}{71}
+\contentsline {subsection}{\numberline {5.2.6}Dirty fiber ends}{71}
+\contentsline {subsection}{\numberline {5.2.7}Wrongly entered parameters}{72}
+\contentsline {section}{\numberline {5.3}Calibration of the PDPA sizing system}{72}
+\contentsline {chapter}{\numberline {6}Conclusions}{75}
+\contentsline {section}{\numberline {6.1}Other contributions}{76}
+\contentsline {section}{\numberline {6.2}Future work}{76}
+\contentsline {chapter}{\numberline {A}Appendix}{85}
+\contentsline {section}{Detecting overlapping disks using a circular Hough transform}{85}
+\contentsline {section}{Sample set of raw PDPA data}{87}

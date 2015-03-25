@@ -3,6 +3,7 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {4.1}{\ignorespaces Six sets of calibration data taken with the setup described in Section\nobreakspace {}4.2\hbox {}\relax }}{42}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Some sample data showing the effect of changing the image processing parameters in the FlowSizer software (``Config'' column) very slightly. The ``$D_{10}$'' and ``$D_{32}$'' columns list the respective averages found by the FlowSizer software, respectively; the ``Count'' column lists the number of recognized disks. The ``Std. Dev.'' column indicates the standard deviation in the size distribution found.\relax }}{50}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
