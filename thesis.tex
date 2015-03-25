@@ -1,5 +1,6 @@
 \documentclass[11.5pt,oneside]{book}
 
+\usepackage[toc,page]{appendix}
 \usepackage{sectsty, titlesec}
 \usepackage{setspace}
 \usepackage{wrapfig, rotating, subcaption}
@@ -181,7 +182,7 @@ The main contributions made towards these ends are as follows:
 \item a computer-vision-based technique that eliminates the need for camera
         calibration in combined ILIDS/PIV systems, which addresses the centre
         discrepancy effect;
-\item an extensive literature review of potential error sources in PDPA
+\item a literature review of potential error sources in PDPA
         measurements.
 \end{alist}
 
@@ -792,6 +793,10 @@ amplified signals isn't straightforward---we used a soundcard connected to an
 amplifier to generate the signals.
 
 \section{Continuous-stream droplet generation using a computer hard drive}
+\noindent \emph{The content presented in this section has, in edited form,
+        been accepted for publication in the journal ``Review of Scientific
+        Instruments'' under the title ``A simple vibrating orifice monodisperse
+ droplet generator using a hard drive actuator arm''.}\\
 
 A third category of droplet generators comprises devices operating on the basis
 of \emph{Rayleigh breakup}, i.e. the disintegration of a disturbed round liquid
@@ -802,10 +807,6 @@ the free surface of the jet can grow to a critical point at which those surface
 tension forces promoting pinch-off overcome those restoring the smooth jet. When
 the waves are induced by carefully controlled mechanical vibrations at an
 appropriate frequency, the droplets will be of uniform size and evenly spaced.
-\footnote{The content presented in this section has, in edited form,
-        been accepted for publication in the journal ``Review of Scientific
-        Instruments'' under the title ``A simple vibrating orifice monodisperse
- droplet generator using a hard drive actuator arm''.}
 
 While it is possible to induce the disturbances using coaxial \cite{Green89} and
 even perpendicular air flow,\footnote{The finding that a crossflow of air can,
@@ -941,7 +942,7 @@ through one of the holes in the actuator arm. \label{fig:photo}}
 \end{figure}
 
 If possible, forgo multi-platter drives, as they are more cumbersome to disassemble and have
-bulky, complex actuator assemblies. The device shown in \figref{fig:harddrive-photo}
+bulky, complex actuator assemblies. The device shown in \figref{fig:photo}
 is based on a single-platter drive.
 
 \paragraph{Dismantle and cut.} After removing the hard drive cover, remove
@@ -995,7 +996,7 @@ deflect the jet---if the droplets are truly monodisperse, they will all deflect
 at the same angle.\cite{Strom69}
 
 %%%%%%%%%%%%55
-\section{Determining the produced droplet size}
+\section{Determining the produced droplet size \label{sec:verify-droplet-size}}
 Note also that the orifice diameter $D_o$ dictates the range of viable
 frequencies $f$ as 
 \begin{equation}
@@ -1036,8 +1037,8 @@ $0.1-1\,$mm diameter, but both smaller and larger droplets are feasible.
 With drop-on-demand approaches, the diameter of the produced droplet is more
 difficult to predict, particularly since not the whole squeezing volume may
 result in ejected liquid (e.g. with the Chandra generator, it's just a small
-droplet). So to find out how big these droplets are (or just to verify the accuracy of
-Eq.~\eqref{eq:dropdia-continuous}), we must resort to photographic means.
+droplet). So to find out just how large these droplets are (or just to verify the accuracy of
+Eq.~\eqref{eq:rayl}), we must resort to photographic means.
 
 While there are different methods of photographing droplets, just taking
 pictures in front of a strobe light has worked well.
@@ -1219,7 +1220,7 @@ vanishes for larger droplets, it is nevertheless noteworthy in the context of
 potential error sources.
 
 \paragraph{Overlapping droplet images.}
-The ability to image a whole 2D field of droplets all at once is ILIDS' strongest
+The ability to image a whole 2-D field of droplets all at once is ILIDS' strongest
 selling point, yet also its curse. When droplets are spaced too closely and the
 lens is sufficiently defocused, the defocused disk images overlap and it becomes
 difficult to determine the fringe counts corresponding to individual droplets.
@@ -1229,6 +1230,13 @@ overlapping disks (overlap coefficient).
 
 \section{Types of ILIDS setups}
 \label{sec:ipi-setup}
+
+We shall now discuss, besides the standard ILIDS technique, two common
+variations: optical compression, which alleviates the problem of disk overlap,
+and double-camera setups, which allow for the simultaneous capture of ILIDS and
+PIV imagery, to be used to provide velocity information and/or droplet centre
+positions that may be used to identify overlapping disk regions.
+
 \subsection{Standard ILIDS}
 The most simple ILIDS configuration, as shown in \figref{fig:ipi-setup-simple},
 consists of a single digital camera with a defocused objective lens, placed at a right
@@ -1242,27 +1250,41 @@ Commercial ILIDS vendors provide the timing circuitry and the software, which
 typically integrates a collection of image processing algorithms that can be
 used to analyze the captured images immediately.
 
-ILIDS has two main challenges.
+A series of images is taken in rapid succession, and the software uses a circle
+detection algorithm (correlation, circular Hough transform, or other) to
+identify disks that fall within a certain radius range. The dominant frequency
+is found for each disk and converted to a drop size.
 
-The core challenge with all ILIDS setups is the determination of $z$ and $d_a$ in
-\eqref{kappa}. We will discuss calibration of ILIDS systems in greater detail in
-\secref{sec:ilids-calibration}.
+The conversion factor, as evident in \eqref{kappa}, depends largely on the
+collection angle of the lens, which is a function of $z$ and $D_a$. Since it can
+be infeasible to measure these values directly, it is a good idea to derive
+these values empirically, as in \secref{sec:ilids-calibration}.
 
-Images taken in this standard configuration are very susceptible to excessive
-disk overlap.
-
-The ability to image a whole 2D field of droplets all at once is ILIDS' strongest
+The ability to image a whole 2-D field of droplets all at once is ILIDS' strongest
 selling point, yet also its curse. When droplets are spaced too closely, their
 defocused disk images overlap and it becomes difficult to determine the fringe counts
 corresponding to individual droplets. \citet{Damaschke02} provide a statistical
-estimate on the fraction of overlapping disks (overlap coefficient).
+estimate on the fraction of overlapping disks (overlap coefficient). 
 
-Therefore, measures have been developed to sidestep overlap
-almost entirely or to deal with it during the image processing stage. These
-modifications will be described in the next sections.
-
-\subsection{ILIDS with optical compression}
-This problem is never more apparent than in efforts to calibrate
+\subsection{ILIDS with optical compression \label{sec:ilids-compressed}}
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[height=0.6\textheight]{img/dots_cropped.jpg}
+        \caption{}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[height=0.6\textheight]{img/slitted.jpg}
+        \caption{}
+    \end{subfigure}
+    \caption{Before (a) and after (b) installing the slit aperture. The aperture
+    stop pares off the top and bottom halves of the defocused circles, leaving
+only a narrow center string in the middle.}
+    \label{fig:globalsizing}
+\end{figure}
+The problem of disk overlap is never more apparent than in efforts to calibrate
 the system using a vibrating orifice droplet generator, as the droplets produced
 thereby are spaced very closely and produce heavily overlapping defocused
 images. Fortunately, there exists a simple and reliable technique to deal with
@@ -1281,26 +1303,6 @@ the fringe analysis can either be limited to non-overlapping regions or be
 otherwise modified to take overlapping fringes into account.
 
 Naturally, equations \eqref{kappa} and \eqref{fringedistance-pixels} still hold.
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[height=0.6\textheight]{img/dots_cropped.jpg}
-        \caption{}
-    \end{subfigure}
-    \begin{subfigure}[b]{0.4\textwidth}
-        \centering
-        \includegraphics[height=0.6\textheight]{img/slitted.jpg}
-        \caption{}
-    \end{subfigure}
-    \caption{Before (a) and after (b) installing the slit aperture. The aperture
-    stop pares off the top and bottom halves of the defocused circles, leaving
-only a narrow center string in the middle.}
-    \label{fig:globalsizing}
-\end{figure}
-Also mention that this can be used in conjecture with an additional, focused
-camera, to capture things like speed (PIV), evaporation (PLIF), etc. Why we
-don't need it.
 
 Extracting the fringe counts from such an image is straightforward. First, we
 correlate the image with that of a single, solid bright rectangle which shares
@@ -1354,7 +1356,7 @@ to minimize the misidentification of dominant frequencies,
         in power, although they are of no interest to us, and b) graininess in
         the original photo can sometimes result in meritless high-frequency
         peaks;
-    \item we apply a Gaussian blur to the 2D spectrum to remove outliers in the
+    \item we apply a Gaussian blur to the 2-D spectrum to remove outliers in the
         spectrum;
     \item we discard all regions in which the peak frequency's power does not
         exceed a certain value;
@@ -1370,8 +1372,8 @@ the effect of these steps.
     \includegraphics[height=0.38\textheight]{img/globalsizing-dropletpeak.png}
     \caption{From top to bottom: windowed region of interest; original
     (unwindowed) region of interest; sine wave representing the identified peak
-frequency; clipped and lowpass-filtered 2D frequency spectrum showing a distinct
-peak at about 90 oscillations across the image width of 1024 pixels; 1D plot of
+frequency; clipped and lowpass-filtered 2-D frequency spectrum showing a distinct
+peak at about 90 oscillations across the image width of 1024 pixels; 1-D plot of
 the frequency spectrum, with peak identified at $f=91.0$.}
     \label{fig:globalsizing-dropletpeak}
 \end{figure}
@@ -1451,48 +1453,54 @@ The problem with this, as with all multi-camera setups, are center
 discrepancies. We show how to overcome that in
 \secref{sec:keypoint-registration}.
 
-\section{Calibrating the slit method}
-What matters is the Numerical Aperture (NA), which is (the sine of half of) the
-collection angle. When we have a simple lens, we can calculate this as
+\section[Calibration of a system with optical compression]{Calibration of a system\\with optical compression}
+The conversion factor between fringe density and droplet size depends largely on
+the collection angle. Often, the relevant measure is the numerical aperture
+(NA), corresponding to the sine of half of the collection angle. For a simple
+lens, 
 \begin{equation}
-    \mathrm{NA} = \sin \frac{d_a}{2z}
+    \mathrm{NA} = \sin \frac{d_a}{2z}.
 \end{equation}
+Most ILIDS literature, as well as the Dantec software, approximate the zoom
+lenses used in practice as a simple lens. Under this assumption, $z$ is the
+distance from lens to light sheet, and $D_a$, the entrance pupil
+diameter, is a lens constant computed as (minimum focal length)/(minimum
+$f$-number). Modern zoom objectives, however, are not simple lenses:
+in many cases, both the physical (i.e. as measured inside the lens)
+and virtual (i.e. as seen from the front of the lens) diameter of
+the aperture change when the lens is focused. This change does not
+necessarily perfectly counteract the changing focal length to maintain
+a constant $f$-number throughout the zoom range. In other words, it is
+often impossible to determine the exact entrance pupil diameter of an
+arbitrary objective when it is focused onto an image at short distance.
 
-The Dantec manual suggests using the distance from light sheet to front of the
-lens for $z$, and the ratio of min focal length and max f-number to find $d_a$.
-This, however, does not result in an accurate value for the collection angle
-with all lenses.
+By the same token, it is practically impossible to determine the true distance
+from the light sheet to the principal plane of the lens, since it is
+found somewhere \emph{inside} of the lens body (altough generally,
+errors in $z$ are less significant in relative terms than errors in
+$D_a$).
 
-We are assuming, then, that the effective aperture (the entrance pupil) always
-stays constant throughout the focussing range of the lens. This is not
-necessarily the case, as there are lenses which change both the physical and the
-virtual size of the aperture when focussing.
-
-Here is where I make the claim that it is impossible to determine the actual
-exact value for the numerical aperture of the lens. Similarly, it can be quite
-difficult to determine the accurate distance from light sheet to lens aperture
-(even though the latter measurement is more forgiving, since the distances are
-far greater).
-
-Taking into account the sources of errors explained in the sections above, it is
-advisable to run a few calibration tests with droplets of different sizes before
-employing the IPI technique for real spray measurements. Recall that, if we
-ignore the Mie error (\secref{sec:mie-error}), the relationship between fringe count and droplet diameter
-is linear with a constant of proportionality $\kappa$ (see equation
-\eqref{kappa}). The aim of our calibration, then, is to determine the value of
-$\kappa$ from experiment---the premise being that we cannot be certain of the
-values of $D_a$, $z$, and possibly not even $m$ and $\phi$ (although the latter
-can usually be ascertained to a sufficient degree of accuracy).
+Taking these unknowns into account, it is advisable to run a few
+calibration tests with droplets of different sizes before employing the
+IPI technique for real spray measurements. Recall that, if we ignore
+the Mie error (\secref{sec:ipi-fringelimits}), the relationship between fringe
+count and droplet diameter is linear with a constant of proportionality
+$\kappa$ (see equation \eqref{kappa}). The aim of our calibration,
+then, is to determine the value of $\kappa$ from experiment---the
+premise being that we cannot be certain of the values of $D_a$, $z$, and
+possibly not even $m$ and $\phi$ (although the latter can usually be
+ascertained to a sufficient degree of accuracy).
 
 \subsection{A sample calibration of the slit aperture method
 \label{sec:ilids-calibration}}
 Using the droplet generator described in \secref{sec:droplet-generator} and
 the IPI configuration described in \secref{sec:ipi-setup}, we produced and
 measured monodisperse droplets of many different diameters. The droplet
-diameters were determined both mathematically and photographically, as described
-in \secref{sec:verify-droplet-diameters}. Out of over 30 sets of IPI
-measurements we selected six sets that exhibited both strong uniformity and
-high photographic quality:
+diameters were ascertained both photographically and algebraically (i.e. from
+flow rates and vibration frequencies; see \eqref{eq:rayl}), as described
+in \secref{sec:verify-droplet-size}. Out of over 30 sets of IPI
+measurements we selected for this exemplary calibration six sets that
+exhibited both strong uniformity and high photographic quality:
 
 \begin{table}[h!]
     \centering
@@ -1516,13 +1524,14 @@ photo & $\hat{N}_\text{fr}$ \\
 The values for $\hat{N}_\text{fr}$, the peak fringe count, are based on the
 histograms (see \figref{fig:fringe-histograms}) showing the distribution of
 fringe counts within each dataset. These fringe counts are of course found by
-the algorithm described in \secref{sec:ipi-slitprocessing}.
+the algorithm described in \secref{sec:ilids-compressed}. Every image contained
+between 60 and 80 droplets.
 
 It is worthwhile to point out some apparent idiosyncrasies in the histograms of
 datasets FB and FC. Their peak fringe counts are 16.71 and 22.92, but there are
 secondary peaks at about 21 and 29 fringes, respectively. The latter are
 explained by the collision of droplets as discussed in
-\secref{sec:droplet-collisions}, and are ignored for the purposes of
+\secref{sec:droplet-collisions}, and they are ignored for the purposes of
 calibration.
 
 \begin{sidewaysfigure}[p]
@@ -1535,7 +1544,7 @@ Gaussian kernel density estimates with $h=0.5$. }
 \end{sidewaysfigure}
 
 The close agreement of the droplet diameters found from photographs with those
-predicted by \eqref{berglund} reassures us that we can use the predicted $D_d$
+predicted by \eqref{eq:rayl} reassures us that we can use the predicted $D_d$
 for further analysis.
 
 At this point, we can least-squares-fit the linear relationship \eqref{kappa} to the primary
@@ -1572,7 +1581,7 @@ method.
 It must be remembered, of course, that the peak fringe count values
 $\hat{N}_\text{fr}$ forming the basis of our calculation are taken from the
 peaks of Gaussians fitted to the raw fringe count histograms (see
-\figref{fig:fringe-histograms}. In other words, it is our assumption that all
+\figref{fig:fringe-histograms}). In other words, it is our assumption that all
 droplets from a given dataset produce fringe counts that are normally
 distributed around their respective $\hat{N}_\text{fr}$. The histogram to
 dataset FA shows a much higher deviation than the others---this may be due to
@@ -1586,9 +1595,9 @@ nm, $m = 1.3324$ and $\phi = 90^\circ$, we conclude that
 \begin{equation}
     \frac{D_a}{z} = 2 \sin \left( \frac{\hat{\kappa} \lambda}{\cos
     \frac{\phi}{2} - \frac{ m \sin \frac{\phi}{2}}{\sqrt{m^2 + 1 - 2m \cos
-    \frac{\phi}{2}}}} \right) = 2\sin (3.11982 \cdot 10^{-7} \hat{\kappa})
+    \frac{\phi}{2}}}} \right) = 2\sin (3.11982 \cdot 10^{-7} \hat{\kappa}),
 \end{equation}
-so for $\hat{\kappa} = 76808.1$, $\frac{D_a}{z} = 0.047921$. Recall that this
+so our value of $\hat{\kappa} = 76808.1$ yields $\frac{D_a}{z} = 0.047921$. Recall that this
 quotient is a measure of the collection angle and closely related to the
 numerical aperture NA$=\sin \frac{D_a}{2z}$. If needed, we can now use this
 result to compute the input parameters $D_a$ and $z$ in the DantecStudio IPI
@@ -1597,18 +1606,24 @@ diameter as
 \begin{equation}
     0.047921~\cdot~450\,\mathrm{mm} = 2.156\,\mathrm{mm}
 \end{equation}
+The above procedure will result in more accurate measurements compared to the
+simple measure-and-enter technique suggested in the manual accompanying the
+Dantec DynamicStudio software. It will need to be repeated whenever the lens is
+changed, re-focused, or moved with respect to the light sheet.
 
-
-\section{Removing center discrepancies with keypoint registration}
+\section[Removing centre discrepancies using keypoint registration]{Removing centre discrepancies\\using keypoint registration}
 \label{sec:keypoint-registration}
 
-%TODO: Say that the bulk of the following work is from Kosch and Ashgriz,
-%submitted to journal/conference XYZ
+\noindent \emph{The content presented in this section is, in edited form,
+        under review for publication in the journal ``Measurement'' under the title ``Eliminating center discrepancies
+between simultaneously captured ILIDS and PIV images by means of direct
+homography estimation''.}\\
+
 As mentioned above, to allow both cameras to image the same physical region in
 the spray, they are either placed behind a beamsplitter at a right angle to the
 light sheet, or placed separately at different angles. The latter approach makes
 for a more difficult setup, since Scheimpflug's rule demands that the camera
-must be tilted with respect to the objective lens, but it gives the user the
+must be tilted with respect to the objective lens, although it gives the user the
 freedom to choose the highest-intensity scattering angle.
 
 In any of the above cases, the use of two cameras requires that their images be
@@ -1616,7 +1631,6 @@ mapped onto one another. This is commonly achieved by means of a camera
 calibration procedure, in which a target pattern (e.g. as in \figref{fig:plate-calibration}) of known dimensions is
 photographed by each camera. A pattern recognition algorithm then determines the
 object-to-image mappings for each camera:
-
 
 \begin{equation}
 \left[\begin{array}{c} x'\\ y'\\ z'\\ r' \end{array} \right]
@@ -1728,6 +1742,16 @@ magnitude of the center discrepancy effect along the vertical axis, which
 enabled them to improve the accuracy of their nearest-neighbour-based droplet
 image matching algorithm.
 
+\begin{figure}
+    \centering
+    \includegraphics[height=0.75\textheight]{img/overlapping_flowchart.pdf}
+    \caption{Procedural chart outlining how fringe disk images can be combined with
+    PIV images to yield integrated size and velocity information for every
+    droplet. Solid arrows: this paper; dashed arrows: typical approach using
+  camera calibration (e.g. Dantec DynamicStudio software).}
+\label{fig:overlapping-flowchart}
+\end{figure}
+
 We found that algorithms developed by the computer
 vision community in recent years can obviate the need for calibration entirely.
 Instead, we can use visual correspondences between the focused and defocused
@@ -1735,9 +1759,9 @@ images to find the mapping between them directly. To that end, we first provide
 in \secref{sec:keypoint-review} a brief overview over popular methods in the field of automated (linear)
 \emph{registration}, i.e. the art of finding a \emph{homography} (geometric
 mapping) between two \emph{epipolar images} (images of the same object, taken
-from different positions and angles). \secref{sec:keypoint-results} documents 
+from different positions and angles). \secref{sec:results} documents 
 our approach in greater detail and shows the result of a successful
-recalibration.
+recalibration. An overview is provided by \figref{fig:overlapping-flowchart}.
 
 \subsection{Review of image registration techniques \label{sec:keypoint-review}} Given two
 identical images that have been rotated, shifted or even scaled with respect to
@@ -1954,7 +1978,7 @@ with such setups.\footnote{While slit strip images could be
 simulated over the focused image (in a procedure analogous to that illustrated
 in \figref{fig:making-disks}), the lack of overlap between them could make it
 significantly more difficult to find ``interesting'' keypoints in the simulated
-image.}
+image.} A procedural overview is provided by \figref{fig:compressed-flowchart}.
 
 Keypoints are not required, when the absence of overlap allows
 us to identify focused and defocused objects centers directly from the respective
@@ -1995,6 +2019,17 @@ Point algorithm, which simply searches for the least-squares-optimal rigid
 mapping. Several of these approaches were reviewed and generalized by
 \citet{Jian10}. A slightly different approach, named Coherent Point
 Drift\cite{Myronenko10}, is also highly popular and illustrated in \figref{fig:cpd}.
+
+\begin{figure}
+    \centering
+    \includegraphics[height=0.5\textheight]{img/compressed_flowchart.pdf}
+    \caption{Procedural chart outlining how compressed fringe disk images can be combined with
+    PIV images to yield integrated size and velocity information for every
+    droplet. Solid arrows: this paper; dashed arrows: approach taken by
+  \citet{Hardalupas10}.}
+\label{fig:compressed-flowchart}
+\end{figure}
+
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{img/orb/pointset.eps}
@@ -2016,7 +2051,7 @@ available implementations of their algorithms online.
 \chapter[Phase-Doppler Particle Analysis]{Phase-Doppler\\Particle Analysis (PDPA)}
 Phase-Doppler anemometry and droplet sizing techniques are based on the
 far-field intensity fluctuations in the laser light scattered by passing
-droplets. Unlike ILIDS, however, PDPA uses intersecting laser beams (instead of
+droplets. Unlike ILIDS, PDPA uses intersecting laser beams (instead of
 a laser sheet) to illuminate the droplets. Whereas ILIDS \emph{images} the
 infringement pattern cast by the glare points on the illuminated droplet, PDPA
 measures the fringe spacings indirectly by relating them to the phase difference 
@@ -2093,7 +2128,8 @@ fringes. As the small droplet (assumed to be a single point) falls through the
 fringes, it samples the light intensity, scattering an alternating signal onto
 the detector, which registers a burst of voltage spikes. Since the fringe
 spacing is known and constant, the detected burst frequency is linearly related
-to the velocity of the falling droplet.
+to the velocity of the falling droplet. The measurement of droplet size is
+identical for both small and large droplets and explained below.
 
 \begin{figure}
     \centering
@@ -2115,23 +2151,27 @@ and $m$ is assumed to be 1.33 (water droplets in air). In this setup, the
 receiver will see the beams mostly as first-order refracted rays. An extensive
 numerical evaluation of these relationships was published by \citet{Naqwi96}.
 
-From the perspective of the receiver, each beam is scattered from a glare point
-on the droplet surface. Due to the path length differences and the falling
-motion past the receiver probe, the intensities from both glare points create a
-beating frequency on both detectors, which are offset in space (on the order of
-millimeters) and therefore measure the beating signal with slight phase shifts
-(on the order of a few $\pi$). \figref{fig:pdpa-moire-static} illustrates how larger
-droplets result in narrower fringes, and thus a larger phase difference.
+From the perspective of the receiver, each beam is scattered from a
+glare point on the droplet surface. Due to the path length differences
+and the falling motion past the receiver probe, the intensities from
+both glare points create a beating frequency on both detectors.
+The detectors are offset in space (by a distance on the order of
+millimeters) and therefore measure the same beating signal with a slight phase
+shift (on the order of a few $\pi$).
 
-Note, however, that the patterns shown in \figref{fig:pdpa-moire-static} are
+\figref{fig:pdpa-moire-static}
+illustrates how larger droplets result in narrower fringes, and thus a
+larger phase difference. Note, however, that the patterns shown in \figref{fig:pdpa-moire-static} are
 valid only for stationary droplets. Falling droplets experience a Doppler
 effect: the upward-angled beam is sampled at a relatively higher velocity,
 leading to a higher scattered frequency. The downward-angled beam, on the other
 hand, is scattered at a lowered frequency. The discrepancy in frequency leads to
-curved fringes. Moreover, the direction of the receiver changes as the droplet
-is falling. The result is not directly intuitive: the velocity has no impact at
-all on the phase difference between detectors A and B, and the size has no
-impact on the beat frequency (i.e. burst frequency) measured by the detectors.
+curved fringes not shown in \figref{fig:pdpa-moire-static}. Moreover, the direction of the receiver changes as the droplet
+is falling. The result is not directly intuitive: the velocity of the droplet is 
+cancelled by the curving of the fringes, so it has no impact on the 
+phase difference measured between detectors A and B. Similarly, the size of the
+droplet has effectively no influence on the beat frequency (i.e. burst
+frequency) that is used to derive velocity information.
 
 \begin{figure}
     \centering
@@ -2145,16 +2185,17 @@ resulting in narrower fringes and a larger phase difference.
 \label{fig:pdpa-moire-static}}
 \end{figure}
 
-For first-order refraction, \citet{Albrecht03} provide the following
-relationship between droplet diameter $d_p$ and the difference in measured
+For first-order refraction, which according to \citet{Naqwi96} is the dominant scattering mechanism for water
+droplets in air seen from $\phi\approx 60^\circ$, \citet{Albrecht03} provide the following
+relationship between droplet diameter $D_p$ and the difference in measured
 phase $\Phi$ between two detectors A and B:
 \begin{equation}
     \begin{split}
-        \Delta \Phi_{AB} &= \beta_{AB} d_p \\
-                         &= \frac{2\pi}{\lambda} \left(\Phi_A - \Phi_B\right) d_p \\  
+        \Delta \Phi_{AB} &= \beta_{AB} D_d \\
+                         &= \frac{2\pi}{\lambda} \left(\Phi_A - \Phi_B\right) D_d \\  
                          & 
         \begin{split}
-            \;=\frac{2\pi}{\lambda} d_p \Bigg[\,&\sqrt{1+m^2-\sqrt{2} m
+            \;=\frac{2\pi}{\lambda} D_d \Bigg[\,&\sqrt{1+m^2-\sqrt{2} m
         \sqrt{1+\sin \psi_A \sin \frac{\Theta}{2} + \cos \psi_A \cos \phi_A \cos
     \frac{\Theta}{2}}} \\
         -{} &\sqrt{1+m^2-\sqrt{2} m \sqrt{1-\sin \psi_A \sin \frac{\Theta}{2} + \cos \psi_A \cos \phi_A \cos
@@ -2176,7 +2217,7 @@ shift technique) \cite{Albrecht03}. Another, more commonly implemented solution
 is the addition of a third detector, spaced very closely to the first. Then the
 phase difference between detectors A and C is
 \begin{equation}
-    \Delta \Phi_{AC} = \beta_{AC} d_p.
+    \Delta \Phi_{AC} = \beta_{AC} D_d.
 \end{equation}
 Since the slopes $\beta_{AB}$ and $\beta_{AC}$ are known, we can then deduce how
 many $2\pi$ jumps should be contained in the measured $\Delta \Phi_{AB}$:
@@ -2185,16 +2226,17 @@ many $2\pi$ jumps should be contained in the measured $\Delta \Phi_{AB}$:
         \frac{1}{2\pi}\left(\frac{\beta_{AB}}{\beta_{AC}} \Delta \Phi_{AC} -
     \Delta\Phi_{AB} \right) + \frac{1}{2}\right]
 \end{equation}
-This allows us to bring $\Delta\Phi_{AB}$ into the range $[0, 2\pi]$:
+This allows us to bring $\Delta\Phi_{AB}$ into the range $[0, 2\pi]$ by
+subtracting the redudant $n_{2\pi}$ periods:
 \begin{equation}
-    \Delta\Phi_{AB} = \beta_{AB} d_p - 2\pi n_{2\pi}
+    \Delta\Phi_{AB} = \beta_{AB} D_d - 2\pi n_{2\pi},
 \end{equation}
-We are now able to solve for $d_p$:
+and are able to solve for $D_d$:
 \begin{align}
-    d_{p,AB} &= \frac{\Delta\Phi_{AB} + 2\pi n_{2\pi}}{\beta_{AB}}\\
-    d_{p,AC} &= \frac{\Delta\Phi_{AC}}{\beta_{AC}}
+    D_{d,AB} &= \frac{\Delta\Phi_{AB} + 2\pi n_{2\pi}}{\beta_{AB}}\\
+    D_{d,AC} &= \frac{\Delta\Phi_{AC}}{\beta_{AC}}
 \end{align}
-If the discrepancy between the two values are below a set threshold, the
+If the discrepancy between the two values is below a set threshold, the
 measurement is accepted.
 
 \begin{figure}
@@ -2204,12 +2246,15 @@ measurement is accepted.
         probe. Detector separation values are indicated. \label{fig:pdpa-detector-arrangement}}
 \end{figure}
 
-Generally, the elevation angle $\psi$ of a given detector is not known. However,
-it can be estimated from the detector separation values (see
-\figref{fig:pdpa-detector-arrangement}) and the focal length of the receiver's
-lens $f_r$.
+Generally, the elevation angle $\psi$ of a given detector is not known
+a priori, at least not to sufficient accuracy. 
+However, it can be estimated from the detector separation values (see
+\figref{fig:pdpa-detector-arrangement}) and the focal length of the
+receiver's lens $f_r$. The detector separation values, in turn, are best found
+via a calibration procedure as outlined below.
 
-\subsection{Calculation in TSI FlowSizer software}
+\subsection{Calculation of droplet sizes in the TSI FlowSizer software
+\label{sec:flowsizeralg}}
 To verify the results displayed by the TSI FlowSizer software, it was necessary to
 understand how FlowSizer arrives at a diameter distribution from the measured
 phase data. Although their algorithm is not published, it is possible to reverse
@@ -2276,7 +2321,8 @@ $\beta_{AC}$ only depend on constant values (including $\Delta y_{AB}$ and
 $\Delta y_{AC}$, which can be set in the software).
 
 FlowSizer then filters out all $d_{p,AB}, d_{p,AC}$ pairs that differ by more than some
-threshold. The manual recommends seven percent of the maximum measureable size,
+threshold. This is referred to as the ``epsilon cutoff'' in the TSI FlowSizer
+software. The manual recommends seven percent of the maximum measureable size,
 which in practice evaluates to a few tens of microns.
 
 \subsection{Calibration in TSI FlowSizer}
@@ -2288,7 +2334,7 @@ recorded after measuring monodisperse droplets of known size.
 
 The TSI FlowSizer software provides this functionality. Presuming a vibrating
 orifice droplet generator is used, flow rate and frequency can be entered and
-are converted to droplet diameter using \eqref{eq:dropdia-continuous}. The
+are converted to droplet diameter using \eqref{eq:rayl}. The
 software then adjusts $\Delta y_{AB}$ and $\Delta y_{AC}$ such that the peak (if
 any) or some still-unknown measure of average of the diameter distribution
 aligns with the expected droplet diameter. This is easily done, since due to the
@@ -2297,11 +2343,15 @@ depends on $\Delta y_{AB}$ and $\Delta y_{AC}$ and can be set independently.
 
 
 \section{Sources of error}
+In this section, we provide an extensive review of possible sources of error in
+the PDPA measurement of droplet sizes. It may serve as a troubleshooting guide
+and it provides context for \secref{sec:pdpa-calibration}.
+
 \subsection{Gaussian beam divergence}
 The theory predicting the linear relationship between detector phase difference
 and droplet diameter is founded on the assumption of very small droplets and
 plane beam wavefronts. Unfortunately, when particles larger than the beam cross
-the measurement volume in certain directions, glare points of the normally
+the measurement volume along certain paths, glare points of the normally
 dominant scattering order (e.g. first-order refraction) can temporarily become
 weak enough to be dominated by another scattering order (e.g. reflection). This
 phenomenon leads to erroneous results, of course, and is termed \emph{trajectory
@@ -2309,7 +2359,8 @@ ambiguity effect} (TAE) or \emph{Gaussian beam defect} (GBD) in the literature.
 
 The problem was recognized first by \citet{Saffman86}, but had to be neglected until
 the plane-wave scattering theory of Lorenz-Mie optics was extended into
-the \emph{Generalized Lorenz-Mie Theory} (GLMT). Most of this work was
+the \emph{Generalized Lorenz-Mie Theory} (GLMT) which encompass incident wave
+fronts of all shapes. Most of this work was
 done by Gouesbet, Gréhan, Maheu, Lock and others throughout the 1980s
 \cite{Grehan80, Gouesbet82, Gouesbet88, Maheu88}, and mathematically
 rigorous formulations were available by the early 1990s \cite{Lock94,
@@ -2323,10 +2374,12 @@ checks between the diameter determined by detector pairs AB and AC.
 
 \subsection{Slit effect}
 Most commercial phase-Doppler systems use a slit aperture in front of the
-detector or receiving fibers \cite{Albrecht03}. This helps to define the
-detection volume in the $z$ dimension (i.e. the beam direction), which is necessary for further statistics
-about flux, and it can be useful when sprays are very dense, as multiple
-droplets may be present within the measurement volume at a time.
+detector or receiving fibers \cite{Albrecht03}, to help clearly define the
+detection volume in the $z$ dimension (i.e. the beam direction). This
+accomplished two things: first, it makes possible the calculation of flux
+statistics (i.e. droplets per volume and time) and, second, it can be
+helpful when the spray are very dense, as multiple droplets may be present
+within the measurement volume at a time.
 
 It can occur, however, that the aperture cuts off the dominant-order glare point
 of a droplet that is just halfway outside of the visible region. In that case,
@@ -2345,12 +2398,12 @@ however, for the droplet on the right; the slit aperture only allows the
 reflected light to pass. \label{fig:sliteffect}}
 \end{figure}
 
-Durst et al show experimentally that the slit effect is even more crucial than
-the Gaussian beam effect. \cite{Durst94}. Together with the TAE, this
+\citet{Durst94} showed experimentally that the slit effect is even more crucial than
+the Gaussian beam effect. Together with the TAE, this
 is called the measurement volume effect. As with the slit effect, three-detector
 setups are significantly less sensitive to this problem because of the
 additional validation. Qiu and Hsu propose using four detectors, instead of
-three, to resolve this problem entirely \cite{Qiu99}. A similar design was
+three, to sidestep this problem entirely \cite{Qiu99}. A similar four-detector design was
 verified experimentally by \citet{Sipperley14}.
 
 A more recent review of the phenomenon and associated techniques was published by
@@ -2363,7 +2416,15 @@ volume, the fringes are spaced farther apart, which can result in an error on
 the order of 10\% according to \citet{Albrecht03}. The most important factor is
 the beam waist dislocation (i.e. misalignment), which must be minimized. The
 error is also reduced for wider beam waists and larger intersection angles
-$\Theta$.
+$\Theta$, which in practice translates to setups able to measure very small
+droplets.
+
+The only way to reduce this error is the proper alignment of laser
+beams, which can be difficult. The beams can be aligned to intersect by turning
+small screws inside the transmitter casing while observing their images cast
+through a microscope objective placed at the measurement point. This method is
+recommended in the operator manuals. Whether they intersect precisely at their waists, however, is very
+difficult to determine by this method.
 
 \subsection{Selection of lenses and masks}
 \citet{Davis04} have shown that the selection of lenses and detector masks
@@ -2383,18 +2444,12 @@ scratched fiber ends can mar the Gaussian beam profiles, leading to distortions
 or irregularities in the measurement volume's fringe pattern.
 
 \subsection{Wrongly entered parameters}
-The optical principle involves many more geometric parameters than are needed
-for the operation of ILIDS or laser diffraction (Malvern) devices. As a result, an
-excellent interface and a very attentive user are required to ensure accurate
+The optical principle behind PDPA involves many more geometric parameters than are needed
+for the operation of e.g. ILIDS or laser diffraction devices. As a result, an
+excellent user interface and a very attentive user are required to ensure accurate
 results.
 
-In practice, I always get error messages when doing the last step, and the
-values are way out of the expected range. The result, then, is that the D20 is
-made very close to the expected monodisperse diameter. Since the D20 is quite
-a bit larger than the actual (and completely obvious) peak value, even these
-"wrong" values aren't correct.
-
-\section{Calibration}
+\section{Calibration of the PDPA sizing system\label{sec:pdpa-calibration}}
 If all optical parameters are known, the equations necessary to derive droplet
 diameters and velocities are fully determined. However, $\Delta y_{AB}$ and
 $\Delta y_{AC}$ are not always known to high accuracy and can, in fact, undergo
@@ -2407,26 +2462,38 @@ To calibrate, we must solve for the two values under the
 requirement that the peak of the diameter histogram coincide with the known
 droplet diameter. This is not straightforward for a few reasons:
 \begin{alist}
-\item The epsilson cutoff criterion means that obtaining the diameter histogram from
-        the phase differences is a one-way calculation (a cutoff cannot be
-        reversed algebraically)
-\item The choice of "peak" diameter is questionable. If the measured diameter
+\item The epsilson cutoff criterion (see \secref{sec:flowsizeralg}) means that obtaining the diameter histogram from
+        the phase differences is a one-way calculation. Cutoffs cannot be
+        reversed algebraically.
+      \item The meaning of ``peak'' diameter is ambivalent. If the measured diameter
         distribution is not exactly symmetrical, it may be preferable to use a
         form of average (e.g. $D_{10}, D_{20}, D_{32}$) instead of the diameter
         corresponding to the true maximum. Alternatively, a Gaussian kernel
-        density estimate of some arbitrary bandwidth may be used.
-\item Since there is no unique pair of values for $\Delta y_{AB}$ and $\Delta
-        y_{AC}$ that will result in the expected peak diameter, an additional
+        density estimate of some arbitrary bandwidth may be used. Although a
+        monodisperse droplet stream should result in a very sharp and
+        unambiguous peak, this does not hold in practice in our experience.
+\item Since there is an infinitude of values pairs for $\Delta y_{AB}$ and $\Delta
+        y_{AC}$ that will yield the desired known peak diameter, an additional
         relationship must be used to establish the best pair. One source for
-        this could be the difference-diameter plot: one could minimize the sum
+        this information could be the difference-diameter plot: we could choose
+        the values such as to minimize the sum
         of absolute or squared differences between AB and AC measurements.
 \end{alist}
-The combination of the above three points means that an iterative search for the
+The combination of the above three sticking points means that an iterative search for the
 optimal $\Delta y_{AB}$/$\Delta y_{AC}$ combination is inevitable.
-Alternatively, we can find the set of possible combinations given one set of
-measurements, then find overlaps with the sets of possible combinations from
-other measurement sets. This has been very difficult to do in our experience, as
-shown in \figref{fig:pdpa-zerorelations}.
+
+Alternatively, relaxing the last requirement, we can find the set of
+possible combinations given one set of measurements, then find overlaps
+with the sets of possible combinations from other measurement sets.
+
+We have not succeeded in doing so. \figref{fig:pdpa-zerorelations} illustrates
+the problem: for every calibration attempt using a different droplet size (all
+of which were verified photographically \emph{and} algebraically via Eq.
+\eqref{eq:rayl}), a different set of $\Delta y_{AB}$/$\Delta y_{AC}$ values was
+found that would result in the peak of the measured distribution matching the
+known diameter. Although \figref{fig:pdpa-zerorelations} shows the result for
+strict peak values (i.e. argmax), the results are very similar for averages
+and/or peaks of Gaussian kernel density estimates.
 
 \begin{figure}
     \centering
@@ -2439,13 +2506,81 @@ shown in \figref{fig:pdpa-zerorelations}.
     \label{fig:pdpa-zerorelations}}
 \end{figure}
 
-\chapter{Conclusions}
-Summary of findings is given here
+This result, surprising at first, is reflected by the complete unpredictability
+of the $\Delta y_{AB}$/$\Delta y_{AC}$ values suggested by the FlowSizer
+calibration tool when given a measured distribution and known diameter
+(furthermore, it appears that FlowSizer uses the $D_{20}$ measure as the
+``peak'', which often exceeds the real peak).
 
-\section{Summary of contributions}
+Several conclusions may be drawn from this experience:
+\begin{enumerate}
+  \item The beams don't meet at the waist, and the monodisperse droplet stream
+    falls through the measurement volume at a slightly different location with
+    every calibration attempt. The device needs factory recalibration.
+  \item Other errors are more significant than advertised by the manufacturer,
+    particularly the slit effect.
+\end{enumerate}
+
+Most importantly, however, this illustrates that calibrating a PDPA device
+regularly is crucial---even if it only serves to identify a problem. It is
+noteworthy that device used had been factory-calibrated twice in the past. Each
+time, values for $\Delta y_{AB}$ and $\Delta y_{AC}$ were found that were well
+within the ranges shown in \figref{fig:pdpa-zerorelations}, but different enough
+to produce potential errors on the order of 20\%.
+
+\chapter{Conclusions}
+The research outlined in this thesis led to several conclusions:
+\begin{enumerate}
+  \item In practice, the construction of variable-diameter monodisperse
+  droplet generators, particularly on-demand generators, requires
+  very high precision machining work and the reliable absence of both
+  air bubbles and water contaminants. The number of publications on droplet
+  generators belies the difficulty of making and operating one for research
+  purposes.
+\item The theory behind ILIDS is sound---we were able to reproduce it using our
+  own software implementation of the necessary image processing algorithms.
+  However, the optical input parameters cannot simply be determined by means of
+  a measuring tape. A proper calibration is necessary; to convert the resulting
+  factor of proportionality into the input values required by the commercial
+  software, an application of the underlying formulae is necessary.
+\item The commonly used methods of detecting overlapping disk and/or of
+  combining PIV/LIF and ILIDS imagery are needlessly complex and likely to
+  introduce centre discrepancy errors that have seen almost no treatment in the
+  literature so far.
+\item The accuracy of PDPA measurements hinges on the quality of alignment
+  between the intersecting laser beams, which is nearly impossible to ascertain
+  using standard equipment. Since a miscalibrated PDPA will output seemingly
+  perfect (if offset) results, it is crucial that PDPA devices be calibrated
+  regularly.
+\end{enumerate}
+
+\section{Other contributions}
+The research outlined in this thesis has produced two improvements on existing
+technologies:
+\begin{enumerate}
+  \item A simple and cheap type of continuous-stream droplet generator based on
+    the rotary actuator used in magnetic computer hard drives. The droplet generators 
+    work as reliably as the speaker-based ones often used for prototyping, but
+    are much more compact and make no noise.
+  \item An application of existing image and/or point registration algorithms to
+    the automated alignment of images in double-camera ILIDS setups.
+\end{enumerate}
+Both findings have been sent out for publication.
 
 \section{Future work}
+Future work is necessary to confirm that the difficulties with our PDPA system,
+described in \secref{sec:pdpa-calibration}, are indeed due to misaligned beams
+and/or dirty fibers. A factory recalibration may be the only way to answer this
+question with any certainty.
 
 \bibliographystyle{myplainnat}
 \bibliography{bibliography}
+\pagebreak
+\appendix
+\chapter{Appendix}
+\addcontentsline{toc}{section}{Detection and
+Fourier analysis of compressed ILIDS images}
+\section*{Detection and Fourier analysis of\\compressed ILIDS images}
+Python code
+%\lstinputlistings{}
 \end{document}
