@@ -75,4 +75,6 @@
 \contentsline {section}{\numberline {6.2}Future work}{76}
 \contentsline {chapter}{\numberline {A}Appendix}{85}
 \contentsline {section}{Detecting overlapping disks using a circular Hough transform}{85}
-\contentsline {section}{Sample set of raw PDPA data}{87}
+\contentsline {section}{Detection of stripes and ILIDS size analysis}{87}
+\contentsline {section}{Homography estimation using ASIFT}{91}
+\contentsline {section}{Sample set of raw PDPA data}{101}
