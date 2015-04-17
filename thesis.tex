@@ -15,7 +15,7 @@
 \usepackage{mathspec}
 \setmainfont[Mapping=tex-text, Scale=1.1]{Crimson}
 \setsansfont[Scale=1, Path=./]{din1451m.otf}
-\setmonofont{Sauce Code Powerline}
+\setmonofont[Path=./, BoldFont=scpb.otf]{scp.otf}
 %\allsectionsfont{\sffamily}
 %\setmainfon
 %\usepackage{fouriernc}
@@ -144,8 +144,8 @@ combined PIV/ILIDS systems.
 \thispagestyle{plain}
 I must thank, first and foremost, Prof. Nasser Ashgriz, who has supported me
 throughout this thesis (and on projects beyond) with his patience, experience, and knowledge
-while allowing me the room in my own way. Thank you for entrusting me, a Civil
-Engineering major, with your research project---and for indulging all of my crazy ideas.
+while allowing me the room to work in my own way. Thank you for entrusting me, a
+greenhorn Civil Engineering major, with your research project---and for indulging all of my crazy ideas.
 
 I am hugely indebted to our technologists, machinists, and lab wizards
 Terry Zak, Osmond Sargeant, and Keith Hockley for showing me the ropes. Without
@@ -153,8 +153,8 @@ your guidance and advice, this thesis could not have been written. The same
 respect is due to Amirreza Amighi, who guided me through the early stages of my
 work and imbued me with an appreciation for well-designed experiments.
 
-Finally I want to express my gratitude to my family and my best friend, QP, for
-everything. I wouldn't have made it here without you guys.
+Finally, I want to express my gratitude for my family and my best friend,
+QP---for, well, everything. I wouldn't have made it here without you guys.
 \vfill
 \tableofcontents
 \listoftables
@@ -1961,7 +1961,8 @@ images:
 
 The result of performing these operations on our sample image is shown in \figref{fig:making-disks}. We determined the disk diameter $D_\text{disk}$
 empirically from the defocused images, although it is naturally preferable to
-automate this step, e.g. using circular Hough transforms or cross-correlation
+automate this step, e.g. using circular Hough transforms (see our code sample in
+the Appendix) or cross-correlation
 with circular masks. There may be simpler ways of achieving the same result,
 e.g. by means of Gaussian filters, distance transforms and thresholding
 operations. However, we found the protocol described above to be quite robust to
@@ -1970,7 +1971,8 @@ noise and fast enough for our application.
 Implementations of \textsc{orb} and \textsc{brief} are freely available through
 the OpenCV project, which provides bindings for the C++ and Python languages. We
 used these implementations to find and extract matching keypoints between our
-sample images, shown in \figref{fig:matching}.
+sample images, shown in \figref{fig:matching}. The bulk of the program code used
+is included in the appendix.
 
 \begin{figure}
     \centering
@@ -2394,9 +2396,9 @@ It follows that \eqref{eq:pdpa-phase-simple-ab} and \eqref{eq:pdpa-phase-simple-
 rewritten for $\beta$, can be composed as
 \begin{align}
     \beta_{AB} &= \frac{\Delta y_{AB}}{2f_r} \gamma \frac{360^\circ}{\delta x} \\
-    \beta_{AC} &= \frac{\Delta y_{AC}}{2f_r} \gamma \frac{360^\circ}{\delta x}
+    \beta_{AC} &= \frac{\Delta y_{AC}}{2f_r} \gamma \frac{360^\circ}{\delta x},
 \end{align}
-Where we write $360^\circ$ instead of $2\pi$ since FlowSizer works with phase
+where we write $360^\circ$ instead of $2\pi$ since FlowSizer works with phase
 values in degrees. This is a useful approximation, because now $\beta_{AB}$ and
 $\beta_{AC}$ only depend on constant values (including $\Delta y_{AB}$ and
 $\Delta y_{AC}$, which can be set in the software).
@@ -2610,46 +2612,76 @@ within the ranges shown in \figref{fig:pdpa-zerorelations}, but different enough
 to produce potential errors on the order of 20\%.
 
 \chapter{Conclusions}
-The research outlined in this thesis led to several conclusions:
-\begin{enumerate}
-  \item In practice, the construction of variable-diameter monodisperse
-  droplet generators, particularly on-demand generators, requires
-  very high precision machining work and the reliable absence of both
-  air bubbles and water contaminants. The number of publications on droplet
-  generators belies the difficulty of making and operating one for research
-  purposes.
-\item The theory behind ILIDS is sound---we were able to reproduce it using our
-  own software implementation of the necessary image processing algorithms.
-  However, the optical input parameters cannot simply be determined by means of
-  a measuring tape. A proper calibration is necessary; to convert the resulting
-  factor of proportionality into the input values required by the commercial
-  software, an application of the underlying formulae is necessary.
-\item The commonly used methods of detecting overlapping disk and/or of
-  combining PIV/LIF and ILIDS imagery are needlessly complex and likely to
-  introduce centre discrepancy errors that have seen almost no treatment in the
-  literature so far.
-\item The accuracy of PDPA measurements hinges on the quality of alignment
-  between the intersecting laser beams, which is nearly impossible to ascertain
-  using standard equipment. Since a miscalibrated PDPA will output seemingly
-  perfect (if offset) results, it is crucial that PDPA devices be calibrated
-  regularly.
-\end{enumerate}
+The objective of the presented work, as stated in the introduction, was threefold:
+\begin{alist}
+\item to calibrate our Dantec IPI (ILIDS) droplet sizing system and to verify
+        its accuracy photographically;
+\item to identify and remedy error sources inherent in the ILIDS technique;
+\item to understand, document, and verify the algorithm underlying the
+        calibration procedure of our TSI FlowSizer PDPA system.
+\end{alist}
 
-\section{Other contributions}
-The research outlined in this thesis has produced two improvements on existing
-technologies:
-\begin{enumerate}
-  \item A simple and cheap type of continuous-stream droplet generator based on
-    the rotary actuator used in magnetic computer hard drives. The droplet generators 
-    work as reliably as the speaker-based ones often used for prototyping, but
-    are much more compact and make no noise.
-  \item An application of existing image and/or point registration algorithms to
-    the automated alignment of images in double-camera ILIDS setups.
-\end{enumerate}
-Both findings have been sent out for publication.
+The research outlined in this thesis led to the following conclusions:
 
-\section{Future work}
-Future work is necessary to confirm that the difficulties with our PDPA system,
+\paragraph{On-demand drop generation is difficult; hard-drive based
+droplet generators are an attractive alternative.} In practice, the
+construction of variable-diameter monodisperse droplet generators,
+particularly on-demand generators, requires very high precision
+machining work and the reliable absence of both air bubbles and water
+contaminants. The number of publications on droplet generators belies
+the difficulty of making and operating one for research purposes.
+
+We designed a simple and cheap type of continuous-stream droplet
+generator based on the rotary actuator used in magnetic computer hard
+drives. The droplet generators work as reliably as the speaker-based
+ones often used for prototyping, but are much more compact and make no
+noise.
+
+\paragraph{ILIDS devices can and should be calibrated.}
+The need to verify the accuracy of our ILIDS systems accuracy was
+prompted by discrepancies found by previous students between ILIDS and
+PDPA results for identical spray nozzles.
+
+We found that the theory behind ILIDS is sound---we were able to reproduce known
+droplet size distributions using our
+own software implementation of the necessary image processing algorithms.
+However, the optical input parameters cannot simply be determined by means of
+a measuring tape. A proper calibration is necessary; to convert the resulting
+factor of proportionality $\kappa$ into the input values required by the commercial
+software, an application of the underlying formulae is required.
+
+The calibration
+could be done using custom software (as in this paper), \emph{or} by deriving the
+correct value of $\kappa$ from the ratio of the peak of the size distribution measured using
+Dantec's DynamicStudio software and the known peak of the distribution
+(determined algebraically and/or photographically).
+
+When using a continuous-stream droplet generator (such as our hard-drive based
+device) for the calibration, the use of some type of optical compression is
+practically indispensable.
+
+\paragraph{Automated homography estimation helps prevent discrepancy
+errors.} The commonly used methods of detecting overlapping disk and/or
+of combining PIV/LIF and ILIDS imagery are needlessly complex and
+likely to introduce centre discrepancy errors that have seen almost
+no treatment in the literature so far.
+
+We have proposed the application of existing image and/or point
+registration algorithms to the automated alignment of images in
+double-camera ILIDS setups. The algorithms completely eliminate the need for
+camera calibration using dot patterns (or other empirical methods of finding
+camera homographies). They are patent-free and based on existing software
+implementations, so the integration into commercially sold systems should be
+straightforward.
+
+\paragraph{PDPA devices need to be calibrated.} The accuracy of PDPA
+measurements hinges on the quality of alignment between the intersecting
+laser beams, which is nearly impossible to ascertain using standard
+equipment. Since a miscalibrated PDPA will output seemingly perfect
+(if offset) results, it is crucial that PDPA devices be calibrated
+regularly.
+
+More research is necessary to confirm that the difficulties with our PDPA system,
 described in \secref{sec:pdpa-calibration}, are indeed due to misaligned beams
 and/or dirty fibers. A factory recalibration may be the only way to answer this
 question with any certainty.
@@ -2677,15 +2709,15 @@ The identified circles, along with the calculated droplet sizes, are shown.
 
 \addcontentsline{toc}{section}{Detection of stripes and ILIDS size analysis}
 \section*{Detection of stripes and ILIDS size analysis}
-\lstinputlistings{papers/stripdetect.py}
-
+\lstinputlisting{papers/stripdetect.py}
+\pagebreak
 \addcontentsline{toc}{section}{Homography estimation using ASIFT}
 \section*{Homography estimation using ASIFT}
-\lstinputlistings{papers/asift.py}
+\lstinputlisting{papers/asift.py}
 The above script relies on \texttt{find\_obj.py}, which is part of the OpenCV
 samples collection and reproduced below.
-\lstinputlistings{papers/find_obj.py}
-
+\lstinputlisting{papers/find_obj.py}
+\pagebreak
 %\addcontentsline{toc}{section}{Reverse PDPA analysis}
 %\section*{Reverse PDPA analysis}
 %\lstinputlistings{}

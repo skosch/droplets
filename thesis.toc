@@ -71,8 +71,12 @@
 \contentsline {subsection}{\numberline {5.2.7}Wrongly entered parameters}{72}
 \contentsline {section}{\numberline {5.3}Calibration of the PDPA sizing system}{72}
 \contentsline {chapter}{\numberline {6}Conclusions}{75}
-\contentsline {section}{\numberline {6.1}Other contributions}{76}
-\contentsline {section}{\numberline {6.2}Future work}{76}
+\contentsline {paragraph}{On-demand drop generation is difficult; hard-drive based droplet generators are an attractive alternative.}{75}
+\contentsline {paragraph}{ILIDS devices can and should be calibrated.}{75}
+\contentsline {paragraph}{Automated homography estimation helps prevent discrepancy errors.}{76}
+\contentsline {paragraph}{PDPA devices need to be calibrated.}{76}
 \contentsline {chapter}{\numberline {A}Appendix}{85}
 \contentsline {section}{Detecting overlapping disks using a circular Hough transform}{85}
-\contentsline {section}{Sample set of raw PDPA data}{87}
+\contentsline {section}{Detection of stripes and ILIDS size analysis}{87}
+\contentsline {section}{Homography estimation using ASIFT}{92}
+\contentsline {section}{Sample set of raw PDPA data}{103}
